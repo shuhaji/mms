@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>       
+        <template id="external_layout_background_inherit" inherit_id="web.external_layout_background">
+            <xpath expr="//div[hasclass('footer','o_background_footer')]"
+                   position="replace">
+                <div class="footer o_background_footer">
+                    <div class="text-center">
+                        <ul class="list-inline">
+                            <li t-if="company.phone"><i class="fa fa-phone"/> <span t-field="company.phone"/></li>
+                            <li t-if="company.email"><i class="fa fa-at"/> <span t-field="company.email"/></li>
+                            <li t-if="company.website"><i class="fa fa-globe"/> <span t-field="company.website"/></li>
+                            <li t-if="company.vat"><i class="fa fa-building-o"/><t t-esc="company.country_id.vat_label or 'TIN'"/>: <span t-field="company.vat"/></li>
+                        </ul>
+                        <div t-field="company.report_footer"/>
+                        <t t-if="doc_model == 'account.invoice'">
+                            <t t-if="o.print_counter > 1">
+                                <span t-esc="'{:,.0f}'.format(o.print_counter - 1)"/>
+                            </t>
+                        </t>
+                         <t t-if="doc_model == 'invoice.collecting'">
+                             <div class="text-muted">
+                                <t t-if="collect.print_counter > 1">
+                                     <span t-esc="'{0:,.0f}'.format(collect.print_counter)"/>
+                                </t>
+                            </div>
+                         </t>
+                        <div class="text-muted">
+                            Page:
+                            <span class="page"/>
+                            of
+                            <span class="topage"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+        
+        <record model="report.paperformat" id="paperformat_invoice_report">
+            <field name="name">paperformat.invoice.report</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">40</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="account.account_invoices_without_payment" model="ir.actions.report">
+            <field name="paperformat_id" ref="paperformat_invoice_report"/>
+        </record>
+
+        <record id="account.account_invoices" model="ir.actions.report">
+            <field name="paperformat_id" ref="paperformat_invoice_report"/>
+        </record>
+        
+    </data>
+</odoo>

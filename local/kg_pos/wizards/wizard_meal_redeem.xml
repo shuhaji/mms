@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="pos_meal_redeem_form_view" model="ir.ui.view">
+            <field name="name">pos.meal.redeem.form.view</field>
+            <field name="model">wizard.pos.meal.allocation</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+<!--                            <label for="pos_category_id" string="POS Categories" style="font-weight: bold !important;"/>-->
+                            <field name="pos_category_id" required="True"/>
+
+<!--                            <group>-->
+                            <field name="room_no" widget="kg_field_room_info_meals" readonly="0" force_save="1"/>
+<!--                            <field name="room_no"/>-->
+                            <field name="guest_name" readonly="1" force_save="1"/>
+                            <field name="guest_status" readonly="1" force_save="1"/>
+                            <field name="person" readonly="1" force_save="1"/>
+                            <field name="pms_reservation_id" invisible="1" force_save="1"/>
+                            <field name="pms_sub_department_id" invisible="1" force_save="1"/>
+                            <field name="allocation_id" invisible="1" force_save="1"/>
+<!--                            </group>-->
+
+<!--                            <group>-->
+<!--                                <br/>-->
+<!--                                <button name="search_room" string="Search" type="object" class="btn-primary"/>-->
+<!--                            </group>-->
+                        </group>
+                        <group>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <field name="arrival_date" readonly="1" force_save="1"/>
+                            <field name="departure_date" readonly="1" force_save="1"/>
+                            <field name="extra_bed" readonly="1" force_save="1"/>
+                            <field name="working_date" groups="base.group_no_one"/>
+                        </group>
+                    </group>
+
+
+                    <group>
+                        <field name="card_info"/>
+                        <br/>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Transaction">
+                            <field name="outlet_ids">
+                                <tree create="false" editable="top" open="false" edit="true">
+                                    <field name="set_redeem" readonly="0"/>
+                                    <field name="pos_category_id" readonly="1" force_save="1"
+                                           options="{'no_create': True, 'no_open': True}"
+                                    />
+        <!--                            <field name="redeem_id" readonly="1" force_save="1" invisible="1"/>-->
+                                    <field name="allocation_id" readonly="1" force_save="1" invisible="1"/>
+                                    <field name="pms_sub_department_id" readonly="1" force_save="1" invisible="1"/>
+                                    <field name="allocation" readonly="1" force_save="1"/>
+                                    <field name="redeem" readonly="1" force_save="1"/>
+                                    <field name="balance" readonly="1" force_save="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Redeem Info">
+                            <field name="redeem_ids">
+                                <tree create="false" editable="top" open="false" edit="false">
+                                    <field name="room_no" readonly="1"/>
+                                    <field name="outlet" readonly="1"/>
+                                    <field name="redeem_location" readonly="1"/>
+                                    <field name="source_type" readonly="1"/>
+                                    <field name="created" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <footer>
+                        <button string="Redeem" name="btn_set_redeem" type="object" default_focus="1" class="btn-primary"/>
+<!--                        <button string="Redeem Info" name="btn_redeem_info" type="object" class="btn-primary"/>-->
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="pos_meal_redeem_info_form" model="ir.ui.view">
+            <field name="name">pos.meal.redeem.info.form</field>
+            <field name="model">pos.meal.allocation</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="outlet_ids">
+                        <tree create="false" editable="top" open="false" edit="false">
+                            <field name="room_no" readonly="1"/>
+                            <field name="outlet" readonly="1"/>
+                            <field name="redeem_location" readonly="1"/>
+                            <field name="source_type" readonly="1"/>
+                            <field name="created" readonly="1"/>
+                        </tree>
+                    </field>
+                    <footer>
+                        <button special="cancel" type="object" class="oe_highlight" string="Close" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_pos_meal_redeem_wizard" model="ir.actions.act_window">
+            <field name="name">Meals Redeem</field>
+            <field name="res_model">wizard.pos.meal.allocation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="pos_meal_redeem_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_pos_meal_redeem_wizard"
+                name="Meals Redeem"
+                action="action_pos_meal_redeem_wizard"
+                parent="point_of_sale.menu_point_of_sale"
+                sequence="8"/>
+
+    </data>
+</odoo>

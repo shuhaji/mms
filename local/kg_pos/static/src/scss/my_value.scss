@@ -1,0 +1,96 @@
+/* --- MyValue ID Popup --- */
+.pos .popup-myvalue {
+    .container {
+        text-align: left;
+        padding: 0px 15px;
+    }
+
+    .field {
+        margin: 15px 0px;
+
+        input,
+        select {
+            margin-top: 5px;
+        }
+    }
+
+    .checkbox {
+        position: relative;
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        label {
+            min-height: 20px;
+            padding-left: 20px;
+            margin-bottom: 0;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        input[type='checkbox'] {
+            margin: 0 0 4px -20px;
+            box-shadow: unset;
+            width: unset;
+            vertical-align: middle;
+        }
+    }
+
+    .form-control {
+        width: 80%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-shadow: unset;
+        min-height: unset;
+    }
+
+    .pos .popup .my-value-input {
+        text-align: left;
+        display: inline-block;
+        overflow: hidden;
+        background: white;
+        min-height: 42px;
+        font-family: "Lato";
+        font-size: 20px;
+        color: #444;
+        padding: 10px;
+        border-radius: 3px;
+        border: none;
+        box-shadow: 0px 0px 0px 1px rgb(220,220,220) inset;
+        box-sizing: border-box;
+        width: 70%;
+        margin: 15px 0px 0px 0px;
+    }
+
+    .pos .popup .my-value-input-points {
+        text-align: left;
+        display: inline-block;
+        overflow: hidden;
+        background: white;
+        min-height: 35px;
+        font-family: "Lato";
+        font-size: 15px;
+        color: #444;
+        padding: 5px;
+        border-radius: 3px;
+        border: none;
+        box-shadow: 0px 0px 0px 1px rgb(220,220,220) inset;
+        box-sizing: border-box;
+        width: 25%;
+        margin: 0px 0px 10px 0px;
+    }
+
+    .pos .popup .button-verify {
+        height: 38px;
+        vertical-align: middle;
+        background-color: aliceblue;
+        border-radius: 12px;
+    }
+}

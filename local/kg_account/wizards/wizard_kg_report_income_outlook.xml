@@ -1,0 +1,83 @@
+<odoo>
+    <!-- Wizard to View KG Report (Stimulsoft) -->
+    <record id="wizard_kg_report_outlook_income_statement_view" model="ir.ui.view">
+        <field name="name">KG Report - Outlook Income Statement</field>
+        <field name="model">wizard.kg.report.income_statement_outlook</field>
+        <field name="inherit_id" ref="kg_report_base.wizard_kg_report_base_view"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="working_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="working_date" position="after">
+                <field name="company_id" invisible="1"/>
+                <field name="account_report_id" domain="[('parent_id','=',False)]"/>
+                <field name="value_type" invisible="1"/>
+                <field name="date_filter_type"/>
+                <field name="period" widget="date-month-year-period-widget" required="True"
+                       attrs="{'invisible':[('date_filter_type', '!=', 'period')]}"
+                />
+                <field name="date_from" style="width:120px"
+                       invisible="1"
+                />
+                <field name="date_from_to_show" style="width:120px"
+                       invisible="1"
+                />
+                <field name="date_to" style="width:120px"
+                       attrs="{'invisible':[('date_filter_type', '!=', 'date_single'), ('date_filter_type', '!=', 'date_range')]}"
+                />
+                <field name="date_to_to_show" style="width:120px"
+                       attrs="{'invisible':['|',('date_filter_type', '=', 'date_single'), ('date_filter_type', '=', 'date_range')]}"
+                />
+                <field name="enable_filter"
+                       invisible="1"/>
+            </field>
+            <field name="file_name" position="after">
+                <field name="target_move" widget="radio"/>
+                <field name="first_column_set_label" invisible="1"/>
+                <field name="is_show_ratio" invisible="1" />
+                <field name="is_hide_signer" />
+            </field>
+        </field>
+    </record>
+
+    <!-- Action to open Wizard as a popup -->
+    <!--<act_window id="action_wizard_kg_report_income_statement"-->
+                <!--name="KG Report - Income Statement"-->
+                <!--res_model="wizard.kg.report.income_statement"-->
+                <!--view_mode="form"-->
+                <!--target="new"-->
+                <!--view_type="form"-->
+                <!--view_id="wizard_kg_report_income_statement_view"-->
+    <!--/>-->
+    <record id="action_wizard_kg_report_outlook_income_statement" model="ir.actions.act_window">
+        <field name="name">KG Report - Outlook Income Statement</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.kg.report.income_statement_outlook</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_kg_report_outlook_income_statement_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Action to open Wizard as an inline form -->
+    <!--<record id="action_wizard_kg_report_base" model="ir.actions.act_window">-->
+        <!--<field name="name"></field>-->
+        <!--<field name="type">ir.actions.act_window</field>-->
+        <!--<field name="res_model">wizard.kg.report.base</field>-->
+        <!--<field name="view_type">form</field>-->
+        <!--<field name="view_mode">form</field>-->
+        <!--<field name="view_id" ref="wizard_kg_report_income_statement_view"/>-->
+        <!--<field name="target">inline</field>-->
+    <!--</record>-->
+
+    <!-- Menu item to open Wizard  -->
+    <menuitem id="menu_wizard_kg_report_outlook_income_statement"
+              name="Outlook Income Statement"
+              parent="menu_wizard_kg_report_group"
+              action="action_wizard_kg_report_outlook_income_statement"
+    />
+
+
+
+</odoo>

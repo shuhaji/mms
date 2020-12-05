@@ -1,0 +1,9 @@
+<odoo>
+    <template id="pos_templates_custom_extended"
+              inherit_id="point_of_sale.index">
+        <xpath expr="//script" position="before">
+            <script t-attf-src="/kg_report_base/static/src/libs/stimulsoft.reports.2019.3.4.js?version=2019.3.4" type="text/javascript" />
+            <script t-attf-src="/kg_report_base/static/src/libs/stimulsoft.viewer.2019.3.4.js?version=2019.3.4" type="text/javascript" />
+        </xpath>
+    </template>
+</odoo>

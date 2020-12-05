@@ -1,0 +1,65 @@
+<odoo>
+    <record id="wizard_kg_report_aged_partner_balance_view" model="ir.ui.view">
+        <field name="name">Aged Partner Balance</field>
+        <field name="model">wizard.kg.report.aged.partner.balance</field>
+        <field name="inherit_id" ref="kg_report_base.wizard_kg_report_base_view"/>
+        <field name="arch" type="xml">
+        <data>
+            <xpath expr="//group[@name='report_filters_1']" position="before">
+<!--                <group>-->
+<!--                    <separator string="Aged Partner Balance"/>-->
+<!--                </group>-->
+                <group>
+                    <label string="Aged Partner Balance is a more detailed report of your receivables by intervals. Odoo calculates a table of credit balance by start Date. So if you request an interval of 30 days Odoo generates an analysis of creditors for the past month, past two months, and so on. "/>
+                </group>
+            </xpath>
+            <field name="working_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="working_date" position="after">
+                <field name="date_from" style="width:120px" required="True"/>
+                <field name="result_selection" widget="radio"/>
+
+                <field name="company_id" invisible="1"/>
+                <field name="ap_account_id" options="{'no_create': True, 'no_open': True}"
+                       attrs="{'invisible':[('result_selection','!=','supplier')]}"
+                       domain="[('internal_type', '=', 'payable'), ('deprecated', '=', False), ('company_id', '=', company_id)]"/>
+                <field name="ar_account_id" options="{'no_create': True, 'no_open': True}"
+                       attrs="{'invisible':[('result_selection','!=','customer')]}"
+                       domain="[('internal_type', '=', 'receivable'), ('deprecated', '=', False), ('company_id', '=', company_id)]"/>
+                <field name="supplier_id" widget="many2many_tags" options="{'no_create_edit': True}"
+                       attrs="{'invisible':[('result_selection','!=','supplier')]}"
+                       domain="[('supplier', '=', True)]"/>
+                <field name="customer_id" widget="many2many_tags" options="{'no_create_edit': True}"
+                       attrs="{'invisible':[('result_selection','!=','customer')]}"
+                       domain="[('customer', '=', True)]"/>
+            </field>
+            <field name="file_name" position="after">
+                <field name="period_length"/>
+                <field name="target_move" widget="radio"/>
+            </field>
+        </data>
+        </field>
+    </record>
+
+    <!-- Action to open Wizard as a popup -->
+    <record id="action_wizard_kg_report_aged_partner_balance" model="ir.actions.act_window">
+        <field name="name">Aged Partner Balance</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.kg.report.aged.partner.balance</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_kg_report_aged_partner_balance_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu item to open Wizard  -->
+    <menuitem id="menu_wizard_kg_report_aged_partner_balance"
+              name="Aged Partner Balance"
+              sequence="30"
+              parent="menu_wizard_kg_report_group"
+              action="action_wizard_kg_report_aged_partner_balance"
+    />
+
+
+</odoo>

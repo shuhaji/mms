@@ -1,0 +1,599 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Culture isNull="true" />
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <payslip_json Ref="2" type="Stimulsoft.Report.Dictionary.StiJsonDatabase" isKey="true">
+        <Alias>payslip_json</Alias>
+        <Key />
+        <Name>payslip_json</Name>
+        <PathData>D:\Users\lenovo\Downloads\payslip_json.json</PathData>
+      </payslip_json>
+    </Databases>
+    <DataSources isList="true" count="2">
+      <config Ref="3" type="DataTableSource" isKey="true">
+        <Alias>config</Alias>
+        <Columns isList="true" count="5">
+          <value>date_from,System.String</value>
+          <value>company_name,System.String</value>
+          <value>compiler,System.String</value>
+          <value>template,System.Decimal</value>
+          <value>print_date,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>a8ec144000e24ab9989036ae5ed61f6d</Key>
+        <Name>config</Name>
+        <NameInSource>payslip_json.config</NameInSource>
+      </config>
+      <data Ref="4" type="DataTableSource" isKey="true">
+        <Alias>data</Alias>
+        <Columns isList="true" count="16">
+          <value>group_1,System.Decimal</value>
+          <value>group_1_name,System.String</value>
+          <value>group_2,System.Decimal</value>
+          <value>group_2_name,System.String</value>
+          <value>employee_id,System.String</value>
+          <value>emp_name,System.String</value>
+          <value>fam_code,System.String</value>
+          <value>tax_state,System.String</value>
+          <value>code,System.String</value>
+          <value>total,System.Decimal</value>
+          <value>name,System.String</value>
+          <value>dept_name,System.String</value>
+          <value>slip_id,System.Decimal</value>
+          <value>date_from,System.String</value>
+          <value>date_to,System.String</value>
+          <value>sequence,System.Decimal</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>8e9499c174eb4453a110ee9cdc547b0e</Key>
+        <Name>data</Name>
+        <NameInSource>payslip_json.data</NameInSource>
+      </data>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Resources isList="true" count="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <Key>ef9c6289b68a4f38bb8004f599760f98</Key>
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="5" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="3">
+        <Panel3 Ref="6" type="Panel" isKey="true">
+          <Border>All;Black;3;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.2,19,18.6</ClientRectangle>
+          <Components isList="true" count="2">
+            <Panel1 Ref="7" type="Panel" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.8,9.2,15.6</ClientRectangle>
+              <Components isList="true" count="5">
+                <GroupHeaderBand4 Ref="8" type="GroupHeaderBand" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0,0.4,9.2,0.2</ClientRectangle>
+                  <Components isList="true" count="0" />
+                  <Condition>{data.slip_id}</Condition>
+                  <Conditions isList="true" count="0" />
+                  <Name>GroupHeaderBand4</Name>
+                  <NewPageBefore>True</NewPageBefore>
+                  <Page isRef="5" />
+                  <Parent isRef="7" />
+                </GroupHeaderBand4>
+                <GroupHeaderBand2 Ref="9" type="GroupHeaderBand" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0,1.4,9.2,0.8</ClientRectangle>
+                  <Components isList="true" count="1">
+                    <Text1 Ref="10" type="Text" isKey="true">
+                      <Border>None;Black;1;Dash;False;4;Black</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>0.4,0.2,4.2,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Arial,10,Bold</Font>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text1</Name>
+                      <Page isRef="5" />
+                      <Parent isRef="9" />
+                      <Text>{data.group_2_name}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                    </Text1>
+                  </Components>
+                  <Condition>{data.group_2}</Condition>
+                  <Conditions isList="true" count="1">
+                    <value>data.group_2,EqualTo,_x0031_,,String,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+                  </Conditions>
+                  <Name>GroupHeaderBand2</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="7" />
+                </GroupHeaderBand2>
+                <DataBand1 Ref="11" type="DataBand" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <BusinessObjectGuid isNull="true" />
+                  <ClientRectangle>0,3,9.2,0.6</ClientRectangle>
+                  <Components isList="true" count="2">
+                    <Text3 Ref="12" type="Text" isKey="true">
+                      <Border>None;Black;1;Dash;False;4;Black</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>0.4,0,4.2,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Arial,10</Font>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text3</Name>
+                      <Page isRef="5" />
+                      <Parent isRef="11" />
+                      <Text>{data.name}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                    </Text3>
+                    <Text4 Ref="13" type="Text" isKey="true">
+                      <Border>None;Black;1;Dash;False;4;Black</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>6.2,0,2.6,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Arial,10</Font>
+                      <Guid>8856799b228948dcb16d0f5d0c74215c</Guid>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text4</Name>
+                      <Page isRef="5" />
+                      <Parent isRef="11" />
+                      <Text>{data.total}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <TextFormat Ref="14" type="CurrencyFormat" isKey="true">
+                        <DecimalDigits>0</DecimalDigits>
+                        <DecimalSeparator>,</DecimalSeparator>
+                        <GroupSeparator>.</GroupSeparator>
+                        <NegativePattern>1</NegativePattern>
+                        <PositivePattern>2</PositivePattern>
+                        <Symbol>Rp</Symbol>
+                        <UseLocalSetting>False</UseLocalSetting>
+                      </TextFormat>
+                      <Type>DataColumn</Type>
+                    </Text4>
+                  </Components>
+                  <Conditions isList="true" count="1">
+                    <value>data.group_2,EqualTo,_x0031_,,Numeric,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+                  </Conditions>
+                  <DataRelationName isNull="true" />
+                  <DataSourceName>data</DataSourceName>
+                  <Filters isList="true" count="0" />
+                  <Name>DataBand1</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="7" />
+                  <Sort isList="true" count="2">
+                    <value>ASC</value>
+                    <value>sequence</value>
+                  </Sort>
+                </DataBand1>
+                <GroupFooterBand1 Ref="15" type="GroupFooterBand" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0,4.4,9.2,1.2</ClientRectangle>
+                  <Components isList="true" count="2">
+                    <Text10 Ref="16" type="Text" isKey="true">
+                      <Border>None;Black;1;Dash;False;4;Black</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>6.2,0.2,2.6,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Arial,10,Bold</Font>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text10</Name>
+                      <Page isRef="5" />
+                      <Parent isRef="15" />
+                      <Text>{Sum(GroupHeaderBand2,data.total)}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <TextFormat Ref="17" type="CurrencyFormat" isKey="true">
+                        <DecimalDigits>0</DecimalDigits>
+                        <DecimalSeparator>,</DecimalSeparator>
+                        <GroupSeparator>.</GroupSeparator>
+                        <NegativePattern>1</NegativePattern>
+                        <PositivePattern>2</PositivePattern>
+                        <Symbol>Rp</Symbol>
+                        <UseLocalSetting>False</UseLocalSetting>
+                      </TextFormat>
+                      <Type>Totals</Type>
+                    </Text10>
+                    <Text11 Ref="18" type="Text" isKey="true">
+                      <Border>None;Black;1;Dash;False;4;Black</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>3,0.2,1.6,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Arial,10,Bold</Font>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text11</Name>
+                      <Page isRef="5" />
+                      <Parent isRef="15" />
+                      <Text>Jumlah</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                    </Text11>
+                  </Components>
+                  <Conditions isList="true" count="1">
+                    <value>data.group_2,EqualTo,_x0031_,,String,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+                  </Conditions>
+                  <Name>GroupFooterBand1</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="7" />
+                </GroupFooterBand1>
+                <GroupFooterBand3 Ref="19" type="GroupFooterBand" isKey="true">
+                  <Border>Top, Bottom;Black;1;Double;False;4;Black</Border>
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0,6.4,9.2,1.4</ClientRectangle>
+                  <Components isList="true" count="2">
+                    <Text14 Ref="20" type="Text" isKey="true">
+                      <Border>None;Black;1;Dash;False;4;Black</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>6.2,0.4,2.6,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Arial,10,Bold</Font>
+                      <Guid>563ec1d1cd66415980308c94390263dc</Guid>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text14</Name>
+                      <Page isRef="5" />
+                      <Parent isRef="19" />
+                      <Text>{(SumIf(GroupHeaderBand1,data.total,data.group_2 == 2))-(SumIf(GroupHeaderBand1,data.total,data.group_2 == 1))}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <TextFormat Ref="21" type="CurrencyFormat" isKey="true">
+                        <DecimalDigits>0</DecimalDigits>
+                        <DecimalSeparator>,</DecimalSeparator>
+                        <GroupSeparator>.</GroupSeparator>
+                        <NegativePattern>1</NegativePattern>
+                        <PositivePattern>2</PositivePattern>
+                        <Symbol>Rp</Symbol>
+                        <UseLocalSetting>False</UseLocalSetting>
+                      </TextFormat>
+                      <Type>Expression</Type>
+                    </Text14>
+                    <Text15 Ref="22" type="Text" isKey="true">
+                      <Border>None;Black;1;Dash;False;4;Black</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>1,0.4,3.6,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Arial,10,Bold</Font>
+                      <Guid>85290e2c30444153ac73f967f23e0404</Guid>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text15</Name>
+                      <Page isRef="5" />
+                      <Parent isRef="19" />
+                      <Text>JUMLAH DITERIMA</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                    </Text15>
+                  </Components>
+                  <Conditions isList="true" count="0" />
+                  <Name>GroupFooterBand3</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="7" />
+                </GroupFooterBand3>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Name>Panel1</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+            </Panel1>
+            <Panel2 Ref="23" type="Panel" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>9.6,0.8,9.4,15.6</ClientRectangle>
+              <Components isList="true" count="5">
+                <GroupHeaderBand5 Ref="24" type="GroupHeaderBand" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0,0.4,9.4,0.2</ClientRectangle>
+                  <Components isList="true" count="0" />
+                  <Condition>{data.slip_id}</Condition>
+                  <Conditions isList="true" count="0" />
+                  <Name>GroupHeaderBand5</Name>
+                  <NewPageBefore>True</NewPageBefore>
+                  <Page isRef="5" />
+                  <Parent isRef="23" />
+                </GroupHeaderBand5>
+                <GroupHeaderBand3 Ref="25" type="GroupHeaderBand" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0,1.4,9.4,0.8</ClientRectangle>
+                  <Components isList="true" count="1">
+                    <Text2 Ref="26" type="Text" isKey="true">
+                      <Border>None;Black;1;Dash;False;4;Black</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>0.4,0.2,4.2,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Arial,10,Bold</Font>
+                      <Guid>d62b50b018954f1a8bf20a323bf1bceb</Guid>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text2</Name>
+                      <Page isRef="5" />
+                      <Parent isRef="25" />
+                      <Text>{data.group_2_name}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                    </Text2>
+                  </Components>
+                  <Condition>{data.group_2}</Condition>
+                  <Conditions isList="true" count="1">
+                    <value>data.group_2,EqualTo,_x0032_,,String,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+                  </Conditions>
+                  <Name>GroupHeaderBand3</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="23" />
+                </GroupHeaderBand3>
+                <DataBand2 Ref="27" type="DataBand" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <BusinessObjectGuid isNull="true" />
+                  <ClientRectangle>0,3,9.4,0.6</ClientRectangle>
+                  <Components isList="true" count="2">
+                    <Text5 Ref="28" type="Text" isKey="true">
+                      <Border>None;Black;1;Dash;False;4;Black</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>0.4,0,4,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Arial,10</Font>
+                      <Guid>7f6500675063498eb632ee8caf702725</Guid>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text5</Name>
+                      <Page isRef="5" />
+                      <Parent isRef="27" />
+                      <Text>{data.name}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                    </Text5>
+                    <Text6 Ref="29" type="Text" isKey="true">
+                      <Border>None;Black;1;Dash;False;4;Black</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>6,0,3,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Arial,10</Font>
+                      <Guid>8198b80e9e0142658155e77fab0fd69e</Guid>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text6</Name>
+                      <Page isRef="5" />
+                      <Parent isRef="27" />
+                      <Text>{data.total}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <TextFormat Ref="30" type="CurrencyFormat" isKey="true">
+                        <DecimalDigits>0</DecimalDigits>
+                        <DecimalSeparator>,</DecimalSeparator>
+                        <GroupSeparator>.</GroupSeparator>
+                        <NegativePattern>1</NegativePattern>
+                        <PositivePattern>2</PositivePattern>
+                        <Symbol>Rp</Symbol>
+                        <UseLocalSetting>False</UseLocalSetting>
+                      </TextFormat>
+                      <Type>DataColumn</Type>
+                    </Text6>
+                  </Components>
+                  <Conditions isList="true" count="1">
+                    <value>data.group_2,EqualTo,_x0032_,,String,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+                  </Conditions>
+                  <DataRelationName isNull="true" />
+                  <DataSourceName>data</DataSourceName>
+                  <Filters isList="true" count="0" />
+                  <Name>DataBand2</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="23" />
+                  <Sort isList="true" count="2">
+                    <value>ASC</value>
+                    <value>sequence</value>
+                  </Sort>
+                </DataBand2>
+                <GroupFooterBand2 Ref="31" type="GroupFooterBand" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0,4.4,9.4,0.8</ClientRectangle>
+                  <Components isList="true" count="2">
+                    <Text12 Ref="32" type="Text" isKey="true">
+                      <Border>None;Black;1;Dash;False;4;Black</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>2.8,0.2,1.6,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Arial,10,Bold</Font>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text12</Name>
+                      <Page isRef="5" />
+                      <Parent isRef="31" />
+                      <Text>Jumlah</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                    </Text12>
+                    <Text13 Ref="33" type="Text" isKey="true">
+                      <Border>None;Black;1;Dash;False;4;Black</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>6,0.2,3,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Arial,10,Bold</Font>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text13</Name>
+                      <Page isRef="5" />
+                      <Parent isRef="31" />
+                      <Text>{Sum(GroupHeaderBand3,data.total)}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <TextFormat Ref="34" type="CurrencyFormat" isKey="true">
+                        <DecimalDigits>0</DecimalDigits>
+                        <DecimalSeparator>,</DecimalSeparator>
+                        <GroupSeparator>.</GroupSeparator>
+                        <NegativePattern>1</NegativePattern>
+                        <PositivePattern>2</PositivePattern>
+                        <Symbol>Rp</Symbol>
+                        <UseLocalSetting>False</UseLocalSetting>
+                      </TextFormat>
+                      <Type>Totals</Type>
+                    </Text13>
+                  </Components>
+                  <Conditions isList="true" count="1">
+                    <value>data.group_2,EqualTo,_x0032_,,String,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+                  </Conditions>
+                  <Name>GroupFooterBand2</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="23" />
+                </GroupFooterBand2>
+                <GroupFooterBand4 Ref="35" type="GroupFooterBand" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0,6,9.4,3.2</ClientRectangle>
+                  <Components isList="true" count="1">
+                    <Text16 Ref="36" type="Text" isKey="true">
+                      <Border>None;Black;1;Dash;False;4;Black</Border>
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>3.6,2.6,5.8,0.6</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Arial,10,Bold</Font>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text16</Name>
+                      <Page isRef="5" />
+                      <Parent isRef="35" />
+                      <Text>Penyusun  {config.compiler}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                    </Text16>
+                  </Components>
+                  <Conditions isList="true" count="0" />
+                  <Name>GroupFooterBand4</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="23" />
+                </GroupFooterBand4>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Guid>bd086668d666466c8d723ea6fa8cdbf9</Guid>
+              <Name>Panel2</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+            </Panel2>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>Panel3</Name>
+          <Page isRef="5" />
+          <Parent isRef="5" />
+        </Panel3>
+        <GroupHeaderBand1 Ref="37" type="GroupHeaderBand" isKey="true">
+          <Border>All;Black;3;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,19,3.6</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text7 Ref="38" type="Text" isKey="true">
+              <Border>None;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0.2,11.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,16,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="5" />
+              <Parent isRef="37" />
+              <Text>{config.company_name}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+            </Text7>
+            <Text8 Ref="39" type="Text" isKey="true">
+              <Border>None;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.8,1.2,7.4,2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="5" />
+              <Parent isRef="37" />
+              <Text>NIK : {data.employee_id}
+
+Nama : {data.emp_name}
+
+Bagian : {data.dept_name}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text8>
+            <Text9 Ref="40" type="Text" isKey="true">
+              <Border>None;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>9.6,1.2,7.4,2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>c5c3edddff114cba9e5a9abac577da5d</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="5" />
+              <Parent isRef="37" />
+              <Text>Tanggal : {data.date_to}
+
+Status Keluarga : {data.fam_code}
+
+Status Pajak : {data.tax_state}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text9>
+          </Components>
+          <Condition>{data.slip_id}</Condition>
+          <Conditions isList="true" count="0" />
+          <Name>GroupHeaderBand1</Name>
+          <NewPageBefore>True</NewPageBefore>
+          <Page isRef="5" />
+          <Parent isRef="5" />
+        </GroupHeaderBand1>
+        <DataBand3 Ref="41" type="DataBand" isKey="true">
+          <Border>None;Black;2;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,4.8,19,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>data</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand3</Name>
+          <Page isRef="5" />
+          <Parent isRef="5" />
+          <Sort isList="true" count="0" />
+        </DataBand3>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>a9c7cf40640e42dca007d98c8fe166a7</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+    </Page1>
+  </Pages>
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>12/6/2019 1:30:02 PM</ReportChanged>
+  <ReportCreated>11/20/2019 4:14:52 PM</ReportCreated>
+  <ReportFile>D:\Odoo Source\custom-addons\Odoo-Work\local\kg_payroll\static\rpt\PayslipEmployee2.mrt</ReportFile>
+  <ReportGuid>eecc612038cf4ae69eedc5fdaacb0bb6</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2019.3.2.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

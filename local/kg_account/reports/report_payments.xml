@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_payments">
+        <t t-call="web.html_container">
+<!--            <t t-call="web.internal_layout">-->
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <h2 style="text-align:center;">Payments Report</h2>
+                    <table class="table table-condensed" style="width:100%;margin-top:20px;">
+                        <tr>
+                            <td class="col-md-3">Company</td>
+                            <td class="col-md-3"> : <span t-esc="company"/></td>
+                            <td class="col-md-3">Printed By</td>
+                            <td class="col-md-3"> : <span t-esc="printed_by"/></td>
+                        </tr>
+                        <tr>
+                            <td>Transaction Date</td>
+                            <td> : <span t-esc="start_date" t-options="{'widget': 'date'}"/> - <span t-esc="end_date" t-options="{'widget': 'date'}"/></td>
+                            <td>Printed On</td>
+                            <td> : <span t-esc="datetime.datetime.now()" t-options="{'widget': 'datetime'}"/></td>
+                        </tr>
+                         <tr>
+                            <td>Payment Journal</td>
+                            <td> : <span t-esc="journal"/> / <span t-esc="debit_account_code"/> <span t-esc="debit_account_name"/></td>
+                            <td> </td>
+                            <td> </td>
+                        </tr>
+
+                    </table>
+
+                    <div class="row">
+<!--                        <div class="col-xs-4">-->
+<!--                            <t t-if="start_date"><strong>Payment Date</strong> <span t-esc="start_date"/><br/></t>-->
+<!--&lt;!&ndash;                            <t t-if="end_date"><strong>to </strong><span t-esc="end_date"/></t>&ndash;&gt;-->
+<!--                        </div>-->
+                    </div>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr class="text-center">
+                                <th class="col-md-6">Date</th>
+                                <th>Doc No</th>
+                                <th>Account</th>
+                                <th>Invoice</th>
+                                <th>Folio</th>
+                                <th>Company</th>
+                                <th style="text-align:right;">Amount</th>
+                                <th>Last Update</th>
+                            </tr>
+                        </thead>
+                        <t t-set="grand_total" t-value="0"/>
+                        <tr t-foreach="docs" t-as="line">
+                            <td><span t-esc="line.get('payment_date')" t-options="{'widget': 'date'}"/></td>
+                            <td><span t-esc="line.get('name')"/></td>
+                            <td><span t-esc="line.get('credit_account_code')"/> <span t-esc="line.get('credit_account_name')"/></td>
+                            <td><span t-esc="line.get('invoice_ids')"/></td>
+                            <td><span t-esc="line.get('folio')"/></td>
+                            <td><span t-esc="line.get('company')"/></td>
+                            <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(line.get('amount')))"/></td>
+                            <td><span t-esc="line.get('user')"/></td>
+                            <t t-set="grand_total" t-value="grand_total + line.get('amount')"/>
+                        </tr>
+                        <tr style="font-weight:bold;">
+                            <td style="text-align:right;" colspan="6">GRAND TOTAL: </td>
+                            <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(grand_total))"/></td>
+                            <!--<td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(data_total[0]))"/></td>-->
+                            <!--<td style="text-align:right;"><span t-att-style="style" t-esc="data_total[0]" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>-->
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

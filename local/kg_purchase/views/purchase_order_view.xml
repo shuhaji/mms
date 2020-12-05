@@ -1,0 +1,30 @@
+<odoo>
+  <data>
+        <record model="ir.ui.view" id="view_kg_purchase_order_form">
+            <field name="name">purchase.order.form.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="before">
+                    <field name="from_purchase_request" invisible="1"/>
+                    <field name="purchase_type" options="{'no_open':True,'no_quick_create':True,'no_create_edit':True}"
+                           attrs="{'readonly': [('from_purchase_request','!=',False)]}"/>
+                </field>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="before">
+                    <field name="purchase_request_name" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+
+      <record model="ir.ui.view" id="view_kg_purchase_order_tree">
+            <field name="name">purchase.order.tree.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="purchase_type"/>
+                </field>
+            </field>
+        </record>
+  </data>
+</odoo>

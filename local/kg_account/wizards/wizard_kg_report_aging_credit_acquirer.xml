@@ -1,0 +1,35 @@
+<odoo>
+    <record id="wizard_kg_report_aging_credit_acquirer_view" model="ir.ui.view">
+        <field name="name">KG Report - Aging Acquirer</field>
+        <field name="model">wizard.kg.report.aging_credit_acquirer</field>
+        <field name="inherit_id" ref="kg_report_base.wizard_kg_report_base_view"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="working_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="working_date" position="after">
+                <field name="date_from" style="width:120px" required="True"/>
+                <field name="option_type" required="True"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="action_wizard_kg_report_aging_credit_acquirer" model="ir.actions.act_window">
+        <field name="name">KG Report - Aging Acquirer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.kg.report.aging_credit_acquirer</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_kg_report_aging_credit_acquirer_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu item to open Wizard  -->
+    <menuitem id="menu_wizard_kg_report_aging_credit_acquirer"
+              name="Aging Acquirer"
+              sequence="30"
+              parent="menu_wizard_kg_report_group"
+              action="action_wizard_kg_report_aging_credit_acquirer"
+    />
+</odoo>

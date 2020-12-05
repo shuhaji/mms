@@ -1,0 +1,56 @@
+<odoo>
+  <data>
+      <record id="view_kg_purchase_request_form" model="ir.ui.view">
+            <field name="name">purchase.request.form.inherit</field>
+            <field name="model">purchase.request</field>
+            <field name="inherit_id" ref="purchase_request.view_purchase_request_form"/>
+            <field name="arch" type="xml">
+                <field name="requested_by" position="before">
+                    <field name="purchase_type" attrs="{'readonly': [('state', '!=', 'draft')]}"
+                           options="{'no_open':True,'no_quick_create':True,'no_create_edit':True}"/>
+                </field>
+                <field name="company_id" position="after">
+                    <field name="is_admin" invisible="1"/>
+                    <field name="department_id" attrs="{'readonly': [('is_admin', '=', False)]}"/>
+                </field>
+            </field>
+      </record>
+
+      <record id="view_kg_purchase_request_tree" model="ir.ui.view">
+            <field name="name">purchase.request.tree.inherit</field>
+            <field name="model">purchase.request</field>
+            <field name="inherit_id" ref="purchase_request.view_purchase_request_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="purchase_type"/>
+                </field>
+                <field name="date_start" position="after">
+                    <!--<field name="is_admin"/>-->
+                    <field name="department_id"/>
+                </field>
+            </field>
+        </record>
+
+      <record id="view_kg_purchase_request_line_tree" model="ir.ui.view">
+            <field name="name">purchase.request.line.tree.inherit</field>
+            <field name="model">purchase.request.line</field>
+            <field name="inherit_id" ref="purchase_request.purchase_request_line_tree"/>
+            <field name="arch" type="xml">
+                <field name="request_id" position="after">
+                    <field name="request_id_purchase_type"/>
+                </field>
+            </field>
+      </record>
+
+      <menuitem id="parent_menu_purchase_request"
+            name="Purchase requests"
+            groups="group_purchase_request_general_manager"
+            />
+
+      <menuitem id="menu_purchase_request"
+            name="Purchase Requests"
+            parent="purchase_request.parent_menu_purchase_request"
+            groups="group_purchase_request_general_manager"
+            />
+  </data>
+</odoo>

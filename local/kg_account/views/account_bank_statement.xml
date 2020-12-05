@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record id="kg_view_account_bank_statement_form" model="ir.ui.view">
+            <field name="name">kg.view.account.bank_statement.form.inherit</field>
+            <field name="model">account.bank.statement</field>
+            <field name="inherit_id" ref="account.view_bank_statement_form"/>
+            <field name="arch" type="xml">
+              <field name="date" position="before">
+                  <field name="app_source_info" string="Source" readonly="1"/>
+              </field>
+            </field>
+        </record>
+	</data>
+</odoo>

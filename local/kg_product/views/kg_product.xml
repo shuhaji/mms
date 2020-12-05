@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="kg_product_form_view" model="ir.ui.view">
+            <field name="name">kg.product.form.view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="tax_category_id"/>
+                    <!--<field name="is_banquet"/>-->
+                    <!--<field name="item_type"-->
+                           <!--attrs="{'invisible':[('is_banquet', '=', False)],-->
+                                  <!--'required':[('is_banquet', '=', True)]-->
+                                  <!--}"/>-->
+                </xpath>
+                <xpath expr="//field[@name='categ_id']" position="after">
+                    <field name="main_category" readonly="1"/>
+                </xpath>
+                <div name="options" position="inside">
+                    <div>
+                        <field name="is_banquet"/>
+                        <label for="is_banquet"/>
+                    </div>
+                    <div>
+                        <field name="is_consignment"/>
+                        <label for="is_consignment"/>
+                    </div>
+                </div>
+                <xpath expr="//notebook/page[@name='general_information']" position="after">
+                    <page string="Banquet" attrs="{'invisible':[('is_banquet','=',False)]}" name="banquet">
+                        <group>
+                            <group name="group_banquet">
+                                <field name="item_type" attrs="{'invisible':[('is_banquet', '=', False)], 'required':[('is_banquet', '=', True)]}"/>
+                                <field name="responsible_department"/>
+                                <field name="additional_tax_id"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Consignment" attrs="{'invisible':[('is_consignment','=',False)]}" name="consignment">
+                        <group>
+                            <group name="group_consignment">
+                                <field name="consignment_product_owner"/>
+                                <field name="consignment_purchase_cost"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="kg_product_product_form_view" model="ir.ui.view">
+            <field name="name">kg.product.product.form.view</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="tax_category_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="kg_product_template_pos_form_view" model="ir.ui.view">
+            <field name="name">kg.product.template.pos.form.view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="point_of_sale.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <field name="to_weight" position="after">
+                    <field name="allow_open_price" />
+                    <field name="allow_custom_item" />
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

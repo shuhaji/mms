@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_account_payment_form_inherit" model="ir.ui.view">
+            <field name="name">view.account.payment.form.inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//button[@name='post']" position="before">
+                    <button
+                        name="approved"
+                        class="oe_highlight"
+                        string="Approve"
+                        type="object"
+                        groups="kg_account.group_payments_approve_access_rights"
+                        attrs="{'invisible':['|', ('is_advance_payment', '=', True), ('state', 'not in', ['draft'])]}"
+                    />
+                </xpath>
+                <xpath expr="//button[@name='post']" position="replace">
+                    <button
+                        name="post"
+                        class="oe_highlight"
+                        string="Confirm"
+                        type="object"
+                        groups="kg_account.group_payments_validate_access_rights" 
+                        attrs="{'invisible':[('allow_validate', '=', False)]}"
+                    />
+                </xpath>
+                <xpath expr="//field[@name='payment_date']" position="after">
+                    <field name="validate_date" states="posted"/>
+                    <field name="app_source" string="Source" readonly="1"/>
+                    <field name="allow_validate" invisible="True"/>
+                </xpath>
+
+                <xpath expr="//field[@name='communication']" position="attributes">
+                    <attribute name="string">Doc No</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='communication']" position="after">
+                    <field name="total_transaction" attrs="{'invisible': ['|',
+                              ('payment_type', '!=', 'transfer'),
+                              ('is_bank_edc_credit_card', '=', False),
+                              ]}" readonly="1"/>
+                    <field name="total_admin" attrs="{'invisible': ['|',
+                              ('payment_type', '!=', 'transfer'),
+                              ('is_bank_edc_credit_card', '=', False),
+                              ]}" readonly="1"/>
+                    <field name="total_amount_selected" attrs="{'invisible': ['|',
+                              ('payment_type', '!=', 'transfer'),
+                              ('is_bank_edc_credit_card', '=', False),
+                              ]}"
+                           string="Net Selected" readonly="1"
+                    />
+                    <field name="is_bank_edc_credit_card" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//sheet/group[1]" position="after">
+                    <notebook colspan="4"
+                              attrs="{'invisible': ['|',
+                              ('payment_type', '!=', 'transfer'),
+                              ('is_bank_edc_credit_card', '=', False),
+                              ]}">
+                        <page string="Transaction">
+                            <field name="acquirer_id_selection" widget="many2many_button" />
+                            <field name="acquirer_ids" >
+                                <tree editable="bottom">
+                                    <field name="apply_id" options="{'no_create': True}"/>
+                                    <field name="date" readonly="1"/>
+                                    <field name="journal_id" readonly="1" options="{'no_create': True}"/>
+                                    <field name="type" readonly="1"/>
+                                    <field name="kg_issuer_type_id" readonly="1"/>
+                                    <field name="apply_id_amount" readonly="1"/>
+                                    <field name="apply_id_amount_remain" readonly="1"/>
+                                    <field name="amount_transfer"/>
+                                </tree>
+                            </field>
+
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="total_transaction"/>
+                            </group>
+
+                        </page>
+
+                        <!--<page string="Admin Fee">-->
+                        <page string="Adjustment">
+                            <field name="payment_line_ids">
+                                <tree editable="bottom">
+                                    <field name="account_id" />
+                                    <field name="admin_date" readonly="1"/>
+                                    <field name="description"/>
+                                    <field name="amount"/>
+                                </tree>
+                            </field>
+
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="total_admin"/>
+                            </group>
+
+                        </page>
+
+                    </notebook>
+                    <field name="is_bank_edc_credit_card" invisible="1"/>
+
+                </xpath>
+<!--                <xpath expr="//field[@name='amount']" position="attributes">-->
+<!--                    <attribute name="attrs">{'readonly': ['|', ('state', '!=', 'draft'), ('payment_type', '=', 'transfer')]}</attribute>-->
+<!--                </xpath>-->
+
+            </field>
+        </record>
+
+        <record id="view_account_payment_advance_customer_form_inherit" model="ir.ui.view">
+            <field name="name">view.account.payment.advance.customer.form.inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account_payment_advance_mac5.view_account_payment_advance_customer_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='journal_id']" position="after">
+                    <field name="deposit_type_id"/>
+                </xpath>
+                <xpath expr="//div[@name='amount_div']" position="after">
+                    <label for="residual" />
+                    <div name="residual_div" class="o_row">
+                        <field name="residual" invisible="1"/>
+                        <field name="residual_temp" attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': [('state', '=', 'draft')]}"/>
+                        <field name="currency_id" options="{'no_create': True, 'no_open': True}" groups="base.group_multi_currency" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        
+                        <!-- real residual value view -->
+                        <!-- <field name="residual" attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': [('state', '=', 'draft')]}"/> -->
+                        <!-- end of code -->
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='communication']" position="attributes">
+                    <attribute name="string">Deposit No</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_account_payment_advance_vendor_form_inherit" model="ir.ui.view">
+            <field name="name">view.account.payment.advance.vendor.form.inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account_payment_advance_mac5.view_account_payment_advance_vendor_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='journal_id']" position="after">
+                    <field name="deposit_type_id"/>
+                </xpath>
+                <xpath expr="//div[@name='amount_div']" position="after">
+                    <label for="residual" />
+                    <div name="residual_div" class="o_row">
+                        <field name="residual" invisible="1"/>
+                        <field name="residual_temp" attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': [('state', '=', 'draft')]}"/>
+                        <field name="currency_id" options="{'no_create': True, 'no_open': True}" groups="base.group_multi_currency" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                       
+                        <!-- real residual value view -->
+                        <!-- <field name="residual" attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': [('state', '=', 'draft')]}"/> -->
+                        <!-- end of code -->   
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_account_payment_tree_inherit" model="ir.ui.view">
+            <field name="name">view.account.payment.tree.inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_date']" position="after">
+                    <field name="communication" string="Doc No"/>
+                </xpath>
+                <xpath expr="//field[@name='state']" position="after">
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_account_invoice_payment" model="ir.actions.act_window">
+            <field name="name">Register Paymentx</field>
+            <field name="res_model">account.payment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account.view_account_payment_invoice_form"/>
+            <field name="context">{'default_invoice_ids': [(4, active_id, None)]}</field>
+<!--            <field name="domain">[('groups_id', '=', kg_account.group_invoicing_register_payment_from_invoice_access_rights)]</field>-->
+            <field name="domain">[('kg_account.group_invoicing_register_payment_from_invoice_access_rights','in',context.get('uid').groups)]</field>
+            <field name="target">new</field>
+        </record>
+
+        <act_window
+            id="action_account_payment_from_invoices"
+            name="Register Paymentx"
+            res_model="account.register.payments"
+            src_model="account.invoice"
+            view_mode="form"
+            multi="True"
+            target="new"
+            key2="client_action_multi"
+            groups="kg_account.group_invoicing_register_payment_from_invoice_access_rights"
+        />
+    </data>
+</odoo>

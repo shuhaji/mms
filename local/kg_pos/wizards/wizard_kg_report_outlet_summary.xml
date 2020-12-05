@@ -1,0 +1,35 @@
+<odoo>
+    <record id="wizard_kg_report_outlet_summary_view" model="ir.ui.view">
+        <field name="name">Outlet Summary</field>
+        <field name="model">wizard.kg.report.outlet.summary</field>
+        <field name="inherit_id" ref="kg_report_base.wizard_kg_report_base_view"/>
+        <field name="arch" type="xml">
+        <data>
+<!--            <field name="file_name" position="after">-->
+<!--                <field name="company_id"/>-->
+<!--            </field>            -->
+        </data>
+        </field>
+    </record>
+
+    <!-- Action to open Wizard as a popup -->
+    <record id="action_wizard_kg_report_outlet_summary" model="ir.actions.act_window">
+        <field name="name">Outlet Summary</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.kg.report.outlet.summary</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_kg_report_outlet_summary_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu item to open Wizard  -->
+    <menuitem id="menu_wizard_kg_report_outlet_summary"
+              name="Outlet Summary"
+              sequence="9"
+              parent="point_of_sale.menu_point_rep"
+              action="action_wizard_kg_report_outlet_summary"
+    />
+
+
+</odoo>

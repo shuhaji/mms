@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="accounting_payment_report_view" model="ir.ui.view">
+            <field name="name">Payment List AR</field>
+            <field name="model">account.payment.report</field>
+            <field name="inherit_id" ref="account.account_common_report_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='date_from']" position="before">
+                    <field name="company" options="{'no_create': True, 'no_open': True}"/>
+                </xpath>
+
+
+                <field name="journal_ids" position="replace"/>
+                <field name="target_move" position="replace"/>
+                <xpath expr="//field[@name='date_from']" position="attributes">
+                    <attribute name="string">Start Date</attribute>
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date_to']" position="attributes">
+                    <attribute name="string">End Date</attribute>
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <!--<field name="date_to" position="replace"/>-->
+
+                <xpath expr="//field[@name='date_from']" position="after">
+                    <field name="journal_id" options="{'no_create': True, 'no_open': True}"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="action_account_payment_report" model="ir.actions.act_window">
+            <field name="name">Payment List AR</field>
+            <field name="res_model">account.payment.report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="accounting_payment_report_view"/>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_account_report_payment"
+                  name="Payments List AR"
+                  action="action_account_payment_report"
+                  parent="account.menu_finance_legal_statement" />
+                  <!--groups="account.group_account_manager,account.group_account_user"-->
+
+    </data>
+</odoo>

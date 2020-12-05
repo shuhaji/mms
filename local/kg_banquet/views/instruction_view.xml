@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="banquet_instruction_form" model="ir.ui.view">
+            <field name="name">banquet.instruction.form</field>
+            <field name="model">banquet.instruction</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="department_id"/>
+                                <field name="name" string="Description"/>
+                            </group>
+                        </group>
+                    </sheet>
+<!--                    <div class="oe_chatter">-->
+<!--                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>-->
+<!--                        <field name="activity_ids" widget="mail_activity"/>-->
+<!--                        <field name="message_ids" widget="mail_thread"/>-->
+<!--                    </div>-->
+                </form>
+            </field>
+        </record>
+
+        <record id="banquet_instruction_tree" model="ir.ui.view">
+            <field name="name">banquet.instruction.tree</field>
+            <field name="model">banquet.instruction</field>
+            <field name="arch" type="xml">
+                <tree default_order="department_id">
+                    <field name="department_id"/>
+                    <field name="name" string="Description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_banquet_instruction" model="ir.actions.act_window">
+		   <field name="name">Banquet Instruction</field>
+		   <field name="res_model">banquet.instruction</field>
+		   <field name="view_type">form</field>
+		   <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="banquet_instruction_tree"/>
+		</record>
+
+        <menuitem
+            action="action_banquet_instruction"
+            id="banquet_instruction"
+            name="Instruction"
+            parent="menu_banquet_general"
+            sequence="10"
+        />
+    </data>
+</odoo>

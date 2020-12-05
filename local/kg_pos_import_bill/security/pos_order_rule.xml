@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="kg_pos_order_reservation_rule" model="ir.rule">
+            <field name="name">KG POS Order Reservation multi-company</field>
+            <field name="model_id" ref="kg_pos_import_bill.model_kg_pos_order_reservation"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('company_id', 'child_of', user.company_id.id)]</field>
+        </record>
+    </data>
+</openerp>

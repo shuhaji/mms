@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+
+        <record id="cron_account_poriod_lock_last_month" forcecreate='True' model="ir.cron">
+            <field name="name">Account Period Auto Lock Last Month</field>
+            <field name="active" eval="False" />
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">months</field>
+            <field name="nextcall" eval="(datetime.now().replace(day=10, month=datetime.now().month+1)).strftime('%Y-%m-%d 03:30:00')" />
+            <field name="numbercall">-1</field>
+            <field name="model_id" ref="model_account_period"/>
+            <field name="state">code</field>
+            <field name="code">model.lock_last_month()</field>
+        </record>
+
+    </data>
+</odoo>

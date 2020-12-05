@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="table_picking_list_wizard_form_view" model="ir.ui.view">
+            <field name="name">table.picking.list.wizard.form.view</field>
+            <field name="model">table.picking.list</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <!--<field name="salesperson_id" domain="[('is_salesperson','=',True)]" options="{'no_create': True}"/>-->
+                            <field name="start_date"/>
+                        </group>
+                        <group>
+                            <field name="end_date"/>
+                        </group>
+                    </group>
+
+                <footer>
+                    <button string="Print" name="print_report" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="action_table_picking_list_wizard_report" model="ir.actions.act_window">
+            <field name="name">Table Picking List</field>
+            <field name="res_model">table.picking.list</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="table_picking_list_wizard_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+
+        <menuitem id="menu_kg_table_picking_list_report"
+                name="Table Picking List"
+                action="action_table_picking_list_wizard_report"
+                parent="stock.menu_stock_warehouse_mgmt"
+                sequence="5"/>
+
+    </data>
+</odoo>

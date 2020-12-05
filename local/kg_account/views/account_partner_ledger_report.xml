@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <template id="report_partnerledger_inherit" inherit_id="account.report_partnerledger">
+        <!-- <xpath expr="//t[@t-set='data_report_dpi']" position="replace">
+            <t t-set="data_report_dpi" t-value="110"/>
+                <t t-call="web.internal_layout"> -->
+                <xpath expr="//div[hasclass('page')]" position="replace">
+                    <div class="page">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span t-esc="res_company.name"/><br/>
+                                <t t-if="res_company.street">
+                                    <span t-esc="res_company.street"/>
+                                </t>
+                                <t t-if="res_company.street2">
+                                     <span t-esc="res_company.street2"/>
+                                </t>
+                                <t t-if="res_company.city">
+                                     <span t-esc="res_company.city"/>
+                                </t>
+                                <t t-if="res_company.state_id">
+                                     <span t-esc="res_company.state_id.name"/>
+                                </t>
+                                <t t-if="res_company.zip">
+                                     <span t-esc="res_company.zip"/>
+                                </t>
+                                <t t-if="res_company.country_id">
+                                     <span t-esc="res_company.country_id.name"/>
+                                </t>
+                            </div>
+                            <div class="col-xs-4">
+                                <h2 style="text-align:center;"><strong>A/R OPEN ITEM</strong></h2>
+                            </div>
+
+                            <br/>
+                            <div class="col-xs-4" style="text-align:right;">
+            
+                                <!-- <div class="footer" style="margin-top:25cm;position:static;float:right;">
+                                   Page <span class="page"/> of <span class="topage"/>
+                                </div>     -->
+
+                                <span>Printed Date : <t t-esc="datetime.datetime.now()" t-options="{'widget': 'datetime'}"/> </span><br/>
+                                <span>Printed By : <t t-esc="user.name"/></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <t t-if="data['form']['date_from']">
+                                    <strong>Transaction Date : </strong> <span t-esc="data['form']['date_from']" t-options="{'widget': 'date'}"/>
+                                </t>
+                                <t t-if="data['form']['date_to']">
+                                    - <span t-esc="data['form']['date_to']" t-options="{'widget': 'date'}"/>
+                                </t>
+                            </div>
+                        </div>
+                        <br/>
+
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>INVOICE DATE</th>
+                                    <th>DUE DATE</th>
+                                    <th>INVOICE NUMBER</th>
+                                    <th>SOURCE</th>
+                                    <th>REFF NO</th>
+                                    <th>DESCRIPTION</th>
+                                    <th style="text-align:right;">AMOUNT</th>
+                                    <th style="text-align:right;">BALANCE</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <t t-foreach="docs_data" t-as="o">
+                                    <tr>
+                                        <td colspan="8">
+                                            <strong t-esc="o.name"/>
+                                        </td>
+                                    </tr>
+
+                                    <t t-set="saldo" t-value="0"/>
+                                    <tr t-foreach="lines(data, o)" t-as="line">
+                                        <td>
+                                            <span t-esc="line['date']" t-options="{'widget': 'date'}"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="line['date_maturity']" t-options="{'widget': 'date'}"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="line['move_name']"/>
+                                        </td>
+
+                                        <td>
+                                            <t t-if="line['app_source']">
+                                                 <span t-esc="line['app_source']"/>
+                                            </t>
+                                        </td>
+
+                                        <td>
+                                            <t t-if="line['ref']">
+                                                <span t-esc="line['ref']"/>
+                                            </t>
+                                        </td>
+                                        <td>
+                                            <t t-if="line['ref']">
+                                                <span>PAYMENT </span>
+                                                <t t-if="line['move_name']">
+                                                    (<span t-esc="line['journal_name']"/>)
+                                                </t>
+                                            </t>
+                                            <t t-if="line['ai_type']=='out_refund'">
+                                                <span>REFUND </span>
+                                                <t t-if="line['move_name']">
+                                                    (<span t-esc="line['journal_name']"/>)
+                                                </t>
+                                            </t>
+                                        </td>
+                                        <td class="text-right">
+                                            <t t-if="not line['ref']">
+                                                <t t-if="line['ai_type']=='out_refund'">
+                                                    -
+                                                    <t t-if="line['debit'] > 0">
+                                                        <span t-esc="'{0:,.2f}'.format(int(line['debit']))"/>
+                                                        <t t-set="saldo" t-value="saldo-line['debit']"/>
+                                                    </t>
+                                                    <t t-if="line['credit'] > 0">
+                                                        <span t-esc="'{0:,.2f}'.format(int(line['credit']))"/>
+                                                        <t t-set="saldo" t-value="saldo-line['credit']"/>
+                                                    </t>
+                                                </t>
+                                                <t t-else="">
+                                                    <t t-if="line['debit'] > 0">
+                                                        <span t-esc="'{0:,.2f}'.format(int(line['debit']))"/>
+                                                        <t t-set="saldo" t-value="saldo+line['debit']"/>
+                                                    </t>
+                                                    <t t-if="line['credit'] > 0">
+                                                        <span t-esc="'{0:,.2f}'.format(int(line['credit']))"/>
+                                                        <t t-set="saldo" t-value="saldo+line['credit']"/>
+                                                    </t>
+                                                </t>
+                                            </t>
+
+                                            <t t-if="line['ref']">
+                                                - 
+                                                <t t-if="line['debit'] > 0">
+                                                    <span t-esc="'{0:,.2f}'.format(int(line['debit']))"/>
+                                                    <t t-set="saldo" t-value="saldo-line['debit']"/>
+                                                </t>
+                                                <t t-if="line['credit'] > 0">
+                                                    <span t-esc="'{0:,.2f}'.format(int(line['credit']))"/>
+                                                    <t t-set="saldo" t-value="saldo-line['credit']"/>
+                                                </t>
+                                            </t>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="'{0:,.2f}'.format(int(saldo))"/>
+                                        </td>
+
+                                        <!-- <td class="text-right">
+                                            <t t-if="line['debit'] > 0">
+                                                <span t-esc="line['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </t>
+                                            <t t-if="line['credit'] > 0">
+                                                - <span t-esc="line['credit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </t>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="line['progress']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td> -->
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="6" style="font-weight:bold;">
+                                            <span> SUB TOTAL <t t-esc="o.name"/> : </span>
+                                        </td>
+                                        <td class="text-right">
+                                            <!-- <strong t-esc="sum_partner(data, o, 'debit - credit')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/> -->
+                                            <strong t-esc="'{0:,.2f}'.format(int(saldo))"/>
+                                        </td>
+                                        <td class="text-right">
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td colspan="8"><br/><br/></td>
+                                    </tr>
+
+                                </t>
+
+                            </tbody>
+                        </table>
+                </div>
+            <!-- </t> -->
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="MyValueButton">
+        <div class='control-button'>
+            <i class='fa fa-star' /> MyValue ID
+        </div>
+    </t>
+
+    <t t-name="MyValueWidget">
+        <div class="modal-dialog">
+            <div class="popup popup-myvalue">
+                <p class="title"><t t-esc=" widget.options.title || '' " /></p>
+                <input class="my-value-input" id="my-value-id" type='text' t-att-value="widget.my_value_id || ''"></input>
+                <button class="button-verify" id="verify-my-value">Verify</button>
+                <div class="field oe_hidden" id="my-value-customer-div">
+                    <label>Select Customers</label><br />
+                    <select style="margin:5px;" class="form-control" id="my-value-customer">
+                        <option></option>
+                        <t t-if="widget.pos.get_order()">
+                            <t t-if="widget.pos.get_order().my_value_list">
+                                <t t-if="widget.pos.get_order().my_value_list.length > 0">
+                                    <t t-foreach="widget.pos.get_order().my_value_list" t-as="my_value">
+                                        <t t-if="widget.pos.get_order().my_value_data">
+                                            <t t-if="my_value.PersonSNO === widget.pos.get_order().my_value_data.PersonSNO">
+                                                <option t-att-value="my_value.PersonSNO" selected="">
+                                                    <t t-esc="my_value.FullName"/>--(<t t-esc="my_value.ValueID"/>)--<t t-esc="my_value.PersonSNO"/>
+                                                </option>
+                                            </t>
+                                            <t t-else="">
+                                                <option t-att-value="my_value.PersonSNO">
+                                                    <t t-esc="my_value.FullName"/>--(<t t-esc="my_value.ValueID"/>)--<t t-esc="my_value.PersonSNO"/>
+                                                </option>
+                                            </t>
+                                        </t>
+                                        <t t-else="">
+                                            <option t-att-value="my_value.PersonSNO">
+                                                <t t-esc="my_value.FullName"/>--(<t t-esc="my_value.ValueID"/>)--<t t-esc="my_value.PersonSNO"/>
+                                            </option>
+                                        </t>
+                                        <!-- <option t-att-value="my_value.PersonSNO">
+                                            <t t-esc="my_value.FullName"/>
+                                        </option> -->
+                                        <!-- <t t-if="widget.pos.get_order().my_value_data">
+                                            <option t-att-value="widget.pos.get_order().my_value_data.PersonSNO || false" selected="">
+                                                <t t-esc="widget.pos.get_order().my_value_data.FullName"/>
+                                            </option>
+                                        </t> -->
+                                    </t>
+                                </t>
+                            </t>
+                        </t>
+                    </select>
+                </div>
+                <p class="oe_hidden" style="margin-top:5px; text-align:left; margin-left:50px;"
+                   id="customer-not-found">Customer not found!</p>
+                <div class="oe_hidden" style="color: red; margin-top:5px; text-align:left; margin-left:50px;"
+                   id="myvalue-exception-error">
+                </div>
+                <div class="footer">
+                    <div class="button confirm oe_hidden" id="apply-my-value">
+                        Apply
+                    </div>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="MyValuePaymentWidget">
+        <div class="modal-dialog">
+            <div class="popup popup-myvalue">
+                <p class="title"><t t-esc=" widget.options.title || '' " /></p>
+                <div class="field" id="my-value-selected-customer-div">
+                    <label>Selected Customers</label>
+                    <select style="margin:5px;width:65%;height:40px" class="form-control" id="my-value-selected-customer">
+                        <t t-if="widget.pos.get_order()">
+                            <t t-if="widget.pos.get_order().my_value_list">
+                                <t t-if="widget.pos.get_order().my_value_data">
+                                    <option t-att-value="widget.pos.get_order().my_value_data.PersonSNO || false" selected="">
+                                        <t t-esc="widget.pos.get_order().my_value_data.FullName"/>
+                                    </option>
+                                </t>
+                            </t>
+                        </t>
+                    </select>
+                </div>
+                <div>
+                    <label>Points Available</label>
+                    <label style="margin-left:68px;">Input Points</label>
+                </div>
+                <div>
+                    <input style="text-align:right;" class="my-value-input-points" id="my-value-points" disabled="" type='text' t-att-value="widget.my_value_points || ''"></input>
+                    <input style="margin-left:73px; text-align:right;" class="my-value-input-points" id="my-value-points-used" type='text' t-att-value="widget.my_value_points_used || ''"></input>
+                </div>
+                <div class="footer">
+                    <div class="button confirm">
+                        Apply
+                    </div>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

@@ -1,0 +1,21 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<templates id="template" xml:space="preserve">-->
+
+<!--<t t-extend="FormView.buttons">-->
+    <!--<t t-jquery=".o_form_buttons_edit" t-operation="replace">-->
+        <!--<button type="button"-->
+                <!--class="btn btn-primary btn-sm o_form_button_save" accesskey="s">-->
+            <!--<t t-if="widget.modelName == 'banquet.proposal'">-->
+                <!--Save Proposal-->
+            <!--</t>-->
+            <!--<t t-else="">-->
+                <!--Save-->
+            <!--</t>-->
+        <!--</button>-->
+        <!--<button type="button"-->
+                <!--class="btn btn-default btn-sm o_form_button_cancel" accesskey="j">-->
+            <!--Discard-->
+        <!--</button>-->
+     <!--</t>-->
+<!--</t>-->
+<!--</templates>-->

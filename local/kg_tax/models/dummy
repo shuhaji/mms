@@ -1,0 +1,356 @@
+
+#code for validating barcode
+if not scanned_lot:
+    raise UserError(_('Barcode has not been registered yet'))
+
+if not valid_product:
+    raise UserError(_('Product does not have any barcodes'))
+
+if self.line_ids.filtered(lambda line: line.prod_lot_id == scanned_lot):
+    raise UserError(_('Barcode has already been registered. Please scan a different barcode.'))
+
+avail_lines = self.line_ids.filtered(
+    lambda line: (
+        line.product_id == valid_product
+        and line.product_uom_id == valid_product.uom_id
+        and not line.prod_lot_id
+    )
+)
+
+avail_lines[0].prod_lot_id = scanned_lot
+avail_lines[0]._incr_product_qty()
+
+if self.filter == 'none':
+
+    #Check if lot registered in system
+    if not scanned_lot:
+        raise UserError(_('Barcode has not been registered yet'))
+
+    #Check if scanned lot has product
+    elif not valid_product:
+        raise UserError(_('Product does not have any barcodes'))
+
+    #Check if there are same barcode in lines
+    elif self.line_ids.filtered(lambda line: line.prod_lot_id == scanned_lot):
+        raise UserError(_('Barcode has already been registered. Please scan a different barcode.'))
+
+    #Check if stock has valid product
+    elif barcode not in lot_in_stock:
+        raise UserError(_('Product with this barcode is not available in %s!') % self.location_id.display_name)
+
+    #Action
+    vals = {
+        'inventory_id': self.id,
+        'product_id': valid_product.id,
+        'location_id': self.location_id.id,
+        'prod_lot_id': scanned_lot.id,
+        # 'product_qty': product_with_barcode.quantity,
+        'product_qty': 1,
+        'theoretical_qty': product_with_barcode.quantity,
+        'product_uom_id': valid_product.uom_id.id,
+    }
+
+    if not self.line_ids:
+        self.line_ids = [(0, 0, vals)]
+    else:
+        previous_lines = self.line_ids.mapped('id')
+        move_line_id = self.env['stock.inventory.line'].create(vals)
+        move = {
+            'line_ids': previous_lines + [move_line_id.id]
+        }
+
+        return {
+            'value': {
+                'line_ids': previous_lines + [move_line_id.id]
+            }
+        }
+
+elif self.filter == 'category':
+
+    #Check if lot registered in system
+    if not scanned_lot:
+        raise UserError(_('Barcode has not been registered yet'))
+
+    #Check if scanned lot has product
+    elif not valid_product:
+        raise UserError(_('Product does not have any barcodes'))
+
+    #Check if product have same category
+    if valid_product.categ_id != self.category_id:
+        raise UserError(_('Product with this barcode have different category'))
+
+    #Check if there are same barcode in lines
+    elif self.line_ids.filtered(lambda line: line.prod_lot_id == scanned_lot):
+        raise UserError(_('Barcode has already been registered. Please scan a different barcode.'))
+
+    #Check if stock has valid product
+    elif barcode not in lot_in_stock:
+        raise UserError(_('Product with this barcode is not available in %s!') % self.location_id.display_name)
+
+    #Action
+    vals = {
+        'inventory_id': self.id,
+        'product_id': valid_product.id,
+        'location_id': self.location_id.id,
+        'prod_lot_id': scanned_lot.id,
+        # 'product_qty': product_with_barcode.quantity,
+        'product_qty': 1,
+        'theoretical_qty': product_with_barcode.quantity,
+        'product_uom_id': valid_product.uom_id.id,
+    }
+
+    if not self.line_ids:
+        self.line_ids = [(0, 0, vals)]
+    else:
+        previous_lines = self.line_ids.mapped('id')
+        move_line_id = self.env['stock.inventory.line'].create(vals)
+        move = {
+            'line_ids': previous_lines + [move_line_id.id]
+        }
+
+        return {
+            'value': {
+                'line_ids': previous_lines + [move_line_id.id]
+            }
+        }
+
+elif self.filter == 'product':
+
+    #Check if lot registered in system
+    if not scanned_lot:
+        raise UserError(_('Barcode has not been registered yet'))
+
+    #Check if scanned lot has product
+    elif not valid_product:
+        raise UserError(_('Product does not have any barcodes'))
+
+    #Check if product have same category
+    if valid_product != self.product_id:
+        raise UserError(_('Product with this barcode is not selectable for this Inventory adjustment'))
+
+    #Check if there are same barcode in lines
+    elif self.line_ids.filtered(lambda line: line.prod_lot_id == scanned_lot):
+        raise UserError(_('Barcode has already been registered. Please scan a different barcode.'))
+
+    #Check if stock has valid product
+    elif barcode not in lot_in_stock:
+        raise UserError(_('Product with this barcode is not available in %s!') % self.location_id.display_name)
+
+    #Action
+    vals = {
+        'inventory_id': self.id,
+        'product_id': valid_product.id,
+        'location_id': self.location_id.id,
+        'prod_lot_id': scanned_lot.id,
+        # 'product_qty': product_with_barcode.quantity,
+        'product_qty': 1,
+        'theoretical_qty': product_with_barcode.quantity,
+        'product_uom_id': valid_product.uom_id.id,
+    }
+
+    if not self.line_ids:
+        self.line_ids = [(0, 0, vals)]
+    else:
+        previous_lines = self.line_ids.mapped('id')
+        move_line_id = self.env['stock.inventory.line'].create(vals)
+        move = {
+            'line_ids': previous_lines + [move_line_id.id]
+        }
+
+        return {
+            'value': {
+                'line_ids': previous_lines + [move_line_id.id]
+            }
+        }
+
+elif self.filter == 'lot':
+
+    #Check if lot registered in system
+    if not scanned_lot:
+        raise UserError(_('Barcode has not been registered yet'))
+
+    #Check if scanned lot has product
+    elif not valid_product:
+        raise UserError(_('Product does not have any barcodes'))
+
+    #Check if product have same category
+    if scanned_lot != self.lot_id:
+        raise UserError(_('This barcode is not selectable for this Inventory adjustment'))
+
+    #Check if there are same barcode in lines
+    elif self.line_ids.filtered(lambda line: line.prod_lot_id == scanned_lot):
+        raise UserError(_('Barcode has already been registered. Please scan a different barcode.'))
+
+    #Check if stock has valid product
+    elif barcode not in lot_in_stock:
+        raise UserError(_('Product with this barcode is not available in %s!') % self.location_id.display_name)
+
+    #Action
+    vals = {
+        'inventory_id': self.id,
+        'product_id': valid_product.id,
+        'location_id': self.location_id.id,
+        'prod_lot_id': scanned_lot.id,
+        # 'product_qty': product_with_barcode.quantity,
+        'product_qty': 1,
+        'theoretical_qty': product_with_barcode.quantity,
+        'product_uom_id': valid_product.uom_id.id,
+    }
+
+    if not self.line_ids:
+        self.line_ids = [(0, 0, vals)]
+    else:
+        previous_lines = self.line_ids.mapped('id')
+        move_line_id = self.env['stock.inventory.line'].create(vals)
+        move = {
+            'line_ids': previous_lines + [move_line_id.id]
+        }
+
+        return {
+            'value': {
+                'line_ids': previous_lines + [move_line_id.id]
+            }
+        }
+def action_start(self):
+    for inventory in self.filtered(lambda x: x.state not in ('done','cancel')):
+        vals = {'state': 'confirm', 'date': fields.Datetime.now()}
+        if (inventory.filter != 'partial') and not inventory.line_ids:
+            vals.update({'line_ids': [(0, 0, line_values) for line_values in inventory._get_inventory_lines_values()]})
+        inventory.write(vals)
+    return True
+
+def _get_new_inventory_lines_values(self):
+    if self.filter == 'none':
+        valid_quants = self.env['stock.quant'].search([
+            ('location_id', '=', self.location_id.id),
+        ])
+        vals = []
+        for product in valid_quants.mapped('product_id'):
+            valid_product = valid_quants.filtered(lambda quants:
+                (
+                    quants.product_id == product and
+                    quants.quantity == 1
+                )
+            )
+
+            total_product_qty = sum(quantity for quantity in valid_product.mapped('quantity'))
+
+            values = {
+                'product_id': product.id,
+                'product_uom_id': product.uom_id.id,
+                'location_id': self.location_id.id,
+                'prod_lot_id': False,
+                'theoretical_qty': total_product_qty,
+                'product_qty': 0,
+            }
+
+            vals.append(values)
+
+            if self.exhausted:
+                products_to_filter = self.env['product.product']
+                exhausted_vals = self._get_exhausted_inventory_line(products_to_filter, valid_quants.mapped('product_id'))
+                vals.extend(exhausted_vals)
+
+    elif self.filter == 'category':
+        valid_quants = self.env['stock.quant'].search([
+            ('location_id', '=', self.location_id.id),
+            ('product_id.categ_id', '=', self.category_id.id),
+        ])
+        vals = []
+        for product in valid_quants.mapped('product_id'):
+            valid_product = valid_quants.filtered(lambda quants:
+                (
+                    quants.product_id == product and
+                    quants.quantity == 1
+                )
+            )
+
+            total_product_qty = sum(quantity for quantity in valid_product.mapped('quantity'))
+
+            values = {
+                'product_id': product.id,
+                'product_uom_id': product.uom_id.id,
+                'location_id': self.location_id.id,
+                'prod_lot_id': False,
+                'theoretical_qty': total_product_qty,
+                'product_qty': 0,
+            }
+
+            vals.append(values)
+
+            if self.exhausted:
+                products_to_filter = valid_quants.mapped('product_id')
+                exhausted_vals = self._get_exhausted_inventory_line(products_to_filter, valid_quants.mapped('product_id'))
+                vals.extend(exhausted_vals)
+
+    elif self.filter == 'product':
+        valid_quants = self.env['stock.quant'].search([
+            ('location_id', '=', self.location_id.id),
+            ('product_id', '=', self.product_id.id),
+        ])
+        vals = []
+        for product in valid_quants.mapped('product_id'):
+            valid_product = valid_quants.filtered(lambda quants:
+                (
+                    quants.product_id == product and
+                    quants.quantity == 1
+                )
+            )
+
+            total_product_qty = sum(quantity for quantity in valid_product.mapped('quantity'))
+
+            values = {
+                'product_id': product.id,
+                'product_uom_id': product.uom_id.id,
+                'location_id': self.location_id.id,
+                'prod_lot_id': False,
+                'theoretical_qty': total_product_qty,
+                'product_qty': 0,
+            }
+
+            vals.append(values)
+
+            if self.exhausted:
+                products_to_filter = valid_quants.mapped('product_id')
+                exhausted_vals = self._get_exhausted_inventory_line(products_to_filter, valid_quants.mapped('product_id'))
+                vals.extend(exhausted_vals)
+
+    elif self.filter == 'lot':
+        valid_product = self.env['stock.production.lot'].search([('name', '=', self.lot_id.name)]).mapped('product_id')
+
+        lot_in_stock = self.env['stock.quant'].search([
+            ('location_id', '=', self.location_id.id),
+            ('product_id', '=', valid_product.id),
+            ('quantity', '=', 1)
+        ]).mapped('lot_id')
+
+        if self.lot_id not in lot_in_stock:
+            raise UserError(_('Barcode is not available in stock'))
+
+        valid_quants = self.env['stock.quant'].search([
+            ('location_id', '=', self.location_id.id),
+            ('lot_id', '=', self.lot_id.id),
+        ])
+
+        vals = []
+        for product in valid_quants.mapped('product_id'):
+            valid_product = valid_quants.filtered(lambda quants:
+                (
+                    quants.product_id == product and
+                    quants.quantity == 1
+                )
+            )
+
+            total_product_qty = sum(quantity for quantity in valid_product.mapped('quantity'))
+
+            values = {
+                'product_id': product.id,
+                'product_uom_id': product.uom_id.id,
+                'location_id': self.location_id.id,
+                'prod_lot_id': self.lot_id.id,
+                'theoretical_qty': total_product_qty,
+                'product_qty': 0,
+            }
+            vals.append(values)
+
+    return vals

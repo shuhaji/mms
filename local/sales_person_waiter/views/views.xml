@@ -1,0 +1,19 @@
+<odoo>
+  <data>
+
+        <record model="ir.ui.view" id="view_employee_form_salesperson_waiter">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <!--<xpath expr="//sheet/notebook/page" position="after">-->
+                    <group string="Position">
+                            <!--<field name="sales_person"/>-->
+                            <field name="waiter"/>
+                    </group>
+                <!--</xpath>-->
+            </field>
+        </record>
+
+  </data>
+</odoo>

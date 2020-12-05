@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.actions.act_window" id="shift_list_action">
+        <field name="name">Shift</field>
+        <field name="res_model">hr.shift</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context" eval="{'search_default_my_shift': 1}"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first shift
+            </p>
+        </field>
+    </record>
+
+    <record id="shift_form_view" model="ir.ui.view">
+        <field name="name">shift.form</field>
+        <field name="model">hr.shift</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                        <field name="department_id"/>
+                        <field name="code"/>
+                        <field name="description"/>
+                        <field name="start_time" widget="float_time"/>
+                        <field name="end_time" widget="float_time"/>
+                        <field name="description2"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--session tree/list view-->
+    <record model="ir.ui.view" id="shift_tree_view">
+        <field name="name">shift.tree</field>
+        <field name="model">hr.shift</field>
+        <field name="domain">[('company_id', '=', user.company_id)]</field>
+        <field name="arch" type="xml">
+            <tree string="Shift Tree">
+                <field name="department_id"/>
+                <field name="code"/>
+                <field name="description"/>
+                <field name="start_time"  widget="float_time"/>
+                <field name="end_time" widget="float_time"/>
+                <field name="description2"/>
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="shift_menu" name="Shift" parent="hr.menu_hr_root"
+                  action="shift_list_action"/>
+</odoo>

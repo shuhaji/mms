@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="kg_voucher_tree" model="ir.ui.view">
+        <field name="name">kg.voucher.tree</field>
+        <field name="model">kg.voucher</field>
+        <field name="arch" type="xml">
+            <tree string="KG Voucher">
+                <field name="name" string="Name"/>
+                <field name="active" string="Active"/>
+                <field name="is_external" string="External"/>
+                <field name="start_date" string="Start Date"/>
+                <field name="end_date" string="End Date"/>
+                <field name="description" string="Description"/>
+                <field name="company_id" string="Company" options="{'no_create': True}" groups="base.group_multi_company"/>
+                <field name="create_uid" string="Created By"/>
+            </tree>
+        </field>
+    </record>
+    <record id="kg_voucher_form" model="ir.ui.view">
+        <field name="name">kg.voucher.form</field>
+        <field name="model">kg.voucher</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="KG Voucher">
+                <div class="oe_button_box" name="button_box">
+                    <button name="toggle_active" type="object"
+                            class="oe_stat_button" icon="fa-archive">
+                        <field name="active" widget="boolean_button"
+                               options='{"terminology": "archive"}'/>
+                    </button>
+                </div>
+                <div class="oe_title">
+					<label for="name"/>
+					<h2>
+					    <field name="name" required="1" placeholder="Name of the voucher"/>
+					</h2>
+				</div>
+                <group>
+                    <group>
+                    <field name="company_id" string="Company" groups="base.group_multi_company"/>
+                    <field name="is_open_amount" string="Is Open Amount"/>
+                    <field name="is_external" string="Is External"/>
+                    <field name="amount" string="Amount"
+                           attrs="{'invisible':[('is_open_amount', '=', True)],
+                                  'required':True
+                                  }"/>
+                    <field name="partner_id" string="Partner"
+                           attrs="{'invisible':[('is_external', '=', False)],
+                                  'required':[('is_external', '=', True)]}"/>
+                    <field name="department_id" string="Department"
+                           attrs="{'invisible':[('is_external', '=', True)],
+                                'required':[('is_external', '=', False)]}"
+                           domain="[('company_id', '=', company_id)]"
+                    />
+                    <field name="expense_account_id" string="Expense Account"
+                           attrs="{'invisible':[('is_external', '=', True)],
+                                  'required':[('is_external', '=', False)]}"
+                           domain="[('company_id', '=', company_id)]"
+                    />
+
+                    </group>
+                    <group>
+                        <field name="start_date" string="Start Date"/>
+                        <field name="end_date" string="End Date"/>
+                        <field name="description" string="Description"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+    <record id="kg_voucher_search" model="ir.ui.view">
+        <field name="name">kg.voucher.form</field>
+        <field name="model">kg.voucher</field>
+        <field name="arch" type="xml">
+            <search string="Search Voucher">
+                <field name="name" filter_domain="[('name', 'ilike', self)]"/>
+                <field name="id"/>
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="name" string="Voucher Name"  context="{'group_by' : 'name'}" />
+                  </group>
+            </search>
+        </field>
+    </record>
+    <record id="open_kg_voucher_form" model="ir.actions.act_window">
+        <field name="name">KG Voucher</field>
+        <field name="res_model">kg.voucher</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_kg_voucher"
+        name="KG Vouchers"
+        parent="point_of_sale.menu_point_config_product"
+        sequence="50"
+        action="open_kg_voucher_form"
+        groups="base.group_user"/>
+</odoo>

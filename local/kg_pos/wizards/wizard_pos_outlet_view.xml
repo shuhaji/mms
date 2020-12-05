@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="pos_outlet_wizard_form_view" model="ir.ui.view">
+            <field name="name">pos.outlet.wizard.form.view</field>
+            <field name="model">pos.outlet</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="working_date" required="True"/>
+                    </group>
+                    <group>
+                        <field name="shift_id" options="{'no_create': True, 'no_open': True}"/>
+                    </group>
+                    <group>
+                        <field name="company_id" options="{'no_create': True, 'no_open': True}"/>
+                    </group>
+                    <footer>
+                        <button string="Print" name="print_report" type="object" default_focus="1" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_pos_outlet_wizard_report" model="ir.actions.act_window">
+            <field name="name">Outlet Report</field>
+            <field name="res_model">pos.outlet</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="pos_outlet_wizard_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_kg_pos_pos_outlet_report"
+                name="Outlet Report"
+                action="action_pos_outlet_wizard_report"
+                parent="point_of_sale.menu_point_rep"
+                sequence="8"/>
+
+    </data>
+</odoo>

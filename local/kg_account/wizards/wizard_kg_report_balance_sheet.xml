@@ -1,0 +1,58 @@
+<odoo>
+    <record id="wizard_kg_report_balance_sheet_view" model="ir.ui.view">
+        <field name="name">wizard_kg_report_balance_sheet_view</field>
+        <field name="model">wizard.kg.report.balance_sheet</field>
+        <field name="inherit_id" ref="kg_account.wizard_kg_report_income_statement_view"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="working_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="date_filter_type" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <!--<field name="date_from" position="attributes">-->
+                <!--<attribute name="invisible">1</attribute>-->
+            <!--</field>-->
+            <!--<field name="date_to" position="attributes">-->
+                <!--<attribute name="invisible">0</attribute>-->
+            <!--</field>-->
+            <field name="date_from_cmp" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="date_from_cmp_to_show" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="value_type" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="value_type_cmp" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="is_show_ratio" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="action_wizard_kg_report_balance_sheet" model="ir.actions.act_window">
+        <field name="name">KG Report - Balance Sheet</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.kg.report.balance_sheet</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_kg_report_balance_sheet_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu item to open Wizard  -->
+    <menuitem id="menu_wizard_kg_report_balance_sheet"
+              name="Balance Sheet"
+              sequence="20"
+              parent="menu_wizard_kg_report_group"
+              action="action_wizard_kg_report_balance_sheet"
+    />
+
+
+
+</odoo>

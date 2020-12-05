@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="kg_account_journal" model="ir.ui.view">
+            <field name="name">kg.account.journal</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="split_payment" attrs="{'invisible':[('is_payroll', '=', True)]}"/>
+                    <field 
+                        name="is_department_expense" 
+                        attrs="{'invisible':['|','|','|','|','|','|','|',
+                            ('is_officer_check', '=', True), 
+                            ('is_advance_payment', '=', True),
+                            ('is_city_ledger', '=', True),
+                            ('is_charge_room', '=', True),
+                            ('is_point', '=', True),
+                            ('is_bank_edc_credit_card', '=', True),
+                            ('is_voucher', '=', True),
+                            ('is_payroll', '=', True)
+                        ]}" 
+                    />
+                    <field 
+                        name="is_officer_check" 
+                        attrs="{'invisible':['|','|','|','|','|','|','|',
+                            ('is_department_expense', '=', True), 
+                            ('is_advance_payment', '=', True),
+                            ('is_city_ledger', '=', True),
+                            ('is_charge_room', '=', True),
+                            ('is_point', '=', True),
+                            ('is_bank_edc_credit_card', '=', True),
+                            ('is_voucher', '=', True),
+                            ('is_payroll', '=', True)
+                        ]}" 
+                    />
+                    <field 
+                        name="is_advance_payment" 
+                        attrs="{'invisible':['|','|','|','|','|','|','|',
+                            ('is_department_expense', '=', True), 
+                            ('is_officer_check', '=', True), 
+                            ('is_city_ledger', '=', True),
+                            ('is_charge_room', '=', True),
+                            ('is_point', '=', True),
+                            ('is_bank_edc_credit_card', '=', True),
+                            ('is_voucher', '=', True),
+                            ('is_payroll', '=', True)
+                        ]}"
+                    />
+                    <field name="is_voucher"
+                        attrs="{'invisible':['|','|','|','|','|','|','|',
+                            ('is_department_expense', '=', True),
+                            ('is_officer_check', '=', True),
+                            ('is_advance_payment', '=', True),
+                            ('is_city_ledger', '=', True),
+                            ('is_charge_room', '=', True),
+                            ('is_point', '=', True),
+                            ('is_bank_edc_credit_card', '=', True),
+                            ('is_payroll', '=', True)
+                            ]}"
+                    />
+                    <field name="is_payroll"
+                           attrs="{'invisible':['|','|','|','|','|','|','|',
+                            ('is_department_expense', '=', True),
+                            ('is_officer_check', '=', True),
+                            ('is_city_ledger', '=', True),
+                            ('is_charge_room', '=', True),
+                            ('is_point', '=', True),
+                            ('is_bank_edc_credit_card', '=', True),
+                            ('is_voucher', '=', True),
+                            ('is_advance_payment', '=', True)
+                        ]}"
+                    />
+                </xpath>
+
+                <field name="company_id" position="after">
+                    <field 
+                        name="is_city_ledger" 
+                        attrs="{'invisible':['|','|','|','|','|','|','|',
+                            ('is_department_expense', '=', True), 
+                            ('is_officer_check', '=', True),
+                            ('is_advance_payment', '=', True),
+                            ('is_charge_room', '=', True),
+                            ('is_point', '=', True),
+                            ('is_bank_edc_credit_card', '=', True),
+                            ('is_voucher', '=', True),
+                            ('is_payroll', '=', True)
+                        ]}" 
+                    />
+                    <field 
+                        name="is_charge_room" 
+                        attrs="{'invisible':['|','|','|','|','|','|','|',
+                            ('is_department_expense', '=', True), 
+                            ('is_officer_check', '=', True),
+                            ('is_advance_payment', '=', True),
+                            ('is_city_ledger', '=', True),
+                            ('is_point', '=', True),
+                            ('is_bank_edc_credit_card', '=', True),
+                            ('is_voucher', '=', True),
+                            ('is_payroll', '=', True)
+                        ]}" 
+                    />
+                    <field 
+                        name="is_point" 
+                        attrs="{'invisible':['|','|','|','|','|','|','|',
+                            ('is_department_expense', '=', True), 
+                            ('is_officer_check', '=', True),
+                            ('is_advance_payment', '=', True),
+                            ('is_city_ledger', '=', True),
+                            ('is_charge_room', '=', True),
+                            ('is_bank_edc_credit_card', '=', True),
+                            ('is_voucher', '=', True),
+                            ('is_payroll', '=', True)
+                        ]}" 
+                    />
+                    <field
+                        name="is_bank_edc_credit_card"
+                        attrs="{'invisible':['|','|','|','|','|','|','|',
+                            ('is_department_expense', '=', True),
+                            ('is_officer_check', '=', True),
+                            ('is_advance_payment', '=', True),
+                            ('is_city_ledger', '=', True),
+                            ('is_charge_room', '=', True),
+                            ('is_point', '=', True),
+                            ('is_voucher', '=', True),
+                            ('is_payroll', '=', True)
+                        ]}"
+                    />
+                     <field name="journal_payment_group_id"
+                            string="Journal Payment Group"
+                            attrs="{'invisible':[('is_payroll', '=', True)]}"
+                     />
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

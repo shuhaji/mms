@@ -1,0 +1,124 @@
+/* INHERIT POS CSS */
+
+.pos-receipt-container {
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.screen .centered-content {
+    right: 5px;
+    left: 5px;
+}
+
+.pos .pos-sale-ticket {
+    text-align: left;
+    background-color: white;
+    /* make div center : margin: 0 auto */
+    margin: 0 auto;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 15px;
+    padding-right: 15px
+    font-size: 13px;
+    display: inline-block;
+    font-family: "Inconsolata";
+    border: solid 1px rgb(220,220,220);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.pos .pos-sale-ticket-container {
+    /* agar footer nempel di paling bawah halaman (bukan di akhir content) */
+    display: grid;
+    /* create 3 rows, 1 row header - auto, 1 row content 1fr, 1 row footer - auto*/
+    grid-template-rows: auto 1fr auto;
+    min-height: 195mm; /* tinggi kertas = 210mm, kurangi margin top and bottom */
+}
+
+.pos .pos-sale-ticket-header {
+    /* flex: 1 0 auto; */ /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+    padding-top: 8mm;
+    padding-bottom: 0px;
+    height: 32mm;
+    grid-row: 1;
+}
+
+.pos .pos-sale-ticket-content {
+    /* flex: 1 0 auto; */ /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+    padding-bottom: 10px;
+    grid-row: 2;
+}
+
+.pos .pos-sale-ticket-footer {
+    /* agar footer nempel di paling bawah halaman (bukan di akhir content) */
+    grid-row-start: 3;
+    grid-row-end: 4;
+    width:100%;
+    height: 41mm;
+    /* position:inherit; */
+    /* margin-top:30mm; */
+}
+
+.show-in-print-only {
+    display: none; /* hanya muncul di css print */
+}
+
+@media print {
+    /* layout css saat print */
+
+    * {
+        color: black !important;
+    }
+
+    body {
+        margin: 0;
+        color: white !important;
+    }
+    .pos .pos-sale-ticket{
+        /*margin: 0;*/
+        margin-left: auto !important;
+        margin-right: auto !important;
+        /*margin-bottom:20px;
+        margin-top:20px;*/
+        padding-top: 0px;
+        border: none !important;
+        font-size: 13px !important;
+        width: 95% !important;
+    }
+
+    .pos-sale-ticket-header-repeat-each-page {
+        /* krn perubahan position, maka width harus diset, tidak bisa 100% lagi */
+        width:105mm !important;
+        /* agar header muncul di setiap halaman saat print! */
+        position: fixed !important;
+        top: 0;
+        height: 33mm !important;
+    }
+
+    .pos-sale-ticket-content {
+        /* krn header berubah jadi fixed top (agar terprint di setiap halaman)
+        maka content perlu di beri jarak dari top page, setinggi header! */
+        padding-top: 35mm;
+    }
+
+    .pos-sale-ticket-page-break {
+        /* page-break-after: always; */ /* ga jalan, krn flex */
+        display: block !important; /* hanya muncul di css print */
+    }
+
+    .show-in-print-only {
+        display: block !important; /* hanya muncul di css print */
+    }
+
+    /* height harus sama dg tinggi footer + jarak */
+    /* .pos-sale-ticket-footer-space {
+        height: 46mm;
+    } */
+
+    /* .pos-sale-ticket-footer {
+        width: 105mm !important;
+        height: 46mm;
+        position: fixed !important;
+        bottom: 0;
+         padding-bottom: 10mm;
+    } */
+}

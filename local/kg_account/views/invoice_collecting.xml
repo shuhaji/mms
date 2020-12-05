@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="invoice_collecting_form" model="ir.ui.view">
+            <field name="name">invoice.collecting.form</field>
+            <field name="model">invoice.collecting</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                        <button name="button_cancel" string="Cancel" type="object" class="oe_highlight"/>
+                        <field name="state" readonly="1" widget="statusbar"/>
+                        <!--<button name="print_receipt" string="Print Receipt" type="object" class="oe_highlight"/>-->
+                    </header>
+                    <sheet>
+                        <h1>
+                            <label string="Invoice Collecting"/>
+                            <br/>
+                            <field name="name" class="oe_inline" readonly="1"/>
+                        </h1>
+                        <br/>
+                        <group>
+                            <group>
+                                <field name="partner_id" required="1"/>
+                                <field name="company_id" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </group>
+                        </group>
+                        
+                        <!-- this code can be used when we want to show wizard which contains list of invoices, but the problem is cant find a way to show search and filter menu bar -->
+                        <!-- <button string="Add Invoice" name="show_invoices" type="object"/> -->
+                        <!-- end of code -->
+                        
+                        <notebook>
+                            <page string="Invoices List">
+                                <field name="invoice_line_ids" options="{'no_create': True}"
+                                       domain="[('partner_id', '=', partner_id),('state', '=', 'open'),('type', '=', 'out_invoice'),('collecting_status', 'in', ['',False,'selected'])]" >
+
+                                    <tree>
+                                        <field name="number"/>
+                                        <field name="date_invoice"/>
+                                        <field name="amount_total"/>
+                                        <field name="residual"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="total_invoice"/>
+                                    <field name="total_residual" class="oe_subtotal_footer_separator"/>
+                                </group>
+                            </page>
+                            <page string="Other Info">
+                                 <group>
+                                    <group>
+                                       <field name="print_counter" string="Print Counter"/>
+                                    </group>
+
+                                 </group>
+                            </page>
+                            <!-- <page string="Invoices">
+                                <field name="invoice_collecting_line_ids">
+                                    <tree name="invoices" string="Invoices" editable="bottom">
+                                        <field name="invoice_collecting_id" invisible="1"/>
+                                        <field name="invoice_id" required="1" string="Invoice" options="{'limit': 0, 'no_create': True, 'no_create_edit':True}" />
+                                        <field name="partner_id" string="Customer" invisible="1"/>
+                                        <field name="partner_temp_id" string="Customer" readonly="1"/>
+                                        <field name="date_due" string="Due Date" invisible="1"/>
+                                        <field name="date_due_temp" string="Due Date" readonly="1"/>
+                                        <field name="amount_total" string="Total Invoice" invisible="1"/>
+                                        <field name="amount_total_temp" string="Total Invoice" readonly="1"/>
+                                        <field name="residual" invisible="1"/>
+                                        <field name="residual_temp" readonly="1"/>
+                                    </tree>
+                                </field>
+                            </page> -->
+                        </notebook>
+
+
+
+                        <group>
+                            <field name="notes"/>
+                            <field name="bank_account_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.sequence" id="invoice_collecting_sequence">
+            <field name="name">Incoice Collecting</field>
+            <field name="code">invoice.collecting</field>
+            <field name="prefix">CIR/%(y)s/%(month)s/%(day)s/</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="invoice_collecting_tree" model="ir.ui.view">
+            <field name="name">invoice.collecting.tree</field>
+            <field name="model">invoice.collecting</field>
+            <field name="arch" type="xml">
+                <tree string="Invoice Collecting">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="partner_id"/>
+                    <field name="total_invoice" sum="Total Invoice"/>
+                    <field name="total_residual" sum="Total Residual"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_invoice_collecting" model="ir.actions.act_window">
+		   <field name="name">Invoice Collecting</field>
+		   <field name="res_model">invoice.collecting</field>
+		   <field name="view_type">form</field>
+		   <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="invoice_collecting_tree"/>
+          <field name="context" eval="{'invoice_collecting': True}"/>
+		</record>
+
+        <menuitem
+            action="action_invoice_collecting"
+            id="invoice_collecting"
+            name="Invoice Collecting"
+            parent="account.menu_finance_receivables_documents"
+            sequence="23"
+        />
+
+    </data>
+</openerp>

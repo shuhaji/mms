@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <data>
+        <menuitem 
+            id="main_banquet"
+            name="Banquet"
+            groups="group_banquet_manager,group_banquet_officer"
+            web_icon="kg_banquet,static/description/event-icon.jpg"
+            sequence="20"
+        />
+
+        <menuitem
+            id="menu_banquet_transaction"
+            name="Transaction"
+            parent="main_banquet"
+            sequence="10"
+        />
+
+        <menuitem 
+            id="menu_banquet_master"
+            name="Master Data"
+            parent="main_banquet"
+            sequence="50"
+        />
+
+        <menuitem
+            id="menu_banquet_configuration"
+            name="Configuration"
+            parent="main_banquet"
+            sequence="50"
+        />
+
+        <menuitem
+            id="menu_banquet_reservation"
+            name="Reservation Setup"
+            parent="menu_banquet_master"
+            sequence="30"
+        />
+        <menuitem 
+            id="menu_banquet_general"
+            name="General"
+            parent="menu_banquet_master"
+            sequence="10"
+        />
+
+        <menuitem
+            id="menu_banquet_item"
+            name="Item"
+            parent="menu_banquet_master"
+            sequence="20"
+        />
+
+        <menuitem
+            id="menu_banquet_functional_room"
+            name="Functional Room"
+            parent="menu_banquet_master"
+            sequence="30"
+        />
+
+    </data>
+</odoo>

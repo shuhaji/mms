@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="kg_pos_config" model="ir.ui.view">
+            <field name="name">kg.pos.config</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='receipt']" position="after">
+                    <h2>MyValue</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="my_value_outlet_id" string="MyValue Outlet Id"/>
+                                <div class="text-muted">
+                                    MyValue Outlet Id
+                                </div>
+                                <div class="content-group mt16">
+                                    <field name="my_value_outlet_id" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="myvalue_minimum_redeem_point"/>
+                                <div class="text-muted">
+                                    Set Minimum MyValue Redeem Point
+                                </div>
+                                <div class="content-group mt16">
+                                    <field name="myvalue_minimum_redeem_point" />
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </xpath>
+
+                <xpath expr="//div[@id='category_reference']" position="before">
+                    <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('module_pos_restaurant', '=', False)]}">
+                        <div class="o_setting_right_pane">
+                            <label for="meal_time_id" string="Meal Time"/>
+                            <div class="text-muted">
+                                Select Meal Time
+                            </div>
+                            <div class="content-group mt16">
+                                <field name="meal_time_id" attrs="{
+                                'required':[('module_pos_restaurant', '=', True)]}"/>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+
+                <xpath expr="//div[@id='auto_printing']" position="before">
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <label for="kitchen_order_report_name" string="Kitchen Order"/>
+                            <div class="text-muted">
+                                Kitchen Order Report Type, select blank/empty value to hide kitchen order button
+                            </div>
+                            <div class="content-group mt16">
+                                <field name="kitchen_order_report_name" style="width:100%" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <label for="receipt_bill_report_name" string="Report Type"/>
+                            <div class="text-muted">
+                                POS Bill/Receipt Report Type
+                            </div>
+                            <div class="content-group mt16">
+                                <field name="receipt_bill_report_name" style="width:100%" />
+                            </div>
+                        </div>
+                    </div>
+
+                </xpath>
+
+                <xpath expr="//div[@id='product_prices']" position="after">
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <label for="discount_pc" string="Default Discount %"/>
+                            <div class="text-muted">
+                                Set Default POS Line Discount % (Button [Discount All] in POS)
+                            </div>
+                            <div class="content-group mt16">
+                                <field name="discount_pc"/>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</openerp>

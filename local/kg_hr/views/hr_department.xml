@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="kg_hr_department_form" model="ir.ui.view">
+            <field name="name">kg.hr.department.form</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="allow_pos_expense"/>
+                    <field name="expense_account_id" attrs="{'invisible': [('allow_pos_expense', '=', False)], 'required': [('allow_pos_expense', '=', True)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

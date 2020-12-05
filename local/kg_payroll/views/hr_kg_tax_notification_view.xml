@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="hr_kg_tax_notification_tree">
+            <field name="name">hr.kg.tax.notification.tree</field>
+            <field name="model">hr.kg.tax.notification</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="company_id"/>
+                    <field name="structure_id"/>
+                    <field name="percentage"/>
+                    <field name="state"/>
+                    <field name="period"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form View -->
+        <record model="ir.ui.view" id="hr_kg_tax_notification_form">
+            <field name="name">hr.kg.tax.notification.form</field>
+            <field name="model">hr.kg.tax.notification</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="Confirm" name="button_confirm"
+                                attrs="{'invisible':[('state','=','confirmed')]}"
+                                type="object" class="oe_highlight" groups="base.group_user"
+                                confirm="Are you sure want to change status to Confirmed?"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="period" widget="date-month-year-period-widget"/>
+                                <field name="date_from" invisible="1"/>
+                                <field name="date_to" invisible="1"/>
+                                <p/>
+                                <field name="company_id"/>
+                            </group>
+                            <group>
+                                <field name="structure_id"/>
+                                <field name="percentage"/>
+                                <field name="tax_object_code"/>
+                                <br/>
+                                <field name="file_name" invisible="1"/>
+                                <field name="tax_file"  filename="file_name" attrs="{'invisible':[('state','=','draft')]}" readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="hr_kg_tax_notification_action">
+            <field name="name">SPT Masa Proses</field>
+            <field name="res_model">hr.kg.tax.notification</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="menu_spt_masa"
+            name="SPT Masa"
+            parent="hr_payroll.menu_hr_payroll_root"
+            sequence="20"
+        />
+
+        <menuitem id="menu_spt_masa_process_monthly"
+              name="SPT Masa Proses"
+              sequence="21"
+              parent="menu_spt_masa"
+              action="hr_kg_tax_notification_action"
+        />
+    </data>
+</odoo>

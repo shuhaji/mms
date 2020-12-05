@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.actions.act_window" id="eventtype_list_action">
+        <field name="name">Event Type</field>
+        <field name="res_model">catalog.eventtype</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context" eval="{'search_default_my_eventtype': 1}"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the first event type
+            </p>
+        </field>
+    </record>
+
+    <record id="eventtype_form_view" model="ir.ui.view">
+        <field name="name">eventtype.form</field>
+        <field name="model">catalog.eventtype</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="event_code"/>
+                        <field name="event_name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--session tree/list view-->
+    <record model="ir.ui.view" id="eventtype_tree_view">
+        <field name="name">eventtype.tree</field>
+        <field name="model">catalog.eventtype</field>
+        <field name="arch" type="xml">
+            <tree string="Course Tree">
+                <field name="event_code"/>
+                <!--<field name="description"/>-->
+                <field name="event_name"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="eventtype_menu" name="Event Type" parent="point_of_sale.pos_config_menu_catalog"
+                  action="eventtype_list_action"/>
+</odoo>

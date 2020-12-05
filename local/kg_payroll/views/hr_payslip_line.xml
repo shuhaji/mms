@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--        <record id="view_hr_payslip_line_tree" model="ir.ui.view">-->
+<!--            <field name="name">kg.hr.payslip.line.tree</field>-->
+<!--            <field name="model">hr.payslip.line</field>-->
+<!--            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_line_tree"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree string="Salaryy Structure" editable="bottom" decoration-info="total == 0">-->
+<!--                    <field name="name"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
+        <record id="kg_hr_payslip_form" model="ir.ui.view">
+            <field name="name">kg.payroll.hr.payslip.line.form</field>
+            <field name="model">hr.payslip.line</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_line_form"/>
+            <field name="arch" type="xml">
+            </field>
+        </record>
+
+<!--        <record model="ir.ui.view" id="kg_hr_payslip_pivot_view">-->
+<!--        <field name="name">kg.payroll.hr.payslip.pivot</field>-->
+<!--        <field name="model">hr.payslip</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <pivot string="Marks">-->
+<!--                <field name="id" type="row"/>-->
+<!--                <field name="employee_id" type="col"/>-->
+<!--            </pivot>-->
+<!--        </field>-->
+<!--        </record>-->
+
+        <record id="action_kg_view_hr_payslip_line_form" model="ir.actions.act_window">
+            <field name="name">Payslip Line</field>
+            <field name="res_model">hr.payslip.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="search_view_id" ref="view_hr_payslip_filter"/>
+        </record>
+
+        <menuitem id="menu_kg_payslip_line"
+              name="Payslip Line"
+              sequence="11"
+              parent="menu_wizard_kg_report_group"
+              action="action_kg_view_hr_payslip_line_form"/>
+</odoo>
+

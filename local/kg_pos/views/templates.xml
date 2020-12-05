@@ -1,0 +1,49 @@
+<odoo>
+    <template id="kg_pos_assets_backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/kg_pos/static/src/js/tax_widget.js"/>
+            <script type="text/javascript"
+                    src="/kg_pos/static/src/js/pms_room_info.js" />
+        </xpath>
+    </template>
+    <template id="assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script src="/kg_report_base/static/src/js/kg-report-initial.js" type="text/javascript"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/chrome.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/guest_info.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/department_expense.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/no_ref.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/payment_method.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/charge_room.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/advance_payment.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/delete_item_button.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/payment_access.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/selection_search.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/choose_waiter.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/my_value.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/city_ledger.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/discount_all_lines.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/credit_card.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/voucher.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/product_custom_name_notes.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/receipt_screen_widget.js"/>
+            <script type="text/javascript" src="/kg_pos/static/src/js/print_kitchen_order.js"/>
+        </xpath>
+        <xpath expr="//link[@id='pos-stylesheet']" position="after">
+            <link href="/kg_report_base/static/src/css/stimulsoft.viewer.office2013.whiteblue.css"
+                  rel="stylesheet" type="text/css"/>
+            <link rel="stylesheet" type="text/css" href="/kg_pos/static/src/scss/my_value.scss" />
+            <link rel="stylesheet" type="text/less" href="/kg_pos/static/src/scss/guest_info.scss" />
+            <link rel="stylesheet" type="text/less" href="/kg_pos/static/src/scss/advance_payment.scss" />
+            <link rel="stylesheet" type="text/less" href="/kg_pos/static/src/scss/search_selection.scss" />
+            <link rel="stylesheet" type="text/css" href="/kg_pos/static/src/scss/pos.css" />
+            <link rel="stylesheet" type="text/css" href="/kg_pos/static/src/scss/list_of_taxes.scss" />
+            <!-- <link rel="stylesheet" type="text/css" href="/kg_pos/static/src/scss/my_value.scss" /> -->
+        </xpath>
+    </template>
+    <template id="kg_pos_report_style" inherit_id="web.report_assets_common">
+        <xpath expr="." position="inside">
+            <link href="/kg_pos/static/src/scss/report_assets.scss" /> rel="stylesheet" type="text/css"/>
+        </xpath>
+    </template>
+</odoo>

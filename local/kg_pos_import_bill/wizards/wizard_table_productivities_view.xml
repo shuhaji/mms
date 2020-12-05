@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="table_productivities_wizard_form_view" model="ir.ui.view">
+            <field name="name">table.productivities.wizard.form.view</field>
+            <field name="model">table.productivities</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="start_date" invisible="1"/>
+                    <field name="end_date" invisible="1"/>
+                    <label for="bulan" string="Periode" style="font-weight: bold !important;margin-right:107px;margin-left: 60px;"/>
+                    <field name="bulan" style="width:110px"/>
+                    <field name="tahun" style="width:110px;margin-left: 34px;"/>
+
+                    <footer>
+                        <button string="Print" name="print_report" type="object" default_focus="1" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="action_table_productivities_wizard_report" model="ir.actions.act_window">
+            <field name="name">Table Productivities</field>
+            <field name="res_model">table.productivities</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="table_productivities_wizard_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_kg_pos_table_productivities_report"
+                name="Table Productivities"
+                action="action_table_productivities_wizard_report"
+                parent="point_of_sale.menu_point_rep"
+                sequence="6"/>
+
+    </data>
+</odoo>

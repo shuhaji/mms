@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="kg_product_category_form_view" model="ir.ui.view">
+            <field name="name">product.category.form.view</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='parent_id']" position="after">
+                    <field name="main_parent"/>
+                </xpath>
+                <xpath expr="//field[@name='property_account_income_categ_id']" position="after">
+                    <field name="expense_account_group"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="kg_product_category_tree_view" model="ir.ui.view">
+            <field name="name">product.category.tree.view</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_list_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='display_name']" position="after">
+                    <field name="main_parent"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

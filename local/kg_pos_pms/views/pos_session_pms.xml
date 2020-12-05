@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="kg_hr_department_form" model="ir.ui.view">
+            <field name="name">pos.session.form</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+            <field name="arch" type="xml">
+<!--                <xpath expr="//field[@name='working_id']" position="replace">-->
+                    <field name="working_date" position="replace">
+                        <field name="working_date" readonly="1" />
+                    </field>
+<!--                    <field name="expense_account_id" attrs="{'invisible': [('allow_pos_expense', '=', False)], 'required': [('allow_pos_expense', '=', True)]}"/>-->
+<!--                </xpath>-->
+            </field>
+        </record>
+
+    </data>
+</openerp>

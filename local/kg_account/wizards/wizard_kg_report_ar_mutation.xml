@@ -1,0 +1,42 @@
+<odoo>
+    <record id="wizard_kg_report_ar_mutation_view" model="ir.ui.view">
+        <field name="name">AR Mutation</field>
+        <field name="model">wizard.kg.report.ar.mutation</field>
+        <field name="inherit_id" ref="kg_report_base.wizard_kg_report_base_view"/>
+        <field name="arch" type="xml">
+        <data>
+            <field name="working_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="working_date" position="after">
+                <field name="start_date" style="width:120px" required="True"/>
+                <field name="company_id" invisible="1"/>
+            </field>
+            <field name="file_name" position="after">
+                <field name="end_date" style="width:120px" required="True"/>
+            </field>
+        </data>
+        </field>
+    </record>
+
+    <!-- Action to open Wizard as a popup -->
+    <record id="action_wizard_kg_report_ar_mutation" model="ir.actions.act_window">
+        <field name="name">AR Mutation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.kg.report.ar.mutation</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_kg_report_ar_mutation_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu item to open Wizard  -->
+    <menuitem id="menu_wizard_kg_report_ar_mutation"
+              name="AR Mutation"
+              sequence="30"
+              parent="menu_wizard_kg_report_group"
+              action="action_wizard_kg_report_ar_mutation"
+    />
+
+
+</odoo>

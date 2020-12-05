@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="OpenCustomItemButton">
+        <div class='control-button'>
+            <i class='fa fa-tag' /> Open Item
+        </div>
+    </t>
+
+     <t t-name="OpenCustomItemWidget">
+        <div class="modal-dialog">
+            <div class="popup popup-guestinfo"  style="height:480px;">
+                <p class="title"><t t-esc=" widget.options.title || '' " /></p>
+                <div class="container">
+                    <div class="field">
+                        <label>Name: <t t-esc="widget.name || ''" />
+                        </label>
+                    </div>
+                    <t t-if="widget.allow_custom_item" >
+                        <div class="field">
+                            <label>Change Product Name</label>
+                            <input id="custom-product-name" class="form-control" type="text"
+                                   t-att-value="widget.custom_item_name || ''" />
+                        </div>
+                    </t>
+                    <div class="field">
+                        <label>Price: <t t-esc="widget.price || ''" />
+                        </label>
+                    </div>
+                    <t t-if="widget.allow_open_price" >
+                        <div class="field">
+                            <label>New Price</label>
+                            <input id="new-price" class="form-control" type="text"
+                                   t-att-value="widget.price || ''" />
+                        </div>
+                    </t>
+                    <div class="field">
+                        <label>Notes</label>
+                        <input id="note" class="form-control" type="text"
+                               t-att-value="widget.note || ''" />
+                    </div>
+
+                </div>
+                <div class="footer">
+                    <div class="button confirm">
+                        Apply
+                    </div>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-extend="Orderline">
+        <t t-jquery=".product-name" t-operation="replace">
+            <t t-esc="line.get_display_name()"/>
+            <t t-if="line.get_product().tracking!=='none'">
+                <i t-attf-class="oe_link_icon fa fa-list oe_icon line-lot-icon #{line.has_valid_product_lot() ? 'oe_green' : 'oe_red' }"/>
+            </t>
+        </t>
+    </t>
+
+</templates>

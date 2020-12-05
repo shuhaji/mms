@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- AR MUTATION REPORT -->
+        <record model="report.paperformat" id="paperformat_ar_mutation_report">
+            <field name="name">paperformat.ar.mutation.report</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">30</field>
+            <field name="margin_right">5</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report id="menu_report_ar_mutation_pdf"
+                string="A/R Mutation"
+                model="ar.mutation.wizard"
+                report_type="qweb-pdf"
+                name="kg_account.report_ar_mutation_pdf"
+                file="kg_account.report_ar_mutation_pdf"
+                menu="False"
+                paperformat="paperformat_ar_mutation_report"
+        />    
+
+        <!-- AP MUTATION REPORT -->
+        <record model="report.paperformat" id="paperformat_ap_mutation_report">
+            <field name="name">paperformat.ap.mutation.report</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">30</field>
+            <field name="margin_right">5</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report id="menu_report_ap_mutation"
+                string="A/P Mutation"
+                model="ap.mutation.wizard"
+                report_type="qweb-pdf"
+                name="kg_account.report_ap_mutation"
+                file="kg_account.report_ap_mutation"
+                menu="False"
+                paperformat="paperformat_ap_mutation_report"
+        />
+
+        <!-- PAYMENT LIST AP -->
+        <!--<record model="report.paperformat" id="paperformat_payment_list_ap_report">-->
+            <!--<field name="name">paperformat.payment.list.ap.report</field>-->
+            <!--<field name="default" eval="True"/>-->
+            <!--<field name="format">A4</field>-->
+            <!--<field name="page_width">0</field>-->
+            <!--<field name="page_width">0</field>-->
+            <!--<field name="orientation">Landscape</field>-->
+            <!--<field name="margin_top">30</field>-->
+            <!--<field name="margin_right">5</field>-->
+            <!--<field name="margin_bottom">10</field>-->
+            <!--<field name="margin_left">5</field>-->
+            <!--<field name="header_line" eval="False"/>-->
+            <!--<field name="header_spacing">20</field>-->
+            <!--<field name="dpi">90</field>-->
+        <!--</record>-->
+
+        <!--<report id="menu_report_payment_list_ap"-->
+                <!--string="Payment List AP"-->
+                <!--model="payment.list.ap"-->
+                <!--report_type="qweb-pdf"-->
+                <!--name="kg_account.report_payment_list_ap"-->
+                <!--file="kg_account.report_payment_list_ap"-->
+                <!--menu="False"-->
+                <!--paperformat="paperformat_payment_list_ap_report"-->
+        <!--/>-->
+
+        <!--<record model="report.paperformat" id="paperformat_payment_list">-->
+            <!--<field name="name">paperformat.payment.report</field>-->
+            <!--<field name="default" eval="True"/>-->
+            <!--<field name="format">A4</field>-->
+            <!--<field name="page_width">0</field>-->
+            <!--<field name="page_width">0</field>-->
+            <!--<field name="orientation">Landscape</field>-->
+            <!--<field name="margin_top">30</field>-->
+            <!--<field name="margin_right">5</field>-->
+            <!--<field name="margin_bottom">10</field>-->
+            <!--<field name="margin_left">5</field>-->
+            <!--<field name="header_line" eval="False"/>-->
+            <!--<field name="header_spacing">20</field>-->
+            <!--<field name="dpi">90</field>-->
+        <!--</record>-->
+
+        <!--<report id="action_report_payments"-->
+                <!--model="account.payment.report"-->
+                <!--string="Payments"-->
+                <!--report_type="qweb-pdf"-->
+                <!--name="kg_account.report_payments"-->
+                <!--file="kg_account.report_payments"-->
+                <!--paperformat="paperformat_payment_list"-->
+        <!--/>-->
+
+        <!-- NEW PAYMENT LIST AP -->
+        <!--<record model="report.paperformat" id="paperformat_new_payment_list_ap_report">-->
+            <!--<field name="name">paperformat.new.payment.list.ap.report</field>-->
+            <!--<field name="default" eval="True"/>-->
+            <!--<field name="format">A4</field>-->
+            <!--<field name="page_width">0</field>-->
+            <!--<field name="page_width">0</field>-->
+            <!--<field name="orientation">Landscape</field>-->
+            <!--<field name="margin_top">30</field>-->
+            <!--<field name="margin_right">5</field>-->
+            <!--<field name="margin_bottom">10</field>-->
+            <!--<field name="margin_left">5</field>-->
+            <!--<field name="header_line" eval="False"/>-->
+            <!--<field name="header_spacing">20</field>-->
+            <!--<field name="dpi">90</field>-->
+        <!--</record>-->
+
+        <!--<report id="menu_report_new_payment_list_ap"-->
+            <!--string="New Payment List AP"-->
+            <!--model="new.payment.list.ap"-->
+            <!--report_type="qweb-pdf"-->
+            <!--name="kg_account.report_new_payment_list_ap"-->
+            <!--file="kg_account.report_new_payment_list_ap"-->
+            <!--menu="False"-->
+            <!--paperformat="paperformat_new_payment_list_ap_report"-->
+        <!--/>-->
+    </data>
+</odoo>

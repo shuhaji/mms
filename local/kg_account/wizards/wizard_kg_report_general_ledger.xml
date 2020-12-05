@@ -1,0 +1,51 @@
+<odoo>
+    <record id="wizard_kg_report_general_ledger_view" model="ir.ui.view">
+        <field name="name">General Ledger</field>
+        <field name="model">wizard.kg.report.general.ledger</field>
+        <field name="inherit_id" ref="kg_report_base.wizard_kg_report_base_view"/>
+        <field name="arch" type="xml">
+        <data>
+            <field name="working_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="working_date" position="after">
+                <field name="report_type"/>
+                <field name="date_from" style="width:120px" required="True"/>
+                <field name="date_to" style="width:120px" required="True"/>
+            </field>
+            <field name="file_name" position="after">
+                <!--<field name="display_account" widget="radio"/>-->
+                <field name="target_move" widget="radio"/>
+                <field name="sortby" widget="radio"/>
+            </field>
+
+            <xpath expr="//group[@name='report_filters_1']" position="after">
+                <group>
+                    <field name="journal_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                </group>
+            </xpath>
+        </data>
+        </field>
+    </record>
+
+    <!-- Action to open Wizard as a popup -->
+    <record id="action_wizard_kg_report_general_ledger" model="ir.actions.act_window">
+        <field name="name">General Ledger</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.kg.report.general.ledger</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_kg_report_general_ledger_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu item to open Wizard  -->
+    <menuitem id="menu_wizard_kg_report_general_ledger"
+              name="General Ledger"
+              sequence="30"
+              parent="menu_wizard_kg_report_group"
+              action="action_wizard_kg_report_general_ledger"
+    />
+
+
+</odoo>

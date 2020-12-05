@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="VoucherPopup">
+        <div class="modal-dialog">
+            <div class="popup popup-kg-voucher" style="height:430px;">
+                <p class="title"><t t-esc=" widget.options.title || '' " /></p>
+                <div class="container" style="text-align:center;">
+                    <div class="field">
+                        <label>Voucher</label>
+                        <br />
+                        <select style="width:310px;min-height:40px;margin-top:5px" class="form-control"
+                                id="voucher-payment">
+                            <option></option>
+                            <t t-foreach="widget.pos.kg_vouchers || []" t-as="voucher">
+                                <t t-if="widget.voucher === voucher.id">
+                                    <option t-att-value="voucher.id" selected=""><t t-esc="voucher.name" /></option>
+                                </t>
+                                <t t-else="">
+                                    <option t-att-value="voucher.id"><t t-esc="voucher.name" /></option>
+                                </t>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="field" style="margin-top:10px">
+                        <label>Voucher Value</label>
+                        <br />
+                        <span id="voucher-value-span"></span>
+                        <input id="voucher-amount" style="text-align:right;margin-top:5px;"
+                               class="form-control" type="number" t-att-value="widget.voucher_amount || ''" />
+                    </div>
+                    <div class="field" style="margin-top:10px">
+                        <label>Voucher Number</label>
+                        <br />
+                        <span id="voucher-no-span"></span>
+                        <input id="voucher-no" style="text-align:left;margin-top:5px;"
+                               class="form-control" type="text" t-att-value="widget.voucher_no || ''" />
+                    </div>
+
+                    <!--<div class="field" style="display: grid; grid-template-columns: auto auto auto">-->
+                        <!--<div style="grid-">-->
+                            <!--<input id="front-card-number" max="9999" style="text-align:center;" class="form-control" type="number" t-att-value="widget.front_card_number || ''" />-->
+                        <!--</div>-->
+                        <!--<div style="line-height: 2em"><span>- xxxx - xxxx -</span></div>-->
+                        <!--<div>-->
+                            <!--<input id="back-card-number" max="9999" style="text-align:center;" class="form-control" type="number" t-att-value="widget.back_card_number || ''" />-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+                <div class="footer">
+                    <div class="button confirm">
+                        Ok
+                    </div>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

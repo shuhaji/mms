@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="table_reservation_list_wizard_form_view" model="ir.ui.view">
+            <field name="name">table.reservation.list.wizard.form.view</field>
+            <field name="model">table.reservation.list</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <!--<field name="salesperson_id" domain="[('is_salesperson','=',True)]" options="{'no_create': True}"/>-->
+                            <field name="start_date"/>
+                        </group>
+                        <group>
+                            <field name="end_date"/>
+                        </group>
+                    </group>
+
+                <footer>
+                    <button string="Print" name="print_report" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="action_table_reservation_list_wizard_report" model="ir.actions.act_window">
+            <field name="name">Table Reservation List</field>
+            <field name="res_model">table.reservation.list</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="table_reservation_list_wizard_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+
+        <menuitem id="menu_kg_pos_table_reservation_list_report"
+                name="Table Reservation List"
+                action="action_table_reservation_list_wizard_report"
+                parent="point_of_sale.menu_point_rep"
+                sequence="5"/>
+
+    </data>
+</odoo>

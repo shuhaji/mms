@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id ='duplicate_reservation_form_view' model="ir.ui.view">
+            <field name="name">duplicate.reservation.action</field>
+            <field name="model">duplicate.reservation.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <h4>Please confirm you want to copy this Reservation</h4>
+                    <group>
+                        <field name="reservation_id" readonly="1" options="{'no_open': True}"/>
+                    </group>
+                    <footer>
+                        <button name="copy_reservation" type="object" string="Copy"/>
+                         <button name="cancel" string="Cancel" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="duplicate_reservation_action">
+        <field name="name">Copy</field>
+        <field name="res_model">duplicate.reservation.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="duplicate_reservation_form_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <act_window id="duplicate_reservation_wizard"
+        name="Copy"
+        src_model="banquet.reservation"
+        res_model="duplicate.reservation.wizard"
+        view_mode="form"
+        target="new"
+        key2="client_action_multi"/>
+</odoo>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="banquet_setting_modules" model="ir.actions.act_window">
+            <field name="name">Banquet</field>
+            <field name="res_model">ir.module.module</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context" eval="{'search_default_category_id': ref('base.module_category_localization'), 'search_default_name': 'Banquet'}"/>
+            <field name="search_view_id" ref="base.view_module_filter"/>
+        </record>
+
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.kg.banquet</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="45"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="Banquet" string="Banquet" data-key="kg_banquet" groups="">
+                <h2>Product Mapping</h2>
+                <div class="row mt16 o_settings_container">
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <label string="Default Product Mapping"/>
+                            <div class="text-muted">
+                                Default Product to be used for Product mapping banquet of your company
+                            </div>
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="banquet_food_product_id" string="Banquet Food Product" class="col-md-3 o_light_label"/>
+                                    <field name="banquet_food_product_id" domain="[('company_id', '=', company_id)]"/>
+                                </div>
+                            </div>
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="banquet_beverage_product_id" string="Banquet Beverage Product" class="col-md-3 o_light_label"/>
+                                    <field name="banquet_beverage_product_id" domain="[('company_id', '=', company_id)]"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <label string=""/>
+                            <br/><br/><br/>
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="banquet_other_product_id" string="Banquet Other Product" class="col-md-3 o_light_label"/>
+                                    <field name="banquet_other_product_id" domain="[('company_id', '=', company_id)]"/>
+                                </div>
+                            </div>
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="banquet_residential_product_id" string="Banquet Residential Product" class="col-md-3 o_light_label"/>
+                                    <field name="banquet_residential_product_id" domain="[('company_id', '=', company_id)]"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_kg_banquet_configuration" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'kg_banquet'}</field>
+        </record>
+
+        <menuitem id="menu_kg_banquet_global_settings" name="Settings"
+            parent="menu_banquet_configuration" sequence="50" action="action_kg_banquet_configuration"/>
+</odoo>
+
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<odoo>-->
+<!--    <data>-->
+<!--        &lt;!&ndash; List View &ndash;&gt;-->
+<!--        <record model="ir.ui.view" id="product_mapping_tree">-->
+<!--            <field name="name">banquet.product.mapping.tree</field>-->
+<!--            <field name="model">banquet.product.mapping</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree>-->
+<!--                    <field name="company_id"/>-->
+<!--                    <field name="food_product_id"/>-->
+<!--                    <field name="beverage_product_id"/>-->
+<!--                    <field name="other_product_id"/>-->
+<!--                    <field name="residential_product_id"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; Form View &ndash;&gt;-->
+<!--        <record model="ir.ui.view" id="product_mapping_form">-->
+<!--            <field name="name">banquet.product.mapping.form</field>-->
+<!--            <field name="model">banquet.product.mapping</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form string="Product Mapping Setting">-->
+<!--                    <sheet>-->
+<!--                         <label for="company_id" class="oe_edit_only"-->
+<!--		                        string="Company"/>-->
+<!--                                <h1>-->
+<!--                                    <field name="company_id"/>-->
+<!--                                </h1>-->
+<!--                            <group>-->
+<!--                                <field name="food_product_id"/>-->
+<!--                                <field name="beverage_product_id"/>-->
+<!--                                <field name="other_product_id"/>-->
+<!--                                <field name="residential_product_id"/>-->
+<!--                            </group>-->
+<!--                    </sheet>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <record model="ir.actions.act_window" id="product_mapping_action">-->
+<!--            <field name="name">Product Mapping Setting</field>-->
+<!--            <field name="res_model">banquet.product.mapping</field>-->
+<!--            <field name="view_type">form</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--        </record>-->
+<!--        <menuitem-->
+<!--            id="menu_product_mapping"-->
+<!--            name="Product Mapping Setting"-->
+<!--            parent="menu_banquet_configuration"-->
+<!--            action="product_mapping_action"-->
+<!--        />-->
+<!--    </data>-->
+<!--</odoo>-->

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template id="template" xml:space="preserve">
+    <t t-name="OrderListButton">
+        <div class="control-button pos_order_list_button" id="pos_order_list_button">
+            <i class="fa fa-user-circle"></i>
+            Reservation
+        </div>
+    </t>
+
+    <t t-name="PosOrderScreenWidget">
+        <div class="pos_order_screen screen">
+            <div class="screen-content">
+                <section class="top-content">
+                    <span class='button back'>
+                        <i class='fa fa-angle-double-left'/>
+                        Back
+                    </span>
+                    <span class='searchbox'>
+                        <input placeholder='Search Order'/>
+                        <span class='search-clear'/>
+                    </span>
+                    <span class='searchbox'/>
+                </section>
+                <section class="full-content">
+                    <div class='window'>
+                        <section class='subwindow'>
+                            <div class='subwindow-container'>
+                                <div class='subwindow-container-fix touch-scrollable scrollable-y'>
+                                    <table class='order-list'>
+                                        <thead>
+                                            <tr>
+                                                <!-- <th>Order Reference</th> -->
+                                                <th>Booking Number</th>
+                                                <th>Customer</th>
+                                                <th>Booking Date</th>
+                                                <th>Start Time</th>
+                                                <th>End Time</th>
+                                                <th>Phone Number</th>
+                                                <th>Reserved by</th>
+                                                <th>Guest</th>
+                                                <th>Table</th>
+                                                <th>Status</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class='order-list-contents'>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="PosOrderLine">
+        <tr class='order-line' t-att-data-id='order.id'>
+            <td><t t-esc='order.name' /></td>
+            <td><t t-esc='order.partner_id[1]'/></td>
+            <td><t t-esc='order.date_order_tz' /></td>
+            <td><t t-esc='order.start_time_tz' /></td>
+            <td><t t-esc='order.end_time_tz' /></td>
+            <td><t t-esc='order.booking_phone_number' /></td>
+            <td><t t-esc='order.reserved_by' /></td>
+            <td><t t-esc='order.customer_count' /></td>
+            <td><t t-esc='order.table_label' /></td>
+            <td style="text-transform:capitalize;"><t t-esc='order.state_reservation' /></td>
+            <td><t t-esc='order.amount_total' /></td>
+        </tr>
+    </t>
+
+    <t t-extend='ClientLine'>
+        <t t-jquery='.client-line' t-operation='append'>
+            <td><button class="view_orders" t-att-data-id='partner.id'>
+                Orders <i class='fa fa-shopping-cart'></i>
+            </button></td>
+        </t>
+    </t>
+
+    <t t-extend='ClientListScreenWidget'>
+        <t t-jquery='.client-list thead tr' t-operation='append'>
+            <th></th>
+        </t>
+    </t>
+
+    <t t-name="OrderPopupWidget">
+        <div class="modal-dialog">
+            <div class="popup popup-selection pos_order_details">
+                <p class="title">Order Details</p>
+                
+                <t t-set="allow_load" t-value="1"/>
+
+                <div class='selection scrollable-y touch-scrollable'>
+                    <t t-set="order" t-value="widget.order"/>
+                    <t t-if="order">
+                    <table style="width:100%;">
+                        <tr>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">Booking Number :</td>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">
+                                <t t-esc="order.name" />
+                            </td>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">Booking Date :</td>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">
+                                <t t-esc='order.date_order' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">Customer :</td>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">
+                                <t t-esc="order.partner"/>
+                            </td>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">Phone Number :</td>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">
+                                <t t-esc="order.booking_phone_number"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">Reserved by :</td>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">
+                                <t t-esc="order.reserved_by"/>
+                            </td>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">Total Amount :</td>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">
+                                <t t-esc="order.amount_total"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">Status :</td>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;text-transform:capitalize;">
+                                <t t-esc="order.state_reservation"/>
+                            </td>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">Number of Guest :</td>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">
+                                <t t-esc="order.customer_count"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">Table :</td>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">
+                                <t t-esc="order.table_label"/>
+                            </td>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">Time :</td>
+                            <td style="text-align: left;padding: 0px 0px 0px 15px !important;">
+                                <t t-esc='order.start_time'/> - <t t-esc='order.end_time'/>
+                            </td>
+                        </tr>
+                        <t t-if="order.state_reservation != 'definite'">
+                            <t t-set="allow_load" t-value="0"/>
+                        </t>
+                    </table>
+                    <table style="width: 98%;border: 1px solid black;margin: 8px;">
+                        <thead style="border:1px solid black;">
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Discount</th>
+                                <th>Price</th>
+                                <th>Sub Total (Incl Svc/Tax)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="order.orderReservationLines" t-as="line" style="border:1px solid black;">
+                                <td ><t t-esc="line.product"/></td>
+                                <td><t t-esc="line.qty"/></td>
+                                <td><t t-esc="line.discount"/></td>
+                                <td><t t-esc="line.price_unit"/></td>
+                                <td><t t-esc="line.price_subtotal_incl"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </t>
+                </div>
+                <div class="footer">
+                    <t t-if="allow_load == '1'">
+                        <div class="button confirm" style="padding-right:10px;padding-left:10px;">
+                            Load Reservation
+                        </div>
+                    </t>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="TableWidget">
+        <t t-if='!widget.selected'>
+            <div class='table' t-att-style='widget.table_style_str()'>
+                <!-- <span 
+                    t-if="widget.table.shape"
+                    t-att-class='"table-cover " + (widget.fill >= 1 ? "full" : "")'
+                    t-att-style='"height: " + Math.ceil(widget.fill * 100) + "%;background-color:red;opacity:0.8;"'
+                    >
+                </span> -->
+                <span 
+                    t-if="widget.table.shape"
+                    t-att-class='"table-cover " + (widget.current_booking >= 1 ? "full" : "")'
+                    t-att-style='"height: " + Math.ceil(widget.current_booking * 100) + "%;background-color:red;opacity:0.8;"'
+                    >
+                </span>
+                <t t-if='widget.order_count'>
+                    <span t-att-class='"order-count " + (widget.notifications.printing ? "notify-printing":"") + (widget.notifications.skipped ? "notify-skipped" : "")'><t t-esc='widget.order_count'/></span>
+                </t>
+                <span class='label'>
+                    <t t-esc='widget.table.name' />
+                </span>
+                <span class="table-seats"><t t-esc="widget.table.seats" /></span>
+            </div>
+        </t>
+        <t t-if='widget.selected'>
+            <div class='table selected' t-att-style='widget.table_style_str()'>
+                <span class='label'>
+                    <t t-esc='widget.table.name' />
+                </span>
+                <span class="table-seats"><t t-esc="widget.table.seats" /></span>
+                <t t-if="widget.table.shape === 'round'">
+                    <span class='table-handle top'></span>
+                    <span class='table-handle bottom'></span>
+                    <span class='table-handle left'></span>
+                    <span class='table-handle right'></span>
+                </t>
+                <t t-if="widget.table.shape === 'square'">
+                    <span class='table-handle top right'></span>
+                    <span class='table-handle top left'></span>
+                    <span class='table-handle bottom right'></span>
+                    <span class='table-handle bottom left'></span>
+                </t>
+            </div>
+        </t>
+    </t>
+
+
+</template>
+
+
+
+
+

@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record id="kg_view_account_bank_statement_line_form" model="ir.ui.view">
+            <field name="name">kg.view.account.bank_statement.line.form.inherit</field>
+            <field name="model">account.bank.statement.line</field>
+            <field name="inherit_id" ref="account.view_bank_statement_line_form"/>
+            <field name="arch" type="xml">
+              <field name="note" position="before">
+                  <field name="card_number" readonly="1"/>
+                  <field name="card_holder_name" readonly="1"/>
+                  <field name="issuer_type_id" readonly="1"/>
+                  <field name="voucher_id" readonly="1"/>
+                  <field name="voucher_no" readonly="1"/>
+              </field>
+            </field>
+        </record>
+	</data>
+</odoo>

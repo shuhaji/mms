@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>       
+        <record id="show_chart_of_accounts" model="ir.rule">
+        	<field name="name">Show Chart of Accounts</field>
+        	<field ref="account.model_account_account" name="model_id"/>
+            <field eval="True" name="global"/>
+        	<field name="domain_force">[('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record id="show_account_journal" model="ir.rule">
+        	<field name="name">Show Account Journal</field>
+        	<field ref="account.model_account_journal" name="model_id"/>
+            <field eval="True" name="global"/>
+        	<field name="domain_force">[('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record id="show_account_invoice" model="ir.rule">
+        	<field name="name">Show Account Invoice</field>
+        	<field ref="account.model_account_invoice" name="model_id"/>
+            <field eval="True" name="global"/>
+        	<field name="domain_force">[('journal_id.company_id', 'child_of', [user.company_id.id])]</field>
+        </record>
+    </data>
+</odoo>

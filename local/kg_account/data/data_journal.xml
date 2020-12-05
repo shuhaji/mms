@@ -1,0 +1,36 @@
+<openerp>
+   <data noupdate="1">
+
+       <record id="data_journal_city_ledger" model="account.journal">
+           <field name="name">City Ledger Payment</field>
+           <field name="code">CLPAY</field>
+           <field name="type">bank</field>
+           <field name="is_city_ledger">True</field>
+           <field name="journal_user">True</field>
+       </record>
+
+       <record id="data_journal_officer_check" model="account.journal">
+           <field name="name">Officer Check Payment</field>
+           <field name="code">OFCPA</field>
+           <field name="type">bank</field>
+           <field name="is_officer_check">True</field>
+           <field name="journal_user">True</field>
+       </record>
+
+       <record id="data_journal_dep_expense" model="account.journal">
+           <field name="name">Department Expense Payment</field>
+           <field name="code">DPXPA</field>
+           <field name="type">bank</field>
+           <field name="is_department_expense">True</field>
+           <field name="journal_user">True</field>
+       </record>
+
+        <record id="data_journal_charge_room" model="account.journal">
+            <field name="name">Charge to Room</field>
+            <field name="code">CHTRM</field>
+            <field name="type">bank</field>
+            <field name="is_charge_room">True</field>
+            <field name="journal_user">True</field>
+        </record>
+   </data>
+</openerp>

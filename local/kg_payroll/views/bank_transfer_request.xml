@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record model="ir.ui.view" id="bank_transfer_request_tree">
+            <field name="name">bank.transfer.request.tree</field>
+            <field name="model">bank.transfer.request.payroll</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="salary_structure"/>
+                    <field name="option"/>
+                    <field name="company_id"/>
+                    <field name="date_from" string="Period"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form View -->
+        <record model="ir.ui.view" id="bank_transfer_request_form">
+            <field name="name">bank.transfer.request.form</field>
+            <field name="model">bank.transfer.request.payroll</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="Confirm" name="button_confirm"
+                                attrs="{'invisible':[('state','=','confirmed')]}"
+                                type="object" class="oe_highlight" groups="base.group_user"
+                                confirm="Are you sure want to change status to Confirmed?"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="period" style="width:120px" widget="date-month-year-period-widget"/>
+                                <field name="company_id" invisible="1"/>
+                                <field name="salary_structure"/>
+                                <field name="bank_id"/>
+                                <field name="bank_account_id" domain="[('bank_id', '=', bank_id)]"/>
+                                <field name="transfer_date"/>
+                            </group>
+                            <group>
+                                <field name="option"/>
+                                <field name="department_id" widget="many2many_tags" domain="[('company_id', '=', company_id)]"/>
+                                <field name="work_location" widget="many2many_tags" domain="[('company_id', '=', company_id), ('department_id', 'in', department_id)]"/>
+                                <field name="employee_id" widget="many2many_tags" domain="[('company_id', '=', company_id), ('department_id', 'in', department_id), ('work_location', in 'work_location')]"/>
+                                <field name="file_name" invisible="1"/>
+                                <field name="file_binary"  filename="file_name"
+                                           attrs="{'invisible':[('state','=','draft')]}" readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="bank_transfer_request_action">
+            <field name="name">Bank Transfer Request</field>
+            <field name="res_model">bank.transfer.request.payroll</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="menu_bank_transfer_payroll"
+            name="Bank Transfer"
+            parent="hr_payroll.menu_hr_payroll_root"
+            sequence="20"/>
+
+
+        <menuitem
+            id="bank_transfer_request"
+            name="Bank Transfer Request"
+            parent="menu_bank_transfer_payroll"
+            sequence ="10"
+            action="bank_transfer_request_action"
+        />
+
+    </data>
+</odoo>

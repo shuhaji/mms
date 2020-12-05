@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="pos_order_template" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/kg_pos_import_bill/static/src/css/pos_order_reservations.css" />
+                <script type="text/javascript" src="/kg_pos_import_bill/static/src/js/pos_order_reservations.js"/>
+            </xpath>
+        </template>
+
+        <template id="assets" inherit_id="point_of_sale.assets">
+            <xpath expr="//script[contains(@src,'floors.js')]" position="replace">
+                <script type="text/javascript" src="/kg_pos_import_bill/static/src/js/floors.js"></script>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

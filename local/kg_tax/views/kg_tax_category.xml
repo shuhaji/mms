@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="kg_tax_category_form" model="ir.ui.view">
+            <field name="name">kg.tax.category.form</field>
+            <field name="model">tax.category</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" invisible="True"/>
+                                <field name="tax_category"/>
+                                <field name="tax_code"/>
+                            </group>
+                            <group></group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="kg_tax_category_tree" model="ir.ui.view">
+            <field name="name">kg.tax.category.tree</field>
+            <field name="model">tax.category</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_kg_tax_category" model="ir.actions.act_window">
+		   <field name="name">Tax Category</field>
+		   <field name="res_model">tax.category</field>
+		   <field name="view_type">form</field>
+		   <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="kg_tax_category_tree"/>
+		</record>
+
+        <menuitem
+            action="action_kg_tax_category"
+            id="kg_tax_category"
+            name="Tax Category"
+            parent="account.account_account_menu"
+            sequence="11"
+        />
+
+    </data>
+</openerp>

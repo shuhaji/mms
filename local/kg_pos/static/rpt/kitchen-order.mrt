@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <data Ref="2" type="Stimulsoft.Report.Dictionary.StiJsonDatabase" isKey="true">
+        <Alias>data</Alias>
+        <Key />
+        <Name>data</Name>
+        <PathData>resource://pos-bill-report</PathData>
+      </data>
+    </Databases>
+    <DataSources isList="true" count="3">
+      <orders Ref="3" type="DataTableSource" isKey="true">
+        <Alias>orders</Alias>
+        <Columns isList="true" count="27">
+          <value>order_id,System.Decimal</value>
+          <value>name,System.String</value>
+          <value>config_name,System.String</value>
+          <value>table_name,System.String</value>
+          <value>cashier_name,System.String</value>
+          <value>waiter_name,System.String</value>
+          <value>customer_count,System.Decimal</value>
+          <value>validation_date,System.DateTime</value>
+          <value>hide_service_tax,System.Boolean</value>
+          <value>is_officer_check,System.Boolean</value>
+          <value>is_department_expense,System.Boolean</value>
+          <value>print_counter,System.Decimal</value>
+          <value>is_hotel_guest,System.String</value>
+          <value>company_name,System.String</value>
+          <value>shop_name,System.String</value>
+          <value>currency_symbol,System.String</value>
+          <value>currency_rounding,System.Decimal</value>
+          <value>discount,System.Decimal</value>
+          <value>sub_total,System.Decimal</value>
+          <value>service,System.Decimal</value>
+          <value>tax,System.Decimal</value>
+          <value>total,System.Decimal</value>
+          <value>change,System.Decimal</value>
+          <value>order_lines,System.String</value>
+          <value>payment_lines,System.String</value>
+          <value>validation_date2,System.String</value>
+          <value>date_validation,System.DateTime</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>a3cf7162016c46eda1874803677c3300</Key>
+        <Name>orders</Name>
+        <NameInSource>data.orders</NameInSource>
+      </orders>
+      <orders_order_lines Ref="4" type="DataTableSource" isKey="true">
+        <Alias>orders_order_lines</Alias>
+        <Columns isList="true" count="21">
+          <value>quantity,System.Decimal</value>
+          <value>displayName,System.String</value>
+          <value>priceWithTax,System.Decimal</value>
+          <value>priceWithoutTax,System.Decimal</value>
+          <value>tax,System.Decimal</value>
+          <value>taxDetails,System.String</value>
+          <value>serviceAmount,System.Decimal</value>
+          <value>taxWithoutService,System.Decimal</value>
+          <value>bruttoBeforeTax,System.Decimal</value>
+          <value>lineDiscAmountBeforeTax,System.Decimal</value>
+          <value>unit_name,System.String</value>
+          <value>price,System.Decimal</value>
+          <value>discount,System.Decimal</value>
+          <value>product_name,System.String</value>
+          <value>product_name_wrapped,System.String</value>
+          <value>price_display,System.Decimal</value>
+          <value>product_description,System.Boolean</value>
+          <value>product_description_sale,System.Boolean</value>
+          <value>relationId,System.String</value>
+          <value>main_category,System.String</value>
+          <value>note,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>daf408febfc345be8e35a37ac198c886</Key>
+        <Name>orders_order_lines</Name>
+        <NameInSource>data.orders_order_lines</NameInSource>
+      </orders_order_lines>
+      <orders_payment_lines Ref="5" type="DataTableSource" isKey="true">
+        <Alias>orders_payment_lines</Alias>
+        <Columns isList="true" count="6">
+          <value>order_id,System.Decimal</value>
+          <value>name,System.String</value>
+          <value>amount,System.Decimal</value>
+          <value>is_officer_check,System.Boolean</value>
+          <value>is_department_expense,System.Boolean</value>
+          <value>relationId,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>0511fcefd8b94d3a890581b32420da28</Key>
+        <Name>orders_payment_lines</Name>
+        <NameInSource>data.orders_payment_lines</NameInSource>
+      </orders_payment_lines>
+    </DataSources>
+    <Relations isList="true" count="2">
+      <order Ref="6" type="DataRelation" isKey="true">
+        <Active>True</Active>
+        <Alias>order</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>relationId</value>
+        </ChildColumns>
+        <ChildSource isRef="4" />
+        <Dictionary isRef="1" />
+        <Name>order</Name>
+        <NameInSource>order_lines1</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>order_lines</value>
+        </ParentColumns>
+        <ParentSource isRef="3" />
+      </order>
+      <payment_lines Ref="7" type="DataRelation" isKey="true">
+        <Alias>payment_lines</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>relationId</value>
+        </ChildColumns>
+        <ChildSource isRef="5" />
+        <Dictionary isRef="1" />
+        <Name>payment_lines</Name>
+        <NameInSource>payment_lines1</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>relationId</value>
+        </ParentColumns>
+        <ParentSource isRef="4" />
+      </payment_lines>
+    </Relations>
+    <Report isRef="0" />
+    <Resources isList="true" count="1">
+      <value>Name=pos-bill-report, Alias=pos-bill-report, Type=Json, Content=GQ5_x002B_sqGY1IioNb8xvg_x002F__x002F_04jW8NOj7Zrk_x002F_MP9_x002B_8uVYol95ielmgnVqWHzLRZa7jDCqrWeN6n5A0qgXYSHlWUqD51fS48FVyqhQcwQeVASITD5ziXs6Tkb0l6iDonyoebaih55BkhRbvm9WCy5eIq5vQBQ5BOnoSG_x002F_HlVKAZ9gStw_x002B_Bn9FzuQYDKrdmHYf_x002B_OddpEYFgEn_x002F_Jsrvc4nNGB3w0vGDGb1ZnUHvmj_x002F_LK785BD4p_x002F_O_x002F_etPBcCe3G9Fmqm2W8Q5bxRe4aZrFvtukN8SS6Pt0vzB5VepLTcxsw7LGiv5BcspxYipIJtqNay_x002B_ITEiU8_x002B_AX0VSklHmiGuw9QtnJmRYbOgdt3gv2jnFdk9QO6TK4NCb80j8q7ylYXSFLyWcj3cX5HYM5LX_x002B_cw1Kud9htZGkKWVnSzT1vtsSVKawLpmwwcQri8KSxLUkjmCGQkMn7thlj1kzv5Kf_x002B_BYJ0ZzHrGKVBV6G_x002F_UgCHTKHp5c92mMbxmN_x002B_ZEIxz98Mz4JslVoKOvtdqwgqD7nuOhuXKd_x002F_bFuQhGvH6Kt_x002B_mFB2Ks960HGe3Su_x002B_lPUEiu1GTm9AsL0AkpgJfyDUImj_x002F_icKDCTpXETE7rcR87BB0M0vZSJhX6pK_x002B_Q8TSAsWj0yJWi5lquR_x002F_VqM23HwAzKvUSFfah7PzCu8w_x002F_SYpL57VNuFums2VbprlwnbAiA5v7URyEe_x002B_HCHPQcrN_x002F_dFsFeeHyP6ksfhgrIiFUA3CPD9hSacqD2p9hvVveVhAmGox2WEbdNCI4Zf19a9WVOtUxN_x002F_IgIkpoyONjRzsrclVmaw2K1ddAajngZ_x002F_rU79aBbs90uh7HGwShDm8sT_x002B_l4uUNZ6dgnSuZ1XVjoa_x002B_4dNc8gARO5ETZ6QMyWGXt6u0q3u2dpoot448k52uDb_x002B_N942fZ_x002B_Fn2d_x002F_kAui3XTqP6iLcZqJai1KInv9UhKpwL5CwcQCaG7zyCK6qJ03OtfNqBvvZytKQh5AqWpRusKMXJW5xZ9JfdAkVSE6X3xifcVh7JgAKQRf0gVcCM5n_x002B_yHsrOihJEY8uVjFE1IyuYXxmxzKvP1N044AVAvxF_x002B_cFgl184YMw6rKY_x002F_2q3uK4R8SLSoYpXHlUf4xgMVDYNkf_x002F_lqrqY7EmP_x002F_BtGY34CnGxjzgzse7yfOhZww_x003D__x003D_</value>
+    </Resources>
+    <Variables isList="true" count="2">
+      <value>,LogoImage,LogoImage,,System.Drawing.Image,,False,False,False,False</value>
+      <value>,OrderId,OrderId,,System.String,,False,False,False,False</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <Key>24971670655a45009e65395e0a07578c</Key>
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="8" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="6">
+        <HeaderBand1 Ref="9" type="HeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.2,3.22,1.45</ClientRectangle>
+          <Components isList="true" count="6">
+            <Text39 Ref="10" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0.8,2.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>78b5b2d13dd244bc9738771bca205fc0</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text39</Name>
+              <Page isRef="8" />
+              <Parent isRef="9" />
+              <Text>Table	: {orders_order_lines.order.table_name}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text39>
+            <Text54 Ref="11" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,1,2.6,0.1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>2e58baadf2c54cd894986b28a2293321</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text54</Name>
+              <Page isRef="8" />
+              <Parent isRef="9" />
+              <Text>Waiter	: {orders_order_lines.order.waiter_name}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text54>
+            <Text25 Ref="12" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0.6,2.9,0.1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="8" />
+              <Parent isRef="9" />
+              <Text>Order	: {orders_order_lines.order.name}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text25>
+            <Text52 Ref="13" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,1.2,1.6,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text52</Name>
+              <Page isRef="8" />
+              <Parent isRef="9" />
+              <Text>{(TotalPageCount == 1) ? "" : PageNofM}
+</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text52>
+            <Text2 Ref="14" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0.1,2.9,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,16,Bold</Font>
+              <Guid>7aaa6c20ea644fadac052d777f7718e3</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="8" />
+              <Parent isRef="9" />
+              <Text>{orders_order_lines.order.config_name}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text2>
+            <Text3 Ref="15" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0.4,2.9,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="8" />
+              <Parent isRef="9" />
+              <Text>=======================================</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text3>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>HeaderBand1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </HeaderBand1>
+        <GroupHeaderBand1 Ref="16" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,2.05,3.22,0</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Condition>{orders_order_lines.order.name}</Condition>
+          <Conditions isList="true" count="0" />
+          <Name>GroupHeaderBand1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+          <ResetPageNumber>True</ResetPageNumber>
+          <SortDirection>None</SortDirection>
+        </GroupHeaderBand1>
+        <GroupHeaderBand2 Ref="17" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,2.45,3.22,0.2</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Condition>{orders_order_lines.main_category}</Condition>
+          <Conditions isList="true" count="0" />
+          <Name>GroupHeaderBand2</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </GroupHeaderBand2>
+        <HeaderBand2 Ref="18" type="HeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.05,3.22,0.05</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text12 Ref="19" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0,2.9,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11</Font>
+              <Guid>d51ac5ef08dd403bb984fec481acc9bb</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="8" />
+              <Parent isRef="18" />
+              <Text>=======================================</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text12>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>3a84306af42a41f08f88784cae0318a2</Guid>
+          <Name>HeaderBand2</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </HeaderBand2>
+        <DataBand1 Ref="20" type="DataBand" isKey="true">
+          <BreakIfLessThan>14</BreakIfLessThan>
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <CanGrow>False</CanGrow>
+          <ClientRectangle>0,3.5,3.22,0.6</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text10 Ref="21" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.6,0,2.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="8" />
+              <Parent isRef="20" />
+              <Text>{orders_order_lines.displayName}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text10>
+            <Text11 Ref="22" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0,0.3,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="8" />
+              <Parent isRef="20" />
+              <Text>{orders_order_lines.quantity}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text11>
+            <Text1 Ref="23" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.6,0.16,2.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>e28acdbf1f9e4db19034f91ac56d4ee1</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="8" />
+              <Parent isRef="20" />
+              <Text>{orders_order_lines.note}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName>order_lines</DataRelationName>
+          <DataSourceName>orders_order_lines</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+          <Sort isList="true" count="0" />
+          <StartNewPageIfLessThan>14</StartNewPageIfLessThan>
+        </DataBand1>
+        <GroupFooterBand2 Ref="24" type="GroupFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.5,3.22,0.9</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text5 Ref="25" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0.05,2.9,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11</Font>
+              <Guid>84b781e58562485e85bf11a95e562f80</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="8" />
+              <Parent isRef="24" />
+              <Text>=======================================</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text5>
+            <Text4 Ref="26" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0.3,2.9,0.1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>e2c1b16458ec4b32ba84c427741c30e6</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="8" />
+              <Parent isRef="24" />
+              <Text>Printed by {orders_order_lines.order.cashier_name}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text4>
+            <Text6 Ref="27" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.7,0.5,1.4,0.1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>6da13f1e7d8548ff96806b40000f3985</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="8" />
+              <Parent isRef="24" />
+              <Text>{Time}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text6>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>GroupFooterBand2</Name>
+          <NewPageAfter>True</NewPageAfter>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </GroupFooterBand2>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>f80232f225554293931d6ce7bc4c8ae6</Guid>
+      <Margins>0.39,0.39,0.17,1.25</Margins>
+      <Name>Page1</Name>
+      <PageHeight>8</PageHeight>
+      <PageWidth>4</PageWidth>
+      <Report isRef="0" />
+    </Page1>
+  </Pages>
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>12/13/2019 10:47:21 AM</ReportChanged>
+  <ReportCreated>8/22/2019 11:09:42 AM</ReportCreated>
+  <ReportFile>C:\kerja\custom\local\kg_pos\static\rpt\kitchen-order.mrt</ReportFile>
+  <ReportGuid>1e6e6641097c4439b474f8e272c7744e</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Inches</ReportUnit>
+  <ReportVersion>2019.3.3.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

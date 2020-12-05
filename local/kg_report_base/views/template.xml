@@ -1,0 +1,21 @@
+<odoo>
+    <template id="assets_backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link href="/kg_report_base/static/src/css/stimulsoft.viewer.office2013.whiteblue.css"
+                  rel="stylesheet" type="text/css"/>
+            <script src="/kg_report_base/static/src/js/kg-report-processor.js" type="text/javascript" />
+            <script src="/kg_report_base/static/src/js/kg-report-field.js" type="text/javascript"/>
+            <script src="/kg_report_base/static/src/js/date-month-year-period-widget.js" type="text/javascript"/>
+            <script src="/kg_report_base/static/src/js/report-action/qwebactionmanager.js" type="text/javascript" />
+            <script src="/kg_report_base/static/src/js/report-action/kg-report-action.js" type="text/javascript"/>
+        </xpath>
+    </template>
+    <template id="layout_kg_report_view" name="Web layout with KG Report View" inherit_id="web.layout">
+        <!--TODO: optimized this report stimulsoft , move to the last/to bottom..-->
+        <xpath expr="//script" position="before">
+            <script t-attf-src="/kg_report_base/static/src/libs/stimulsoft.reports.2019.3.4.js?version=2019.3.4" type="text/javascript" />
+            <script t-attf-src="/kg_report_base/static/src/libs/stimulsoft.viewer.2019.3.4.js?version=2019.3.4" type="text/javascript" />
+            <script t-attf-src="/kg_report_base/static/src/js/kg-report-initial.js" type="text/javascript" />
+        </xpath>
+    </template>
+</odoo>

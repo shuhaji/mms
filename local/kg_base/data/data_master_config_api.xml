@@ -1,0 +1,32 @@
+<openerp>
+   <data noupdate="1">
+
+       <record id="data_pms_url" model="ir.config_parameter">
+           <field name="key">pms.api_url</field>
+           <field name="value">https://kg-pms-api-dev.azurewebsites.net</field>
+       </record>
+
+       <record id="data_pms_login_password" model="ir.config_parameter">
+           <field name="key">pms.password</field>
+           <field name="value">12345</field>
+       </record>
+
+       <record id="data_user_id" model="ir.config_parameter">
+           <field name="key">pms.user_id</field>
+           <field name="value">ODOO_USER</field>
+       </record>
+
+       <record id="data_get_token" model="ir.config_parameter">
+           <field name="key">myvalue.api_token</field>
+           <field name="value">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjMiLCJuYmYiOjE1MjEwOTY2MjUsImV4cCI6MTgzNjcxNTgyNSwiaWF0IjoxNTIxMDk2NjI1LCJpc3MiOiJtbXMiLCJhdWQiOiIzIn0.FegXMlh_g243OxuhEDpE7dBtCtqeHx0Cs49oW26zsJM</field>
+       </record>
+       <record id="data_get_token" model="ir.config_parameter">
+           <field name="key">myvalue.api_url_point</field>
+           <field name="value">https://staging-point.myvalue.id</field>
+       </record>
+       <record id="data_get_token" model="ir.config_parameter">
+           <field name="key">myvalue.api_url_membership</field>
+           <field name="value">https://staging-membership.myvalue.id</field>
+       </record>
+   </data>
+</openerp>

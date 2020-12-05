@@ -1,0 +1,73 @@
+<odoo>
+    <data>
+
+        <template id="report_new_payment_list_ap">
+            <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <h2 style="text-align:center;">New AP Payment Report</h2>
+
+                    <table class="table table-condensed" style="width:100%;margin-top:20px;">
+                        <tr>
+                            <td class="col-md-3">Company</td>
+                            <td class="col-md-3"> : <span t-esc="company_id"/></td>
+                            <td class="col-md-3"> </td>
+                            <td class="col-md-3"> </td>
+                        </tr>
+                        <tr>
+                            <td>Transaction Date</td>
+                            <td> : <span t-esc="start_date" t-options="{'widget': 'date'}"/> - <span t-esc="end_date" t-options="{'widget': 'date'}"/></td>
+                            <td>Printed by</td>
+                            <td> : <span t-esc="printed_by"/></td>
+                        </tr>
+                        <tr>
+                            <td>Payment Journal</td>
+                            <td> : <span t-esc="payment_journal.name"/></td>
+                            <td>Printed on</td>
+                            <td> : <span t-esc="datetime.datetime.now()" t-options="{'widget': 'datetime'}"/></td>
+                        </tr>
+                    </table>
+
+                    <br/>
+                    <table class="table table-condensed" style="margin-top:20px;font-size:14px;">
+                        <thead>
+                            <tr style="font-weight:bold;">
+                                <th>NO.</th>
+                                <th>PAYMENT DATE</th>
+                                <th>PAYMENT REFERENCE</th>
+                                <th>VENDOR / SUPPLIER</th>
+                                <th>INVOICE NO.</th>
+                                <th style="text-align:right;">TOTAL AMOUNT</th>
+                                <th style="text-align:right;">USER</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="index" t-value="1"/>
+                            <tr t-foreach='docs' t-as='p'>
+                                <td><span t-esc="index"/>.</td>
+                                <td><span t-esc="p['payment_date']" t-options="{'widget': 'date'}"/></td>
+                                <td><span t-esc="p['payment_reference']"/></td>
+                                <td><span t-esc="p['partner_name']"/></td>
+                                <td><span t-esc="p['invoice_number']"/></td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(p['amount_total']))"/></td>
+                                <td style="text-align:right;"><span t-esc="p['user']"/></td>
+                                <t t-set="index" t-value="index+1"/>
+                            </tr>
+                            <tr style="font-weight:bold;">
+                                <td style="text-align:right;" colspan="5"> GRAND TOTAL </td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(grand_total))"/></td>
+                                <td style="text-align:right;"> </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+
+
+            </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

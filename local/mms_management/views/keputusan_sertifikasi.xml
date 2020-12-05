@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+        <record id="view_keputusan_sertifikasi_tree" model="ir.ui.view">
+            <field name="name">keputusan.sertifikasi.tree</field>
+            <field name="model">keputusan.sertifikasi</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Keputusan Sertifikasi">
+                    <field name="number"/>
+                    <field name="name"/>
+                    <field name="nomor_vlk"/>
+                    <field name="tanggal_awal_sertifikat"/>
+                    <field name="tanggal_berakhirnya_sertifikat"/>
+                    <field name="tanggal"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="seq_keputusan_sertifikasi" model="ir.sequence">
+            <field name="name">keputusan sertifikasi</field>
+            <field name="code">keputusan.sertifikasi</field>
+            <field name="prefix">BQRS/%(y)s/%(month)s/%(day)s/</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False" />
+        </record>
+        <record id="view_keputusan_sertifikasi_form" model="ir.ui.view">
+            <field name="name">keputusan.sertifikasi.form</field>
+            <field name="model">keputusan.sertifikasi</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="keputusan sertifikasi Form">
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                             <field name="number"/>
+                            <field name="nomor_vlk"/>
+                            <field name="tanggal_awal_sertifikat"/>
+                            <field name="tanggal_berakhirnya_sertifikat"/>
+                            <field name="tanggal"/>
+                        </group>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

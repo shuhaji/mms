@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sales_person_waiter_sales_person_waiter,sales_person_waiter.sales_person_waiter,model_sales_person_waiter_sales_person_waiter,,1,0,0,0

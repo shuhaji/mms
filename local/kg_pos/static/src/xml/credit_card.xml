@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="CreditCardPopup">
+        <div class="modal-dialog">
+            <div class="popup popup-creditcard" style="height:430px;">
+                <p class="title"><t t-esc=" widget.options.title || '' " /></p>
+                <div class="container" style="text-align:center;">
+                    <div class="field">
+                        <label>Issuer Type</label>
+                        <br></br>
+                        <select style="width:310px;min-height:40px;margin-top:5px" class="form-control"
+                                id="issuer-type">
+                            <option></option>
+                            <t t-foreach="widget.pos.issuer_types || []" t-as="issuer_type">
+                                <t t-if="widget.issuer_type === issuer_type.id">
+                                    <option t-att-value="issuer_type.id" selected=""><t t-esc="issuer_type.name" /></option>
+                                </t>
+                                <t t-else="">
+                                    <option t-att-value="issuer_type.id"><t t-esc="issuer_type.name" /></option>
+                                </t>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="field" style="margin-top:10px">
+                        <label>Card Holder Name</label>
+                        <br></br>
+                        <input id="card-holder-name" style="text-align:center;margin-top:5px;width:310px;" class="form-control" type="text" t-att-value="widget.card_holder_name || ''" />
+                    </div>
+                    <div class="field" style="margin-top:10px">
+                        <label>Card Number</label>
+                        <br></br>
+                        <label style="font-size:15px">4 Digit Front</label>
+                        <label style="margin-left:110px;font-size:15px">4 Digit Back</label>
+                    </div>
+                    <div class="field" style="display: grid; grid-template-columns: auto auto auto">
+                        <div style="grid-">
+                            <input id="front-card-number" max="9999" style="text-align:center;" class="form-control" type="number" t-att-value="widget.front_card_number || ''" />
+                        </div>
+                        <div style="line-height: 2em"><span>- xxxx - xxxx -</span></div>
+                        <div>
+                            <input id="back-card-number" max="9999" style="text-align:center;" class="form-control" type="number" t-att-value="widget.back_card_number || ''" />
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="button confirm">
+                        Ok
+                    </div>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

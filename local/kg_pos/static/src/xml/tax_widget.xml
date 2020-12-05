@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="ShowTaxInfo">
+        <div>
+            <t t-if="outstanding">
+                <div>
+                    <strong class="pull-left" id="outstanding"><t t-esc="title"></t></strong>
+                </div>
+            </t>
+            <table style="width:100%;">
+                <t t-foreach="lines" t-as="line">
+                    <tr>
+                        <td>
+                            <span class="o_field_widget text-right o_payment_label"><t t-esc="line.name"></t>:</span>
+                        </td>
+                        <td style="text-align:right;">
+                            <span class="oe_form_field oe_form_field_float oe_form_field_monetary" style="margin-left: -10px;">
+                                <t t-if="line.position === 'before'">
+                                    <t t-esc="line.currency"/>
+                                </t>
+                                <t t-esc="line.amount"></t> 
+                                <t t-if="line.position === 'after'">
+                                    <t t-esc="line.currency"/>
+                                </t>
+                            </span>
+                        </td>
+                    </tr>
+                </t>
+            </table>
+        </div>
+    </t>
+
+</templates>

@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+        <record id="kg_view_account_financial_report_form" model="ir.ui.view">
+            <field name="name">kg.view.account.financial.report.form.inherit</field>
+            <field name="model">account.financial.report</field>
+            <field name="inherit_id" ref="account.view_account_financial_report_form"/>
+            <field name="arch" type="xml">
+                <field name="style_overwrite" position="after">
+                    <field name="reverse_balance_value"/>
+                    <field name="is_show_at_group_header"/>
+                    <field name="is_show_total_at_bottom"/>
+                    <field name="is_show_border_top"/>
+                    <field name="label_total_bottom"/>
+                    <field name="is_show_border_bottom"/>
+                    <field name="is_total_income"/>
+                    <field name="is_cf_init_balance"/>
+                </field>
+                <field name="account_type_ids" position="after">
+                    <field name="account_group_ids" attrs="{'invisible': [('type', '!=', 'account_group')]}"/>
+                </field>
+                <field name="display_detail" position="attributes">
+                    <attribute name="attrs">{'invisible': [('type','not in',['accounts','account_type','account_group'])]}</attribute>
+                </field>
+                <xpath expr="//notebook[1]" position="attributes">
+                    <attribute name="attrs" />
+                </xpath>
+                <xpath expr="//notebook[1]" position="inside">
+                    <page string="Child Reports">
+                        <field name="children_ids">
+                            <tree create="false" edit="false">
+                                <field name="name"/>
+                                <field name="parent_id"/>
+                                <field name="type"/>
+                                <field name="account_report_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="kg_view_account_financial_report_tree" model="ir.ui.view">
+            <field name="name">kg.account.financial.report.tree</field>
+            <field name="model">account.financial.report</field>
+            <field name="inherit_id" ref="account.view_account_financial_report_tree"/>
+            <field name="arch" type="xml">
+                <field name="parent_id" position="after">
+                    <field name="parent_info" />
+                    <field name="grand_parent_info" />
+                    <field name="sequence" />
+                </field>
+            </field>
+        </record>
+	</data>
+</odoo>

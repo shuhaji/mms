@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <record model="ir.ui.view" id="banquet_reservation_tree">
+            <field name="name">reservation.tree</field>
+            <field name="model">banquet.reservation</field>
+            <field name="arch" type="xml">
+                <tree delete="false" duplicate="0">
+                    <field name="name"/>
+                    <field name="reservation_by"/>
+                    <field name="description"/>
+                    <field name="state"/>
+                    <field name="banquet_status"/>
+                    <field name="arrival_date"/>
+                    <field name="departure_date"/>
+                    <field name="total_attendance"/>
+                    <field name="partner_id" string="Customer"/>
+                    <field name="contact_id"/>
+                    <field name="cut_off_date"/>
+                    <field name="remark"/>
+                    <field name="company_id"  invisible="1" options="{'no_create': True}" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="banquet_reservation_form">
+            <field name="name">banquet.reservation.form</field>
+            <field name="model">banquet.reservation</field>
+            <field name="arch" type="xml">
+                <form string="Reservation (Business Block)" delete="false" duplicate="0">
+                    <header>
+                        <button string="Definite" name="button_definite"
+                                attrs="{'invisible':['|',('state','!=','signed'),('banquet_status','=','definite')]}"
+                                type="object" class="oe_highlight" groups="base.group_user"
+                                confirm="Are you sure want to change status to Definite?"/>
+                        <button string="Approve" name="button_approve"
+                                attrs="{'invisible':['|',('state','!=','signed'),('banquet_status','=','tentative')]}"
+                                type="object" class="oe_highlight" groups="base.group_user"
+                                confirm="Are you sure want to change status to Approve?"/>
+                        <button string="BEO" name="button_beo" states="approved"
+                                type="object" class="oe_highlight" groups="base.group_user"
+                                confirm="Are you sure want to change status to BEO?"/>
+                        <button string="Check In" name="button_checkin" states="beo"
+                                type="object" class="oe_highlight" groups="base.group_user"
+                                confirm="Are you sure want to change status to Check In?"/>
+                        <button name="reservation_checkout" string="Checkout" type="object" class="oe_highlight" groups="base.group_user"
+                                    confirm="Are you sure want to change status to Check Out?" attrs="{'invisible':[('state','not in',('checkin'))]}"/>
+                        <button name="reservation_release" string="Release" type="object" class="oe_highlight" groups="base.group_user"
+                                    confirm="Are you sure want to change status to Released?"
+                                    attrs="{'invisible':[('state','in',('new','checkout','release'))]}"/>
+
+                        <button string="Amendment" name="activate_amendment"
+                                attrs="{'invisible':['|', ('state', 'not in', ('beo','checkin')), ('is_in_amendment', '=', True)]}"
+                                type="object" class="oe_highlight" groups="base.group_user"
+                                confirm="Are you sure want to activate amendment?"/>
+                        <button string="Stop Amendment" name="deactivate_amendment"
+                                attrs="{'invisible':[('is_in_amendment', '=', False)]}"
+                                type="object" class="oe_highlight" groups="base.group_user"
+                                confirm="Are you sure want to stop amendment?"/>
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,proposal,contract,signed,approved,beo,checkin,checkout,release"/>
+                    </header>
+                    <sheet>
+                         <h1>
+                             <field name="name" readonly="1"/>
+                         </h1>
+                        <group>
+                                <group>
+                                    <field name="partner_id" required="True"
+                                           attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}"/>
+                                    <field name="contact_id" attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}"/>
+                                    <field name="company_id" invisible="1" groups="base.group_multi_company"/>
+                                    <field name="event_type_id" attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}"/>
+                                    <field name="cut_off_date" attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}"/>
+                                    <field name="reservation_date" attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}"/>
+                                    <field name="banquet_status" readonly="True"/>
+                                    <field name="arrival_date"/>
+                                    <field name="departure_date"/>
+                                    <field name="total_attendance"/>
+                                </group>
+                                <group>
+                                    <field name="reservation_by" required="True"
+                                           attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}"/>
+                                    <field name="phone_no" attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}"/>
+                                    <field name="sales_id" attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}"/>
+                                    <field name="payment_journal_id" required="True"
+                                           attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}"/>
+                                    <field name="description" required="True"
+                                           attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}"/>
+                                    <field name ="proposal_id" readonly="True"/>
+                                    <field name ="contract_no" readonly="True"/>
+                                    <field name="last_amendment_no" readonly="1"/>
+                                    <field name="is_in_amendment" readonly="1"/>
+                                </group>
+                                <notebook colspan="4">
+                                    <page string="Events">
+                                        <field name="reservation_event_ids"
+                                               context="{'default_reservation_id':id, 'default_amendment_no':last_amendment_no}"
+                                               widget="one2many_list" mode="tree,kanban"
+                                               attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}">
+                                            <tree delete="0" >
+                                                <field name="parent_id" string="Main Events"  options='{"no_open": True,"no_create": 1, "no_create_edit": 1}'/>
+                                                <field name="name"/>
+                                                <field name="date"/>
+                                                <field name="start_time" widget="kg_time_picker"/>
+                                                <field name="end_time" widget="kg_time_picker"/>
+                                                <field name="function_room_id"/>
+                                                <field name="event_function_id"/>
+                                                <field name="attendees"/>
+                                                <field name="waiting_list"/>
+                                                <field name="amendment_no" />
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Rate">
+                                        <field name="reservation_rate_ids" context="{'default_reservation_id':id}"
+                                               widget="one2many_list" mode="tree,kanban"
+                                               attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}">
+                                            <tree editable="bottom" delete="1">
+                                                <field name="date"/>
+                                                <field name="name"/>
+                                                <field name="is_residential"/>
+                                                <field name="package_id" domain="[('isResidential', '=', is_residential)]"/>
+                                                <!--<field name="price" attrs="{'readonly': True}"/>-->
+                                                <field name="price" readonly="1" force_save="1"/>
+                                                <field name="attendance"/>
+                                                <field name="tax_ids" invisible="1"/>
+                                                <field name="tax_ids_after_fiscal_position" widget="many2many_tags"
+                                                       options="{'no_create_edit': True}"/>
+                                                <field name="amount"/>
+                                            </tree>
+                                        </field>
+                                        <group class="oe_subtotal_footer oe_right" colspan="2" name="order_total">
+                                        </group>
+                                    </page>
+                                    <page string="Residential">
+                                        <field name="reservation_resident_ids" context="{'default_reservation_id':id,'default_reservation_by':reservation_by}"
+                                               widget="one2many_list" mode="tree,kanban"
+                                               attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}">
+                                            <tree delete="1">
+                                                <field name="name" string="BQT Resv No"/>
+                                                <field name="pms_reservation_no" string="PMS Resv No"/>
+                                                <field name="guest_name"/>
+                                                <field name="arrival_date"/>
+                                                <field name="departure_date"/>
+                                                <field name="room_type_id"/>
+                                                <field name="room_rate_id"/>
+                                                <field name="amount" string="Rate Amount  "
+                                                       style="text-align:left !important;"/>
+                                                <field name="total_nights"/>
+                                                <field name="partner_id"/>
+                                                <field name="group_id"/>
+                                                <field name="status_pms" string="Status PMS"/>
+                                                <field name="status_amd" string="Status AMD"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Deposit">
+                                        <field name="deposit_ids" widget="one2many_list" mode="tree,kanban"
+                                               attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}">
+                                            <tree create="false">
+                                                <field name="name"/>
+                                                <field name="communication" string="Deposit PMS No"/>
+                                                <field name="partner_id" string="Customer"/>
+                                                <field name="payment_date" string="Deposit Date"/>
+                                                <field name="journal_id" string="Payment Type"/>
+                                                <field name="amount"/>
+                                                <field name="residual" string="Balance"/>
+                                                <field name="state" string="Status"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Additional Information">
+                                         <group>
+                                             <group>
+                                                 <field name="remark" attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}"/>
+                                                 <field name="cancel_reason"/>
+                                             </group>
+                                             <group>
+                                                 <field name="internal_note" attrs="{'readonly': ['|',('state', 'in', ('checkout','release')),
+                                                                '&amp;',('state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}"/>
+                                                 <field name="is_release"/>
+                                                 <field name="is_from_crm"/>
+                                             </group>
+                                         </group>
+                                     </page>
+                                </notebook>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+<!--                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>-->
+<!--                        <field name="activity_ids" widget="mail_activity"/>-->
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="banquet_reservation_search" model="ir.ui.view">
+            <field name="name">reservation.form</field>
+            <field name="model">banquet.reservation</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="name" filter_domain="[('name', 'ilike', self)]"/>
+                    <field name="id"/>
+                    <group expand="0" name="group_by" string="Group By">
+                        <filter name="name" string="Name"  context="{'group_by' : 'name'}" />
+                        <filter name="company_id" string="Company Name"  context="{'group_by' : 'company_id'}" />
+                        <filter name="contact_id" string="Contact Person"  context="{'group_by' : 'contact_id'}" />
+                        <filter name="cut_off_date" string="Cut Off Date"  context="{'group_by' : 'cut_off_date'}" />
+                        <filter name="reservation_by" string="Reservation By"  context="{'group_by' : 'reservation_by'}" />
+                        <filter name="reservation_date" string="Reservation Date"  context="{'group_by' : 'reservation_date'}" />
+                      </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="banquet_reservation_business_action">
+            <field name="name">Reservation (Business Block)</field>
+            <field name="res_model">banquet.reservation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+       <menuitem
+            action="banquet_reservation_business_action"
+            id="menu_banquet_reservation_business"
+            name="Reservation (BB)"
+            parent="menu_banquet_transaction"
+            sequence="10"
+        />
+</odoo>

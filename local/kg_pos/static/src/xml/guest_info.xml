@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="GuestInfoButton">
+        <div class='control-button'>
+            <i class='fa fa-user-circle' /> Guest Info
+        </div>
+    </t>
+
+    <t t-name="GuestInfoWidget">
+        <div class="modal-dialog">
+            <div class="popup popup-guestinfo">
+                <p class="title"><t t-esc=" widget.options.title || '' " /></p>
+                <div class="container">
+                    <div class="field">
+                        <label>Reference Number</label>
+                        <input id="guest-no-reference" class="form-control" type="text" t-att-value="widget.no_reference || ''" />
+                    </div>
+                    <div class="field">
+                        <label>Meal Time</label>
+                        <select class="form-control" id="meal-time-line">
+                            <option></option>
+                            <t t-foreach="widget.pos.meal_time_lines || []" t-as="meal_time">
+                                <t t-if="widget.meal_time_line_id === meal_time.id">
+                                    <option t-att-value="meal_time.id" selected=""><t t-esc="meal_time.name" /></option>
+                                </t>
+                                <t t-else="">
+                                    <option t-att-value="meal_time.id"><t t-esc="meal_time.name" /></option>
+                                </t>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="field checkbox">
+                        <label>
+                            <t t-if="widget.is_hotel_guest">
+                                <!--<input id="is-hotel-guest" type="checkbox" t-att-checked="widget.is_hotel_guest"/>-->
+                                <input id="is-hotel-guest" type="checkbox" checked="checked"/>
+                            </t>
+                            <t t-else="">
+                                <input id="is-hotel-guest" type="checkbox"/>
+                            </t>
+                            Is Hotel Guest
+                        </label>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="button confirm">
+                        Ok
+                    </div>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

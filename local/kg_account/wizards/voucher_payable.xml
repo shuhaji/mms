@@ -1,0 +1,296 @@
+<odoo>
+    <data>
+         <record id="voucher_payable_wizard_form_view" model="ir.ui.view">
+            <field name="name">voucher.payable.wizard.form.view</field>
+            <field name="model">voucher.payable.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="partner_id" required="1" domain="[('supplier', '=', True)]"/>
+                        </group>
+                        <group>
+                            <field name="start_date" required="1"/>
+                            <field name="end_date" required="1"/>
+                        </group>
+                    </group>
+                <footer>
+                    <button string="Print" name="print_report" type="object" default_focus="1" class="btn-primary"/>
+                    <!-- <button string="Print to Excel" name="print_report" type="object" default_focus="1" class="btn-primary"/> -->
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+                </form>
+            </field>
+        </record>
+
+        <template id="voucher_payable_report_layout">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"/>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+            <div class="header">
+                <div class="row">
+                    <div class="mb4">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="max-height: 75px;"/>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <h4>VOUCHER PAYABLE</h4>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <span>Due</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-6">
+                                <span t-field="o.start_date"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <span>Vendor Name</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-6">
+                                <span t-field="o.partner_id"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <span>Vendor Address</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-6">
+                                <span t-esc="o.partner_id.street"/>
+                                <br/>
+                                <span t-esc="o.partner_id.street2"/>
+                                <br/>
+                                <span t-esc="o.partner_id.city"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span>Print Date</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-7">
+                                <span t-field="o.current_date"/>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-xs-6"></div>
+                            <div class="col-xs-6">
+                                Page:
+                                <span class="page"/>
+                                of
+                                <span class="topage"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article o_report_layout_standard">
+                <t t-raw="0" />
+            </div>
+            <div class="footer">
+            </div>
+        </template>
+
+        <template id="voucher_payable_report_document">
+            <t t-call="kg_account.voucher_payable_report_layout">
+                <div class="page">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <strong>We acknowledge to pay the following invoices:</strong>
+                        </div>
+                        <div class="col-xs-4"></div>
+                    </div>
+                    <table class="table">
+                        <thead style="border-top: 0px;">
+                            <colgroup>
+                                <col width="20%"/>
+                                <col width="20%"/>
+                                <col width="20%"/>
+                                <col width="20%"/>
+                                <col width="20%"/>
+                            </colgroup>
+                            <tr style="border-bottom: 1px solid black;">
+                                <th style="border: 0px;">Invoice No</th>
+                                <th style="border: 0px;">Payment Journal</th>
+                                <th style="border: 0px;">Bank Account Number</th>
+                                <th style="border: 0px;">Bank Name</th>
+                                <th style="border: 0px;">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody style="border: 0px;">
+                            <tr t-foreach="vendor" t-as="bill">
+                                <td style="border: 0px;">
+                                    <span t-esc="bill.number"/>
+                                </td>
+                                <td style="border: 0px;">
+                                    <span t-esc="bill.payment_journal.name"/>
+                                </td>
+                                <td style="border: 0px;">
+                                    <span t-esc="bill.partner_bank_id.acc_number"/>
+                                </td>
+                                <td style="border: 0px;">
+                                    <span t-esc="bill.partner_bank_id.bank_id.name"/>
+                                </td>
+                                <td class="text-right" style="border: 0px;">
+                                    <span t-esc="'{0:,.0f}'.format(bill.residual)"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td style="border: 0px;"></td>
+                                <td style="border: 0px;"></td>
+                                <td style="border: 0px;"></td>
+                                <td style="border: 0px;text-align:right;">
+                                    <strong>Total Amount</strong>
+                                </td>
+                                <td style="border-top: 2px solid black;text-align:right;">
+                                    <strong t-esc="'{0:,.0f}'.format(sum(bill.residual for bill in vendor))"/>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div>
+                        <strong>Thank you very much for your attention.</strong>
+                    </div>
+                    <br/>
+                    <div class="row text-center">
+                        <div class="col-xs-4">
+                            <span>Prepared By,</span>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <span style="border-top:1px solid black">Account Payable</span>
+                        </div>
+                        <div class="col-xs-4"></div>
+                        <div class="col-xs-4">
+                            <span class="text-center">Verified By,</span>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <span class="text-center" style="border-top:1px solid black">Cost Control</span>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="row text-center">
+                        <div class="col-xs-8">
+                            <div class="row text-center">
+                                <div class="col-xs-4" style="padding:0px;">
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <span class="text-center" style="border-top:1px solid black">General Manager</span>
+                                </div>
+                                <div class="col-xs-4" style="padding:0px;">
+                                    <span class="text-center">Approve for Payment</span>
+                                </div>
+                                <div class="col-xs-4" style="padding:0px;">
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <span class="text-center" style="border-top:1px solid black">Accounting Manager</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="row text-center">
+                                <span class="text-center">Received By,</span>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <span class="text-center" style="border-top:1px solid black">General Cashier</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                </div>
+            </t>
+        </template>
+
+        <template id="voucher_payable_report">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="kg_account.voucher_payable_report_document"/>
+            </t>
+        </template>
+
+        <record model="report.paperformat" id="paperformat_voucher_payable">
+            <field name="name">paperformat.voucher.payable</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">80</field>
+            <field name="margin_bottom">25</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">75</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+            id="voucher_payable_report_action"
+            string="Voucher Payable Report"
+            model="voucher.payable.wizard"
+            report_type="qweb-pdf"
+            name="kg_account.voucher_payable_report"
+            file="kg_account.voucher_payable_report"
+        />
+
+        <record id="kg_account.voucher_payable_report_action" model="ir.actions.report">
+            <field name="paperformat_id" ref="paperformat_voucher_payable"/>
+        </record>
+
+        <record id="action_voucher_payable_wizard_report" model="ir.actions.act_window">
+            <field name="name">Voucher Payable Report</field>
+            <field name="res_model">voucher.payable.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="voucher_payable_wizard_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_kg_voucher_payable_report" 
+                name="Voucher Payable Report" 
+                action="action_voucher_payable_wizard_report" 
+                parent="account.menu_finance_legal_statement" 
+                sequence="6"/> 
+    </data>
+</odoo>  

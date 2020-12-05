@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="NoRefButton">
+        <div class='control-button'>
+            <i class="fa fa-info-circle" /> Ref. Number
+        </div>
+    </t>
+
+    <t t-name="NoRefWidget">
+        <div class="modal-dialog">
+            <div class="popup popup-guestinfo">
+                <p class="title"><t t-esc=" widget.options.title || '' " /></p>
+                <div class="container">
+                    <div class="field">
+                        <input style="margin-top:25px" id="no-reference" class="form-control" type="text" t-att-value="widget.no_reference || ''" />
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="button confirm">
+                        Ok
+                    </div>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

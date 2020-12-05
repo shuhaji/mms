@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="advance_payments_form" model="ir.ui.view">
+            <field name="name">advance.payments.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_transaction_id']" position="after">
+                    <field name="status_deposit" invisible="1"/>
+                    <field name="bqt_reservation_id" attrs="{'readonly': [('status_deposit', '!=', 'NEW')]}" options="{'no_create': True}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

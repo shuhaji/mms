@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+        <record model="ir.ui.view" id="vendor_bill_account_bank_tree">
+            <field name="name">vendor.bill.account.bank.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="payment_journal" />
+                    <field name="partner_bank_id" options="{'no_create': True, 'no_open': True}" />
+                </xpath>
+
+            </field>
+        </record>
+
+  </data>
+</odoo>

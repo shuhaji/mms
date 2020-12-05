@@ -1,0 +1,68 @@
+<openerp>
+    <data>
+       <template id="invoice_collecting_report_layout">
+            <t t-if="not o and doc">
+            <t t-set="o" t-value="doc"/>
+        </t>
+
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id.sudo()"/>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"/>
+        </t>
+        <div class="header">
+           <div class="row">
+                <div class="col-xs-6">
+                    <span t-field="collect.partner_id"/>
+                    <br/>
+                    <span t-field="collect.partner_id.street"/>
+                    <br/>
+                    <span t-field="collect.partner_id.street2"/>
+                    <br/>
+                    <span t-field="collect.partner_id.city"/>
+                    <br/>
+                    <span t-field="collect.partner_id.state_id"/>
+                    <br/>
+                    <span t-field="collect.partner_id.phone"/>
+                    <br/>
+                    <span t-field="collect.partner_id.website"/>
+                    <br/>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="max-height: 100px;"/>
+                </div>
+           </div>
+           <div class="row">
+                <div class="col-xs-12">
+                    <div style="border-bottom: 1px solid black; margin-top: 5px;"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="article o_report_layout_standard">
+            <t t-raw="0" />
+        </div>
+
+        <div class="footer">
+            <div class="row" style="font-size:13px;">
+                <div class="col-xs-6 text-center">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6" style="border-top:1px solid black">
+                        <span>Accounting Manager</span>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+                <div class="col-xs-6 text-center">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6" style="border-top:1px solid black">
+                        <span>Accounting Receivable</span>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+            </div>
+        </div>
+       </template>
+
+    </data>
+</openerp>

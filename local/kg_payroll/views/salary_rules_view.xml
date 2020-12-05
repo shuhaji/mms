@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="kg_payroll_salary_rule_form" model="ir.ui.view">
+            <field name="name">kg.payroll.salary.rule.form</field>
+            <field name="model">hr.salary.rule</field>
+            <field name="inherit_id" ref="hr_payroll.hr_salary_rule_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='category_id']" position="after">
+                     <group col="6">
+                         <label for="is_taxed"/>
+                         <h4><field name="is_taxed"/></h4>
+                         <label for="tax_class_id"/>
+                         <h4><field name="tax_class_id"/></h4>
+                         <label for="type_id"/>
+                         <h4><field name="type_id"/></h4>
+                         <field name="account_group"/>
+                     </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="kg_payroll_salary_rule_accounting_form" model="ir.ui.view">
+            <field name="name">kg.payroll.salary.rule.form</field>
+            <field name="model">hr.salary.rule</field>
+            <field name="inherit_id" ref="hr_payroll_account.hr_salary_rule_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='account_tax_id']" position="after">
+                        <field name="account_group"/>
+                </xpath>
+            </field>
+         </record>
+
+        <record id="kg_payroll_payslip_form" model="ir.ui.view">
+            <field name="name">kg.payroll.payslip.form</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='line_ids']/form/group/field[@name='salary_rule_id']" position="after">
+                    <field name="is_taxed"/>
+                    <field name="tax_class_id"/>
+                    <field name="type_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
+

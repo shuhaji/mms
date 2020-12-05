@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="kg_view_pos_details_wizard" model="ir.ui.view">
+            <field name="name">kg_pos.details.wizard.form</field>
+            <field name="model">pos.details.wizard</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_details_wizard"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='start_date']" position="replace">
+                    <field name="start_date" widget="date" options="{'format': 'MM/dd/yyyy'}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='end_date']" position="replace">
+                    <field name="end_date" widget="date" options="{'format': 'MM/dd/yyyy'}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

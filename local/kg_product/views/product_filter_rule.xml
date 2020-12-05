@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>       
+        <record id="show_product" model="ir.rule">
+        	<field name="name">Show Product</field>
+        	<field ref="product.model_product_product" name="model_id"/>
+            <field eval="True" name="global"/>
+        	<field name="domain_force">[('company_id', '=', user.company_id.id)]</field>
+        </record>
+
+        <record id="show_product_template" model="ir.rule">
+        	<field name="name">Show Product</field>
+        	<field ref="product.model_product_template" name="model_id"/>
+            <field eval="True" name="global"/>
+        	<field name="domain_force">[('company_id', '=', user.company_id.id)]</field>
+        </record>
+    </data>
+</odoo>

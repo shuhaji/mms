@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="ChooseWaiterButton">
+        <div class='control-button'>
+            <i class="fa fa-user-circle" /> Waiter
+        </div>
+    </t>
+
+    <t t-name="ChooseWaiterWidget">
+        <div class="modal-dialog">
+            <div class="popup popup-guestinfo">
+                <p class="title"><t t-esc=" widget.options.title || '' " /></p>
+                <div class="container">
+                    <div class="field">
+                        <select class="form-control" id="waiter">
+                            <option></option>
+                            <t t-foreach="widget.pos.waiter || []" t-as="waiter">
+                                <t t-if="widget.waiter_selected">
+                                    <t t-if="widget.waiter_selected.id === waiter.id">
+                                        <option t-att-value="waiter.id" selected=""><t t-esc="waiter.name" /></option>
+                                    </t>
+                                    <t t-else="">
+                                        <option t-att-value="waiter.id"><t t-esc="waiter.name" /></option>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <option t-att-value="waiter.id"><t t-esc="waiter.name" /></option>
+                                </t>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="button confirm">
+                        Ok
+                    </div>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

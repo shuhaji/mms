@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+
+        <record id="kg_pos_hr_employee_form_view" model="ir.ui.view">
+            <field name="name">kg.pos.hr.employee.form.view</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="manager" position="after">
+                    <field name="is_salesperson"/>
+                </field>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

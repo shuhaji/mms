@@ -1,0 +1,40 @@
+<odoo>
+    <record id="wizard_kg_report_payroll_payslip_monthly_view" model="ir.ui.view">
+        <field name="name">KG Report - Payslip Monthly Report</field>
+        <field name="model">wizard.kg.report.payslip_monthly_report</field>
+        <field name="inherit_id" ref="kg_report_base.wizard_kg_report_base_view"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="working_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="working_date" position="after">
+                <field name="date_from" style="width:120px" widget="date-month-year-period-widget"/>
+                <field name="structure"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="action_wizard_kg_report_payroll_payslip_monthly" model="ir.actions.act_window">
+        <field name="name">KG Report - Payslip Monthly</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.kg.report.payslip_monthly_report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_kg_report_payroll_payslip_monthly_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_wizard_kg_report_group"
+              name="KG Reports"
+              sequence="20"
+              parent="hr_payroll.menu_hr_payroll_root"
+    />
+    <!-- Menu item to open Wizard  -->
+    <menuitem id="menu_wizard_kg_payroll_payslip_monthly"
+              name="Payslip Monthly"
+              sequence="11"
+              parent="menu_wizard_kg_report_group"
+              action="action_wizard_kg_report_payroll_payslip_monthly"
+    />
+</odoo>

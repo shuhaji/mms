@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="account_invoice_inherit_form" model="ir.ui.view">
+            <field name="name">account.invoice.inherit.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <!-- <field name="sequence">20</field> -->
+            <field name="arch" type="xml">
+<!--                <xpath expr="//form/header/button[@id='account_invoice_payment_btn']" position="before">-->
+<!--                    <button name="print_receipt" string="Print Receipt" type="object" class="oe_highlight"/>-->
+<!--                </xpath>-->
+                <button name="invoice_print" type="object"
+                        groups="base.group_user"
+                        position="replace">
+                    <!--find and replace attribute of button invoice_print with show_print_invoice_unsent-->
+                    <button name="invoice_print" string="Print Invoice" type="object"
+                            attrs="{'invisible':[('show_print_invoice_unsent', '=', False)]}"
+                            class="oe_highlight" groups="kg_account.group_allow_to_print_invoice"/>
+                </button>
+                <xpath expr="//button[@name='%(account_payment_advance_mac5.action_account_advance_payment_invoice)d']"
+                       position="attributes">
+                    <!--Rename button to apply advance deposit-->
+                    <attribute name="string">Apply Advance Deposit</attribute>
+                </xpath>
+                <xpath expr="//button[@name='%(account.action_account_invoice_refund)d']" position="attributes">
+                    <!--used to modify attributes for button [add credit note] -->
+                    <!--based on active user with access to show credit note-->
+                    <attribute name="attrs">{'invisible': ['|', '|', ('type', '=', 'out_refund'), ('state', 'not in', ('open','paid')), ('show_credit_note', '=', False)]}
+                    </attribute>
+                </xpath>
+                <xpath expr="//button[@name='%(account.action_account_invoice_payment)d']" position="attributes">
+                    <attribute name="groups">kg_account.group_invoicing_register_payment_from_invoice_access_rights</attribute>
+                </xpath>
+
+
+
+
+                <!--Code di bawah ini jangan dipakai, code menyebabkan view dari addons yg lain ga bisa muncul-->
+                <!--    krn ter-replace oleh <xpath expr="//header" position="replace"> ini-->
+                <!--Gunakan replace spt di atas (invoice_print) jika butuh mengganti attribute tertentu dari tombol yg ada-->
+                <!--REMOVE Later:-->
+                <!-- code for changing attribute button print invoice, since print invoice has 2 same button so the inherited view start from header to avoid any double inherit -->
+                <!-- this code also used to modify attributes for button add credit note based on active user with access to show credit note -->
+                <!--<xpath expr="//header" position="replace"> -->
+                    <!--<header>-->
+                        <!--<button name="action_invoice_sent" type="object" string="Send by Email" attrs="{'invisible':['|',('sent','=',True), ('state', 'not in', ('open','paid'))]}" class="oe_highlight o_invoice_send" groups="base.group_user"/>-->
+                        <!--<button name="invoice_print" string="Print Invoice" type="object" attrs="{'invisible':[('show_print_invoice_unsent', '=', False)]}" class="oe_highlight" groups="base.group_user"/>-->
+                        <!--<button name="action_invoice_sent" type="object" string="Send by Email" attrs="{'invisible':['|',('sent','=',False), ('state', 'not in', ('open','paid'))]}" groups="base.group_user"/>-->
+                        <!--<button name="invoice_print" string="Print Invoice" type="object" attrs="{'invisible':[('show_print_invoice_sent', '=', False)]}" groups="base.group_user"/>-->
+                        <!--<button name="%(account.action_account_invoice_payment)d" id="account_invoice_payment_btn" type="action" states="open" string="Register Payment" groups="account.group_account_invoice" class="oe_highlight"/>-->
+                        <!--<button name="action_invoice_open" type="object" states="draft" string="Validate" class="oe_highlight o_invoice_validate" groups="account.group_account_invoice"/>-->
+                        <!--<button name="%(account.action_account_invoice_refund)d" type='action' string='Add Credit Note' groups="account.group_account_invoice" attrs="{'invisible': ['|', '|', ('type', '=', 'out_refund'), ('state', 'not in', ('open','paid')), ('show_credit_note', '=', False)]}"/>-->
+                        <!--<button name="action_invoice_draft" states="cancel" string="Reset to Draft" type="object" groups="account.group_account_invoice"/>-->
+                        <!--<field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open,paid"/>-->
+                    <!--</header>-->
+                <!--</xpath>-->
+                <!-- end of code REMOVE-->
+
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="invoice_collecting_id" readonly="1"/>
+                    <field name="collecting_status" readonly="1"/>
+                    <field name="app_source" string="Source" readonly="1"/>
+                    <field name="show_print_invoice_sent" invisible="1"/>
+                    <field name="show_print_invoice_unsent" invisible="1"/>
+                    <field name="show_credit_note" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="show_button_cancel_invoice" invisible="1"/>
+                    <field name="is_allow_edit_invoice" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='invoice_line_ids']" position="attributes">
+<!--                    <attribute name="attrs">{'readonly': ['|', ('state', 'not in', ['draft']), ('is_allow_edit_invoice','=', False)]}-->
+<!--                    </attribute>-->
+                    <attribute name="attrs">{'readonly': ['|', '&amp;',
+                        ('app_source', 'in', ['pos', 'pms']),
+                        ('is_allow_edit_invoice','=', False),
+                        ('state', 'not in', ['draft']),
+                        ]}
+                    </attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='move_id']" position="after">
+                    <field name="print_counter" readonly="1"/>
+                </xpath>
+
+                <xpath expr="//page[@name='advance_payment']"
+                       position="attributes">
+                    <!--Rename Tab to advance deposit-->
+                    <attribute name="string">Advance Deposits</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='price_subtotal']"
+                       position="attributes">
+                    <attribute name="string">Subtotal w/o Tax</attribute>
+                </xpath>
+
+                <field name="price_subtotal" position="after">
+                    <field name="price_total"/>
+                    <field name="service_amount"/>
+                    <field name="tax_amount"/>
+                    <field name="pms_folio_id" string="PMS Folio Id"/>
+                    <field name="pms_check_in_date" widget="date" string="Check In"/>
+                    <field name="pms_check_out_date" widget="date" string="Check Out"/>
+                </field>
+
+                <field name="amount_untaxed" position="after">
+                    <field name="amount_service" attrs="{'invisible': [('amount_service', '=', 0)]}"/>
+                    <field name="amount_tax_only" attrs="{'invisible': [('amount_tax_only', '=', 0)]}"/>
+                </field>
+                <xpath expr="//field[@name='amount_tax']" position="replace">
+                    <field name="amount_tax" invisible="1"/>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page/field[@name='invoice_line_ids']" position="inside">
+                    <form string="Invoice Lines" editable="bottom">
+                       <group>
+                            <group>
+                                <field name="product_id" string="Product"/>
+                                <field name="quantity" string="Quantity"/>
+                                <field name="price_unit" string="Unit Price"/>
+                                <field name="price_subtotal" string="Subtotal W/o Tax" widget="float"/>
+                                <field name="service_amount" string="Service Amount"/>
+                                <field name="tax_amount" string="Tax Amount"/>
+                                <field name="discount" string="Discount"/>
+                                <field name="price_total" string="Subtotal" widget="float"/>
+                            </group>
+                            <group>
+                                <field name="account_id" groups="account.group_account_user"
+                                    domain="[('company_id', '=', parent.company_id), ('internal_type', '=', 'other'), ('deprecated', '=', False)]"/>
+                               <field name="invoice_line_tax_ids"  string="Taxes" widget="many2many_tags"/>
+                                <field name="account_analytic_id" groups="analytic.group_analytic_accounting"
+                                    domain="[('company_id', '=', parent.company_id)]"
+                                    context="{'default_partner_id': parent.partner_id}"/>
+                                <field name="company_id" string="Company"/>
+                                <field name="pms_folio_id" string="PMS Folio Id"/>
+                                <field name="pms_check_in_date" string="Check In" widget="date"/>
+                                <field name="pms_check_out_date" string="Check Out" widget="date"/>
+                            </group>
+                       </group>
+                            <p><b>Description</b></p>
+                            <field name="product_id" />
+                    </form>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="account_invoice_supplier_inherit_form" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.inherit.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='reference']" position="after">
+                    <field name="show_button_cancel_invoice" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='partner_id']" position="replace">
+                    <field string="Vendor" name="partner_id"
+                              context="{'default_customer': 0, 'search_default_supplier': 1, 'default_supplier': 1, 'default_company_type': 'company'}"
+                              domain="[('supplier', '=', True), ('parent_id', '=', False)]"/>
+                </xpath>
+
+                <xpath expr="//button[@name='%(account.action_account_invoice_payment)d']" position="attributes">
+                    <attribute name="groups">kg_account.group_invoicing_register_payment_from_invoice_access_rights</attribute>
+                </xpath>
+                
+            </field>
+        </record>
+
+        <record id="account_invoice_inherit_tree" model="ir.ui.view">
+            <field name="name">account.invoice.inherit.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='number']" position="after">
+                    <field name="invoice_collecting_id" readonly="1"/>
+                    <field name="collecting_status" readonly="1"/>
+                    <field name="app_source" string="src"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="account_invoice_search_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.search_inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date']" position="after">
+                    <field name="invoice_collecting_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="kg_invoice_form_cancel_inherit" model="ir.ui.view">
+            <field name="name">kg.invoice.form.cancel.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account_cancel.invoice_form_cancel_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_invoice_cancel']" position="replace">
+                    <button name="action_invoice_cancel" type="object" string="Cancel Invoice" attrs="{'invisible': [('show_button_cancel_invoice', '=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="kg_invoice_supplier_cancel_form_inherit" model="ir.ui.view">
+            <field name="name">kg.invoice.supplier.cancel.form.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account_cancel.invoice_supplier_cancel_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_invoice_cancel']" position="replace">
+                    <button name="action_invoice_cancel" type="object" string="Cancel Invoice" attrs="{'invisible': [('show_button_cancel_invoice', '=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

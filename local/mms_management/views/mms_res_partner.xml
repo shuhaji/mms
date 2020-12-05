@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="mms_res_partner" model="ir.ui.view">
+            <field name="name">mms.res.partner</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']" position="replace">
+                    <field name="lokasi"/>
+                    <field name="lokasi_2"/>
+                    <field name="npwp_perusahaan"/>
+                    <field name="luas_lokasi"/>
+                </xpath>
+
+                <xpath expr="//field[@name='function']" position="replace">
+                    <field name="vlk_id"/>
+                </xpath>
+
+                <xpath expr="//field[@name='website']" position="after">
+                    <field name="nama_dirut"/>
+                    <field name="ktp_dirut"/>
+                    <field name="npwp_dirut"/>
+                    <field name="mr"/>
+                    <field name="addres_dirut"/>
+                    <field name="contact_per"/>
+                    <field name="telp_cp_1"/>
+                    <field name="telp_cp_2"/>
+                </xpath>
+
+
+
+<!--                <xpath expr="//notebook[1]" position="inside">-->
+<!--                    <page string="Personal info">-->
+<!--                            <field name="nama_dirut"/>-->
+<!--                            <field name="npwp_dirut"/>-->
+<!--                            <field name="contact_per"/>-->
+<!--                    </page>-->
+<!--                </xpath>-->
+
+
+            </field>
+        </record>
+
+    </data>
+</openerp>

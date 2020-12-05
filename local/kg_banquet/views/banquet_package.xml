@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record model="ir.ui.view" id="banquet_package_tree">
+            <field name="name">banquet.package.tree</field>
+            <field name="model">banquet.package</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Description"/>
+                    <field name="code" />
+                    <field name="start_date" />
+                    <field name="end_date" />
+                    <field name="event_type_id" />
+                    <field name="isResidential"/>
+                    <field name="price_pax"/>
+                    <field name="tax_ids" widget="many2many_tags"/>
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form View -->
+        <record model="ir.ui.view" id="banquet_package_form">
+            <field name="name">banquet.package.form</field>
+            <field name="model">banquet.package</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                         <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                       options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <group string="General" col="4">
+                            <field name="name" required="1"/>
+                            <field name="code" required="1"/>
+                            <field name="start_date" required="1"/>
+                            <field name="end_date" required="1"/>
+                            <field name="event_type_id" required="1"/>
+                            <field name="company_id"/>
+                            <field name="isResidential"/>
+                        </group>
+                        <group string="Price" col="2">
+                            <group>
+                                <field name="price_pax" readonly="1"/>
+
+                            </group>
+                            <group>
+                                <field name="tax_code"/>
+                                <field name="tax_ids" widget="many2many_tags"
+                                        attrs="{'invisible':[('tax_code', '=', False)],
+                                            'required':[('tax_code', '=', True)]
+                                            }"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Revenue Distribution">
+                                <field name="rate_ids">
+                                    <tree editable="bottom">
+                                        <field name="event_function_id"/>
+                                        <field name="revenue_type"/>
+                                        <field name="amount"/>
+                                    </tree>
+                                </field>
+                             </page>
+                            <page string="Event Menu">
+                                <field name="event_menu_ids">
+                                    <tree editable="bottom">
+                                        <field name="event_function_id"/>
+                                        <field name="menu_id"/>
+                                        <field name="name" string="Package Name"/>
+                                    </tree>
+                                </field>
+                             </page>
+                            <page string="Notes">
+                                 <group>
+                                    <field name="remark" />
+                                    <field name="additional_benefit" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="banquet_package_action">
+            <field name="name">Banquet Package</field>
+            <field name="res_model">banquet.package</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem 
+            id="submenu_banquet_package"
+            name="Package"
+            parent="menu_banquet_general"
+            action="banquet_package_action"
+            sequence="20"
+        />
+
+    </data>
+</odoo>

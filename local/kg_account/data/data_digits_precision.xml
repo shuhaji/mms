@@ -1,0 +1,10 @@
+<openerp>
+   <data noupdate="1">
+
+       <record id="data_dp_print_counter" model="decimal.precision">
+           <field name="name">Print Counter</field>
+           <field name="digits">0</field>
+       </record>
+
+   </data>
+</openerp>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="kg_payroll_company_form" model="ir.ui.view">
+            <field name="name">kg.payroll.company.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='report_header']" position="after">
+                        <field name="company_code"/>
+                        <field name="tax_config_id"/>
+                        <field name="payroll_config_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
+

@@ -1,0 +1,81 @@
+<odoo>
+    <data>
+
+        <template id="report_ar_mutation_pdf">
+            <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <div class="page">                  
+                    <h2 style="text-align:center;">A/R Mutation</h2>
+                     
+                    <table class="table table-condensed" style="width:100%;margin-top:20px;">
+                        <tr>
+                            <td class="col-md-3">Company</td>
+                            <td class="col-md-3"> : <span t-esc="company_id"/></td>
+                            <td class="col-md-3"> </td>
+                            <td class="col-md-3"> </td>
+                        </tr>
+                        <tr>
+                            <td>Period Start</td>
+                            <td> : <span t-esc="start_date"/></td>
+                            <td>Printed by</td>
+                            <td> : <span t-esc="printed_by"/></td>
+                        </tr>
+                        <tr>
+                            <td>Period End</td>
+                            <td> : <span t-esc="end_date"/></td>
+                            <td>Printed on</td>
+                            <td> : <span t-esc="printed_on"/></td>
+                        </tr>
+                    </table>
+
+                    <br/>
+                    <table class="table table-condensed" style="margin-top:20px;font-size:14px;">
+                        <thead>
+                            <tr style="font-weight:bold;">
+                                <th>NO.</th>
+                                <th>CODE</th>
+                                <th>DESCRIPTION</th>
+                                <th style="text-align:right;">BEG. BALANCE</th>
+                                <th style="text-align:right;">FOLIO</th>
+                                <th style="text-align:right;">CREDIT NOTE</th>
+                                <th style="text-align:right;">PAYMENT</th>
+                                <th style="text-align:right;">ADJUSTMENT</th>
+                                <th style="text-align:right;">END. BALANCE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="index" t-value="1"/>
+                            <tr t-foreach='docs' t-as='k'>
+                                <td><span t-esc="index"/>.</td>
+                                <td><span t-esc="k['partner_code']"/></td>
+                                <td><span t-esc="k['partner_name']"/></td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(k['amount_bg_balance']))"/></td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(k['amount_folio']))"/></td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(k['amount_creditnote']))"/></td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(k['amount_payment']))"/></td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(k['amount_adjustment']))"/></td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(k['amount_total']))"/></td>
+                                <t t-set="index" t-value="index+1"/>
+                            </tr>
+                            <tr style="font-weight:bold;">
+                                <td style="text-align:right;" colspan="3"> GRAND TOTAL </td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(data_total[0]))"/></td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(data_total[1]))"/></td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(data_total[2]))"/></td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(data_total[3]))"/></td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(data_total[4]))"/></td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(data_total[5]))"/></td>
+                            </tr>
+                        </tbody>
+                            
+                    </table>
+                </div>
+            
+            
+            
+            </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+<!--         List View -->
+        <record model="ir.ui.view" id="reservation_event_tree">
+            <field name="name">banquet.reservation.event.tree</field>
+            <field name="model">banquet.reservation.event</field>
+            <field name="arch" type="xml">
+                <tree delete="false">
+                    <field name="parent_id"/>
+                    <field name="name"/>
+                    <field name="reservation_id"/>
+                    <field name="date"/>
+                    <field name="start_time" widget="kg_time_picker"/>
+                    <field name="end_time" widget="kg_time_picker" />
+                    <field name="function_room_id"/>
+                    <field name="attendees" string="Attendees"/>
+                    <field name="event_function_id"/>
+                    <field name="waiting_list"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="reservation_event_calendar">
+            <field name="name">banquet.reservation.event.calendar</field>
+            <field name="model">banquet.reservation.event</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <calendar string="Calendar View" date_start="date_start"
+                          date_stop="date_end" color="function_room_id">
+                            <field name="function_room_id"/>
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                </calendar>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record model="ir.ui.view" id="reservation_event_form">
+            <field name="name">banquet.reservation.event.form</field>
+            <field name="model">banquet.reservation.event</field>
+            <field name="arch" type="xml">
+                <form string="Reservation Event" delete="false">
+                    <header>
+                        <button string="Amendment"
+                                name="button_activate_amendment"
+                                attrs="{'invisible':['|', ('reservation_state', 'not in', ['beo','checkin']), ('is_in_amendment', '=', True)]}"
+                                type="object" class="oe_highlight" groups="base.group_user"
+                                confirm="Are you sure want to activate amendment for all event in this reservation?"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"
+		                        string="Reservation Event Name"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="parent_id" attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                            '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                            ('is_in_amendment', '=', False)
+                                                                            ]}"/>
+                                <field name="date" attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                        '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                        ('is_in_amendment', '=', False)
+                                                                        ]}"/>
+                                <field name="start_time" widget="kg_time_picker" attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                                                    '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                                                    ('is_in_amendment', '=', False)
+                                                                                                    ]}"/>
+                                <field name="end_time" widget="kg_time_picker" attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                                                    '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                                                    ('is_in_amendment', '=', False)
+                                                                                                    ]}"/>
+                                <field name="attendees" attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                            '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                            ('is_in_amendment', '=', False)
+                                                                            ]}"/>
+                                <field name="price_event" attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                                '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                                ('is_in_amendment', '=', False)
+                                                                                ]}"/>
+                                <field name="beo_issued" attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                                '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                                ('is_in_amendment', '=', False)
+                                                                                ]}"/>
+                            </group>
+                            <group>
+                                <field name="reservation_id" attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                                '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                                ('is_in_amendment', '=', False)
+                                                                                ]}"/>
+                                <field name="function_room_id" attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                                    '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                                    ('is_in_amendment', '=', False)
+                                                                                    ]}"/>
+                                <field name="function_room_setup_id" domain="[('setup_id', '=', function_room_id)]"
+                                       attrs="{'invisible':[('function_room_id','=',False)],
+                                               'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                            '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                            ('is_in_amendment', '=', False)]}"/>
+                                <field name="event_function_id" attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                                    '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                                    ('is_in_amendment', '=', False)
+                                                                                    ]}"/>
+                                <field name="setup_time" attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                            '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                            ('is_in_amendment', '=', False)
+                                                                            ]}"/>
+                                <field name="setdown_time" attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                                '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                                ('is_in_amendment', '=', False)
+                                                                                ]}"/>
+                                <field name="remark" attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                        '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                        ('is_in_amendment', '=', False)
+                                                                        ]}"/>
+                                <field name="hotel_convention" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="use_meter" attrs="{'invisible':[('hotel_convention','=',False)],
+                                                                'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                            '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                            ('is_in_amendment', '=', False)]}"/>
+                                <field name="location" attrs="{'invisible':['|',('hotel_convention','=',False),('use_meter','=',False)],
+                                                               'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                            '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                            ('is_in_amendment', '=', False)]}"/>
+                                <field name="meter_occupied" attrs="{'invisible':['|',('hotel_convention','=',False),('use_meter','=',False)],
+                                                                     'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                                '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                                ('is_in_amendment', '=', False)]}"/>
+                                <field name="meter_charge" attrs="{'invisible':['|',('hotel_convention','=',False),('use_meter','=',False)],
+                                                                   'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                                '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                                ('is_in_amendment', '=', False)]}"/>
+                            </group>
+                            <group>
+                                <field name="function_room_amount" attrs="{'invisible':[('hotel_convention','=',False)],
+                                                                           'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                                        '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                                        ('is_in_amendment', '=', False)]}"/>
+                                <field name="reservation_state" string="Reservation Flow Status" readonly="1"/>
+                                <field name="is_in_amendment" readonly="1"/>
+                            </group>
+                        </group>
+                            <notebook>
+                                <page string="Sub Event" attrs="{'invisible':['|',('parent_id','!=',False),('name','=',False)]}">
+                                    <field name="children_ids"
+                                           context="{'default_parent_id' : id, 'default_reservation_id' : reservation_id}"
+                                           attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}">
+                                        <tree>
+                                            <field name="parent_id"/>
+                                            <field name="name"/>
+                                            <field name="date" string =""/>
+                                            <field name="start_time" string ="Start" widget="kg_time_picker"/>
+                                            <field name="end_time" string ="End" widget="kg_time_picker"/>
+                                            <field name="function_room_id"/>
+                                            <field name="event_function_id"/>
+                                            <field name="attendees" string ="Attd"/>
+                                            <field name="waiting_list" string ="WL"/>
+                                            <field name="amendment_no" string ="AMD"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                                <page string="Resources">
+                                    <field name="resources_ids"
+                                           context="{'default_qty' : attendees,'default_reservation_event_id':id,'default_amendment_no':amendment_no}"
+                                           attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}">
+                                        <tree editable="bottom">
+                                            <field name="menu_id"/>
+                                            <field name="product_ids" widget="many2many_tags"/>
+                                            <field name="qty"/>
+                                            <field name="remark"/>
+                                            <field name="amendment_no" invisible="1"/>
+                                            <field name="old_qty" invisible="1"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                                <page string="Additional Resources">
+                                    <field name="additional_ids"
+                                           context="{'default_qty':attendees,'default_reservation_event_id':id,'default_amendment_no':amendment_no}"
+                                           attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}">
+                                        <tree editable="bottom">
+                                            <field name="item_type" required="True"/>
+                                            <field name="product_id" domain="[('item_type', '=', item_type)]"/>
+                                            <field name="qty" required="True"/>
+                                            <field name="price" required="True"/>
+                                            <field name="description"/>
+                                            <field name="amendment_no" invisible="1"/>
+                                            <field name="old_qty" invisible="1"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                                <page string="Instruction">
+                                    <field name="instruction_ids"
+                                           context="{'default_reservation_event_id':id,'default_amendment_no':amendment_no}"
+                                           attrs="{'readonly': ['|',('reservation_state', 'in', ('checkout','release')),
+                                                                '&amp;',('reservation_state', 'in', ('approved','beo','checkin')),
+                                                                ('is_in_amendment', '=', False)
+                                                                ]}">
+                                        <tree editable="bottom">
+                                            <field name="department_id"/>
+                                            <field name="instruction_id" domain="[('department_id','=', department_id)]"/>
+                                            <field name="start_time" widget="kg_time_picker"/>
+                                            <field name="end_time" widget="kg_time_picker"/>
+                                            <field name="description"/>
+                                            <field name="amendment_no" invisible="1"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                                <page string="Amendment">
+                                    <group>
+                                        <group>
+                                            <field name="reservation_state" invisible="1"/>
+                                            <field name="amendment_no" readonly="1"/>
+                                            <field name="pivot_amd_no" readonly="1"/>
+                                            <field name="old_attendees" readonly="1"/>
+                                            <field name="date_start" invisible="1"/>
+                                            <field name="date_end" invisible="1"/>
+                                        </group>
+                                        <group>
+                                            <field name="old_start_time" readonly="1"/>
+                                            <field name="old_end_time" readonly="1"/>
+                                            <field name="old_function_room_id" readonly="1"/>
+                                            <field name="old_function_room_setup_id" readonly="1"/>
+                                        </group>
+                                    </group>
+                                </page>
+                        </notebook>
+                    <div class="oe_chatter">
+<!--                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>-->
+<!--                        <field name="activity_ids" widget="mail_activity"/>-->
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="reservation_event_resources_form">
+            <field name="name">banquet.reservation.event.resources.form</field>
+            <field name="model">banquet.reservation.event.resources</field>
+            <field name="arch" type="xml">
+                <form string="Reservation Event Resources">
+                    <group colspan="2">
+                        <group colspan="1">
+                            <field name="menu_id"/>
+                            <field name="product_ids" widget="many2many_tags"/>
+                            <field name="qty"/>
+                            <field name="remark"/>
+                        </group>
+                        <group colspan="1">
+                            <field name="old_qty" readonly="1"/>
+                        </group>
+                    </group>
+                    <group colspan="2">
+                        <field name="message_ids" string="Logs" widget="mail_thread"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="reservation_event_additional_resources_form">
+            <field name="name">banquet.reservation.event.additional.resources.form</field>
+            <field name="model">banquet.reservation.event.additional.resources</field>
+            <field name="arch" type="xml">
+                <form string="Reservation Event Additional Resources" colspan="2">
+                    <group colspan="2">
+                        <group>
+                            <field name="item_type"/>
+                            <field name="product_id" domain="[('item_type', '=', item_type)]"/>
+                            <field name="qty"/>
+                            <field name="price"/>
+                            <field name="description"/>
+                        </group>
+                        <group colspan="1">
+                            <field name="old_qty" readonly="1"/>
+                        </group>
+                    </group>
+                    <group colspan="2">
+                        <field name="message_ids" string="Logs" widget="mail_thread"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="reservation_event_instruction_form">
+            <field name="name">banquet.reservation.event.instruction.form</field>
+            <field name="model">banquet.reservation.event.instruction</field>
+            <field name="arch" type="xml">
+                <form string="Reservation Event Instruction" colspan="2">
+                    <group colspan="2">
+                        <group colspan="1">
+                            <field name="department_id"/>
+                            <field name="instruction_id" domain="[('department_id','=', department_id)]"/>
+                            <field name="start_time" widget="kg_time_picker"/>
+                            <field name="end_time" widget="kg_time_picker"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                    <group colspan="2">
+                        <field name="message_ids" string="Logs" widget="mail_thread"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="reservation_event_action">
+            <field name="name">Reservation Event</field>
+            <field name="res_model">banquet.reservation.event</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+        </record>
+        <menuitem
+            id="menu_reservation_event"
+            name="Reservation Event"
+            parent="menu_banquet_transaction"
+            action="reservation_event_action"
+            sequence="15"
+        />
+
+    </data>
+</odoo>

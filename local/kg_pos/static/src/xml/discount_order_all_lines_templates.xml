@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="DiscountAmountButton">
+        <div class='control-button'>
+            <i class='fa fa-tag' /> Discount All
+        </div>
+    </t>
+
+     <t t-name="DiscountAmountWidget">
+        <div class="modal-dialog">
+            <div class="popup popup-guestinfo"  style="height:340px;">
+                <p class="title"><t t-esc=" widget.options.title || '' " /></p>
+                <div class="container">
+                    <br/>
+                    <div>Choose Options Discount by Amount or Percent</div>
+                    <div>
+                        <br/>
+                        <label>
+                        Type discount
+                        </label>
+                        <t t-if="widget.discount_type == 'amount'">
+                            <select style="width:120px;height:40px !important;float:center" id="discount_type" name='discount_type'>
+                                <option value='amount' selected="">Amount</option>
+                                <option value='pct'>Percent</option>
+                            </select>
+                        </t>
+                        <t t-else="widget.discount_type == 'pct'">
+                            <select style="width:120px;height:40px !important;float:center" id="discount_type" name='discount_type'>
+                                <option value='amount'>Amount</option>
+                                <option value='pct' selected="">Percent</option>
+                            </select>
+                        </t>
+                    </div>
+                    <t t-if="widget.discount_type == 'amount'">
+                        <div class="field">
+                                <label>Value Discount</label>
+                                <input id="discount-amount" class="form-control" type="number"
+                                t-att-value="widget.discount_amount_total || '0'"/>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div class="field">
+                                <label>Value Discount</label>
+                                <input id="discount-amount" class="form-control" type="number" min="0" max="100"
+                                t-att-value="widget.discount_pct_global || '0'"/>
+                        </div>
+                    </t>
+                </div>
+                <div class="footer">
+                    <div class="button confirm">
+                        Apply
+                    </div>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

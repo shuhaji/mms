@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_religion_tree" model="ir.ui.view">
+        <field name="name">hr.religion.tree</field>
+        <field name="model">hr.religion</field>
+        <field name="arch" type="xml">
+            <tree string="Religion">
+                <field name="religion_name" string="Religion Name"/>
+                <field name="active" string="Active"/>
+            </tree>
+        </field>
+    </record>
+    <record id="hr_work_religion_form" model="ir.ui.view">
+        <field name="name">hr.religion.form</field>
+        <field name="model">hr.religion</field>
+        <field name="arch" type="xml">
+            <form string="Religion">
+                <div class="oe_button_box" name="button_box">
+                    <button name="toggle_active" type="object"
+                            class="oe_stat_button" icon="fa-archive">
+                        <field name="active" widget="boolean_button"
+                               options='{"terminology": "archive"}'/>
+                    </button>
+                </div>
+                <group>
+                    <field name="religion_name"/>
+                </group>
+            </form>
+        </field>
+    </record>
+    <record id="hr_religion_search" model="ir.ui.view">
+        <field name="name">hr.religion.form</field>
+        <field name="model">hr.religion</field>
+        <field name="arch" type="xml">
+            <search string="Search Religion">
+                <field name="religion_name" filter_domain="['|', '|', ('religion_name', 'ilike', self)]"/>
+                <field name="id"/>
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="religion_name" string="Religion Name"  context="{'group_by' : 'religion_name'}" />
+                  </group>
+            </search>
+        </field>
+    </record>
+    <record id="open_hr_religion_form" model="ir.actions.act_window">
+        <field name="name">Religion</field>
+        <field name="res_model">hr.religion</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_hr_religion"
+        name="Religion"
+        parent="hr.menu_human_resources_configuration"
+        sequence="0"
+        action="open_hr_religion_form"
+        groups="base.group_system"/>
+</odoo>

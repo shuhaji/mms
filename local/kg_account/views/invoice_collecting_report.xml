@@ -1,0 +1,315 @@
+<openerp>
+    <data>
+        <template id="invoice_collecting_document">
+<!--            <t t-call="kg_account.invoice_collecting_report_layout">-->
+             <t t-call="web.external_layout">
+                 <div class="page">
+                     <div class="row">
+                        <div name="invoice_address" class="col-xs-5 col-xs-offset-7">
+                            <address t-field="collect.partner_id"
+                                t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="text-center">
+                        <!--<span>Invoice Collecting</span>-->
+                        <h2><b>INVOICE</b></h2>
+                        <br/>
+                        <span t-field="collect.name"/>
+                    </div>
+                    <br/>
+                    <div class="row text-right">
+                        <span>Date : </span>
+                        <span t-field="collect.date" style="margin-right:10px;padding-right:10px;"/>
+                    </div>
+                    <br/>
+                    <table class="table-condensed table-bordered text-center">
+                        <colgroup>
+                            <col width='10%' />
+                            <col width='10%' />
+                            <col width='20%' />
+                            <col width='20%' />
+                            <col width='20%' />
+                            <col width='20%' />
+                        </colgroup>
+                        <thead class="text-center">
+                            <tr>
+                                <th class="text-center">
+                                    <!--<span>Invoice</span>-->
+                                    <span>Ref</span>
+                                </th>
+                                <th class="text-center">
+                                    <span>Folio No </span>
+                                </th>
+                                <th class="text-center">
+                                    <span>Description</span>
+                                </th>
+                                <th class="text-center">
+                                    <span>Check In</span>
+                                </th>
+                                <th class="text-center">
+                                    <span>Check Out</span>
+                                </th>
+                                <th class="text-center">
+                                    <span>Balance</span>
+                                </th>
+                            </tr> 
+                        </thead>
+                        <tbody>
+                            <t t-foreach="collect.invoice_line_ids" t-as="line">
+                              <tr t-foreach="line.invoice_line_ids" t-as="l">
+                                    <td align="left">
+                                        <span t-field="line.number"/>
+                                    </td>
+                                    <td align="left">
+                                        <span t-field="l.pms_folio_id"/>
+                                    </td>
+                                    <td align="left">
+                                        <span t-field="l.name"/>
+                                    </td>
+                                    <td align="left">
+                                        <span t-field="l.pms_check_in_date" t-options='{"format": "MM/dd/yyyy"}'/>
+                                    </td>
+                                    <td align="left">
+                                        <span t-field="l.pms_check_out_date" t-options='{"format": "MM/dd/yyyy"}'/>
+                                    </td >
+                                    <td align="right">
+                                        <span t-field="l.price_total" />
+                                    </td>
+                               </tr>
+                            </t>
+                        </tbody>
+                        <!-- <tbody>
+                            <tr t-foreach="collect.invoice_collecting_line_ids" t-as="line">
+                                <td>
+                                    <span t-field="line.invoice_id"/>
+                                </td>
+                                <td>
+                                    <span t-field="line.partner_id"/>
+                                </td>
+                                <td>
+                                    <span t-field="line.date_due" t-options='{"format": "MM/dd/yyyy"}'/>
+                                </td>
+                                <td>
+                                    <span t-field="line.residual"/>
+                                </td>
+                                <td>
+                                    <span t-field="line.amount_total"/>
+                                </td>
+                            </tr>
+                        </tbody> -->
+                    </table>
+                    <br/>
+                    <div class="row">
+                        <div class="text-right" style="margin-right:10px;padding-right:10px;">
+                            <strong >Total Invoice : <strong t-field="collect.total_invoice" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}" /></strong>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row" style="margin-left:5px"> 
+                        <span t-field="collect.notes"/>
+                    </div>
+                     <br></br>
+                     <br></br>
+                     <div class="row mt32 mb8">
+                        <div class="col-xs-3"><strong>For Bank Transfer :</strong></div>
+                    </div>
+                    <div class="row">
+                        <!--<div class="col-xs-3"><td>BCA</td></div>-->
+                        <div class="col-xs-3"><td><span t-field="collect.bank_id.name"/></td></div>
+                    </div>
+                    <div class="row">
+                        <!--<div class="col-xs-3"><td>6790321799</td></div>-->
+                        <div class="col-xs-3"><td><span t-field="collect.bank_acc_number"/></td></div>
+                    </div>
+                    <div class="row">
+                        <!--<div class="col-xs-3"><td>PT Amaris International</td></div>-->
+                        <div class="col-xs-3"><td><span t-field="collect.bank_acc_holder_name"/></td></div>
+                    </div>
+                     <div class="footer">
+                        <div class="row" style="font-size:13px;">
+                            <div class="col-xs-6 text-center">
+                                <div class="col-xs-3"></div>
+                                <div class="col-xs-6" style="border-top:1px solid black">
+                                    <span>Accounting Manager</span>
+                                </div>
+                                <div class="col-xs-3"></div>
+                            </div>
+                            <div class="col-xs-6 text-center">
+                                <div class="col-xs-3"></div>
+                                <div class="col-xs-6" style="border-top:1px solid black">
+                                    <span>Accounting Receivable</span>
+                                </div>
+                                <div class="col-xs-3"></div>
+                            </div>
+                        </div>
+                          <t t-if="doc_model == 'invoice.collecting'">
+                              <br/><br/>
+                              <div class="text-center text-muted">
+                                       <t t-if="collect.print_counter-1 >= 1">
+                                           <span t-esc="'{0:,.0f}'.format((collect.print_counter)-1)"/>
+                                       </t>
+                                        <t t-else="collect.print_counter-1 = 0">
+                                            <span></span>
+                                       </t>
+                              </div>
+                          </t>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="invoice_collecting_receipt_doc">
+            <t t-call="kg_account.invoice_collecting_receipt_layout">
+
+                <div class="page">
+                    <!--<div class="text-right">-->
+                        <!--<br/>-->
+                        <!--<br/>-->
+                        <!--<br/>-->
+                        <!--<br/>-->
+                        <!--<span style="text-right">Receipt No: </span>-->
+                        <!--<span t-field="collect.name"/>-->
+                        <!--<br/>-->
+                    <!--</div>-->
+                    <div class="text-center">
+                        <h2><u>Receipt</u></h2>
+                        <br/>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-1"/>
+                        <div class="col-xs-2">
+                            <span>Receive from</span>
+                        </div>
+                        <div class="col-xs-1 text-right">
+                            :
+                        </div>
+                        <div class="col-xs-8">
+                            <span t-field="collect.partner_id"/>
+                        </div>
+                    </div>
+                    <!--<t t-foreach="collect.invoice_line_ids" t-as="line">-->
+                        <div class="row" style="height:50px;overflow:hidden;">
+                            <div class="col-xs-1"/>
+                            <div class="col-xs-2">
+                                <span>Amount in words</span>
+
+                            </div>
+                            <div class="col-xs-1 text-right">
+                                :
+                            </div>
+                            <div class="col-xs-8">
+                                <span t-field="collect.terbilang"/>
+                                <!--Lorem idapidqdqwjkjqwbfjhasldbqwidapidqdqwjkjqwbfjhasldbqwidapidqdqwjkjqwbfjhasldbqwidapidqdqwjkjqwbfjhasldbqwidapidqdqwjkjqwbfjhasldbqwidapidqd qwjkjqwbfjha sl-->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-1"/>
+                            <div class="col-xs-2">
+                                <span>For</span>
+
+                            </div>
+                            <div class="col-xs-1 text-right">
+                                :
+                            </div>
+                            <div class="col-xs-8">
+                                <span t-field="collect.name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-1"/>
+                            <div class="col-xs-2">
+                                <span>Notes</span>
+                            </div>
+                            <div class="col-xs-1 text-right">
+                                :
+                            </div>
+                            <div class="col-xs-8">
+                                <span t-field="collect.notes"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-1"/>
+                            <div class="col-xs-2">
+                                <span>Total</span>
+                            </div>
+                            <div class="col-xs-1 text-right">
+                                :
+                            </div>
+                            <div class="col-xs-8">
+                                <span t-field="collect.total_invoice"/>
+                            </div>
+                        </div>
+                    <!--</t>-->
+
+                    <div class="col-xs-6"/>
+                    <div class="col-xs-6 text-center">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <span>Jakarta, </span>
+                        <span t-field="collect.date" t-options='{"format": "d MMMM yyyy"}'/>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+
+        <template id="invoice_collecting_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="collect">
+                    <t t-call="kg_account.invoice_collecting_document"/>
+                </t>
+            </t>
+        </template>
+
+        <report
+            id="invoice_collecting_report_action"
+            string="Invoice Collecting Report"
+            model="invoice.collecting"
+            report_type="qweb-pdf"
+            name="kg_account.invoice_collecting_report"
+            file="kg_account.invoice_collecting_report"
+        />
+
+        <record id="paperformat_invoice_receipt" model="report.paperformat">
+            <field name="name">Invoice Receipt Size</field>
+            <field name="default" eval="True" />
+            <field name="format">custom</field>
+            <field name="page_height">128</field>
+            <field name="page_width">210</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+
+        <template id="invoice_collecting_receipt">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="collect">
+                    <t t-call="kg_account.invoice_collecting_receipt_doc"/>
+                </t>
+            </t>
+        </template>
+
+        <report
+            id="invoice_collecting_receipt_action"
+            string="Receipt"
+            model="invoice.collecting"
+            report_type="qweb-pdf"
+            name="kg_account.invoice_collecting_receipt"
+            file="kg_account.invoice_collecting_receipt"
+        />
+
+        <record id="invoice_collecting_receipt_action" model="ir.actions.report">
+            <field name="print_report_name">('Receipt')</field>
+            <field name="paperformat_id" ref="paperformat_invoice_receipt"/>
+        </record>
+    </data>
+</openerp>

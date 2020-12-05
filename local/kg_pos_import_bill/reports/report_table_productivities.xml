@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="report_table_productivities">
+            <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <h2 style="text-align:center;">TABLE PRODUCTIVITIES</h2>
+                        <h4 style="text-align:center;">Periode : <span t-esc="bulan"/> <span t-esc="tahun"/> </h4>
+
+                    <table class="table-condensed" style="margin-top:20px;margin-right:0px">
+                        <tr>
+                            <!--<td>Period Start</td>-->
+                            <!--<td> : <span t-esc="start_date"/></td>-->
+                            <td>Printed By</td>
+                            <td> : <span t-esc="printed_by"/></td>
+                        </tr>
+                        <tr>
+                            <!--<td>Period End</td>-->
+                            <!--<td> : <span t-esc="end_date"/></td>-->
+                            <td>Printed On</td>
+                            <td> : <span t-esc="datetime.datetime.now()" t-options="{'widget': 'datetime'}"/></td>
+                        </tr>
+                    </table>
+
+                    <br/>
+                    <table class="table table-condensed" style="margin-top:20px;font-size:14px;">
+                        <thead>
+                            <tr style="font-weight:bold;">
+                                <th>Company</th>
+                                <th>Event</th>
+                                <th>Date</th>
+                                <th>Booking No</th>
+                                <th>Event Name</th>
+                                <th style="text-align:right;">Attd</th>
+                                <th style="text-align:right;">Revenue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="subtotal" t-value="0"/>
+                            <t t-set="total_attd" t-value="0"/>
+                            <t t-set="grand_total" t-value="0"/>
+                            <t t-set="grand_total_attd" t-value="0"/>
+                            <t t-set="prev_cust" t-value="-1"/>
+                            <t t-set="cust_name" t-value="-1"/>
+
+                            <t t-foreach='docs' t-as='p'>
+                                <t t-if="prev_cust != p.company_name.id">
+                                    <t t-if="subtotal != 0">
+                                        <tr style="font-weight:bold;">
+                                            <td style="text-align:right;" colspan="5">Subtotal <span t-esc="cust_name"/> : </td>
+                                            <td style="text-align:right;"><span t-esc="total_attd"/></td>
+                                            <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(subtotal))"/></td>
+                                            <td style="text-align:right;"> </td>
+                                        </tr>
+                                        <t t-set="subtotal" t-value="0"/>
+                                        <t t-set="total_attd" t-value="0"/>
+                                    </t>
+                                    <t t-set="prev_cust" t-value="p.company_name.id"/>
+                                    <t t-set="cust_name" t-value="p.company_name.name"/>
+                                </t>
+
+                                <tr>
+                                    <td><span t-esc="p.company_name.name"/></td>
+                                    <td><span t-esc="p.event_type_id.event_name"/></td>
+                                    <td><span t-field="p.reservation_time_start" t-options="{'widget': 'date'}"/></td>
+                                    <td><span t-esc="p.name"/></td>
+                                    <td><span t-esc="p.event_name"/></td>
+                                    <td style="text-align:right;"><span t-esc="p.customer_count"/></td>
+                                    <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(p.amount_total))"/></td>
+
+                                </tr>
+                                <t t-set="subtotal" t-value="subtotal + p.amount_total"/>
+                                <t t-set="total_attd" t-value="total_attd + p.customer_count"/>
+                                <t t-set="grand_total" t-value="grand_total + p.amount_total"/>
+                                <t t-set="grand_total_attd" t-value="grand_total_attd + p.customer_count"/>
+
+                            </t>
+                            <tr style="font-weight:bold;">
+                                <td style="text-align:right;" colspan="5">Subtotal <span t-esc="cust_name"/> : </td>
+                                <td style="text-align:right;"><span t-esc="total_attd"/></td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(subtotal))"/></td>
+                                <td style="text-align:right;"> </td>
+                            </tr>
+
+                            <tr style="font-weight:bold;">
+                                <td style="text-align:right;" colspan="5">GRAND TOTAL : </td>
+                                <td style="text-align:right;"><span t-esc="grand_total_attd"/></td>
+                                <td style="text-align:right;"><span t-esc="'{0:,.2f}'.format(int(grand_total))"/></td>
+                                <td style="text-align:right;"> </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </t>
+            </t>
+        </template>
+
+        <record model="report.paperformat" id="paperformat_table_productivities_report">
+            <field name="name">paperformat.table.productivities.report</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">20</field>
+            <field name="margin_right">10</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">10</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+            id="menu_report_table_productivities"
+            string="Table Productivities"
+            model="table.productivities"
+            report_type="qweb-pdf"
+            name="kg_pos_import_bill.report_table_productivities"
+            file="kg_pos_import_bill.report_table_productivities"
+            menu="False"
+            paperformat="paperformat_table_productivities_report"
+        />
+
+    </data>
+</odoo>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="AdvancePaymentPopup">
+        <div class="modal-dialog">
+            <div class="popup popup-advpayments">
+                <p class="title"><t t-esc=" widget.options.title || '' " /></p>
+                <div class="container">
+                    <div class="field" style="margin-top:10px;">
+                        <label>Select Customer</label>
+                        <br></br>
+                        <select class="form-control" id="partner">
+                            <option></option>
+                            <t t-foreach="widget.pos.valid_adv_payment_partner || []" t-as="partner">
+                                <t t-if="widget.pos.get_order()">
+                                    <t t-if="widget.pos.get_order().adv_payment_partner === partner.id">
+                                        <option t-att-value="partner.id" selected=""><t t-esc="partner.name" /></option>
+                                    </t>
+                                    <t t-else="">
+                                        <option t-att-value="partner.id"><t t-esc="partner.name" /></option>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <option t-att-value="partner.id"><t t-esc="partner.name" /></option>
+                                </t>
+                            </t>
+                        </select>
+                    </div> 
+                    <div class="field">
+                        <label>Advance Payment</label>
+                        <select class="form-control" id="payment">
+                            <option></option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <table width="100%">
+                            <tr>
+                                <td width="50%">Deposit Type</td>
+                                <td width="50%"><select class="form-control" id="deposit">
+                                        <option></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Order Remaining Amount:</td>
+                                <td><span id="order-remaining-amount"> </span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="form-flex">
+                        <table>
+                            <thead>
+                                <th width="30%">Deposit Amount</th>
+                                <th width="30%">Remaining Amount</th>
+                                <th width="30%">Payment Amount</th>
+                            </thead>
+                            <tr>
+                                <td><input disabled="disabled" id="amount"  class="form-control" type="text" style="text-align: right;"/></td>
+                                <td><input disabled="disabled" id="residual"  class="form-control" type="text" style="text-align: right;"/></td>
+                                <td><input id="payment-amount"  class="form-control" type="number" style="text-align: right;"/></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="footer">
+                    <t t-if="widget.pos.get_order() and widget.pos.get_order().get_due() &gt; 0">
+                        <div class="button confirm">
+                            Ok
+                        </div>
+                    </t>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

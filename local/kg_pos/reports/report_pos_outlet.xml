@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_pos_outlet">
+            <t t-call="web.html_container">
+              <t t-call="web.basic_layout">
+                <div class="page">
+                    <h2 style="text-align:center;">OUTLET REPORT</h2>
+
+                    <table class="table table-condensed" style="width:100%;margin-top:18px;">
+                        <tr>
+                            <td>Working Date</td>
+                            <td> : <span t-esc="working_date" t-options="{'widget': 'date'}"/></td>
+                            <td></td>
+                            <td></td>
+                            <td>Printed By</td>
+                            <td> : <span t-esc="printed_by"/></td>
+                        </tr>
+                        <tr>
+                            <td>Company</td>
+                            <td> : <span t-esc="company_name"/></td>
+                            <td></td>
+                            <td></td>
+                            <td>Printed On</td>
+                            <td> : <span t-esc="datetime.datetime.now()" t-options="{'widget': 'datetime'}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Shift</td>
+                            <td> : <span t-esc="shift_desc"/></td>
+                        </tr>
+                    </table>
+
+                    <br/>
+                    <div class="table table-condensed">
+                        <table class="table table-condensed" style="margin-top:20px;font-size:12px;">
+                            <thead>
+                                <tr style="font-weight:bold;">
+                                    <th>Outlet</th>
+                                    <th>Order Ref</th>
+                                    <th>Item</th>
+                                    <th style="text-align:right;">Total</th>
+                                    <th style="text-align:right;">Food</th>
+                                    <th style="text-align:right;">Beverage</th>
+                                    <th style="text-align:right;">Others</th>
+                                    <th style="text-align:right;">Service</th>
+                                    <th style="text-align:right;">Tax</th>
+                                    <th>Payment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="sub_total" t-value="0"/>
+                                <t t-set="sub_total_food" t-value="0"/>
+                                <t t-set="sub_total_beverage" t-value="0"/>
+                                <t t-set="sub_total_others" t-value="0"/>
+                                <t t-set="sub_total_service" t-value="0"/>
+                                <t t-set="sub_total_tax" t-value="0"/>
+                                <t t-set="sub_total_guest_in" t-value="0"/>
+                                <t t-set="grand_total" t-value="0"/>
+                                <t t-set="grand_total_food" t-value="0"/>
+                                <t t-set="grand_total_beverage" t-value="0"/>
+                                <t t-set="grand_total_others" t-value="0"/>
+                                <t t-set="grand_total_service" t-value="0"/>
+                                <t t-set="grand_total_tax" t-value="0"/>
+                                <t t-set="grand_total_guest_in" t-value="0"/>
+                                <t t-set="grand_total_guest_out" t-value="0"/>
+                                <t t-set="grand_total_food_cover" t-value="0"/>
+                                <t t-set="grand_total_beverage_cover" t-value="0"/>
+                                <t t-set="prev_outlet" t-value="-1"/>
+
+                                <t t-foreach='outlet' t-as='o'>
+                                    <t t-if="prev_outlet != o.get('outlet')">
+                                        <t t-if="sub_total != 0">
+                                            <tr style="font-weight:bold;">
+                                                <td style="text-align:right;" colspan="3">Subtotal : </td>
+                                                <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(sub_total)"/></td>
+                                                <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(sub_total_food)"/></td>
+                                                <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(sub_total_beverage)"/></td>
+                                                <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(sub_total_others)"/></td>
+                                                <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(sub_total_service)"/></td>
+                                                <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(sub_total_tax)"/></td>
+                                                <td style="text-align:right;"> </td>
+                                            </tr>
+                                            <t t-set="sub_total" t-value="0"/>
+                                            <t t-set="sub_total_food" t-value="0"/>
+                                            <t t-set="sub_total_beverage" t-value="0"/>
+                                            <t t-set="sub_total_others" t-value="0"/>
+                                            <t t-set="sub_total_service" t-value="0"/>
+                                            <t t-set="sub_total_tax" t-value="0"/>
+                                            <t t-set="sub_total_guest_in" t-value="0"/>
+                                            <t t-set="sub_total_guest_out" t-value="0"/>
+
+                                        </t>
+                                        <t t-set="prev_outlet" t-value="o.get('outlet')"/>
+                                    </t>
+
+                                    <tr>
+                                        <td><span t-esc="o.get('outlet')"/></td>
+                                        <td><span t-esc="o.get('order_ref')"/></td>
+                                        <td><span t-esc="o.get('item')"/></td>
+                                        <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(o.get('total'))"/></td>
+                                        <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(o.get('food'))"/></td>
+                                        <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(o.get('beverage'))"/></td>
+                                        <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(o.get('other'))"/></td>
+                                        <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(o.get('service'))"/></td>
+                                        <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(o.get('tax'))"/></td>
+                                        <td><span t-esc="o.get('payment_journal')"/></td>
+                                    </tr>
+
+                                    <t t-set="sub_total" t-value="sub_total + o.get('total')"/>
+                                    <t t-set="grand_total" t-value="grand_total + o.get('total')"/>
+                                    <t t-set="sub_total_food" t-value="sub_total_food + o.get('food')"/>
+                                    <t t-set="grand_total_food" t-value="grand_total_food + o.get('food')"/>
+                                    <t t-set="sub_total_beverage" t-value="sub_total_beverage + o.get('beverage')"/>
+                                    <t t-set="grand_total_beverage" t-value="grand_total_beverage + o.get('beverage')"/>
+                                    <t t-set="sub_total_others" t-value="sub_total_others + o.get('other')"/>
+                                    <t t-set="grand_total_others" t-value="grand_total_others + o.get('other')"/>
+                                    <t t-set="sub_total_service" t-value="sub_total_service + o.get('service')"/>
+                                    <t t-set="grand_total_service" t-value="grand_total_service + o.get('service')"/>
+                                    <t t-set="sub_total_tax" t-value="sub_total_tax + o.get('tax')"/>
+                                    <t t-set="grand_total_tax" t-value="grand_total_tax + o.get('tax')"/>
+                                    <t t-set="sub_total_guest_in" t-value="sub_total_guest_in + o.get('cover_in')"/>
+                                    <t t-set="grand_total_guest_in" t-value="grand_total_guest_in + o.get('cover_in')"/>
+                                    <t t-set="grand_total_guest_out" t-value="grand_total_guest_out + o.get('cover_out')"/>
+                                    <t t-set="grand_total_food_cover" t-value="grand_total_food_cover + o.get('food_cover')"/>
+                                    <t t-set="grand_total_beverage_cover" t-value="grand_total_beverage_cover + o.get('beverage_cover')"/>
+
+                                </t>
+
+                                <tr style="font-weight:bold;">
+                                    <td style="text-align:right;" colspan="3">Subtotal : </td>
+                                    <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(sub_total)"/></td>
+                                    <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(sub_total_food)"/></td>
+                                    <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(sub_total_beverage)"/></td>
+                                    <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(sub_total_others)"/></td>
+                                    <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(sub_total_service)"/></td>
+                                    <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(sub_total_tax)"/></td>
+                                    <td style="text-align:right;"> </td>
+                                </tr>
+                                <tr style="font-weight:bold;">
+                                    <td style="text-align:right;" colspan="3">GRAND TOTAL : </td>
+                                    <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(grand_total)"/></td>
+                                    <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(grand_total_food)"/></td>
+                                    <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(grand_total_beverage)"/></td>
+                                    <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(grand_total_others)"/></td>
+                                    <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(grand_total_service)"/></td>
+                                    <td style="text-align:right;"><span t-esc="'{0:,.0f}'.format(grand_total_tax)"/></td>
+                                    <td style="text-align:right;"> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="width:100%;margin-top:18px;">
+                        <div class="col-xs-12" style="border-bottom: 1px solid gray;">
+                            <label>Summary : </label></div>
+                        <div class="col-xs-6" style="border-bottom: 1px solid gray;">
+                            <div class="col-xs-7"><span>Cover In</span></div>
+                            <div class="col-xs-1">:</div>
+                            <div class="col-xs-4"><span t-esc="grand_total_guest_in" /></div>
+                        </div>
+                        <div class="col-xs-6" style="border-bottom: 1px solid gray;">
+                            <div class="col-xs-7"><span >Cover Out </span></div>
+                            <div class="col-xs-1">:</div>
+                            <div class="col-xs-4"><span t-esc="grand_total_guest_out" />
+                            </div>
+                        </div>
+                        <div class="col-xs-6" style="border-bottom: 1px solid gray;">
+                            <div class="col-xs-7"><span>Food Cover</span></div>
+                            <div class="col-xs-1">:</div>
+                            <div class="col-xs-4"><span t-esc="'{0:,.0f}'.format(grand_total_food_cover)"/></div>
+                        </div>
+                        <div class="col-xs-6" style="border-bottom: 1px solid gray;">
+                            <div class="col-xs-7"><span>Beverage Cover </span></div>
+                            <div class="col-xs-1">:</div>
+                            <div class="col-xs-4"><span t-esc="'{0:,.0f}'.format(grand_total_beverage_cover)"/></div>
+                        </div>
+                        <t t-foreach="payments" t-as="p">
+                            <div class="col-xs-6" style="border-bottom: 1px solid gray;">
+                                <div class="col-xs-7"><span t-esc="p.get('name')" /></div>
+                                <div class="col-xs-1">:</div>
+                                <div class="col-xs-4"><span t-esc="'{0:,.0f}'.format(p.get('amount'))" /></div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+              </t>
+            </t>
+        </template>
+
+        <record model="report.paperformat" id="paperformat_pos_outlet_report">
+            <field name="name">paperformat.pos.outlet.report</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">20</field>
+            <field name="margin_right">5</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+            id="menu_report_pos_outlet"
+            string="Outlet Report"
+            model="pos.outlet"
+            report_type="qweb-pdf"
+            name="kg_pos.report_pos_outlet"
+            file="kg_pos.report_pos_outlet"
+            menu="False"
+            paperformat="paperformat_pos_outlet_report"
+        />
+
+    </data>
+</odoo>

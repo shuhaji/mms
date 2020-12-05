@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.actions.act_window" id="account_period_list_action">
+        <field name="name">Accounting Period</field>
+        <field name="res_model">account.period</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context" eval="{'search_default_my_account_period': 1}"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create Account Period
+            </p>
+        </field>
+    </record>
+
+    <record id="kg_account_period_form_view" model="ir.ui.view">
+        <field name="name">kg_account.account.period.form</field>
+        <field name="model">account.period</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="1"/>
+                            <field name="name" invisible="1"/>
+                            <field name="period" widget="date-month-year-period-widget"/>
+                            <field name="date_start" invisible="1"/>
+                            <field name="date_end" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="close_all"/>
+                            <field name="is_gl_closed"/>
+                            <field name="is_ar_closed"/>
+                            <field name="is_pos_closed"/>
+                            <field name="is_ap_closed"/>
+                            <field name="is_bank_statement_closed"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--session tree/list view-->
+    <record model="ir.ui.view" id="kg_account_period_tree_view">
+        <field name="name">kg_account.account.period.tree</field>
+        <field name="model">account.period</field>
+        <field name="arch" type="xml">
+            <tree string="Account Period Tree">
+                <field name="name"/>
+                <field name="period_info"/>
+                <field name="is_gl_closed"/>
+                <field name="is_ar_closed"/>
+                <field name="is_pos_closed"/>
+                <field name="is_ap_closed"/>
+                <field name="is_bank_statement_closed"/>
+                <field name="company_id"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="kg_account_period_menu"
+              name="Account Period"
+              parent="account.account_account_menu"
+              action="account_period_list_action"/>
+</odoo>

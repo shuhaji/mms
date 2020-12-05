@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="kg_res_partner" model="ir.ui.view">
+            <field name="name">kg.res.partner</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="before">
+                    <field name="allow_use_city_ledger"/>
+                </xpath>
+
+                <!-- <field name="customer" position="after">
+                    <field name="allo_use_city_ledger"/>
+                </field> -->
+
+                <xpath expr="//field[@name='lang']" position="after">
+                    <field name="pms_company_id" readonly="1" string="PMS Company ID"/>
+
+                </xpath>
+                <xpath expr="//form/sheet/notebook/page[1]/field/form/sheet//field[@name='comment']" position="after">
+                    <field name="pms_contact_id" readonly="1" string="PMS Contact ID"/>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</openerp>

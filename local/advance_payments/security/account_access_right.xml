@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="res.groups" id="group_hide_add_advance_deposit">
+            <field name="name">Hide Button Create Advance Deposit</field>
+        </record>
+    </data>
+</openerp>

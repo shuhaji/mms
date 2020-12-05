@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+
+        <record id="cron_update_pos_checkout" forcecreate='True' model="ir.cron">
+            <field name="name">POS Checkout Checking</field>
+            <field eval="True" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="nextcall" eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 04:30:00')" />
+            <field name="numbercall">-1</field>
+            <field name="model_id" ref="model_kg_pos_order_reservation"/>
+            <field name="state">code</field>
+            <field name="code">model.action_pos_checkout()</field>
+        </record>
+
+    </data>
+</odoo>

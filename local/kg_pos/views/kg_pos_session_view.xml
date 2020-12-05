@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>       
+        
+        <!-- Form View -->
+        <record model="ir.ui.view" id="pos_session_form">
+            <field name="name">pos.session.form</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="replace">
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="point_of_sales.action_pos_box_in"
+                            type="action" icon="fa-level-down" invisible="1">
+                            <!--attrs="{'invisible': ['|', ('cash_control', '=', False), ('state', 'not in', ['opened', 'closing_control'])]}">-->
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Put</span>
+                                <span class="o_stat_text">Money In</span>
+                            </div>
+                        </button>
+                        <button class="oe_stat_button" name="point_of_sales.action_pos_box_out"
+                            type="action" icon="fa-level-up" invisible="1">
+                            <!--attrs="{'invisible': ['|', ('cash_control', '=', False), ('state', 'not in', ['opened', 'closing_control'])]}">-->
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Take</span>
+                                <span class="o_stat_text">Money Out</span>
+                            </div>
+                        </button>
+                        <button name="open_cashbox"
+                            class="oe_stat_button"
+                            attrs="{'invisible':['|', ('cash_control', '=', False), ('state', '!=', 'opening_control')]}"
+                            icon="fa-money"
+                            type="object" context="{'balance': 'start'}">
+                            <span class="o_stat_text">Set Opening Balance</span>
+                        </button>
+                        <button name="open_cashbox"
+                            class="oe_stat_button"
+                            attrs="{'invisible':['|', '|', ('cash_control', '=', False), ('state', '=', 'opening_control'), ('state', '=', 'closed')]}"
+                            icon="fa-money"
+                            type="object" context="{'balance': 'end'}">
+                            <span class="o_stat_text">Set Closing Balance</span>
+                        </button>
+                        <button class="oe_stat_button" name="action_stock_picking" type="object" icon="fa-arrows-v" attrs="{'invisible':[('picking_count', '=', 0)]}">
+                            <field name="picking_count" widget="statinfo" string="Picking Errors"/>
+                        </button>
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='stop_at']" position="after">
+                    <field name="shift_id" required="1"/>
+                </xpath>
+                <field name="start_at" position="after">
+                    <field name="working_date" />
+                </field>
+            </field>
+        </record>
+
+         <record id="kg_view_pos_session_tree" model="ir.ui.view">
+            <field name="name">kg.view.pos.session.tree</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_session_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='start_at']" position="before">
+                    <field name="working_date"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

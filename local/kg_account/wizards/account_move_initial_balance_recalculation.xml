@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+        <record id ='account_move_initial_balance_recalculation_form_view' model="ir.ui.view">
+            <field name="name">account.move.initial.balance.recalculation.action</field>
+            <field name="model">account.move.initial.balance.recalculation</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="company_id" options="{'no_create': True, 'no_open': True}" groups="base.group_multi_company"/>
+                        <field name="period"/>
+                    </group>
+
+                    <footer>
+                        <button string="Process" name="calculate_initial_balance" type="object" default_focus="1" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+
+            </field>
+        </record>
+
+        <record id="account_move_initial_balance_recalculation_action" model="ir.actions.act_window">
+            <field name="name">Calculate Initial Balance</field>
+            <field name="res_model">account.move.initial.balance.recalculation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_move_initial_balance_recalculation_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_account_move_initial_balance_recalculation"
+                name="Calculate Initial Balance"
+                action="account_move_initial_balance_recalculation_action"
+                parent="menu_wizard_kg_report_group"
+                sequence="5"/>
+
+    </data>
+</odoo>

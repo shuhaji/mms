@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="kgFieldCustomSearchFromPmsViewTemplate">
+
+        <span t-if="widget.mode === 'readonly'"/>
+
+        <div t-if="widget.mode !== 'readonly'"
+                class="o_field_widget o_field_many2one">
+            <input type="text"
+                   id="kg_field_search_on_pms_value"
+                   readonly="1"
+                   t-att-tabindex="widget.attrs.tabindex"
+                   t-att-autofocus="widget.attrs.autofocus"
+                   t-att-placeholder="widget.attrs.placeholder"
+                   class="o_input kg_field_search_on_pms_value"
+                    />
+            <button type="button"
+                    class="fa fa-search-plus btn btn-default o_external_button btn_show_search_from_pms"
+                    tabindex="-1" draggable="false"/>
+        </div>
+
+    </t>
+
+    <t t-name="kg_web.dialogSearchFromPMS">
+        <div id="kg_field_custom_search_pms" title="Search" width="100%">
+          <!--<p class="validateTips">All form fields are required.</p>-->
+
+          <form>
+            <fieldset>
+                <div class="o_field_widget o_field_many2one">
+                    <input type="text"
+                           id="kg_field_search_param"
+                           class="o_input"
+                        />
+                    <!--t-att-id="widget.idForLabel"-->
+                    <button type="button"
+                            string="search"
+                            id="btn_do_search_custom_pms"
+                            class="fa fa-search btn btn-default o_external_button btn_do_search_custom_pms" tabindex="-1" draggable="false"/>
+                </div>
+                <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px" />
+            </fieldset>
+            <div id="jsGridKgCustomSelection"></div>
+          </form>
+        </div>
+    </t>
+
+</templates>

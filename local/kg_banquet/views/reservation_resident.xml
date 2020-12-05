@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record model="ir.ui.view" id="reservation_resident_tree">
+            <field name="name">banquet.reservation.resident.tree</field>
+            <field name="model">banquet.reservation.resident</field>
+            <field name="arch" type="xml">
+                <tree delete="0">
+                    <field name="reservation_id" string="Resv Id"/>
+                    <field name="name" string="BQT Resv No"/>
+                    <field name="pms_reservation_no" string="PMS Resv No"/>
+                    <field name="reservation_by"/>
+                    <field name="guest_name"/>
+                    <field name="arrival_date"/>
+                    <field name="departure_date"/>
+                    <field name="room_type_id"/>
+                    <field name="room_rate_id"/>
+                    <field name="amount" string="Rate Amount"/>
+                    <field name="total_nights"/>
+                    <field name="partner_id"/>
+                    <field name="group_id"/>
+                    <field name="status_pms" string="Status PMS"/>
+                    <field name="status_amd" string="Status AMD"/>
+                    <field name="state_reservation" string="State Reservation"/>
+                </tree>
+            </field>
+        </record>
+<!--        <record id="res_res_tree" model="ir.ui.view">-->
+<!--            <field name="name">banquet.reservation.resident.tree</field>-->
+<!--            <field name="model">banquet.reservation.resident</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//tree" position="attributes">-->
+<!--                    <attribute name="duplicate">true</attribute>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <xpath expr="//tree" position="attributes">-->
+<!--            <attribute name="duplicate">true</attribute>-->
+<!--        </xpath>-->
+<!--        <record id="bqt_res_view_tree_editable" model="ir.ui.view">-->
+<!--            <field name="name">banquet.reservation.resident.tree.editable</field>-->
+<!--            <field name="model">banquet.reservation.resident</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//tree" position="attributes">-->
+<!--                    <attribute name="duplicate">true</attribute>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+<!--            todo: duplicate tree view-->
+        <!-- Form View -->
+        <record model="ir.ui.view" id="reservation_resident_form">
+            <field name="name">banquet.reservation.resident.form</field>
+            <field name="model">banquet.reservation.resident</field>
+            <field name="arch" type="xml">
+                <form string="Function Room" delete="0" duplicate="0">
+                    <header>
+                        <button name="action_cancel" string="Cancel" type="object" class="oe_highlight" groups="base.group_user"
+                                    confirm="Are you sure want to change status to Canceled?" attrs="{'invisible':[('state_reservation','!=','draft')]}"/>
+                        <field name="state_reservation" widget="statusbar" statusbar_visible="draft,posted,cancel"/>
+                    </header>
+                    <sheet>
+                         <label for="name" class="oe_edit_only"
+		                        string="Number" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+                                <h1>
+                                    <field name="name" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+                                </h1>
+                            <group>
+                                <group>
+                                    <field name="reservation_id" attrs="{'readonly':[('state_reservation','!=','draft')]}" required="1"/>
+                                    <field name="reservation_by" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+                                    <field name="guest_info" widget="kg_field_pms_guest_info"/>
+                                    <field name="partner_id" required="1" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+                                    <field name="guest_pms_id" groups="base.group_no_one"/>
+                                    <field name="guest_name" required="1" attrs="{'readonly':[('state_reservation','!=','draft')]}"
+                                           groups="base.group_no_one"/>
+                                    <field name="phone_number" groups="base.group_no_one" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+                                    <field name="group_info" widget="kg_field_pms_group_info"/>
+                                    <field name="group_id" required="1" groups="base.group_no_one" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+                                    <field name="group_name" required="1" groups="base.group_no_one"/>
+                                    <field name="market_segment_id" required="1" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+                                    <field name="reservation_source_id" required="1" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+                                    <field name="pax" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+                                </group>
+                                <group>
+                                    <field name="arrival_date" attrs="{'readonly':[('state_reservation','!=','draft')]}" required="1"/>
+                                    <field name="total_nights" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+                                    <field name="departure_date" attrs="{'readonly':[('state_reservation','!=','draft')]}" required="1"/>
+                                    <field name="room_type_id" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+                                    <field name="rate_type_id" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+                                    <field name="person" attrs="{'readonly':[('state_reservation','!=','draft')]}" required="1"/>
+                                    <field name="room_rate_info" string="Rate Code" widget="kg_field_pms_room_rate_info"/>
+                                    <field name="room_rate_id" attrs="{'readonly':[('state_reservation','!=','draft')]}"
+                                           required="1" groups="base.group_no_one"/>
+                                    <field name="amount" attrs="{'readonly':[('state_reservation','!=','draft')]}"
+                                           string="Room Rate" readonly="1" force_save="1"/>
+                                    <field name="extra_bed" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+                                    <field name="extra_bed_charge" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+                                    <field name="copies_value" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+<!--                                    todo: jumlah create yang sama-->
+                                </group>
+                                <group colspan="2">
+                                    <field name="remark" style="height:50px;width:500px;" attrs="{'readonly':[('state_reservation','!=','draft')]}"/>
+                                </group>
+                            </group>
+                    </sheet>
+                    <div class="oe_chatter">
+<!--                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>-->
+<!--                        <field name="activity_ids" widget="mail_activity"/>-->
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="reservation_resident_action">
+            <field name="name">Reservation Residential</field>
+            <field name="res_model">banquet.reservation.resident</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem
+            id="menu_reservation_resident"
+            name="Reservation Residential"
+            parent="menu_banquet_transaction"
+            action="reservation_resident_action"
+            sequence="25"
+        />
+
+        <!--<act_window id="action_cancel_banquet_reservation_resident"-->
+            <!--name="Cancel"-->
+            <!--res_model="banquet.reservation.resident"-->
+            <!--src_model="banquet.reservation.resident"-->
+            <!--view_mode="form"-->
+            <!--multi="True"-->
+            <!--target="new"-->
+            <!--key2="client_action_multi"-->
+        <!--/>-->
+
+        <record id="action_cancel_reservation_resident" model="ir.actions.server">
+            <field name="name">Cancel</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_banquet_reservation_resident" />
+            <field name="binding_model_id" ref="model_banquet_reservation_resident" />
+            <field name="state">code</field>
+            <field name="code">records.action_cancel()</field>
+        </record>
+
+    </data>
+</odoo>

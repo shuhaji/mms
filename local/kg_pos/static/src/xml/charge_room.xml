@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="ChargeRoomWidget">
+        <div class="modal-dialog">
+            <div class="popup popup-guestinfo">
+                <p class="title"><t t-esc=" widget.options.title || '' " /></p>
+                <div class="container">
+                    <div class="field">
+                        <label>Room Number</label>
+                        <input id="room-number" class="form-control" type="text" t-att-value="widget.room_number || ''" />
+                    </div>
+                    <div class="field">
+                        <button id="get_folios" class="control-button">Get Folios</button>
+                    </div>
+                    <div id="folio-div" class="field oe_hidden">
+                        <label>Choose Folio</label>
+                        <select class="form-control" id="folio">
+                            <option></option>
+                            <t t-foreach="widget.folios || []" t-as="folio">
+                                <t t-if="widget.folio_id === folio.FolioId.toString()">
+                                    <option t-att-value="folio.FolioId" selected="">
+                                        <t t-esc="folio.FolioId" /> - <t t-esc="folio.GuestName" />
+                                    </option>
+                                </t>
+                                <t t-else="">
+                                    <option t-att-value="folio.FolioId">
+                                        <t t-esc="folio.FolioId" /> - <t t-esc="folio.GuestName" />
+                                    </option>
+                                </t>
+                            </t>
+                        </select>
+                    </div>
+                    <div id="folio-messages" class="field">
+                        <p id="folio-not-found" class="oe_hidden">Charge to room cant be used for this room!</p>
+                        <p id="error-msg" class="oe_hidden"></p>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div id="confirm-charge-room" class="button confirm oe_hidden">
+                        Ok
+                    </div>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

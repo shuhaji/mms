@@ -1,0 +1,27 @@
+<odoo>
+	<data>
+
+		<record id="wizard_adv_payment_journal_view" model="ir.ui.view">
+			<field name="name">Select Journal for Applying Advance Payment</field>
+			<field name="model">wizard.select.journal</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Select Journal">
+					<group>
+	                    <group>
+                            <field name="company_id" invisible="1"/>
+	                    	<field name="journal_id" domain="[('company_id', '=', company_id)]"/>
+	                    </group>
+                        <group></group>
+                    </group>
+                    <footer>
+                        <button name="button_confirm" type="object" string="Confirm" class="btn-primary"/>
+                        <button name="button_cancel" type="object" string="Cancel" />
+                    </footer>
+		        </form>
+		    </field>
+		</record> 
+		
+
+	</data>
+</odoo>

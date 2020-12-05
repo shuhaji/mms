@@ -1,0 +1,26 @@
+<odoo>
+    <template id="kg_banquet_assets_backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <!--<script type="text/javascript"-->
+                    <!--src="/kg_banquet/static/src/lib/datatables.min.js"></script>-->
+            <script type="text/javascript"
+                    src="/kg_banquet/static/src/js/pms_guest_field.js" />
+            <script type="text/javascript"
+                    src="/kg_banquet/static/src/js/pms_group_field.js" />
+            <script type="text/javascript"
+                    src="/kg_banquet/static/src/js/pms_room_rate_field.js" />
+        </xpath>
+    </template>
+
+
+    <!--<template id="kg_banquet_web_layout" name="kg_banquet_web_layout" inherit_id="web.layout">-->
+        <!--<xpath expr="//body" position="after">-->
+            <!--<script t-attf-src="https://cdn.datatables.net/v/ju/jqc-1.12.4/dt-1.10.20/datatables.min.js" type="text/javascript" />-->
+        <!--</xpath>-->
+    <!--</template>-->
+    <!--<template id="kg_banquet_assets_style" inherit_id="web.report_assets_common">-->
+        <!--<xpath expr="." position="inside">-->
+
+        <!--</xpath>-->
+    <!--</template>-->
+</odoo>

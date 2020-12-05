@@ -1,0 +1,76 @@
+<openerp>
+   <data noupdate="1">
+
+       <record id="data_journal_payment_group_house_account" model="journal.payment.group">
+           <field name="pms_payment_type">A</field>
+           <field name="name">House Account</field>
+           <field name="short_name">HSACC</field>
+           <field name="row_order">12</field>
+           <field name="row_group">HOUSE ACCOUNT</field>
+           <field name="active">True</field>
+       </record>
+
+       <record id="data_journal_payment_group_cash_payment" model="journal.payment.group">
+           <field name="pms_payment_type">C</field>
+           <field name="name">Cash Payment</field>
+           <field name="short_name">CASH</field>
+           <field name="row_order">2</field>
+           <field name="row_group">CASH</field>
+           <field name="active">True</field>
+       </record>
+
+       <record id="data_journal_payment_group_charge_to_room" model="journal.payment.group">
+           <field name="pms_payment_type">H</field>
+           <field name="name">Charge to Room</field>
+           <field name="short_name">CHROM</field>
+           <field name="row_order">1</field>
+           <field name="row_group">CHARGE TO ROOM</field>
+           <field name="active">True</field>
+       </record>
+
+         <record id="data_journal_payment_group_city_ledger" model="journal.payment.group">
+           <field name="pms_payment_type">L</field>
+           <field name="name">City Ledger</field>
+           <field name="short_name">CTLED</field>
+           <field name="row_order">4</field>
+           <field name="row_group">HOUSE ACCOUNT</field>
+           <field name="active">True</field>
+       </record>
+
+       <record id="data_journal_payment_group_point_redeem" model="journal.payment.group">
+           <field name="pms_payment_type">P</field>
+           <field name="name">Point Redeem</field>
+           <field name="short_name">PORDM</field>
+           <field name="row_order">13</field>
+           <field name="row_group">POINT REDEEM</field>
+           <field name="active">True</field>
+       </record>
+
+       <record id="data_journal_payment_group_credit_card" model="journal.payment.group">
+           <field name="pms_payment_type">R</field>
+           <field name="name">Credit Card</field>
+           <field name="short_name">CRCRD</field>
+           <field name="row_order">3</field>
+           <field name="row_group">CREDIT CARD</field>
+           <field name="active">True</field>
+       </record>
+
+       <record id="data_journal_payment_group_deposit" model="journal.payment.group">
+           <field name="pms_payment_type">T</field>
+           <field name="name">Deposit</field>
+           <field name="short_name">DEPOSIT</field>
+           <field name="row_order">9</field>
+           <field name="row_group">DEPOSIT</field>
+           <field name="active">True</field>
+       </record>
+
+       <record id="data_journal_payment_group_voucher" model="journal.payment.group">
+           <field name="pms_payment_type">V</field>
+           <field name="name">Voucher</field>
+           <field name="short_name">VOCHR</field>
+           <field name="row_order">7</field>
+           <field name="row_group">VOUCHER</field>
+           <field name="active">True</field>
+       </record>
+   </data>
+</openerp>

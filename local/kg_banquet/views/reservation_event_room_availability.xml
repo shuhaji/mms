@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+<!--         List View -->
+        <record model="ir.ui.view" id="reservation_event_room_tree">
+            <field name="name">banquet.reservation.event.room.tree</field>
+            <field name="model">banquet.reservation.event.room</field>
+            <field name="arch" type="xml">
+                <tree delete="false" create="false">
+                    <field name="room_name"/>
+                    <field name="reservation_id"/>
+                    <field name="name"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <field name="partner_name"/>
+                    <field name="function_room_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="reservation_event_room_calendar">
+            <field name="name">banquet.reservation.event.room.calendar</field>
+            <field name="model">banquet.reservation.event.room</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <calendar string="Calendar View" date_start="date_start"
+                          date_stop="date_end" color="function_room_id"
+                >
+                    <field name="function_room_id"/>
+                    <field name="join_to_room"/>
+                    <field name="name"/>
+                    <field name="partner_name"/>
+                </calendar>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record model="ir.ui.view" id="reservation_event_room_form">
+            <field name="name">banquet.reservation.event.room.form</field>
+            <field name="model">banquet.reservation.event.room</field>
+            <field name="arch" type="xml">
+                <form string="Reservation Event" delete="false" create="false">
+                    <header>
+
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"
+		                        string="Reservation Event"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group name="main_content">
+                            <group name="main_content_left" col="2">
+                                <field name="room_name"/>
+                                <field name="function_room_id"/>
+                                <field name="reservation_event_id"/>
+                                <field name="reservation_id"/>
+                                <field name="partner_name"/>
+                            </group>
+                            <group name="main_content_right" col="2">
+                                <field name="company_id"/>
+                                <field name="date_start"/>
+                                <field name="date_end"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="reservation_event_room_availability_action">
+            <field name="name">Room Availability Action</field>
+            <field name="res_model">banquet.reservation.event.room</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">calendar,tree,form</field>
+        </record>
+        <menuitem
+            id="menu_reservation_event_room_availability"
+            name="Room Availability"
+            parent="menu_banquet_transaction"
+            action="reservation_event_room_availability_action"
+            sequence="30"
+        />
+
+    </data>
+</odoo>

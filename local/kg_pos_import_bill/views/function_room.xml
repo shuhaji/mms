@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+    <!-- Tree view for "model" -->
+    <record id="function_room_tree_view" model="ir.ui.view">
+        <field name="name">function.room.type.tree.view</field>
+        <field name="model">function.room.type</field>
+        <field name="type">tree</field>
+        <!-- <field name="mode">primary</field> -->
+        <field name="priority" eval="16" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <tree string="Functional Room" create="true" delete="true" edit="true">
+                <field name="code" string="Code" />
+                <field name="name" />
+                
+    
+            </tree>
+        </field>
+    </record>
+    
+    <!-- Form view for "model" -->
+    <record id="function_room_form_view" model="ir.ui.view">
+        <field name="name">functional.room.type.form.view</field>
+        <field name="model">function.room.type</field>
+        <field name="type">form</field>
+        <!-- <field name="mode">primary</field> -->
+        <field name="priority" eval="16" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <form string="model_form" create="true" delete="true" edit="true">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Functional Room" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" readonly="1" string="Functional Room"/>
+                        </h1>
+                    </div>
+                    <group>
+                    
+                    <field name="code" string="Code" />
+                    <field name="name" string="Description" />
+                       
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    
+    
+    <record id="action_function_room_type" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="name">Function Room Type</field>
+        <field name="res_model">function.room.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+        <!-- <field name="target">current</field>
+        <field name="domain">[]</field>
+        <field name="context">\{}</field> -->
+        <!-- <field name="search_view_id" ref="ir.ui.view" /> -->
+         <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add
+                </p>
+                <p>klik tombol create untuk membuat data baru</p>
+            </field>
+    </record>
+
+      
+    <record id="action_function_room_tree_view1" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="kg_pos_import_bill.action_function_room_type" />
+        <field name="view_id" ref="kg_pos_import_bill.function_room_tree_view"/>
+        <field name="view_mode">tree</field>
+        <field name="sequence" eval="99" />
+        <field name="multi" eval="False" />
+    </record>
+
+    
+    <record id="action_function_room_form_view1" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="kg_pos_import_bill.action_function_room_type" />
+        <field name="view_id" ref="kg_pos_import_bill.function_room_form_view"/>
+        <field name="view_mode">form</field>
+        <field name="sequence" eval="99" />
+        <field name="multi" eval="False" />
+    </record>
+
+    <menuitem name="Function Room Type" action="kg_pos_import_bill.action_function_room_type"
+                  id="menu_kg_function_room" parent="point_of_sale.menu_point_config_product" sequence="50"/>
+
+    </data>
+</odoo>

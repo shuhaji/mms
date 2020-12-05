@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--<record id="purchase_request_by_dept_rule" model="ir.rule">-->
+            <!--<field name="name">Purchase Request Department</field>-->
+            <!--<field name="model_id" ref="purchase_request.model_purchase_request"/>-->
+            <!--<field name="groups" eval="[(6,0, [ref('base.group_user'), ref('purchase.group_purchase_user'), ref('purchase.group_purchase_manager')])]"/>-->
+            <!--<field name="perm_read" eval="True"/>-->
+            <!--<field name="perm_write" eval="True"/>-->
+            <!--<field name="perm_create" eval="True"/>-->
+            <!--<field name="perm_unlink" eval="True"/>-->
+            <!--<field name="domain_force">[('department_id', '=', user.employee_ids.department_id.id)]</field>-->
+        <!--</record>-->
+
+        <!--<record id="group_purchase_manager_multi_department" model="res.groups">-->
+            <!--<field name="name">Manager Multi Department</field>-->
+            <!--<field name="category_id" ref="base.module_category_purchase_management"/>-->
+            <!--<field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>-->
+            <!--<field name="users" eval="[(4, ref('base.user_root'))]"/>-->
+        <!--</record>-->
+
+        <record id="group_purchase_request_general_manager" model="res.groups">
+            <field name="name">Purchase Request General Manager</field>
+            <field name="implied_ids" eval="[(4, ref('purchase_request.group_purchase_request_manager'))]"/>
+            <field name="category_id" ref="purchase_request.module_category_purchase_request"/>
+        </record>
+
+        <record id="kg_purchase_request_manager_rule" model="ir.rule">
+            <field name="name">Purchase Request Manager</field>
+            <field name="model_id" ref="model_purchase_request"/>
+            <field name="groups" eval="[(6,0, [ref('purchase_request.group_purchase_request_manager')])]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="domain_force">[('department_id', '=', user.employee_ids.department_id.id)]</field>
+        </record>
+
+        <record id="kg_purchase_request_line_manager_rule" model="ir.rule">
+            <field name="name">Purchase Request Line Manager</field>
+            <field name="model_id" ref="model_purchase_request_line"/>
+            <field name="groups" eval="[(6,0, [ref('purchase_request.group_purchase_request_manager')])]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="domain_force">[('request_id.department_id', '=', user.employee_ids.department_id.id)]</field>
+        </record>
+
+        <record id="kg_purchase_request_general_manager_rule" model="ir.rule">
+            <field name="name">Purchase Request General Manager</field>
+            <field name="model_id" ref="model_purchase_request"/>
+            <field name="groups" eval="[(6,0, [ref('group_purchase_request_general_manager')])]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="kg_purchase_request_line_general_manager_rule" model="ir.rule">
+            <field name="name">Purchase Request Line General Manager</field>
+            <field name="model_id" ref="model_purchase_request_line"/>
+            <field name="groups" eval="[(6,0, [ref('group_purchase_request_general_manager')])]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

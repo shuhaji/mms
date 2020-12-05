@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report id="banquet_event_order_action"
+                string="Print BEO"
+                model="kg.pos.order.reservation"
+                report_type="qweb-pdf"
+                name="kg_pos_import_bill.banquet_event_order_report"
+                file="kg_pos_import_bill.banquet_event_order_report"
+        />
+
+<!--        <record id="kg_pos_banquet_event_order_action" model="ir.actions.report">-->
+<!--            <field name="print_report_name">('Banquet Event Order.pdf')</field>-->
+<!--            <field name="paperformat_id" ref="paperformat_pos_receipt"/>-->
+<!--        </record>-->
+
+        <template id="banquet_event_order_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="kg_pos_import_bill.banquet_event_order_report_document"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="banquet_event_order_report_header">
+            <div class="header">
+                <t t-if="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id"/>
+                </t>
+                <t t-if="not o or not 'company_id' in o">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+                <div class="row">
+                    <div class="col-xs-6 mb4" style="float:left;">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="max-height: 60px;float:left;"/>
+                    </div>
+                    <div class="col-xs-6 mb4" style="float:right;">
+<!--                            <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="max-height: 60px;float:right;"/>-->
+                        <div class="row">
+                            <div class="col-xs-6" style="text-align:right;">
+                                <span>Print Date</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-5">
+                                <!--<span t-esc="datetime.datetime.now()" t-options="{'widget': 'datetime'}"/>-->
+                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d %b %Y %H:%M:%S')"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6" style="text-align:right;">
+                                <span>Page</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-5">
+                                <span class="page"/>
+                                of
+                                <span class="topage"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6" style="text-align:right;">
+                                <span>User ID</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-5">
+                                <span t-esc="o.user_id.name"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="banquet_event_order_report_document">
+            <t t-call="web.basic_layout">
+                <t t-call="kg_pos_import_bill.banquet_event_order_report_header"/>
+                <div class="page">
+                    <h2 style="text-align:center;">BANQUET EVENT ORDER</h2>
+<!--                    <p>This object's name is <span t-field="o.name"/></p>-->
+                    <div class="col-xs-6">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span>Company Name</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-7">
+                                <span t-esc="o.company_name.name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span>Address</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-7">
+                                <span t-esc="o.company_name.street"/>
+                                <span t-esc="o.company_name.street2"/><br/>
+                                <span t-esc="o.company_name.zip"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span>Telephone</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-7">
+                                <span t-esc="o.company_name.phone"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span>Contact Name</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-7">
+                                <span t-esc="o.partner_id.name"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span>Booking No</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-7">
+                                <span t-esc="o.name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span>Event Name</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-7">
+                                <span t-esc="o.event_name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span>Event Type</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-7">
+                                <span t-esc="o.event_type_id.event_name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span>Total Guest</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-7">
+                                <span t-esc="o.customer_count"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span>Sales Person</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-7">
+                                <t t-if="o.salesperson_id">
+                                    <span t-esc="o.salesperson_id.name"/>
+                                </t>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span>Time Start</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-7">
+                                <!--<span t-esc="o.reservation_time_start" t-options="{'widget': 'datetime'}"/>-->
+                                <span t-field="o.reservation_time_start" t-options="{'format': 'dd MMM YYYY HH:mm:ss'}"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span>Time End</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-7">
+                                <!--<span t-esc="o.reservation_time_end" t-options="{'widget': 'datetime'}"/>-->
+                                <span t-field="o.reservation_time_end" t-options="{'format': 'dd MMM YYYY HH:mm:ss'}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <table class="table">
+                        <thead>
+                            <tr style="border-bottom: 1px solid black;">
+                                <th style="border: 0px;width: 25%">Meeting Room</th>
+                                <th style="border: 0px;width: 25%">Funct Type</th>
+                                <th style="border: 0px;">Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="o.table_list" t-as="t">
+                                <td style="border: 0px;">
+                                    <span t-esc="t.table_id.name"/>
+                                </td>
+                                <t t-if="t.functional_room_type">
+                                    <td style="border: 0px;">
+                                        <span t-esc="t.functional_room_type.name"/>
+                                    </td>
+                                </t>
+                                <td style="border: 0px;">
+                                    <span t-esc="t.remarks"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <thead>
+                            <tr style="border-bottom: 1px solid black;">
+                                <th style="border: 0px;">List Order</th>
+                                <th style="border: 0px;text-align: right;">Qty</th>
+                                <th style="border: 0px;text-align: right;">Unit Price</th>
+                                <th style="border: 0px;text-align: right;">Discount</th>
+                                <th style="border: 0px;text-align: right;">Service</th>
+                                <th style="border: 0px;text-align: right;">Tax</th>
+                                <th style="border: 0px;text-align: right;">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--<t t-set="total_bruto" t-value="0"/>-->
+                            <!--<t t-set="total_disc" t-value="0"/>-->
+                            <!--<t t-set="total_untaxed" t-value="0"/>-->
+                            <!--<t t-set="total_service" t-value="0"/>-->
+                            <!--<t t-set="total_tax" t-value="0"/>-->
+                            <!--<t t-set="total" t-value="0"/>-->
+
+                            <t t-foreach="o.lines" t-as="l">
+                                <tr>
+                                    <td style="border: 0px;">
+                                        <span t-esc="l.product_id.name"/>
+                                    </td>
+                                    <td style="border: 0px;text-align: right;">
+                                        <span t-esc="l.qty"/>
+                                    </td>
+                                    <td style="border: 0px;text-align: right;">
+                                        <span t-esc="'{0:,.0f}'.format(l.price_unit)"/>
+                                    </td>
+                                    <td style="border: 0px;text-align: right;">
+                                        <span t-esc="l.discount"/>
+                                    </td>
+    <!--                                <td style="border: 0px;text-align: right;">-->
+    <!--                                    <p t-foreach="l.tax_ids" t-as="t" >-->
+    <!--                                        <span t-esc="t.name"/>-->
+    <!--                                    </p>-->
+    <!--                                </td>-->
+                                    <td style="border: 0px;text-align: right;">
+                                        <span t-esc="'{0:,.0f}'.format(l.service_amount)"/>
+                                    </td>
+                                    <td style="border: 0px;text-align: right;">
+                                        <span t-esc="'{0:,.0f}'.format(l.tax_amount)"/>
+                                    </td>
+                                    <td style="border: 0px;text-align: right;">
+                                        <span t-esc="'{0:,.0f}'.format(l.price_subtotal_incl)"/>
+                                    </td>
+                                </tr>
+                                <!--<t t-set="total_bruto" t-value="total_bruto + (l.qty * l.price_unit)"/>-->
+                                <!--<t t-set="total_disc" t-value="total_disc + (total_bruto * l.discount/100)"/>-->
+                                <!--<t t-set="total_untaxed" t-value="total_untaxed + total_bruto - total_disc"/>-->
+                                <!--<t t-set="total_service" t-value="total_service + l.service_amount"/>-->
+                                <!--<t t-set="total_tax" t-value="total_tax + l.tax_amount"/>-->
+                                <!--<t t-set="total" t-value="total + l.price_subtotal_incl"/>-->
+                            </t>
+                            <tr style="border-bottom: 1px solid black;">
+                                <td style="border: 0px;"> </td>
+                                <td style="border: 0px;"> </td>
+                                <td style="border: 0px;"> </td>
+                                <td style="border: 0px;"> </td>
+                                <td style="border: 0px;"> </td>
+                                <td style="border: 0px;"> </td>
+                                <td style="border: 0px;"> </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" style="padding: 0;border: 0px;text-align: right;">
+                                    Total Bruto w/o Tax:
+                                </td>
+                                <td style="padding: 0;border: 0px;text-align: right;">
+                                    <span t-esc="'{0:,.0f}'.format(o.brutto_before_tax)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" style="padding: 0;border: 0px;text-align: right;">
+                                    Discount w/o Tax:
+                                </td>
+                                <td style="padding: 0;border: 0px;text-align: right;">
+                                    <span t-esc="'{0:,.0f}'.format(o.total_disc_amount_before_tax)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" style="padding: 0;border: 0px;text-align: right;">
+                                    Total Untaxed (Before Tax and Service):
+                                </td>
+                                <td style="padding: 0;border: 0px;text-align: right;">
+                                    <span t-esc="'{0:,.0f}'.format(o.amount_untaxed)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" style="padding: 0;border: 0px;text-align: right;">
+                                    Total Service:
+                                </td>
+                                <td style="padding: 0;border: 0px;text-align: right;">
+                                    <span t-esc="'{0:,.0f}'.format(o.amount_service)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" style="padding: 0;border: 0px;text-align: right;">
+                                    Total Tax:
+                                </td>
+                                <td style="padding: 0;border: 0px;text-align: right;">
+                                    <span t-esc="'{0:,.0f}'.format(o.amount_tax_only)"/>
+                                    <!--<span t-esc="'{0:,.0f}'.format(total_tax)"/>-->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" style="padding: 0;border: 0px;text-align: right;">
+                                    Total:
+                                </td>
+                                <td style="padding: 0;border: 0px;text-align: right;">
+                                    <span t-esc="'{0:,.0f}'.format(o.amount_total)"/>
+                                    <!--<span t-esc="'{0:,.0f}'.format(total)"/>-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <thead>
+                            <tr style="border-bottom: 1px solid black;">
+                                <th style="border: 0px;">Internal Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border: 0px;">
+                                    <span t-esc="o.note"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<odoo>-->
+<!--    <data>-->
+<!--        <report-->
+<!--            id="nama_model_hardcopy"-->
+<!--            model="nama.model"-->
+<!--            string="Nama Model"-->
+<!--            name="nama_modul.nama_model_print_template"-->
+<!--            report_type="qweb-pdf"-->
+<!--            print_report_name="'Nama File - %s' % (object.name).replace('/','')"-->
+<!--            paperformat="base.paperformat_us"/>-->
+<!--        />-->
+<!--        <template id="nama_model_print_template">-->
+<!--            <t t-call="web.html_container">-->
+<!--                <t t-foreach="docs" t-as="doc">-->
+<!--                    <t t-call="web.internal_layout">-->
+<!--                        <style>-->
+<!--                            .text-center{-->
+<!--                                text-align: center;-->
+<!--                            }-->
+<!--                        </style>-->
+<!--                        <div class="page">-->
+<!--                            <div class="row text-center mb32">-->
+<!--                                <h3>-->
+<!--                                    Voucher <span t-esc="doc.name" />-->
+<!--                                </h3>-->
+<!--                            </div>-->
+<!--                            <div class="row text-center mb32">-->
+<!--                                Name <span style="font-weight:bold" t-esc="doc.name" />-->
+<!--                                State <span style="font-weight:bold" t-esc="doc.state" />-->
+<!--                                SO <span style="font-weight:bold" t-esc="doc.sale_order_terkait" />-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </t>-->
+<!--                </t>-->
+<!--            </t>-->
+<!--        </template>-->
+<!--    </data>-->
+<!--</odoo>-->

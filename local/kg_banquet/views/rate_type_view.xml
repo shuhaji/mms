@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="banquet_rate_type_form" model="ir.ui.view">
+            <field name="name">banquet.rate.type.form</field>
+            <field name="model">banquet.rate.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                       options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <group>
+                            <field name="pms_id"/>
+                            <field name="name"/>
+                            <!--<field name="active"/>-->
+                        </group>
+                    </sheet>
+<!--                    <div class="oe_chatter">-->
+<!--                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>-->
+<!--                        <field name="activity_ids" widget="mail_activity"/>-->
+<!--                        <field name="message_ids" widget="mail_thread"/>-->
+<!--                    </div>-->
+                </form>
+            </field>
+        </record>
+
+        <record id="banquet_rate_type_tree" model="ir.ui.view">
+            <field name="name">banquet.rate.type.tree</field>
+            <field name="model">banquet.rate.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="pms_id"/>
+                    <field name="name"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_banquet_rate_type" model="ir.actions.act_window">
+		   <field name="name">Rate Type</field>
+		   <field name="res_model">banquet.rate.type</field>
+		   <field name="view_type">form</field>
+		   <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="banquet_rate_type_tree"/>
+		</record>
+
+        <menuitem
+            action="action_banquet_rate_type"
+            id="banquet_rate_type"
+            name="Rate Type"
+            parent="menu_banquet_reservation"
+            sequence="10"
+        />
+    </data>
+</odoo>

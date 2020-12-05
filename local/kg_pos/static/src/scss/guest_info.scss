@@ -1,0 +1,54 @@
+/* --- Guest Info Popup --- */
+.pos .popup-guestinfo {
+    .container {
+        text-align: left;
+        padding: 0px 15px;
+    }
+
+    .field {
+        margin: 15px 0px;
+
+        input,
+        select {
+            margin-top: 5px;
+        }
+    }
+
+    .checkbox {
+        position: relative;
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        label {
+            min-height: 20px;
+            padding-left: 20px;
+            margin-bottom: 0;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        input[type='checkbox'] {
+            margin: 0 0 4px -20px;
+            box-shadow: unset;
+            width: unset;
+            vertical-align: middle;
+        }
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-shadow: unset;
+        min-height: unset;
+    }
+}

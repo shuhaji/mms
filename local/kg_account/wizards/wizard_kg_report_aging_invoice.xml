@@ -1,0 +1,44 @@
+<odoo>
+    <record id="wizard_kg_report_aging_invoice_view" model="ir.ui.view">
+        <field name="name">Aging Invoice Detail</field>
+        <field name="model">wizard.kg.report.aging.invoice</field>
+        <field name="inherit_id" ref="kg_report_base.wizard_kg_report_base_view"/>
+        <field name="arch" type="xml">
+        <data>
+            <xpath expr="//group[@name='report_filters_1']" position="replace">
+                <group string="Aging Invoice Detail" name="report_filters_1">
+                    <group name="report_filters_col_left" col="2">
+                        <field name="date_from"/>
+                        <field name="result_selection" widget="radio"/>
+                    </group>
+                    <group name="report_filters_col_right" col="2">
+                        <field name="period_length"/>
+                        <field name="target_move" widget="radio"/>
+                    </group>
+                </group>
+            </xpath>
+        </data>
+        </field>
+    </record>
+
+    <!-- Action to open Wizard as a popup -->
+    <record id="action_wizard_kg_report_aging_invoice" model="ir.actions.act_window">
+        <field name="name">Aging Invoice Detail</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.kg.report.aging.invoice</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_kg_report_aging_invoice_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu item to open Wizard  -->
+    <menuitem id="menu_wizard_kg_report_aging_invoice"
+              name="Aging Invoice Detail"
+              sequence="20"
+              parent="menu_wizard_kg_report_group"
+              action="action_wizard_kg_report_aging_invoice"
+    />
+
+
+</odoo>

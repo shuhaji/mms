@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tax_configuration_tree" model="ir.ui.view">
+        <field name="name">tax.configuration.tree</field>
+        <field name="model">hr.kg.payroll.tax.configuration</field>
+        <field name="arch" type="xml">
+            <tree string="Tax Configuration">
+                <field name="name" string="Name"/>
+                <field name="company_id" string="Company" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+    <record id="tax_configuration_form" model="ir.ui.view">
+        <field name="name">tax.configuration.form</field>
+        <field name="model">hr.kg.payroll.tax.configuration</field>
+        <field name="arch" type="xml">
+            <form string="Tax Setting">
+                <group col="4">
+                    <field name="name" placeholder="Enter Text"/>
+                    <field name="company_id" string="Company" widget="many2many_tags"/>
+                </group>
+                <group string="Occupational Expense" col="4">
+                    <field name="position_percentage"/>
+                    <field name="position_maxvalue"/>
+                </group>
+                <group string="Tax Penalty">
+                    <field name="tax_penalty_percentage"/>
+                </group>
+                <notebook>
+                    <page string="Tax PTKP">
+                        <field name="ptkp_id">
+                            <tree editable="bottom">
+                                <field name="tax_state"/>
+                                <field name="description"/>
+                                <field name="value"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Tax PKP">
+                        <field name="pkp_id">
+                            <tree editable="bottom">
+                                <field name="code"/>
+                                <field name="description"/>
+                                <field name="max_value"/>
+                                <field name="percentage"/>
+                                <field name="is_unlimited"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+    <record id="tax_configuration_search" model="ir.ui.view">
+        <field name="name">tax.configuration.form</field>
+        <field name="model">hr.kg.payroll.tax.configuration</field>
+        <field name="arch" type="xml">
+            <search string="Search Tax Configuration">
+                <field name="name" filter_domain="['|', '|', ('name', 'ilike', self)]"/>
+                <field name="id"/>
+                <field name="company_id" string="Company"/>
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="name" string="Name"  context="{'group_by' : 'name'}" />
+                    <filter name="company_id" string="Company" context="{'group_by': 'company_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="open_tax_configuration_form" model="ir.actions.act_window">
+        <field name="name">Tax Configuration</field>
+        <field name="res_model">hr.kg.payroll.tax.configuration</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_tax_setting"
+        name="Tax Configuration"
+        parent="hr_payroll.menu_hr_payroll_configuration"
+        sequence="20"
+        action="open_tax_configuration_form"/>
+</odoo>

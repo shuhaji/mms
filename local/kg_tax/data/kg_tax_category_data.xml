@@ -1,0 +1,100 @@
+<openerp>
+   <data>
+
+       <record id="tax_category_ata_taxi" model="tax.category">
+           <field name="tax_category">Taxi</field>
+           <field name="tax_code">ATA</field>
+       </record>
+
+       <record id="tax_category_atb_pub/bar/kafe" model="tax.category">
+           <field name="tax_category">Pub/bar/kafe</field>
+           <field name="tax_code">ATB</field>
+       </record>
+
+       <record id="tax_category_atc_facsimile" model="tax.category">
+           <field name="tax_category">Facsimile</field>
+           <field name="tax_code">ATC</field>
+       </record>
+
+       <record id="tax_category_atd_diskotik" model="tax.category">
+           <field name="tax_category">Diskotik</field>
+           <field name="tax_code">ATD</field>
+       </record>
+
+       <record id="tax_category_atf_fitnes_center" model="tax.category">
+           <field name="tax_category">Fitnes Center</field>
+           <field name="tax_code">ATF</field>
+       </record>
+
+       <record id="tax_category_ath_health_center" model="tax.category">
+           <field name="tax_category">Health Center</field>
+           <field name="tax_code">ATH</field>
+       </record>
+
+       <record id="tax_category_ati_internet" model="tax.category">
+           <field name="tax_category">Internet</field>
+           <field name="tax_code">ATI</field>
+       </record>
+
+       <record id="tax_category_atk_kolam_renang" model="tax.category">
+           <field name="tax_category">Kolam Renang</field>
+           <field name="tax_code">ATK</field>
+       </record>
+
+       <record id="tax_category_atl_laundry" model="tax.category">
+           <field name="tax_category">Laundry</field>
+           <field name="tax_code">ATL</field>
+       </record>
+
+       <record id="tax_category_atm_makan/minum" model="tax.category">
+           <field name="tax_category">Makan/Minum</field>
+           <field name="tax_code">ATM</field>
+       </record>
+
+       <record id="tax_category_atn_spa" model="tax.category">
+           <field name="tax_category">SPA</field>
+           <field name="tax_code">ATN</field>
+       </record>
+
+       <record id="tax_category_ato_klub_malam/karaoke" model="tax.category">
+           <field name="tax_category">Klub malam/karaoke</field>
+           <field name="tax_code">ATO</field>
+       </record>
+
+       <record id="tax_category_atp_telepon" model="tax.category">
+           <field name="tax_category">Telepon</field>
+           <field name="tax_code">ATP</field>
+       </record>
+
+       <record id="tax_category_ats_sewa_kamar" model="tax.category">
+           <field name="tax_category">Sewa kamar</field>
+           <field name="tax_code">ATS</field>
+       </record>
+
+       <record id="tax_category_att_lapangan_tenis" model="tax.category">
+           <field name="tax_category">Lapangan Tenis</field>
+           <field name="tax_code">ATT</field>
+       </record>
+
+       <record id="tax_category_atv_servis_charge" model="tax.category">
+           <field name="tax_category">Service Charge</field>
+           <field name="tax_code">ATV</field>
+       </record>
+
+       <record id="tax_category_atx_telex" model="tax.category">
+           <field name="tax_category">Telex</field>
+           <field name="tax_code">ATX</field>
+       </record>
+
+       <record id="tax_category_aty_fotocopy" model="tax.category">
+           <field name="tax_category">Fotocopy</field>
+           <field name="tax_code">ATY</field>
+       </record>
+
+       <record id="tax_category_atz_transaksi_lainnya" model="tax.category">
+           <field name="tax_category">Transaksi Lainnya</field>
+           <field name="tax_code">ATZ</field>
+       </record>
+
+   </data>
+</openerp>

@@ -1,0 +1,288 @@
+<odoo>
+    <data>
+         <record id="invoice_verification_register_form_view" model="ir.ui.view">
+            <field name="name">invoice.verification.register.form.view</field>
+            <field name="model">invoice.verification.register</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="partner_id" domain="[('supplier', '=', True)]"/>
+                            <field name="user_id" invisible="1"/>
+                            <field name="current_date" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="start_date" required="1"/>
+                            <field name="end_date" required="1"/>
+                        </group>
+                    </group>
+                <footer>
+                    <button string="Print" name="print_report" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+                </form>
+            </field>
+        </record>
+
+        <template id="invoice_verification_register_report_layout">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"/>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+            <div class="header">
+                <div class="row mb4">
+                    <div class="col-xs-6">
+                        <t t-if="company.street">
+                            <span t-esc="company.street"/>
+                        </t>
+                        <t t-if="company.street2">
+                            <br/>
+                            <span t-esc="company.street2"/>
+                        </t>
+                        <t t-if="company.city">
+                            <br/>
+                            <span t-esc="company.city"/>
+                        </t>
+                        <t t-if="company.country_id">
+                            <br/>
+                            <span t-esc="company.country_id.name"/>
+                        </t>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="max-height: 75px;"/>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-xs-6"></div>
+                    <div class="col-xs-6">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <span>Print Date</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-6">
+                                <span t-esc="o.current_date"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <span>Page</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-6">
+                                <span class="page"/>
+                                of
+                                <span class="topage"/>
+                            </div>                                
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <span>User ID</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <span> : </span>
+                            </div>
+                            <div class="col-xs-6">
+                                <span t-esc="o.user_id.name"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article o_report_layout_standard">
+                <t t-raw="0" />
+            </div>
+            <div class="footer">
+            </div>
+        </template>
+
+        <template id="invoice_verification_register_report_document">
+            <t t-call="kg_account.invoice_verification_register_report_layout">
+                <t t-foreach="vendor" t-as="bill">
+                    <div class="page" style="page-break-before:always;">
+                        <div class="row text-center">
+                            <h3 style="margin-bottom:0px;">INVOICE VERIFICATION REGISTER</h3>
+                        </div>
+                        <div class="row text-center" style="border-top:1px solid black; border-bottom:1px solid black;">
+                            <strong t-esc="bill.number"/>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <span>Vendor</span>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <span> : </span>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <t t-if="o.partner_id">
+                                            <span t-esc="o.partner_id.name"/>
+                                        </t>
+                                        <t t-else="">
+                                            <span t-esc="bill.partner_id.name"/>
+                                        </t>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <span>Currency</span>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <span> : </span>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <t t-if="o.partner_id">
+                                            <span t-esc="o.partner_id.currency_id.name"/>
+                                        </t>
+                                        <t t-else="">
+                                            <span t-esc="bill.partner_id.currency_id.name"/>
+                                        </t>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <span>Invoice Date</span>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <span> : </span>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <span t-esc="bill.date_invoice"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <span>Due Date</span>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <span> : </span>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <span t-esc="bill.date_due"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <span>UserId</span>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <span> : </span>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <span t-esc="bill.create_uid.name"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6"></div>
+                        </div>
+                        <br/>
+                        <table class="table">
+                            <thead>
+                                <tr style="border-bottom: 1px solid black;">
+                                    <th style="border: 0px;">Account</th>
+                                    <th style="border: 0px;">Label</th>
+                                    <th style="border: 0px;text-align:right;">Debit</th>
+                                    <th style="border: 0px;text-align:right;">Credit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="bill.move_id.mapped('line_ids')" t-as="move_line">
+                                    <td style="border: 0px;">
+                                        <span><span t-esc="move_line.account_id.code"/>-<span t-esc="move_line.account_id.name"/></span>
+                                    </td>
+                                    <td style="border: 0px;">
+                                        <span t-esc="move_line.name"/>
+                                    </td>
+                                    <td style="border: 0px;text-align:right;">
+                                        <span t-esc="'{0:,.0f}'.format(move_line.debit)"/>
+                                    </td>
+                                    <td style="border: 0px;text-align:right;">
+                                        <span t-esc="'{0:,.0f}'.format(move_line.credit)"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+                        <div class="row">
+                            <div class="col-xs-6"></div>
+                            <div class="col-xs-6">
+                                <div class="row" style="text-align:right;">
+                                    <div class="col-xs-3"></div>
+                                    <div class="col-xs-5">
+                                        <strong>Amount</strong>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <strong t-esc="'{0:,.0f}'.format(bill.amount_total)"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <template id="invoice_verification_register_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="kg_account.invoice_verification_register_report_document"/>
+                </t>
+            </t>
+        </template>
+
+        <record model="report.paperformat" id="paperformat_invoice_verification_register">
+            <field name="name">paperformat.invoice.verification.register</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">65</field>
+            <field name="margin_bottom">25</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">60</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+            id="invoice_verification_register_report_action"
+            string="Invoice Verification Register"
+            model="invoice.verification.register"
+            report_type="qweb-pdf"
+            name="kg_account.invoice_verification_register_report"
+            file="kg_account.invoice_verification_register_report"
+        />
+
+        <record id="kg_account.invoice_verification_register_report_action" model="ir.actions.report">
+            <field name="paperformat_id" ref="paperformat_invoice_verification_register"/>
+        </record>
+
+        <record id="action_invoice_verification_register_wizard_report" model="ir.actions.act_window">
+            <field name="name">Invoice Verification Register</field>
+            <field name="res_model">invoice.verification.register</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="invoice_verification_register_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_kg_invoice_verification_register_report" 
+                name="Invoice Verification Register" 
+                action="action_invoice_verification_register_wizard_report" 
+                parent="account.menu_finance_legal_statement" 
+                sequence="5"/> 
+    </data>
+</odoo>  

@@ -1,0 +1,124 @@
+<odoo>
+    <!-- Wizard to View KG Report (Stimulsoft) -->
+    <record id="wizard_kg_report_income_statement_view" model="ir.ui.view">
+        <field name="name">KG Report - Income Statement</field>
+        <field name="model">wizard.kg.report.income_statement</field>
+        <field name="inherit_id" ref="kg_report_base.wizard_kg_report_base_view"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="working_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="working_date" position="after">
+                <field name="company_id" invisible="1"/>
+                <field name="account_report_id" domain="[('parent_id','=',False)]"/>
+                <field name="value_type" />
+                <field name="date_filter_type"/>
+                <field name="period" widget="date-month-year-period-widget"
+                       attrs="{'invisible':[('date_filter_type', '!=', 'period')]}"
+                />
+                <field name="date_from" style="width:120px" required="True"
+                       attrs="{'invisible':[('date_filter_type', '!=', 'date_range')]}"
+                />
+                <field name="date_from_to_show" style="width:120px"
+                       attrs="{'invisible':['|',('date_filter_type', '=', 'date_single'), ('date_filter_type', '=', 'date_range')]}"
+                />
+                <field name="date_to" style="width:120px" required="True"
+                       attrs="{'invisible':[('date_filter_type', '!=', 'date_single'), ('date_filter_type', '!=', 'date_range')]}"
+                />
+                <field name="date_to_to_show" style="width:120px"
+                       attrs="{'invisible':['|',('date_filter_type', '=', 'date_single'), ('date_filter_type', '=', 'date_range')]}"
+                />
+                <field name="enable_filter"
+                       attrs="{'invisible':[('value_type', '=', 'actual_vs_budget')]}"/>
+            </field>
+            <field name="file_name" position="after">
+                <field name="target_move" widget="radio"/>
+                <field name="first_column_set_label"
+                       attrs="{'invisible':[('value_type', '=', 'actual_vs_budget')]}"/>
+                <field name="date_start_fiscal_year" />
+                <field name="date_end_fiscal_year" />
+                <field name="is_show_ratio" />
+                <field name="is_hide_signer" />
+            </field>
+            <xpath expr="//group[@name='report_filters_1']" position="after">
+                <group string="Compare To" attrs="{'invisible': [('enable_filter','=',False)]}">
+                    <group col="2">
+                        <field name="value_type_cmp"
+                               attrs="{'invisible':[('value_type', '=', 'actual_vs_budget')]}"/>
+                        <field name="filter_cmp"/>
+                        <field name="period_cmp" widget="date-month-year-period-widget"
+                               attrs="{'invisible':[('filter_cmp', '!=', 'filter_period')]}"
+                        />
+                        <field name="date_from_cmp" style="width:120px" required="True"
+                               attrs="{'required':[('filter_cmp', '=', 'filter_date')],
+                                       'invisible':[('filter_cmp', '!=', 'filter_date')]}"/>
+                        <field name="date_to_cmp" style="width:120px" required="True"
+                               attrs="{'required':[('filter_cmp', '=', 'filter_date')],
+                                       'invisible':[('filter_cmp', '!=', 'filter_date')]}"/>
+                        <field name="date_from_cmp_to_show" style="width:120px"
+                               attrs="{'invisible':[('filter_cmp', '=', 'filter_date')]}"/>
+                        <field name="date_to_cmp_to_show" style="width:120px"
+                               attrs="{'invisible':[('filter_cmp', '=', 'filter_date')]}"/>
+                    </group>
+                    <group col="2">
+                        <field name="second_column_set_label"
+                               attrs="{'invisible':[('value_type', '=', 'actual_vs_budget')]}"/>
+                        <field name="is_show_third_column_set"
+                               attrs="{'invisible':[('value_type', '=', 'actual_vs_budget')]}"/>
+                        <field name="third_column_set_label"
+                               attrs="{'invisible':[('value_type', '=', 'actual_vs_budget')]}"/>
+                    </group>
+                </group>
+            </xpath>
+            <!--<button name="show_report" position="attributes">-->
+                <!--<attribute name="groups">base.group_no_one</attribute>-->
+            <!--</button>-->
+        </field>
+    </record>
+
+    <!-- Action to open Wizard as a popup -->
+    <!--<act_window id="action_wizard_kg_report_income_statement"-->
+                <!--name="KG Report - Income Statement"-->
+                <!--res_model="wizard.kg.report.income_statement"-->
+                <!--view_mode="form"-->
+                <!--target="new"-->
+                <!--view_type="form"-->
+                <!--view_id="wizard_kg_report_income_statement_view"-->
+    <!--/>-->
+    <record id="action_wizard_kg_report_income_statement" model="ir.actions.act_window">
+        <field name="name">KG Report - Income Statement</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.kg.report.income_statement</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_kg_report_income_statement_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Action to open Wizard as an inline form -->
+    <!--<record id="action_wizard_kg_report_base" model="ir.actions.act_window">-->
+        <!--<field name="name"></field>-->
+        <!--<field name="type">ir.actions.act_window</field>-->
+        <!--<field name="res_model">wizard.kg.report.base</field>-->
+        <!--<field name="view_type">form</field>-->
+        <!--<field name="view_mode">form</field>-->
+        <!--<field name="view_id" ref="wizard_kg_report_income_statement_view"/>-->
+        <!--<field name="target">inline</field>-->
+    <!--</record>-->
+
+    <menuitem id="menu_wizard_kg_report_group"
+              name="KG Reports"
+              sequence="9"
+              parent="account.menu_finance_reports"
+    />
+    <!-- Menu item to open Wizard  -->
+    <menuitem id="menu_wizard_kg_report_income_statement"
+              name="Income Statement"
+              parent="menu_wizard_kg_report_group"
+              action="action_wizard_kg_report_income_statement"
+    />
+
+
+
+</odoo>

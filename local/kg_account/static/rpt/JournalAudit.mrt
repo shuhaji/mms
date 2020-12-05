@@ -1,0 +1,546 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <CalculationMode>Interpretation</CalculationMode>
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <data Ref="2" type="Stimulsoft.Report.Dictionary.StiJsonDatabase" isKey="true">
+        <Alias>data</Alias>
+        <Key />
+        <Name>data</Name>
+        <PathData>resource://report_data</PathData>
+      </data>
+    </Databases>
+    <DataSources isList="true" count="2">
+      <data1 Ref="3" type="DataTableSource" isKey="true">
+        <Alias>data1</Alias>
+        <Columns isList="true" count="10">
+          <value>acc_name,System.String</value>
+          <value>code,System.String</value>
+          <value>credit,System.Decimal</value>
+          <value>date,System.String</value>
+          <value>debit,System.Decimal</value>
+          <value>jname,System.String</value>
+          <value>journal_id,System.Decimal</value>
+          <value>lname,System.String</value>
+          <value>move_name,System.String</value>
+          <value>partner_name,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>81d6e8a4ea9c4b3f92c840566aa9350d</Key>
+        <Name>data1</Name>
+        <NameInSource>data.data1</NameInSource>
+      </data1>
+      <data2 Ref="4" type="DataTableSource" isKey="true">
+        <Alias>data2</Alias>
+        <Columns isList="true" count="5">
+          <value>account_tax_id,System.Decimal</value>
+          <value>base_amount,System.Decimal</value>
+          <value>journal_id,System.Decimal</value>
+          <value>tax_amount,System.Decimal</value>
+          <value>tax_name,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>2fb38cd78b6142049bea99258be7b9e3</Key>
+        <Name>data2</Name>
+        <NameInSource>data.data2</NameInSource>
+      </data2>
+    </DataSources>
+    <Relations isList="true" count="1">
+      <Relation Ref="5" type="DataRelation" isKey="true">
+        <Active>True</Active>
+        <Alias>Relation</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>journal_id</value>
+        </ChildColumns>
+        <ChildSource isRef="4" />
+        <Dictionary isRef="1" />
+        <Name>Relation</Name>
+        <NameInSource>Relation</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>journal_id</value>
+        </ParentColumns>
+        <ParentSource isRef="3" />
+      </Relation>
+    </Relations>
+    <Report isRef="0" />
+    <Resources isList="true" count="1">
+      <value>Name=report_data, Alias=report_data, Type=Json, Content=nV0ggf9h5GyRuroFKykE4QVyrWsiZ1uFlPzLFDrNNFobYPkI3LVCIAjFqqsqgMtGqmQNXL6Yn0PglFkW96y4afgd7OdYYwhv2QDpY4R4je20xCU17K5gpoitDyqsX4h0VWuaEqz_x002F_hEbeLcJQt5_x002F_FZ3OhHhJMGqST1mnIvMCymyYAs1ov8vnEi0A5mLNUUrOF0qqMEb3s8VM_x002F_e9lugWzSTTMw3lXfHsP1Rb2jGo7oWsaHGpgr75_x002B_I72bXQhCPxiEkmC28753M4li69ujRG71o1dmvsC4Dg80qohLoinHlfSD5zXv5LBQSpHZuiNJ0zZMV4LsTwgYXQE5_x002F_WZk2rCyET8ZsSLBHh3xg2bTPfAeQc_x002F_jgJghdCevy1LuWASswQ73Io7UFvfSWY5V8RZixygy1JX63grNehzQfdEQF4x8B_x002F_7i4nBw64_x002B_TPzqGfBMpAH7E84u576c_x002B_h_x002B_1VQv6fPv94NBFpZsCstZyK5pQbE9Yp7uGJ8WjKODHJJL1eUR_x002F__x002B_wY4XxyQST6S1Bh65q_x002F_7pLB0ZoWoVVIO_x002B_jF_x002F_ixubZAThYE6wfNDtQYWQFiAD04oBqgHoaIw_x002B_dGpUUGu5vmut5uIb68BMv0xYEmW18Dt3ZWId_x002F_4go5VjCdu8USqALDI9KjYQ_x002B_s3yCuX3D7lEOt5p30EG9a_x002F_q3Z5m2HlTaJ_x002B_NUWuxXKolVsSIIBFzoMSDJ3xssbhwetY_x002B_Eg9q1pq4MsYWl5KvCCLj6QkwjXwVXpuPkA_x002F_to_x002F_1IeWLe0oQKtPB3F7DVwY3pYzsHFWngyP_x002F_eJwP92ct1P7phpGHdLJaYkb3N3DmDY4Qco5tyl6bEjCUrmdzcNPMg67F49xtOYlgHnd1VENka30iE6lIAOceNRRyXRdMh3UhFkiRPSgkztCH4pFQwXTqMpybUQWsT4Jh_x002F_vqH_x002F_sqjg0kSWIC2pNgMt1vTsUPSj_x002F_eSlaS6TVXWwHJd5p9XlVpBspV_x002F_huqT2jYBqPAXgTVlbD2ym6urxG_x002B_9E8gJLzLnTbOnqc1_x002F_Geg2efZiG4_x002B_ONCw3YH4Hm6k4uahVsoM4keSxbiVLw3gAJcmt8enGuSuyn8Vs_x002F_fg7IGsTFBXOUopEegwV6nPCYC7_x002B_C_x002B_GqB09dHhvvbaDeZ_x002F_AlSthoaxc30Hk5GjTRNqSfOsT2gkaZ_x002F_b2q_x002B_9K_x002B_xJM8qro9qPxrz5ApuAE1ePHSMhpeR4NFLpij9o4z6X6n5n5MCN4vZAaBbuJnvrsX4yj7M7f7XRqkVTa7wce_x002F_KCVeyIE0Qes4k1WvP5EN_x002F_kCMDUTbXlKUC6tsHfT5FcK_x002F_sZfpwJHTgfi9RGiI8v4O_x002F_uZtKqR9kl3SLq0DKe8kDVds8L3a0nu6_x002B_4pKdI_x002B_WJNNLx8q3AHTbLe8bivI_x002B_z11u2OSew1QsqRCC62ygu_x002B_yDm6kadQP_x002F_ZaHk4XucbbfqMzg8AnJ3R4QeIuTlinhJEcafNtAIwtFM8fN932mO2tI_x002F_GPu4XR2LUlsjgwafDr_x002B_C3weOJjKHqXEIqICk3LI2wyGEIqATNrUmnuOoz0ICZXdYwSw9aLaeLi3lICr6ad5HVEm91lOILgm3luGXY2NAFNwMm4qIiNoUOAaRYTVBUif92dRa_x002F_8XMmI6V454xdfzZyzu1_x002F_6nTNrEP8q6sbdAA0Qv2naWru_x002B_9oRr_x002F_cOtGD9QaeJUo2wkzWfCKUPetowJHENTrWfz2ELompVVW8b8hfLlnZP1S51dcjvT4TzXBCUNU9_x002B_IbGNDNMY1Co5gdD0bS9JxDCzmai1BWghKl7ARx5ULzM6J4rgvQSMEcuCFNTqOjnUM_x002F_nrdI7A1DKrsYXc6XSuChPhXIXhPBTGSaF3uPNuSi9Y8ApMIqH64OTThZYHBWkZ1tJ9pvkSGgbZolzH8gcA5pV1YFj8GeTZYto2irASZDMFzbI_x002B_QW92LJvVd_x002B_S_x002B_cvHdQ7iEOMLW0AzKgKvos0Yghb4Y7nSruoC2uJuUEQWFDRSc_x002F_u6dx73_x002F_kg3f1lnQfDn_x002F_VG8dyHulp3yl475u_x002B_5A8rgmX0SNLHSQJk1eqk9YXqJwGeSw3LbVwk9A2nBlBYGNDE7wjtd4Cv4EEOgR2Vl1HaAk529hoO4FkJ0kDsfrpElmZtSbyXD1FOZ0D8uEfNrBrJd3dLq28qYbGl5FybNSF9KQW79GQHOMr1Oa6AAV0sccLwSl5b0PLngCVMzYdiOzddlLwfzpjUwd7sQwkU7W6Da_x002B_ElOL6SezP4j7eYnqAK7KJrm7hNNEwotR5E0KwlmkXFfMD97dqapGgeDDC_x002B_xvcHCdNCXPixBjZP5ejGeKd86CGjH5uZV7HDLYd3PEb26kXwFMEzzxXXSJ5VTQFdiNA690WXP2DjSUC5zRxVFygMW7mIWRPSvFApHa4LUkFCY82uJxQl20Eih_x002B_5UXo5dihpAty8KECNuF2p5GjgqnVlH1j9dhtmmV1MPNH5Uu44uYO13PPKIDL6PzgEBU3KqSuFqeGaR76KH1YcjUPoiDVUZ97qEUltW11d0bCn_x002B_J32h5uBeKPyVgGY8CL9eLMk_x002F_rgCrLrd7MgqDAJl9cPN_x002F_8pe2Us1olox_x002F_re5FJjfy4zN2aoAVyWOD_x002B_ORw_x002B_o9tJGJ_x002F_TobCBPiQs3rECStOvEjaFD8Y5aZdSzxJoPpl0RHl9110YHCYRADJcBtLbxin8SR4nIWStfoBGJIaZFEEdNAcV880vohg2yVXzLb2Lg6KESwhewxdvdnoaW1Ewkan_x002F_E2X_x002F_toVKlYluPm3iKvI0MWkIfWkOit_x002B_XFkcxifGfcLV_x002B_UOUJggVjVGi6k_x002F_uMx2xLaIH3HdrV2jMw2PEiTFYRLkj3Xm1L9RlhZpFyB52zt18_x002B_wqckFXrpg_x002B_LEoaAJP89oCRIHs04gA_x002B_WVjESDdtsA2K7mQnPn9PpAUn9DzfauUczbcLLfZrq3kB4sMTyVW8Yg_x002B_w4pyL3PRnlsUp_x002B_EtpiWaS9GBwP9KojMUxbhFxq4BcREKMDk2KHIRDdrdPCNTqxGv2QtZ9Si_x002B_Ged6Dp_x002B_bsfznvd88QW5sYAxmPDmPKrtw_x002F_N2mE3AEwcq6zEbvuDxH9y2qp_x002B_w_x002F_96TJK7kieJKI4KMPucxpjJ0UCe0GLrOB_x002F_IFMLJddvrEkCfvAwkog6d3aPeIP7vm0nUZDXg2Py6zVWMWgywShokSR6rnWjO7ORb5ys1HQjv7c7rkAVr0qMEjNEpjrHhBlm6L4MugKqMScoizQfcZILf7ba_x002F_nQzediqh7IVJ3bjPde2b3k2FRIu7911Yo8Ksw8XuCbE16pRSHOqDwWjou3fzwiIlz_x002B_UXrRfpr6p7MZsDI90i0HS5r6iIP3mpeG_x002F_zBaYRGsXCdQ_x002B__x002F_4gXhq8zC3_x002B__x002B_n2PMtRl7e_x002F_dcI8Pro2Qc7sTzGCwocB42hlgWXzpTbGgW4qwUtrHS2acK07Jgnpdf0m48z_x002B_nN5gnqMwDPrPH_x002B_KxJ1spS5yikbqQSx0CvDm40hcjK_x002B_9TyE_x002B_khgQQajmWBpQnWSGJMxxlaVUco3C_x002B_vq9Qgxw2LHRfIhgYCn4vEWXAkv_x002B_Fh_x002F_G_x002F_L2J_x002F_hp0KDL7oGd0TvSpOCmVit_x002B_QlJCz8KLH3ZzGtNQBj_x002B_Kqe4Y00EMdN3fcJu69CEMARJ_x002F_c4LMMUe4bn7lFv104fRjRr98ZuIXWw4dRxYn2hMmrsFFd7aZKgehtcOnkSwcUbdEhATy0QO1LdECk7jzwvanDLM9ovqd3vuWiRuFa2mKNMEPmO6vh9ovwE_x002B_mgHi345wnya8js_x002F_Apmik8u_x002B_48LffwT4QyiKfsO27HxuJKslDQh78rEbhdfZg32ODs0uqM9cIRM7QvMY1uhbRWQNx8A37iOBtxPUdHee_x002B_cpUCeh_x002B_ZiCJLPKoi9PEeoeTujL5zPRjLcPe08OUP96cDcJLye2dh856uoiaCr3sGAn_x002F_9dLamEWq7NTGyH_x002F_gBIfhBvk9LgT_x002F__x002B_t5ZFyHosjsqyPueAv5_x002B_QERQGv2Wz0_x002F_8Dr_x002B_US0iZtOYA6cLGtDZVMUjinSg3nOo_x002F_OQRFVkzByzolgYjgEoCDRWmHWXol6athmZ3vHGFMtJBnT_x002F_MCTz3DFvFpqbzpSMWGCT9sLhM8bXVafvNhFeky9HrjVaXGNl9JhKyykug9mpxJ4an7jdCZ5kFDvstJGuc1_x002B_M5RNyQBePK1d_x002B_M_x002F_rScVXPZ3MLeC1yT212hWOtDu7hIKrOg9gMZE0HHoKvZ8Tp5wryGZYZ_x002B_OijVh3PJRdBtgnJTFyECHQTmoVm_x002F_f0NdnvHrwAUEACLfDj4Z97mQjR9MtqS26T_x002B_OmiFMe28CT_x002B_vY_x002B_8dRviQ_x002B_uXOVAmhUYa_x002F_dx_x002F_PbZBeiF5VEjNTi1ipZhajgtRctEWlpTI6O5wRiwOjICYUj0MA_x002B_aoYucs3MFHRMY62qPY9LxRERTIW0wz21HtAmtkK_x002B_UFrZUgCOwcynJ_x002B_yjIy_x002B_MfqZzS2LgC3XDi9wo1G81wswFWrD3iyBv4_x002F_o4hMyi68iyKbdmKu_x002B_4xPwZFytg8iGTWM0fld97yNjMYGzgWrbaSxUDb5vPUkhr_x002F_qU7ve8LGphVybXOZOfTLT4NojV7nSfglu0HaPTZarM_x002B_U_x002F_DRB1K2QWnCHurY7jIeWj6uCTnvHJhFlFsQ_x002B_n_x002B_KFzXIe8vTal7AwLr_x002B_F9R4a3GTJijjN2L86C5WdJ5cLo7p1GtkLBPNjb_x002B_XFukHZ0aBSaO52x3Da_x002F_MAg25RPh_x002F_vLmd_x002B_h0Mtzc0KiWwe6JsqKcQNtKiMFN1a1rwHc7x7qx_x002F_OVhIqsHOILyQaoX9Gf2te2D6XvWn5_x002B_khqiEp7swZjldGHhibsoS0_x002F_4GfWkdCQzouMfvBUFvev9s65AnXL_x002F_sNoRYJahrnMoF2rN3L3hZYymd1mfUvimIq2YwcsviiC7xj4sOv45_x002B_zzH2X7obMuESli3umoyiFyLUr64fz7oKYYOCpWbSztsme7P3eIwjFHdj4rDwEjkfomXNwAAe1K_x002F_f4k_x002B_jTnREW4xQLccahQI_x002F_kQpXET8YTLtGGssiOl5rdduiFG12i3daQtkUsXYvigv3DwyAf2El93KOoLrvTmj8FnJJucsvb8IrjTdSboZayWEodOHhv0J5ZsQTbfnqCDHTMQgrDUX5JfNpPVSQN9LSVEhC15LsGuN_x002B_qVdKoxT_x002F_zY19m9KxFXQBjegvyN82W9f7JH3hfnCtPlSpqCHuMQUs34IqvD3XtixjdgVlJH7yWknJiGtRDh_x002B_9n6b5DrkGrKYx_x002F_TES6k20bjRmV23BCXHig7VWxmJteydIpu1YTniucDfiDe1FzygvGd0wyILU5zEE7JELsYZ61QUB7XorkahgZr_x002F_5QleBfrcFJMr7fKHklM9Qc0mrH3MIZXWzZsT4kZq35ZKZUKKOaXerkDnPJKhYH4grbPPgQrAYjkI8kOLsd1LsGtw5cJF8XWdVDJDFM8_x002F_NzylpHvuUvTlcDEM8sT1gkpkYVaz4XCAtLPVwdu_x002B_AiwtBp9G15DPjb44IYubIELX03UegxyquXt_x002B_T2wMQ6QvwBV3ktcETwJ_x002B_7A8OTmnk0WxJDFNYDrnfeI6enr9Dzn4V6r3omdxrGhHiRNJgVWFn8woBMZUPmzudi9gW4xbw9Kim_x002B__x002F_Njm_x002F_vjxsTu5sa_x002F_W6eYEvfgtGhM_x002B_Ogc3mtaEDVoQy_x002F_VhiqnLzv2csREimPa2SpFE3fm2R3AgfG4UbIPZw9GMXU53ng80yMzwWzoGNO4lz6pFRwTA6I24ftUKdFkYNi9e9yqpRiKgoZVN6nmg7XstMIPLB36XUwxGHUS_x002B_UiBd_x002F_9xgeME5KUHRBJbRdFO3_x002B_xc8LHvoZWdlK_x002F_KSS3xyO5Rlc7qI193C85ejFlmNk_x002F_shAYjxUAeZdiQMMRhkKBcff_x002B_yOVmbjckDRI7nJtIQtMNDeXRhVHROzA4bBiEtht3Erj_x002F_VSiFzEJbyhs4Z07uBTNYoEbYSsZLO9oNVAYHcWzKY4v7R9i7sBxXt4xHrR7Lo87ZRxYyREeqBYYbBuqOioDAgwxcHO8l0dxVdN6WT_x002F_PUmrAQoBppxGqQ6tZiIBcrOJ_x002B_Jd0DUSB0BQKNsOEPJDswKc73R6DuX_x002F_GvEXsL2_x002F__x002F_Dt0wuG6PL2TXGWlrZVepsuBKhsTGCrNzsz8CyOPeuy_x002F_Gs0j4nVcDAdEli9KjKTSjtUBjemcJ3_x002F_r2n7V7_x002F_9yggNc8Why4Sz4PVnU5f32Ke0DwF956sNuSynwC5_x002F_X0tG11d4ZLPC1u6hkUp6aQN4co_x002B_ARa63aIuaVpw1jCgkVyGvSj9NEGdQJ_x002B_6vnvS7Ert_x002F_Bx1ub_x002F_GKJNn7168k8Mg5UNpdm5LjKvCscoG_x002F_xiY2JbpHjgMCLyIVE3i5nSWbfocvx98cpWkjuUFAgrvQ6RCcTjyXum0yi6bjvgMuU3L97ZOIAmDhqZqbfy31F5Z75ttNS31I6g</value>
+    </Resources>
+    <Variables isList="true" count="3">
+      <value>,Company,Company,,System.String,,False,False,False,False,_x003C__x003F_xml_x0020_version_x003D__x0022_1.0_x0022__x0020_encoding_x003D__x0022_utf-16_x0022__x0020_standalone_x003D__x0022_yes_x0022__x003F__x003E__x003C_StiSerializer_x0020_version_x003D__x0022_1.02_x0022__x0020_type_x003D__x0022_Net_x0022__x0020_application_x003D__x0022_State_x0022__x003E__x003C_DateTimeType_x003E_DateAndTime_x003C__x002F_DateTimeType_x003E__x003C_BindingVariable_x0020_isNull_x003D__x0022_true_x0022__x0020__x002F__x003E__x003C_Keys_x0020_isList_x003D__x0022_true_x0022__x0020_count_x003D__x0022_0_x0022__x0020__x002F__x003E__x003C_Values_x0020_isList_x003D__x0022_true_x0022__x0020_count_x003D__x0022_0_x0022__x0020__x002F__x003E__x003C_ValuesBinding_x0020_isList_x003D__x0022_true_x0022__x0020_count_x003D__x0022_0_x0022__x0020__x002F__x003E__x003C__x002F_StiSerializer_x003E_</value>
+      <value>,Sort,Sort,,System.String,,False,False,False,False,_x003C__x003F_xml_x0020_version_x003D__x0022_1.0_x0022__x0020_encoding_x003D__x0022_utf-16_x0022__x0020_standalone_x003D__x0022_yes_x0022__x003F__x003E__x003C_StiSerializer_x0020_version_x003D__x0022_1.02_x0022__x0020_type_x003D__x0022_Net_x0022__x0020_application_x003D__x0022_State_x0022__x003E__x003C_DateTimeType_x003E_DateAndTime_x003C__x002F_DateTimeType_x003E__x003C_BindingVariable_x0020_isNull_x003D__x0022_true_x0022__x0020__x002F__x003E__x003C_Keys_x0020_isList_x003D__x0022_true_x0022__x0020_count_x003D__x0022_0_x0022__x0020__x002F__x003E__x003C_Values_x0020_isList_x003D__x0022_true_x0022__x0020_count_x003D__x0022_0_x0022__x0020__x002F__x003E__x003C_ValuesBinding_x0020_isList_x003D__x0022_true_x0022__x0020_count_x003D__x0022_0_x0022__x0020__x002F__x003E__x003C__x002F_StiSerializer_x003E_</value>
+      <value>,Target,Target,,System.String,,False,False,False,False,_x003C__x003F_xml_x0020_version_x003D__x0022_1.0_x0022__x0020_encoding_x003D__x0022_utf-16_x0022__x0020_standalone_x003D__x0022_yes_x0022__x003F__x003E__x003C_StiSerializer_x0020_version_x003D__x0022_1.02_x0022__x0020_type_x003D__x0022_Net_x0022__x0020_application_x003D__x0022_State_x0022__x003E__x003C_DateTimeType_x003E_DateAndTime_x003C__x002F_DateTimeType_x003E__x003C_BindingVariable_x0020_isNull_x003D__x0022_true_x0022__x0020__x002F__x003E__x003C_Keys_x0020_isList_x003D__x0022_true_x0022__x0020_count_x003D__x0022_0_x0022__x0020__x002F__x003E__x003C_Values_x0020_isList_x003D__x0022_true_x0022__x0020_count_x003D__x0022_0_x0022__x0020__x002F__x003E__x003C_ValuesBinding_x0020_isList_x003D__x0022_true_x0022__x0020_count_x003D__x0022_0_x0022__x0020__x002F__x003E__x003C__x002F_StiSerializer_x003E_</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <Key>dce9eba77b7a4f85831554f15c70ab6c</Key>
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="6" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="4">
+        <ReportTitleBand1 Ref="7" type="ReportTitleBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,27.69,1.8</ClientRectangle>
+          <Components isList="true" count="5">
+            <Text20 Ref="8" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.8,6.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>85073de9e4ae46b3b0d1d56e0d047cee</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>Company : 
+{Company}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text20>
+            <Text21 Ref="9" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.8,0.8,7.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>2ea241c65ba345258e278447a48699cd</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>Journal:
+{data1.jname}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text21>
+            <Text22 Ref="10" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>14.2,0.8,6.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>3f5a45e86d1140a7aae497329e3088dc</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>Entries Sorted By: 
+{Sort}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text22>
+            <Text23 Ref="11" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>20.8,0.8,6.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>1d11a1c7ac9b48ae9d0c3708cc008792</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>Target Moves : 
+{Target}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text23>
+            <Text17 Ref="12" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,6.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>45fbbb0b1ac94d11b2e51924e507fac0</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>{data1.jname}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>DataColumn</Type>
+            </Text17>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ReportTitleBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ReportTitleBand1>
+        <ColumnHeaderBand1 Ref="13" type="Stimulsoft.Report.Components.StiColumnHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3,27.69,0.8</ClientRectangle>
+          <Components isList="true" count="8">
+            <Text5 Ref="14" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.2,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>0c888db820df42b38074c1a27064c8cb</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="6" />
+              <Parent isRef="13" />
+              <Text>Move</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text5>
+            <Text6 Ref="15" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.6,0.2,2.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>0857d6ad2f01409cbcb0962025799158</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="6" />
+              <Parent isRef="13" />
+              <Text>Date</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text6>
+            <Text7 Ref="16" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.8,0.2,1.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>f771ade2e9c543c0900e57cee917f797</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="6" />
+              <Parent isRef="13" />
+              <Text>Account</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text7>
+            <Text8 Ref="17" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.6,0.2,3.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>e16c8178025f4b33863edc465b59f44d</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="6" />
+              <Parent isRef="13" />
+              <Text>Account Name</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text8>
+            <Text9 Ref="18" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>10,0.2,6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>aec3aae0346542cd9c0462f32a7884f5</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="6" />
+              <Parent isRef="13" />
+              <Text>Partner</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text9>
+            <Text10 Ref="19" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>16.4,0.2,5.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>493515a164114c4fb8f75fd1245b133b</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="6" />
+              <Parent isRef="13" />
+              <Text>Label</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text10>
+            <Text15 Ref="20" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>21.6,0.2,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>45969e53504e451f800d8d5e779600ec</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="6" />
+              <Parent isRef="13" />
+              <Text>Debit</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text15>
+            <Text16 Ref="21" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>24.6,0.2,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>60d53eaed5214613a07ea2e424d4ca0a</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="6" />
+              <Parent isRef="13" />
+              <Text>Credit</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text16>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ColumnHeaderBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ColumnHeaderBand1>
+        <DataBand1 Ref="22" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,4.6,27.69,0.6</ClientRectangle>
+          <Components isList="true" count="8">
+            <Text1 Ref="23" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>71d686e5faf642ec92aed05c99f6d494</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="6" />
+              <Parent isRef="22" />
+              <Text>{data1.move_name}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+            </Text1>
+            <Text2 Ref="24" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.6,0,2.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>e166e58857aa4871afe100bc4c90478f</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="6" />
+              <Parent isRef="22" />
+              <Text>{data1.date}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+            </Text2>
+            <Text3 Ref="25" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.8,0,1.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>db0e3256982140b3af3f893e3ea5fed2</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="6" />
+              <Parent isRef="22" />
+              <Text>{data1.code}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+            </Text3>
+            <Text4 Ref="26" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.6,0,3.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>19f57c8f21284163b2c1909130e76c23</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="6" />
+              <Parent isRef="22" />
+              <Text>{data1.acc_name}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+            </Text4>
+            <Text11 Ref="27" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>10,0,6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>52a6a787e56542609d2f60a5d26361de</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="6" />
+              <Parent isRef="22" />
+              <Text>{data1.partner_name}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>DataColumn</Type>
+            </Text11>
+            <Text12 Ref="28" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>16.4,0,5.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>5dfd33e93a5e4fadba19b0aeeb9315a0</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="6" />
+              <Parent isRef="22" />
+              <Text>{data1.lname}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>DataColumn</Type>
+            </Text12>
+            <Text13 Ref="29" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>21.6,0,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>9a51fea505a94bfc89e0f5b4834912cd</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="6" />
+              <Parent isRef="22" />
+              <Text>{data1.debit}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <TextFormat Ref="30" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+            </Text13>
+            <Text14 Ref="31" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>24.6,0,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>4b82f18fece841ecbfb81c73048d6bf3</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="6" />
+              <Parent isRef="22" />
+              <Text>{data1.credit}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <TextFormat Ref="32" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+            </Text14>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>data1</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+        <GroupFooterBand1 Ref="33" type="GroupFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,6,27.69,0.6</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text18 Ref="34" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>21.6,0,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>dac1db95bdd849f59e2546dafe24e535</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="6" />
+              <Parent isRef="33" />
+              <Text>{Sum(DataBand1,data1.debit)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="35" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>Totals</Type>
+            </Text18>
+            <Text19 Ref="36" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>24.6,0,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>44c6b9a8c03f4ecb9f538e1646f5a35f</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="6" />
+              <Parent isRef="33" />
+              <Text>{Sum(DataBand1,data1.credit)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="37" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>Totals</Type>
+            </Text19>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>GroupFooterBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </GroupFooterBand1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>96db26048cde4e8e8110fac155340463</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>21.01</PageHeight>
+      <PageWidth>29.69</PageWidth>
+      <Report isRef="0" />
+    </Page1>
+  </Pages>
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>JournalAudit</ReportAlias>
+  <ReportAuthor>Taufik Hidayat</ReportAuthor>
+  <ReportChanged>8/15/2019 3:40:11 AM</ReportChanged>
+  <ReportCreated>7/4/2019 4:30:19 AM</ReportCreated>
+  <ReportFile>C:\kerja2\custom\local\kg_account\static\rpt\JournalAudit.mrt</ReportFile>
+  <ReportGuid>b601436829fb455ab73b4dc08ecd2236</ReportGuid>
+  <ReportName>JournalAudit</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2019.3.2.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

@@ -1,0 +1,50 @@
+<openerp>
+    <data>
+
+        <template id="pos_order_layout">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"/>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+
+            <div class="header">
+                <div class="row">
+                    <div class="col-xs-6">
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="width:80%; max-height: 75px;"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article o_report_layout_standard">
+                <t t-raw="0" />
+            </div>
+
+            <div class="footer" style="font-family: 'Inconsolata', monospace; color: #555555;">
+                <div style="border:1px solid black;height:150px;">
+                    <div style="width:70%; height:150px;float:left;padding:5px;">
+                        <p style="font-size:10px;">
+                            Dengan ini saya menyatakan bahwa saya akan membayar biaya yang timbul bilamana
+                            perusahaan atau perorangan yang disebuatkan diatas tidak bersedia membayar
+                            sebagaian atau seluruh biaya ini.<br/>
+
+                            I agree that liability for this bill is not walved and agree to be held personality liable
+                            in the event the indicate person, company or association falls to pay for any part
+                            or the full amount of these charges.
+                        </p>
+                    </div>
+                    <div style="width:28%; height:150px;float:right;padding:5px;border-left:1px solid black;">
+                        <p style="font-size:10px;">
+                            Tanda Tangan Tamu<br/>
+                            Guest Signature
+                        </p>
+                    </div>
+                </div>
+            </div> 
+        </template>
+
+    </data>
+</openerp>

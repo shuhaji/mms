@@ -1,0 +1,65 @@
+<odoo>
+    <data>
+        <record id="view_academic_course_tree" model="ir.ui.view">
+            <field name="name">academic.course.tree</field>
+            <field name="model">academic.course</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Permohonan Sertifikasi">
+                    <field name="vlk_booking_id"/>
+                    <field name="name"/>
+                    <field name="number"/>
+                    <field name="niu"/>
+                    <field name="luas_usaha"/>
+                    <field name="responsible"/>
+                    <field name="address"/>
+                    <field name="distric"/>
+                    <field name="city"/>
+                    <field name="ruang_lingkup"/>
+                    <field name="npwp"/>
+                    <field name="contact_person"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="seq_permohonan_sertifikasi" model="ir.sequence">
+            <field name="name">Permohonan Sertifikasi</field>
+            <field name="code">academic.course.number</field>
+            <field name="prefix">BQRS/%(y)s/%(month)s/%(day)s/</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False" />
+        </record>
+
+        <record id="view_academic_course_form" model="ir.ui.view">
+            <field name="name">academic.course.form</field>
+            <field name="model">academic.course</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Permohonan Sertifikasi">
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="vlk_booking_id"/>
+                            <field name="number"/>
+                            <field name="niu"/>
+                            <field name="luas_usaha"/>
+                            <field name="responsible"/>
+                            <field name="address"/>
+                            <field name="distric"/>
+                            <field name="city"/>
+                            <field name="ruang_lingkup"/>
+                            <field name="npwp"/>
+                            <field name="contact_person"/>
+                        </group>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

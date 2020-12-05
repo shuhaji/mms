@@ -1,0 +1,41 @@
+<odoo>
+    <record id="wizard_kg_report_admin_fee_view" model="ir.ui.view">
+        <field name="name">Administration Fee</field>
+        <field name="model">wizard.kg.report.admin.fee</field>
+        <field name="inherit_id" ref="kg_report_base.wizard_kg_report_base_view"/>
+        <field name="arch" type="xml">
+        <data>
+            <field name="working_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="working_date" position="after">
+                <field name="start_date" style="width:120px" required="True"/>
+                <field name="company_id" options="{'no_create': True, 'no_open': True}"/>
+            </field>
+            <field name="file_name" position="after">
+                <field name="end_date" style="width:120px" required="True"/>
+                <!--<field name="result_selection" widget="radio"/>-->
+            </field>
+        </data>
+        </field>
+    </record>
+
+    <!-- Action to open Wizard as a popup -->
+    <record id="action_wizard_kg_report_admin_fee" model="ir.actions.act_window">
+        <field name="name">Administration Fee</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.kg.report.admin.fee</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_kg_report_admin_fee_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu item to open Wizard  -->
+    <menuitem id="menu_wizard_kg_report_admin_fee"
+              name="Administration Fee"
+              sequence="20"
+              parent="menu_wizard_kg_report_group"
+              action="action_wizard_kg_report_admin_fee"
+    />
+</odoo>

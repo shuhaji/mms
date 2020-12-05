@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="dateMonthYearPeriodWidget">
+        <!--<input type="month" id="start" name="start" min="2018-03" value="2018-05" />-->
+        <t t-set="placeholder" t-value="widget.getParent().node and widget.getParent().node.attrs.placeholder"/>
+        <div class="o_datepicker">
+            <input type="month"
+                   class="o_date_month_year_period_input o_input"
+                   t-att-name="widget.name"
+                   t-att-placeholder="placeholder"/>
+        </div>
+    </t>
+</templates>

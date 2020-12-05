@@ -1,0 +1,43 @@
+<odoo>
+    <record id="wizard_kg_report_cash_flow_view" model="ir.ui.view">
+        <field name="name">wizard_kg_report_cash_flow_view</field>
+        <field name="model">wizard.kg.report.cash_flow</field>
+        <field name="inherit_id" ref="kg_account.wizard_kg_report_income_statement_view"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="working_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="value_type" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="value_type_cmp" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="is_show_ratio" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="action_wizard_kg_report_cash_flow" model="ir.actions.act_window">
+        <field name="name">KG Report - Cash Flow</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.kg.report.cash_flow</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_kg_report_cash_flow_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu item to open Wizard  -->
+    <menuitem id="menu_wizard_kg_report_cash_flow"
+              name="Cash Flow"
+              sequence="28"
+              parent="menu_wizard_kg_report_group"
+              action="action_wizard_kg_report_cash_flow"
+    />
+
+
+
+</odoo>

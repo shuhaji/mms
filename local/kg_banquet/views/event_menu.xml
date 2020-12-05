@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record model="ir.ui.view" id="event_menu_tree">
+            <field name="name">event.menu.tree</field>
+            <field name="model">banquet.event.menu</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form View -->
+        <record model="ir.ui.view" id="event_menu_form">
+            <field name="name">event.menu.form</field>
+            <field name="model">banquet.event.menu</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <group>
+                          <field name="name"/>
+                          <field name="code"/>
+                        </group>
+                        
+                        <notebook>
+                            <page string="Event Function">
+                                <field name="event_function_id">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="code"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Menu">
+                                <field name="menu_id">
+                                    <tree editable="bottom">
+                                        <field name="name" string="Menu"/>
+                                        <field name="desc"/>
+                                        <field name="product_ids" widget="many2many_tags"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                       
+                    </sheet>
+                    
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="event_menu_action">
+            <field name="name">Event Menu</field>
+            <field name="res_model">banquet.event.menu</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<!--        <menuitem -->
+<!--            id="menu_banquet_event_menu"-->
+<!--            name="Event Menu"-->
+<!--            parent="menu_banquet_general"-->
+<!--            action="event_menu_action"-->
+<!--            sequence="50"-->
+<!--        />-->
+
+    </data>
+</odoo>

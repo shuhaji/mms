@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="kg_hr_employee_form_card" model="ir.ui.view">
+            <field name="name">kg.payroll.employee.form.card</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+                 <xpath expr="//field[@name='bank_account_id']" position="replace">
+                        <field name="bank_id" required="1"/>
+                        <field name="account_name" required="1"/>
+                        <field name="account_number" required="1"/>
+                </xpath>
+                <xpath expr="//group[@name='work_permit']" position="after">
+                    <group string="Card Permit" name="work_permit">
+                        <field name="npwp_no"/>
+                        <field name="bpjsks_no"/>
+                        <field name="bpjsks_join_date"/>
+                        <field name="bpjstk_no"/>
+                        <field name="bpjstk_join_date"/>
+                        <field name="is_jshk"/>
+                        <field name="jshk_join_date"/>
+                        <field name="is_dplk"/>
+                        <field name="dplk_join_date"/>
+                    </group>
+                </xpath>
+
+                <xpath expr="//field[@name='address_home_id']" position="replace">
+                        <label for="street" string="Address"/>
+                        <div class="o_address_format">
+                                <field name="street" placeholder="Street..." class="o_address_street"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                <field name="city" placeholder="City" class="o_address_city"/>
+                                <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}'/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                        </div>
+                </xpath>
+                <xpath expr="//field[@name='children']" position="after">
+                        <field name="religion_id" required="1"/>
+                        <field name="tax_status_id" required="1"/>
+                        <field name="fam_status_id"/>
+                </xpath>
+                <xpath expr="//group[@name='active_group']" position="after">
+                    <group string="Duration of Service">
+                        <field name="initial_employment_date"/>
+                        <field name="length_of_service"/>
+                    </group>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <label for="employee_id" class="oe_edit_only"/>
+                    <h3>
+                        <field name="employee_id" placeholder="Employee's ID" required="True"/>
+                    </h3>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</openerp>
+

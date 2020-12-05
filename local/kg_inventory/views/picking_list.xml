@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_picking_list_tree" model="ir.ui.view">
+            <field name="name">picking.list.tree</field>
+            <field name="model">kgpicking.list</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Picking list">
+                    <field name="name" string="Ref"/>
+                    <field name="warehouse_id"/>
+                    <field name="route_id"/>
+                    <field name="partner_id"/>
+                    <field name="company_id"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_picking_list" model="ir.actions.act_window">
+            <field name="name">Picking List</field>
+            <field name="res_model">kgpicking.list</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a Session
+                </p>
+                <p>klik tombol create untuk bikin Session baru</p>
+            </field>
+        </record>
+
+        <record id="view_picking_list_form" model="ir.ui.view">
+            <field name="name">picking.list.form</field>
+            <field name="model">kgpicking.list</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="picking list">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"
+                                    string="ref Name"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+
+                            <group>
+                                <field name="warehouse_id" />
+                                <field name="route_id"/>
+
+                                <field name="company_id" />
+                            </group>
+
+                        <notebook>
+                            <page string="Picking">
+                                <field name="move_ids">
+                                    <tree string="Picking list">
+                                        <field name="product_id"/>
+                                        <field name="product_uom_qty"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <menuitem id="stock.menu_picking_list"
+            name="Picking List"
+            parent="stock.menu_stock_warehouse_mgmt"
+            action="action_picking_list"
+            sequence="10"/>
+
+
+    </data>
+</odoo>

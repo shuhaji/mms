@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+        <record id="cron_banquet_reservation_checkin" forcecreate='True' model="ir.cron">
+            <field name="name">Banquet Reservation Check In</field>
+            <field eval="True" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="nextcall" eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 04:00:00')" />
+            <field name="numbercall">-1</field>
+            <field name="model_id" ref="model_banquet_reservation"/>
+            <field name="state">code</field>
+            <field name="code">model.action_auto_checkin()</field>
+        </record>
+
+        <record id="cron_banquet_reservation_checkout" forcecreate='True' model="ir.cron">
+            <field name="name">Banquet Reservation Check Out</field>
+            <field eval="True" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="nextcall" eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 04:00:00')" />
+            <field name="numbercall">-1</field>
+            <field name="model_id" ref="model_banquet_reservation"/>
+            <field name="state">code</field>
+            <field name="code">model.action_auto_checkout()</field>
+        </record>
+
+        <record id="cron_banquet_reservation_release" forcecreate='True' model="ir.cron">
+            <field name="name">Banquet Reservation Released</field>
+            <field eval="True" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="nextcall" eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 04:00:00')" />
+            <field name="numbercall">-1</field>
+            <field name="model_id" ref="model_banquet_reservation"/>
+            <field name="state">code</field>
+            <field name="code">model.action_auto_release()</field>
+        </record>
+
+        <record id="cron_banquet_proposal_release" forcecreate='True' model="ir.cron">
+            <field name="name">Banquet Proposal Released</field>
+            <field eval="True" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="nextcall" eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 04:00:00')" />
+            <field name="numbercall">-1</field>
+            <field name="model_id" ref="model_banquet_proposal"/>
+            <field name="state">code</field>
+            <field name="code">model.action_auto_release()</field>
+        </record>
+    </data>
+</odoo>

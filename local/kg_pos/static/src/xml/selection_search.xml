@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="SelectionSearchPopupWidget">
+        <div class="modal-dialog">
+            <div class="popup popup-selection">
+                <p class="title"><t t-esc=" widget.options.title || 'Select' " /></p>
+                <div class="searchbox" style="position:initial">
+                    <input id="input-search" placeholder="Search Customer" />
+                    <span class="search-clear"></span>
+                </div>
+                <div class='selection-search scrollable-y touch-scrollable'>
+                    <t t-foreach="widget.list || []" t-as="item">
+                        <div id="list" t-attf-class="selection-item {{ widget.is_selected.call(widget, item.item) ? 'selected' : '' }}" t-att-data-item-index='item_index'>
+                            <t id="target" t-esc='item.label'/>
+                        </div>
+                    </t>
+                </div>
+                <div class="footer">
+                    <div class="button cancel">
+                        Cancel 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+    
+</templates>

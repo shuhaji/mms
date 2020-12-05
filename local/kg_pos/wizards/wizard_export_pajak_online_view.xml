@@ -1,0 +1,59 @@
+<odoo>
+    <!-- REFIXING PARTNER NAME -->
+    <record id="wizard_export_pajak_online" model="ir.ui.view">
+        <field name="name">Export Pajak Online</field>
+        <field name="model">wizard.export.pajak.online</field>
+        <field name="arch" type="xml">
+            <form string="Export Pajak Online">
+                <group>
+                    <field name="state_position" invisible="1"/>
+                    <field name="is_excel" invisible="1"/>
+                    <separator colspan="3" string="Download by click link below." attrs="{'invisible':[('state_position','=','choose')]}"/>
+                    <field name="file_name" invisible="1"/>
+                    <field name="data" nolabel="1" readonly="1" width="100"
+                           filename="file_name" attrs="{'invisible':[('state_position','=','choose')]}"/>
+                </group>
+
+                <!-- untuk file text agar user bisa klik kanan dan save as ke folder tertentu -->
+                <group attrs="{'invisible':['|', ('state_position','=','choose'), ('is_excel','=',True)]}">
+                    <field name="url_file_path" widget="url" readonly="1"
+                           string="Download link (Right Click - Save As)"
+                           attrs="{'invisible':['|', ('state_position','=','choose'), ('is_excel','=',True)]}"/>
+                </group>
+
+                <group>
+                    <field name="working_date" required="True"/>
+                    <field name="get_data_from_pms" />
+                </group>
+                <!--<footer attrs="{'invisible':[('state_position','=','get')]}">-->
+                <footer>
+                    <button string="Export as Excel" name="generate_excel" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Export as TXT" name="generate_txt" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to open Wizard -->
+    <act_window id="action_wizard_export_pajak_online_show"
+                name="Export Pajak Online"
+                res_model="wizard.export.pajak.online"
+                view_mode="form"
+                target="new"
+                view_type="form"
+    />
+    <!-- Menu item to open Wizard  -->
+    <menuitem id="menu_wizard_export_pajak_online_task"
+              name="Export Pajak Online"
+              parent="point_of_sale.menu_point_of_sale"
+              action="action_wizard_export_pajak_online_show"
+    />
+
+    <!--<act_window id="action_wizard_export_pajak_online"-->
+        <!--multi="True"-->
+        <!--key2="client_action_multi" name="Export Pajak Online 2"-->
+        <!--res_model="wizard.export.pajak.online" src_model="pos.order"-->
+        <!--view_mode="form" target="new" view_type="form" />-->
+
+</odoo>

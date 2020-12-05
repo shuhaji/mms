@@ -1,0 +1,109 @@
+    dummy code for function click payment method , just in case it need to be used later
+    // if (paymentlines[0].cashregister.journal.type === 'bank') {
+                //     if (id) {
+                //         this.gui.show_popup('error', {
+                //             title: _t('Payment Method Restriction'),
+                //             body: _t('You cannot choose this payment method'),
+                //         })
+                //     }
+                // } else if (
+                //     (officercheckpaymentbyId.includes(
+                //         paymentlines[0].cashregister.journal.id
+                //     ) ||
+                //         depexpaymentbyId.includes(
+                //             paymentlines[0].cashregister.journal.id
+                //         ) ||
+                //         cityledgerbyId.includes(
+                //             paymentlines[0].cashregister.journal.id
+                //         )) === false
+                // ) {
+                //     if (
+                //         officercheckpaymentbyId.includes(id) ||
+                //         depexpaymentbyId.includes(id) ||
+                //         cityledgerbyId.includes(id)
+                //     ) {
+                //         this.gui.show_popup('error', {
+                //             title: _t('Payment Method Restriction'),
+                //             body: _t('You cannot choose this payment method'),
+                //         })
+                //     }
+
+                //     // else if (depexpaymentbyId.includes(id)){
+                //     //     this.gui.show_popup('error',{
+                //     //         title: _t('Payment Method Restriction'),
+                //     //         body:  _t('You cannot choose this payment method'),
+                //     //     });
+                //     // }
+                //     else {
+                //         var cashregister = null
+                //         for (
+                //             var i = 0;
+                //             i < this.pos.cashregisters.length;
+                //             i++
+                //         ) {
+                //             if (
+                //                 this.pos.cashregisters[i].journal_id[0] === id
+                //             ) {
+                //                 cashregister = this.pos.cashregisters[i]
+                //                 break
+                //             }
+                //         }
+                //         this.pos.get_order().add_paymentline(cashregister)
+                //         this.reset_input()
+                //         this.render_paymentlines()
+                //     }
+                // } else if (
+                //     officercheckpaymentbyId.includes(
+                //         paymentlines[0].cashregister.journal.id
+                //     ) ||
+                //     depexpaymentbyId.includes(
+                //         paymentlines[0].cashregister.journal.id
+                //     ) ||
+                //     cityledgerbyId.includes(
+                //         paymentlines[0].cashregister.journal.id
+                //     )
+                // ) {
+                //     if (officercheckpaymentbyId.includes(id)) {
+                //         if (paymentlines[0].cashregister.journal.id !== id) {
+                //             this.gui.show_popup('error', {
+                //                 title: _t('Payment Method Restriction'),
+                //                 body: _t(
+                //                     'You cannot choose this payment method'
+                //                 ),
+                //             })
+                //         }
+                //     } else if (depexpaymentbyId.includes(id)) {
+                //         if (paymentlines[0].cashregister.journal.id !== id) {
+                //             this.gui.show_popup('error', {
+                //                 title: _t('Payment Method Restriction'),
+                //                 body: _t(
+                //                     'You cannot choose this payment method'
+                //                 ),
+                //             })
+                //         }
+                //     } else if (cityledgerbyId.includes(id)) {
+                //         if (paymentlines[0].cashregister.journal.id !== id) {
+                //             this.gui.show_popup('error', {
+                //                 title: _t('Payment Method Restriction'),
+                //                 body: _t(
+                //                     'You cannot choose this payment method'
+                //                 ),
+                //             })
+                //         }
+                //     } else if (!officercheckpaymentbyId.includes(id)) {
+                //         this.gui.show_popup('error', {
+                //             title: _t('Payment Method Restriction'),
+                //             body: _t('You cannot choose this payment method'),
+                //         })
+                //     } else if (!depexpaymentbyId.includes(id)) {
+                //         this.gui.show_popup('error', {
+                //             title: _t('Payment Method Restriction'),
+                //             body: _t('You cannot choose this payment method'),
+                //         })
+                //     } else if (!cityledgerbyId.includes(id)) {
+                //         this.gui.show_popup('error', {
+                //             title: _t('Payment Method Restriction'),
+                //             body: _t('You cannot choose this payment method'),
+                //         })
+                //     }
+                // }

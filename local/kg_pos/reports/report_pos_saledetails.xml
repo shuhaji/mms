@@ -1,0 +1,46 @@
+<odoo>
+<data>
+    <template id="kg_pos_report_sales_details" inherit_id="point_of_sale.report_saledetails">
+            <!--<xpath expr="//div[@class='page']/div[@class='text-center']"-->
+            <xpath expr="//div[hasclass('page')]/div[hasclass('text-center')]"
+                   position="replace">
+                <div class="text-center">
+                    <h2>Sales Details</h2>
+                        <strong><t t-esc="date_start" t-options="{'widget': 'date'}"/> - <t t-esc="date_stop" t-options="{'widget': 'date'}"/></strong>
+                </div>
+            </xpath>
+
+            <xpath expr="//table[1]" position="replace">
+                <table  class="table table-condensed">
+                    <thead><tr>
+                        <th>Order Ref</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price Unit</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr t-foreach='products' t-as='line'>
+                            <t t-set="internal_reference" t-value="line['code'] and '[%s] ' % line['code'] or ''" />
+                            <td><t t-esc="internal_reference" /><t t-esc="line['order_ref']" /></td>
+                            <td><t t-esc="internal_reference" /><t t-esc="line['product_name']" /></td>
+                            <td>
+                                <t t-esc="line['quantity']" />
+                                <t t-if='line["uom"] != "Unit(s)"'>
+                                    <t t-esc='line["uom"]' />
+                                </t>
+                            </td>
+                            <td>
+                                <t t-esc='line["price_unit"]' />
+                            <t t-if='line["discount"] != 0'>
+                                Disc: <t t-esc='line["discount"]' />%
+                            </t>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </xpath>
+
+    </template>
+
+</data>
+</odoo>

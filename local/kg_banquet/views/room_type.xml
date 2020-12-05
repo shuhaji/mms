@@ -1,0 +1,68 @@
+<odoo>
+    <data>
+        <record id="view_banquet_room_type_tree" model="ir.ui.view">
+            <field name="name">banquet.room.type.tree</field>
+            <field name="model">banquet.room.type</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="room type">
+                    <field name="name"/>
+                    <field name="pms_id"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_banquet_room_type_form" model="ir.ui.view">
+            <field name="name">banquet.room.type.form</field>
+            <field name="model">banquet.room.type</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Room Type Form">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                       options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"
+		                        string="Room Type Name"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                            <group>
+                            <field name="pms_id"/>
+                            </group>
+                        </div>
+                    </sheet>
+<!--                    <div class="oe_chatter">-->
+<!--                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>-->
+<!--                        <field name="activity_ids" widget="mail_activity"/>-->
+<!--                        <field name="message_ids" widget="mail_thread"/>-->
+<!--                    </div>-->
+                </form>
+            </field>
+        </record>
+        <record id="action_banquet_room_type_list" model="ir.actions.act_window">
+            <field name="name">Create Room Type</field>
+            <field name="res_model">banquet.room.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a Room type
+                </p>
+                <p>klik tombol create untuk bikin Room type baru</p>
+            </field>
+        </record>
+
+        <menuitem id="menu_banquet_room_type"
+        name="Room Type"
+        parent="menu_banquet_reservation"
+        action="action_banquet_room_type_list"
+        sequence="50"/>
+    </data>
+</odoo>

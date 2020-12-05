@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>   
+        <record id="kg_show_invoices" model="ir.ui.view">
+            <field name="name">kg.show.invoices</field>
+            <field name="model">invoice.collecting.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="collecting_id" invisible="1"/>
+                    </group>
+                    <field name="item_ids" widget="one2many_selectable">
+                        <tree editable="bottom" create="false">
+                            <field name="selectable" string=""/>
+                            <field name="number" readonly="1"/>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="amount_total" invisible="1"/>
+                            <field name="amount_total_temp" />
+                            <field name="residual" invisible="1"/>
+                            <field name="residual_temp" />
+                        </tree>
+                    </field>
+                    <button string="Add to Lines" name="add_invoice_to_billing_lines" type="object"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="kg_show_invoices_search" model="ir.ui.view">
+            <field name="name">kg.show.invoices.search</field>
+            <field name="model">invoice.collecting.wizard</field>
+            <field name="arch" type="xml">
+                <search string="Invoices">
+                    <field name="collecting_id"/>
+                </search>
+            </field>
+        </record>
+    </data>
+</openerp>

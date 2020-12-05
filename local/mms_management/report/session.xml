@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <template id="session_report">
+            <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="doc">
+                     <t t-call="academic.session_report_document"/>
+            </t>
+            </t>
+        </template>
+
+        <report
+            id="report_session_menu"
+            string="Session"
+            model="academic.session"
+            report_type="qweb-pdf"
+            file="academic.session"
+            name="academic.session_report"
+            />
+
+    </data>
+</odoo>

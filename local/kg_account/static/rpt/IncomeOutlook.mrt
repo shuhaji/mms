@@ -1,0 +1,1927 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <CalculationMode>Interpretation</CalculationMode>
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <data Ref="2" type="Stimulsoft.Report.Dictionary.StiJsonDatabase" isKey="true">
+        <Alias>data</Alias>
+        <Key />
+        <Name>data</Name>
+        <PathData>D:\Users\lenovo\Downloads\data_income_outlook.json</PathData>
+      </data>
+    </Databases>
+    <DataSources isList="true" count="5">
+      <config Ref="3" type="DataTableSource" isKey="true">
+        <Alias>config</Alias>
+        <Columns isList="true" count="9">
+          <value>company_name,System.String</value>
+          <value>is_show_ratio,System.Boolean</value>
+          <value>is_hide_signer,System.Boolean</value>
+          <value>first_set_params,System.String</value>
+          <value>second_set_params,System.String</value>
+          <value>third_set_params,System.String</value>
+          <value>accounting_manager,System.String</value>
+          <value>authorized_by,System.String</value>
+          <value>prepared_by,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>51721017c1764154b18e247545472f7a</Key>
+        <Name>config</Name>
+        <NameInSource>data.config</NameInSource>
+      </config>
+      <config_first_set_params Ref="4" type="DataTableSource" isKey="true">
+        <Alias>config_first_set_params</Alias>
+        <Columns isList="true" count="5">
+          <value>value_type,System.String</value>
+          <value>title,System.String</value>
+          <value>date_from,System.String</value>
+          <value>date_to,System.String</value>
+          <value>relationId,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>5f7e6774b99247dea70bf606b2e54ccb</Key>
+        <Name>config_first_set_params</Name>
+        <NameInSource>data.config_first_set_params</NameInSource>
+      </config_first_set_params>
+      <config_second_set_params Ref="5" type="DataTableSource" isKey="true">
+        <Alias>config_second_set_params</Alias>
+        <Columns isList="true" count="6">
+          <value>value_type,System.String</value>
+          <value>title,System.Boolean</value>
+          <value>date_from,System.String</value>
+          <value>date_to,System.String</value>
+          <value>is_visible,System.Boolean</value>
+          <value>relationId,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>7d87ff92ff4b41e794950d6996a6c0f7</Key>
+        <Name>config_second_set_params</Name>
+        <NameInSource>data.config_second_set_params</NameInSource>
+      </config_second_set_params>
+      <config_third_set_params Ref="6" type="DataTableSource" isKey="true">
+        <Alias>config_third_set_params</Alias>
+        <Columns isList="true" count="4">
+          <value>value_type,System.String</value>
+          <value>title,System.String</value>
+          <value>is_visible,System.Boolean</value>
+          <value>relationId,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>5645072c5eb34de28b5032090fa12f05</Key>
+        <Name>config_third_set_params</Name>
+        <NameInSource>data.config_third_set_params</NameInSource>
+      </config_third_set_params>
+      <data Ref="7" type="DataTableSource" isKey="true">
+        <Alias>data</Alias>
+        <Columns isList="true" count="39">
+          <value>report_id,System.Decimal</value>
+          <value>type,System.String</value>
+          <value>name,System.String</value>
+          <value>level,System.Decimal</value>
+          <value>account_type,System.Boolean</value>
+          <value>report_name,System.String</value>
+          <value>parent_name,System.String</value>
+          <value>grand_parent_name,System.String</value>
+          <value>parent_id,System.String</value>
+          <value>is_show_at_group_header,System.Boolean</value>
+          <value>is_show_total,System.Boolean</value>
+          <value>is_show_border_top,System.Boolean</value>
+          <value>is_show_border_bottom,System.Boolean</value>
+          <value>is_total_income,System.Boolean</value>
+          <value>style_overwrite,System.Decimal</value>
+          <value>amount_1,System.Decimal</value>
+          <value>amount_2,System.Decimal</value>
+          <value>amount_3,System.Decimal</value>
+          <value>amount_4,System.Decimal</value>
+          <value>amount_5,System.Decimal</value>
+          <value>amount_6,System.Decimal</value>
+          <value>amount_7,System.Decimal</value>
+          <value>amount_8,System.Decimal</value>
+          <value>amount_9,System.Decimal</value>
+          <value>amount_10,System.Decimal</value>
+          <value>amount_11,System.Decimal</value>
+          <value>amount_12,System.Decimal</value>
+          <value>ratio_1,System.Decimal</value>
+          <value>ratio_2,System.Decimal</value>
+          <value>ratio_3,System.Decimal</value>
+          <value>ratio_4,System.Decimal</value>
+          <value>ratio_5,System.Decimal</value>
+          <value>ratio_6,System.Decimal</value>
+          <value>ratio_7,System.Decimal</value>
+          <value>ratio_8,System.Decimal</value>
+          <value>ratio_9,System.Decimal</value>
+          <value>ratio_10,System.Decimal</value>
+          <value>ratio_11,System.Decimal</value>
+          <value>ratio_12,System.Decimal</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>c8cebaa7f6604529b22f121f34dd2450</Key>
+        <Name>data</Name>
+        <NameInSource>data.data</NameInSource>
+      </data>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Resources isList="true" count="1">
+      <value>Name=income_statement_outlook, Alias=income_statement_outlook, Type=Json, Content=xD5QaqKvit3yG0lxr4HMpcwIDwal3ex69cgdTuLUb3wt1gWEJvHEBwi9_x002F_Sc_x002F_NBI3G6veTLadIRoQBBPVdfOdguCBikwGsv4QFrx2mjC_x002F_66X4jkUSXDtk2yi3rbOiI7sRdlEaa61aGls8B3I_x002F_QLTHC2yDqQW9wOvcnQTvzZn8P9mOrXuSslDp2hnU7bAWbbviz7yZTXVMYn58vPwuL4CVSaMfzQzwIRiRjw5QE0f_x002B_d1vHu8SCEBHIRDRL1Eeq7uNJZg_x002B_qj7sDxbFM7MzDUU2m_x002F_MgXDUsQcHi9hCR7_x002B_KqY3XVC89c9EgY2SNoUiEOezbWVJegIqPWENoU2DL4fUhUbse0yjxWY_x002B_NFDxiTfzJwSdPi0ClpAW9yIZiLlFUvcRO_x002B_6wwDc0tLbUjHK4SDULxnAva5PvP3wbGSPMozjn2tAKb6UL6s1P_x002B_0SrmSDG6wmMmPj8go88a7FTs6ew_x002B_DeHhzGY2C_x002F_o47OgrBbFDXgcUuLF70DMe6tF6h1QiKY0IJvgQQOKA_x002F_wiOywLYQyJoqPzZi_x002F_CPBPImv3gaPQsTza3BQ7sXon9iVdEqYbK7vfNg0uIZw7fUn7IH26nCVyOZtyLu3AJYR_x002B_J8swDq3A7V7YbtR28_x002B_qvdMAeRDgnv3rIHybOvCtsbDsJ6VEHKyOASrOO38olMjqPKZJzocdsqD8RDxAq0t8iPn_x002F_aVUTqGGhJtHljPcQ1y8MBLVc8yGdxFJCPEvJBK_x002F_P1tIdO6qP9VBvvpBLxiW2hkF3KluYAKuMxcHFWN62DbJwes0quJsgft_x002B_CuGW9Z0LzOhkySE_x002F_BctSm99jZa_x002B_4VxDOmBUA638S3HCWrx8imqEJsUG_x002F_WrqBvwuUt9GRZI8YbaGirsxZyv60QHA_x002F_P6n_x002F_lWH5pF9LJrDedCw6SjYtXK_x002F_bemoHoBuJwZdth_x002F_rQ4oDCaNp0U8guwnGJzvIrlef48cuWbbtqYgr3hwwm94A1Gb96uvQOPT7TSLsUEvM9iDX_x002F_9tTHYow9YxEc3jvcJjlIyhFymcTNXN5nTo_x002F_JJ4HFplK1iupgvYbiNrp6vvy8GWswYP06vnkSeL_x002F_gbpARsmfXVfC8lNZRM5u0HOa_x002F_xSjLI6V9qrv5UWF4aZwIy_x002B_Kx5SOYcia1cLjrsoa0NaZRDq6pTlWSKTwui89AGP6l8c3008YBLUuCWyWpNjNu9lD7um4zmOOwIy3wLLTFPFUsQw6g3239bV0TVwqgyjzFxqdh1FztrzbSqSShs0dnWH4KC5_x002B_cSy0CL5JqjAnJxNBMK6bLO5i6_x002B_qcvBB_x002F_5C_x002F_kamGTki0vqk7oeGcwKCGE7COXgsKdvx0KSP7GGmKEDtLMPnvFZfP1w5v4O3bkYl0RDoSh3Lm</value>
+    </Resources>
+    <Variables isList="true" count="2">
+      <value>,total_income_amount,total_income_amount,,System.Nullable`1[System.Decimal],data.is_total_income_x0020__x003D__x003D__x0020_1_x0020__x003F__x0020__x0028_data.amount_1_x0029__x002B__x0028_data.amount_2_x0029__x002B__x0028_data.amount_3_x0029__x000D__x000A__x002B__x0028_data.amount_4_x0029__x002B__x0028_data.amount_5_x0029__x002B__x0028_data.amount_6_x000D__x000A__x0029__x002B__x0028_data.amount_7_x0029__x002B__x0028_data.amount_8_x0029__x002B__x0028_data.amount_9_x0029__x000D__x000A__x002B__x0028_data.amount_10_x0029__x002B__x0028_data.amount_11_x0029__x002B__x0028_data.amount_12_x0029__x0020_:_x0020_0,True,True,False,False,,,True</value>
+      <value>,total_amount,total_amount,,System.Decimal,_x0028_data.amount_1_x0029__x002B__x0028_data.amount_2_x0029__x002B__x0028_data.amount_3_x0029__x000D__x000A__x002B__x0028_data.amount_4_x0029__x002B__x0028_data.amount_5_x0029__x002B__x0028_data.amount_6_x000D__x000A__x0029__x002B__x0028_data.amount_7_x0029__x002B__x0028_data.amount_8_x0029__x002B__x0028_data.amount_9_x0029__x000D__x000A__x002B__x0028_data.amount_10_x0029__x002B__x0028_data.amount_11_x0029__x002B__x0028_data.amount_12_x0029_,True,True,False,False</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <Key>faa26f01e10549f5a217f5ff927890f9</Key>
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="8" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="5">
+        <ReportTitleBand1 Ref="9" type="ReportTitleBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,65,2.2</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text14 Ref="10" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>19.6,1,28.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,10,Bold</Font>
+              <Guid>9c30dc3b34f048f2a0002b52dde08902</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="8" />
+              <Parent isRef="9" />
+              <Text>OUTLOOK INCOME STATEMENT</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>Expression</Type>
+            </Text14>
+            <Text18 Ref="11" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>19.6,0.4,28.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,10,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="8" />
+              <Parent isRef="9" />
+              <Text>{config.company_name}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text18>
+            <Text19 Ref="12" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>19.6,1.6,28.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>0aebfe6020874be9ac3279d542394e32</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="8" />
+              <Parent isRef="9" />
+              <Text>FOR PERIOD: {DateToStr(config_first_set_params.date_from, true)} - {DateToStr(config_first_set_params.date_to, true)}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>Expression</Type>
+            </Text19>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ReportTitleBand1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </ReportTitleBand1>
+        <ColumnHeaderBand1 Ref="13" type="Stimulsoft.Report.Components.StiColumnHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.4,65,1.8</ClientRectangle>
+          <Components isList="true" count="39">
+            <Text8 Ref="14" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.8,1.2,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>2eb61e0273df45588855936355fc327f</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>AMOUNT</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text8>
+            <Text9 Ref="15" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>10.6,1.2,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>b7cd426f4ff3484aa9c27105015b1104</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>AMOUNT</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text9>
+            <Text10 Ref="16" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>15,1.2,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>ffc27051d3484803a3f64fc346f9420b</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>AMOUNT</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text10>
+            <Text11 Ref="17" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>9,1.2,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>9de8687ba0c14819b365c7ee34b5d3bb</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>RATIO</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text11>
+            <Text12 Ref="18" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>13.4,1.2,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="2">
+                <value>config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+                <value>config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>0c598e6489f64891a48e9d973447f123</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>RATIO</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text12>
+            <Text13 Ref="19" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>17.8,1.2,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="2">
+                <value>config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>ddf68ca903ee45ce8716dc5e019492ca</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>RATIO</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text13>
+            <Text15 Ref="20" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.8,0.6,4.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>JANUARY</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text15>
+            <Text16 Ref="21" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>10.6,0.6,4,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>FEBRUARY</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text16>
+            <Text17 Ref="22" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>15,0.6,4,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>MARCH</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text17>
+            <Text30 Ref="23" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>19.4,1.2,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>b9ce7369fa4c4d77a90d632d72791f8d</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text30</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>AMOUNT</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text30>
+            <Text31 Ref="24" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>24.2,1.2,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>cdc0d48fe09c49e28ffcc66ceda80b8e</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text31</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>AMOUNT</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text31>
+            <Text32 Ref="25" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>28.6,1.2,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>3944c32fea2d443d8aafbcf5e6fa21a4</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text32</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>AMOUNT</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text32>
+            <Text33 Ref="26" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>22.6,1.2,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>12d53a4e9dcf4287ae5c0c5a3ee1552b</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text33</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>RATIO</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text33>
+            <Text34 Ref="27" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>27,1.2,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="2">
+                <value>config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+                <value>config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>6783a9d0d51b4582a4f9267891580756</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text34</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>RATIO</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text34>
+            <Text35 Ref="28" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>31.4,1.2,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="2">
+                <value>config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>a615b7c6e6294f95aa8fda1d7b91b025</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text35</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>RATIO</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text35>
+            <Text36 Ref="29" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>19.4,0.6,4.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>18076b8caae245419ab2d515f583b3a2</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text36</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>APRIL</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text36>
+            <Text37 Ref="30" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>24.2,0.6,4,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>9aaf4365b505456b9aef66e2a947d300</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text37</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>MAY</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text37>
+            <Text38 Ref="31" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>28.6,0.6,4,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>79cf660050b34d6e9397447d2eae03f4</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text38</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>JUNE</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text38>
+            <Text20 Ref="32" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>33,1.2,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>168b65ef31374d2e9ff809291b9f6238</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>AMOUNT</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text20>
+            <Text45 Ref="33" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>37.8,1.2,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>ccef3d434a844d279d4baa730561b0b0</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text45</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>AMOUNT</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text45>
+            <Text46 Ref="34" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>42.2,1.2,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>07a508f477ec4ee1981e1cde272ca008</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text46</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>AMOUNT</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text46>
+            <Text47 Ref="35" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>36.2,1.2,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>4271e1037bb24b9f9184662a367d84bf</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text47</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>RATIO</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text47>
+            <Text48 Ref="36" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>40.6,1.2,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="2">
+                <value>config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+                <value>config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>f71647860a0a47c8856e6d207860d9e3</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text48</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>RATIO</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text48>
+            <Text49 Ref="37" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>45,1.2,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="2">
+                <value>config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>d1fc25dde4234e91a86bdc458e393f75</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text49</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>RATIO</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text49>
+            <Text50 Ref="38" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>33,0.6,4.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>4524eac077cd4b7196d6bce8f8d7c93d</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text50</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>JULY</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text50>
+            <Text51 Ref="39" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>37.8,0.6,4,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>d1df07536160491f91beed41c06806c1</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text51</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>AUGUST</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text51>
+            <Text52 Ref="40" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>42.2,0.6,4,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>574fa76ab7b448e8bde6a4f38817dea3</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text52</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>SEPTEMBER</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text52>
+            <Text53 Ref="41" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>46.6,1.2,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>a95a3cd606524930a8ebf87b80eeeccd</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text53</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>AMOUNT</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text53>
+            <Text54 Ref="42" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>51.4,1.2,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>8e82043769524ec08fcc76a412fb534e</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text54</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>AMOUNT</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text54>
+            <Text55 Ref="43" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>55.8,1.2,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>321b894c243b4aab87a75e0d381b9d58</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text55</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>AMOUNT</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text55>
+            <Text56 Ref="44" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>49.8,1.2,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>a2eae0922cff4f7ebc5ec486ec9cf7cf</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text56</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>RATIO</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text56>
+            <Text57 Ref="45" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>54.2,1.2,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="2">
+                <value>config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+                <value>config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>570d684bc75b4335b38598000d2169dc</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text57</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>RATIO</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text57>
+            <Text59 Ref="46" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>46.6,0.6,4.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>5db616206aec4d0b8c01d38867a9a0d5</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text59</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>OCTOBER</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text59>
+            <Text60 Ref="47" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>51.4,0.6,4,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>1be8239d605f49989388e0d86e16df14</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text60</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>NOVEMBER</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text60>
+            <Text61 Ref="48" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>55.8,0.6,4,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>88ef0799060b4deb9043c082cec3e7c3</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text61</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>DECEMBER</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text61>
+            <Text58 Ref="49" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>58.6,1.2,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="2">
+                <value>config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>d0bba305548946faae951a454d5538b6</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text58</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>RATIO</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text58>
+            <Text74 Ref="50" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>60.2,0.6,4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text74</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>TOTAL</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text74>
+            <Text75 Ref="51" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>60.2,1.2,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text75</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>AMOUNT
+</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text75>
+            <Text77 Ref="52" type="Text" isKey="true">
+              <Border>Top;Black;1;Dash;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>63,1.2,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="2">
+                <value>config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>10544f7065ad4ef78b528ed15e804f1e</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text77</Name>
+              <Page isRef="8" />
+              <Parent isRef="13" />
+              <Text>RATIO</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text77>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ColumnHeaderBand1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </ColumnHeaderBand1>
+        <DataBand1 Ref="53" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,6,65,0.6</ClientRectangle>
+          <Components isList="true" count="27">
+            <Text1 Ref="54" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="1">
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_9_x002C_Bold,True,False,,,None,FontStyleBold</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>6f54f1426ebe48d787a27835eff4c335</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.name}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+            <Text2 Ref="55" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.8,0,3.01,0.6</ClientRectangle>
+              <Conditions isList="true" count="5">
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,False,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>82f45ad8cc9e406d95026b0f4aa58d0f</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.amount_1}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="56" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text2>
+            <Text3 Ref="57" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>9,0,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="6">
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>BreakIfTrue,config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,False,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>3417ab1c2b8c4ea8a1f79601100dedd4</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.ratio_1}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="58" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text3>
+            <Text4 Ref="59" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>10.6,0,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="6">
+                <value>BreakIfTrue,config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,False,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>bfb16087361f4e099d0764c67229c6eb</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.amount_2}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="60" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text4>
+            <Text5 Ref="61" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>13.4,0,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="7">
+                <value>BreakIfTrue,config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>BreakIfTrue,config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,True,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>113292848d4747f494508943c6426959</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.ratio_2}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="62" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text5>
+            <Text7 Ref="63" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>17.8,0,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="7">
+                <value>BreakIfTrue,config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>BreakIfTrue,config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,True,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>e026122617664e83a296717d47025ca9</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.ratio_3}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="64" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text7>
+            <Text6 Ref="65" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>15,0,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="6">
+                <value>BreakIfTrue,config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,True,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>6901b934a4e04d6282d52ae53bfe071a</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.amount_3}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="66" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text6>
+            <Text39 Ref="67" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>19.4,0,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="5">
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,False,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>0fbafecb034c47d5847c140b118f9e25</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text39</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.amount_4}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="68" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text39>
+            <Text40 Ref="69" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>22.6,0,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="6">
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>BreakIfTrue,config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,False,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>0ca477fcc49a4939805ad267f7056f68</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text40</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.ratio_4}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="70" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text40>
+            <Text41 Ref="71" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>24.2,0,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="6">
+                <value>BreakIfTrue,config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,False,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>b368505f7bd4435c9972df90c23e65ce</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text41</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.amount_5}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="72" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text41>
+            <Text42 Ref="73" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>27,0,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="7">
+                <value>BreakIfTrue,config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>BreakIfTrue,config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,True,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>a0f32125ed7146e58b0261e847bd8b4b</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text42</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.ratio_5}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="74" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text42>
+            <Text43 Ref="75" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>31.4,0,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="7">
+                <value>BreakIfTrue,config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>BreakIfTrue,config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,True,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>38f26476355449f99c4e4b26138a53fe</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text43</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.ratio_6}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="76" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text43>
+            <Text44 Ref="77" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>28.6,0,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="6">
+                <value>BreakIfTrue,config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,True,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>a8a8dc6869b94145a355f91c044afb2b</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text44</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.amount_6}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="78" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text44>
+            <Text62 Ref="79" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>33,0,3.01,0.6</ClientRectangle>
+              <Conditions isList="true" count="5">
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,False,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>261df68b1f684bb5b38e8860010e3545</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text62</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.amount_7}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="80" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text62>
+            <Text63 Ref="81" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>36.2,0,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="6">
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>BreakIfTrue,config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,False,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>cfc611a3718443e7b34c8baa97cc0524</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text63</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.ratio_7}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="82" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text63>
+            <Text64 Ref="83" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>37.8,0,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="6">
+                <value>BreakIfTrue,config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,False,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>7962bebd3cf44078a897f0cfaef55ce6</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text64</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.amount_8}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="84" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text64>
+            <Text65 Ref="85" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>40.6,0,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="7">
+                <value>BreakIfTrue,config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>BreakIfTrue,config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,True,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>612dc87bee2447b5bd9945bd995ff535</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text65</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.ratio_8}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="86" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text65>
+            <Text66 Ref="87" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>45,0,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="7">
+                <value>BreakIfTrue,config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>BreakIfTrue,config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,True,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>feba5b1d85db44a1a90f1ed4fbda92f4</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text66</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.ratio_9}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="88" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text66>
+            <Text67 Ref="89" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>42.2,0,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="6">
+                <value>BreakIfTrue,config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,True,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>a20b5ab2527943cb8cbc108e8bf0649b</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text67</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.amount_9}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="90" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text67>
+            <Text68 Ref="91" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>46.6,0,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="5">
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,False,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>393ae43f82a541ed883f496a126958a0</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text68</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.amount_10}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="92" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text68>
+            <Text69 Ref="93" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>49.8,0,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="6">
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>BreakIfTrue,config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,False,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>2e75f54d3e714174b425406f9aa91846</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text69</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.ratio_10}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="94" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text69>
+            <Text70 Ref="95" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>51.4,0,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="6">
+                <value>BreakIfTrue,config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,False,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>0deb9a272ec041faa7d40fc2a271003b</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text70</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.amount_11}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="96" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text70>
+            <Text71 Ref="97" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>54.2,0,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="7">
+                <value>BreakIfTrue,config_second_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>BreakIfTrue,config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,True,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>b517527fd59e4afdb972cab567c871f6</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text71</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.ratio_11}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="98" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text71>
+            <Text73 Ref="99" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>55.8,0,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="6">
+                <value>BreakIfTrue,config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,True,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>20a83b872ff04cf8ae381944c1b17b1b</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text73</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.amount_12}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="100" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text73>
+            <Text72 Ref="101" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>58.6,0,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="7">
+                <value>BreakIfTrue,config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>BreakIfTrue,config.is_show_ratio,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,True,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>6f9868e7fb544e1fb9d7101fbab11a34</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text72</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{data.ratio_12}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="102" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text72>
+            <Text76 Ref="103" type="Text" isKey="true">
+              <Alias>Text76</Alias>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>60.2,0,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="6">
+                <value>BreakIfTrue,config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,True,,,Top_x002C__x0020_Bottom,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>60b095052edf4ea19a43aceb4fa7c779</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text76</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{total_amount}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="104" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text76>
+            <Text79 Ref="105" type="Text" isKey="true">
+              <Alias>Text97</Alias>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>63,0,1.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="7">
+                <value>BreakIfTrue,config_third_set_params.is_visible,EqualTo,false,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>BreakIfTrue,data.is_show_total,EqualTo,false,,Expression,Black,Transparent,Arial_x002C_8,False,False,,,Top,None</value>
+                <value>BreakIfTrue,config.is_show_ratio,EqualTo,false,,Expression,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+                <value>data.style_overwrite,Between,_x0031_,_x0033_,Numeric,Red,Transparent,Courier_x0020_New_x002C_10_x002C_Bold,True,False,,,None,FontStyleBold</value>
+                <value>data.is_show_border_top,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,True,False,,,Top,Borders</value>
+                <value>data.is_show_border_bottom,EqualTo,,,String,Red,Transparent,Arial_x002C_8,True,False,,,Bottom,Borders</value>
+                <value>_x007B_data.is_show_border_top_x0020__x0026__x0026__x0020_data.is_show_border_bottom_x007D_,Black,Transparent,Courier_x0020_New_x002C_10,True,True,,,All,Borders</value>
+              </Conditions>
+              <Font>Courier New,8</Font>
+              <Guid>7cc14fb26daf4f028e0bed73c411cfbe</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text79</Name>
+              <Page isRef="8" />
+              <Parent isRef="53" />
+              <Text>{((total_amount)/(MaxD(total_amount)))*100}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="106" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <State>DecimalDigits</State>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text79>
+          </Components>
+          <Conditions isList="true" count="1">
+            <value>data.is_show_at_group_header,EqualTo,false,,Boolean,Black,Transparent,Arial_x002C_8,False,False,,,None</value>
+          </Conditions>
+          <DataRelationName isNull="true" />
+          <DataSourceName>data</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+        <ReportSummaryBand1 Ref="107" type="ReportSummaryBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,7.4,65,6</ClientRectangle>
+          <Components isList="true" count="8">
+            <Text21 Ref="108" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.6,6.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="8" />
+              <Parent isRef="107" />
+              <Text>Prepared by Accounting Dept.</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text21>
+            <Text22 Ref="109" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.6,6.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>6611c6d399964f2996a722e15a6948d9</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="8" />
+              <Parent isRef="107" />
+              <Text>Approved By</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text22>
+            <Text23 Ref="110" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,2.2,6.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>3632a250ce0a4f4083712acb6529f442</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="8" />
+              <Parent isRef="107" />
+              <Text>Hotel Manager</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text23>
+            <Text24 Ref="111" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,5.4,6.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>71f84c6dc6904dff8f7d83f57da0f8f7</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="8" />
+              <Parent isRef="107" />
+              <Text>{config.accounting_manager}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text24>
+            <Text25 Ref="112" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.6,1.6,6.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>9eb211caa70742e198f8813a3447788c</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="8" />
+              <Parent isRef="107" />
+              <Text>Authorized by</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text25>
+            <Text26 Ref="113" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.6,5.4,6.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>e657600b900f42cf9569a121e400f0e8</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="8" />
+              <Parent isRef="107" />
+              <Text>{config.authorized_by}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text26>
+            <Text27 Ref="114" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>13.4,1.6,6.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>c9f1708c8e1a450288728eae2ecb8fb9</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="8" />
+              <Parent isRef="107" />
+              <Text>Prepared by</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text27>
+            <Text28 Ref="115" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>13.4,5.4,6.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>6573463712ba41d596cf979be62bb0b9</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text28</Name>
+              <Page isRef="8" />
+              <Parent isRef="107" />
+              <Text>{config.prepared_by}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text28>
+          </Components>
+          <Conditions isList="true" count="1">
+            <value>config.is_hide_signer,EqualTo,true,,Boolean,Red,Transparent,Arial_x002C_8,False,False,,,None,None</value>
+          </Conditions>
+          <Name>ReportSummaryBand1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </ReportSummaryBand1>
+        <ReportSummaryBand2 Ref="116" type="ReportSummaryBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,14.2,65,1.2</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text29 Ref="117" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.2,13.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Courier New,8</Font>
+              <Guid>2138855955034c8c84337aa95be4d4c8</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text29</Name>
+              <Page isRef="8" />
+              <Parent isRef="116" />
+              <Text>kg_account/static/rpt/IncomeStatement6set.mrt?version=1.0.0001</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text29>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ReportSummaryBand2</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+          <PrintAtBottom>True</PrintAtBottom>
+        </ReportSummaryBand2>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>03e08a4c214e4e4f829becd6921ec2fa</Guid>
+      <Margins>0.5,0.5,0.5,0.5</Margins>
+      <Name>Page1</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>21</PageHeight>
+      <PageWidth>66</PageWidth>
+      <Report isRef="0" />
+    </Page1>
+  </Pages>
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>IncomeStatement</ReportAlias>
+  <ReportAuthor>Taufik Hidayat</ReportAuthor>
+  <ReportChanged>8/8/2019 11:08:23 AM</ReportChanged>
+  <ReportCreated>7/8/2019 6:55:42 AM</ReportCreated>
+  <ReportFile>D:\IncomeOutlook.mrt</ReportFile>
+  <ReportGuid>4aabcbf936b44784b5f20a9afaa5812d</ReportGuid>
+  <ReportName>IncomeStatement</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2019.3.2.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

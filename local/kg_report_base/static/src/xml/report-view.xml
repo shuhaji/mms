@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <!-- layout for report from kg report WIZARD -->
+    <t t-name="KgFieldReportViewTemplate">
+        <div class="kg_report_view_div_class" style="width:100%">
+            <div id='kg_report_view_content' style='width:100%'  />
+            <script type="text/javascript">
+                if (kgReportShow &amp;&amp; !!kgReportViewerField) {
+                    console.log('KgFieldReportViewTemplate - show report');
+                    kgReportViewerField.renderHtml("kg_report_view_content");
+                }
+            </script>
+        </div>
+    </t>
+
+    <!-- Main layout for kg report via action menu/button -->
+    <div t-name="report.client_action_kg_report_template">
+        <div class="kg_report_view_div_class" style="width:100%">
+            <div class="o_report_no_edit_mode" style="padding: 3px">
+                <button type="button" class="btn btn-primary btn-sm o_report_reload" title="Reload">Reload</button>
+                <button type="button" class="btn btn-primary btn-sm o_report_showPrint" title="Print">Print</button>
+                <button type="button" class="btn btn-primary btn-sm o_report_back_cancel" title="Back">Back / Cancel</button>
+            </div>
+            <br />
+            <div id='kg_report_view_content' style='width:100%; padding: 3px' />
+            <script type="text/javascript">
+                if (kgReportShow) {
+                    // console.log('KgFieldReportViewTemplate - show report');
+                    // kgReportViewer.renderHtml("kg_report_view_content");
+                }
+            </script>
+        </div>
+        <div><iframe class="o_report_iframe" style="display: none"/></div>
+    </div>
+
+    <!-- Buttons of the Control Panel -->
+    <t t-name="report.client_action_kg_report_action.ControlButtons">
+        <div class="o_report_no_edit_mode">
+            <!--<button type="button" class="btn btn-primary btn-sm o_report_print" title="Print">Print</button>-->
+            <button type="button" class="btn btn-primary btn-sm o_report_back_cancel" title="Back">Back / Cancel 2</button>
+        </div>
+        <div class="o_edit_mode_available">
+            <button type="button" class="btn btn-default btn-sm o_report_edit" title="Edit">Edit</button>
+        </div>
+        <div class="o_report_edit_mode">
+            <button type="button" class="btn btn-primary btn-sm o_report_save" title="Save">Save</button>
+            <button type="button" class="btn btn-default btn-sm o_report_discard" title="Discard">Discard</button>
+        </div>
+    </t>
+</templates>

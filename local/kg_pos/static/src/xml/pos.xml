@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="pos_custom_extended" inherit_id="point_of_sale.template" xml:space="preserve">
+    <t t-name="PosTicket">
+        <div class="kg_report_view_pos_bill_div_class" style="width:100%">
+            <div id='kg_report_view_pos_bill_content' style='width:100%'  />
+            <t t-if="showKgReportViewer">
+                <span class='button reload_report'  id="reload_report_button">
+                    Reload Report
+                </span>
+                <!--<span class='button reload_report2' id="reload_report_button2">-->
+                    <!--Reload Report 285-->
+                <!--</span>-->
+            </t>
+        </div>
+
+        <t t-if="!showKgReportViewer">
+            <t t-set="column_count" t-value="widget.pos.config.receipt_column_count"/>
+            <t t-if="column_count == '2'">
+                <t t-set="style_sale_ticket" t-value="'width:230mm'" />
+                <t t-set="cols_list" t-value="[1, 2]" />
+                <t t-set="column_count" t-value="2"/>
+            </t>
+            <t t-else="">
+                <t t-set="column_count" t-value="1"/>
+                <t t-set="style_sale_ticket" t-value="'width:105mm'" />
+                <t t-set="cols_list" t-value="[1, ]" />
+            </t>
+            <div class="pos-sale-ticket" t-att-style="style_sale_ticket">
+            <div style="display: table;">
+                <t t-foreach="cols_list" t-as="column_idx">
+                    <t t-set="report_page_no" t-value="1"/>
+                    <t t-if="column_idx == 2">
+                        <!-- set style utk kolom kanan -->
+                        <t t-set="style" t-value="'display: table-cell;width:105mm;'" />
+                        <!-- tambahkan kolom tengah jika display ada 2 -->
+                        <div id="middle-col" style="display: table-cell;width:50mm;"></div>
+                    </t>
+                    <t t-else="">
+                        <!-- set style utk kolom kiri (default) -->
+                        <t t-set="style" t-value="'display: table-cell;width:105mm;'" />
+                    </t>
+                    <div t-att-style="style" id="sale-ticket-column-layout">
+                        <div class="pos-sale-ticket-container">
+                            <div class="pos-sale-ticket-header pos-sale-ticket-header-repeat-each-page"
+                                 id="pos-receipt-header">
+                                <t t-if='receipt.company.logo'>
+                                    <img t-att-src='receipt.company.logo'
+                                         style="float:right;width:40mm;height:40px"/>
+                                    <div style="clear:both;"/>
+                                </t>
+                                <!--<span style="font-size:18px;font-weight:bold;"><t t-esc="widget.pos.config.name"/></span>-->
+                                <div style="text-align:right;"><strong><span t-esc="widget.pos.company.name"/></strong></div><br />
+                                <div class="receipt-user">
+                                    <div style="display: grid;grid-template-columns: 1fr 1fr;grid-template-rows: auto;">
+                                        <div>
+                                            <!--kolom kiri-->
+                                            <t t-esc="widget.pos.get_cashier().name"/><br />
+                                            <t t-esc="widget.pos.config.name"/><br />
+                                            <t t-esc="order.name"/><br/>
+                                        </div>
+                                        <div style="text-align: right">
+                                            <!--kolom kanan-->
+                                            <t t-if="order.waiter">
+                                                <div style="text-align:right;"><span t-esc="order.waiter.name"/></div>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pos-sale-ticket-content" id="pos-receipt-content">
+                                <table class='receipt-orderlines'>
+                                    <colgroup>
+                                        <col width='4%' />
+                                        <col width='24%' />
+                                        <col width='3%' />
+                                        <col width='3%' />
+                                        <col width='21%' />
+                                        <col width='12%' />
+                                        <col width='34%' />
+                                    </colgroup>
+                                    <tr style="border-top:1px solid black;border-bottom:1px solid black;">
+                                        <!--table order lines - header - nama2 kolom-->
+                                        <td colspan="3">
+                                            TBL <t t-if="widget.pos.table"><t t-esc="widget.pos.table.name"/></t>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <t t-if="order.is_hotel_guest">
+                                                <div> 1 </div>
+                                            </t>
+                                            <t t-else="">
+                                                <div> 0 </div>
+                                            </t>
+                                        </td>
+                                        <td style="text-align:center;" colspan="1">
+                                            <div> <t t-esc="pos.get_order().customer_count"/> </div>
+                                        </td>
+                                        <td colspan="2" style="text-align:right;">
+                                            <!--<t t-esc="order.formatted_validation_date"/>-->
+                                            <t t-esc="moment(order.validation_date).format('DD MMM YYYY HH:mm:ss')"/>
+                                        </td>
+                                    </tr>
+                                    <t t-set="kg_total_qty" t-value="0"/>
+                                    <t t-set="row_count" t-value="orderlines.length"/>
+                                    <t t-set="row_number" t-value="1"/>
+                                    <t t-foreach="orderlines" t-as="orderline">
+                                        <tr>
+                                            <td></td>
+                                            <td colspan="5">
+                                                <t t-esc="orderline.get_quantity()"/>
+                                                <t t-esc="orderline.get_display_name()"/>
+                                                <!-- - <t t-esc="row_number"/> - <t t-esc="row_count"/>-->
+                                                <t t-set="kg_total_qty" t-value="kg_total_qty+orderline.get_quantity()"/>
+                                            </td>
+                                            <td style="text-align:right;">
+                                                <!--line sub total after discount-->
+                                                <!--<t t-esc="widget.format_currency(orderline.get_display_price())"/>-->
+                                                <!--line sub total before discount and before tax/service-->
+                                                <t t-set="line_all_prices" t-value="orderline.get_all_prices()"/>
+                                                <t t-esc="widget.format_currency(line_all_prices.bruttoBeforeTax)"/>
+                                            </td>
+                                        </tr>
+                                        <t t-set="page_break_height" t-value="0"/>
+                                        <t t-if="row_number &gt; 21 and row_number == row_count and row_count &lt; 40">
+                                            <!--siapkan blok utk page break di print out-->
+                                            <!--tinggi perbaris normal = 3.7mm-->
+                                            <!--jumlah baris maksimal dalam 1 halaman = 40 + 1 header-->
+                                            <!--jlh baris tersisa = jlh baris maksimal - row number + 1-->
+                                            <!--tinggi_baris_kosong_bawah = 20mm-->
+                                            <!--tinggi header halaman berikutnya = 35-->
+                                            <!--tinggi baris kosong =  (tinggi perbaris * jlh baris tersisa) + tinggi_baris_kosong_bawah + tinggi header-->
+                                            <t t-set="page_break_height" t-value="(3.7 * ((40+1)-row_number+1)) + 20 + 35"/>
+                                        </t>
+                                        <t t-if="row_number &gt; 40 and row_count &gt; 40">
+                                            <!--siapkan blok utk page break di print out-->
+                                            <t t-set="page_break_height" t-value="20 + 35"/>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-set="row_number" t-value="row_number+1"/>
+                                        </t>
+                                        <t t-if="page_break_height &gt; 0">
+                                            <!--ganti halaman, set page no baru, dan reset row count-->
+                                            <t t-set="row_count" t-value="row_count - row_number + 1"/>
+                                            <t t-set="row_number" t-value="1"/>
+                                            <!--bikin blok display kosong utk pindah halaman, -->
+                                            <!--akan sembunyi di html dan hanya muncul di print out -->
+                                            <t t-set="style_page_break_height"
+                                               t-value="'height: ' + page_break_height + 'mm;border-top:1px solid black;border-bottom:1px solid black;'"/>
+                                            <tr><td colspan="7">
+                                                <div class="pos-sale-ticket-page-break show-in-print-only"
+                                                     t-att-style="style_page_break_height">
+                                                    <span>Page: <t t-esc="report_page_no"/><br/></span>
+                                                </div>
+                                                </td></tr>
+
+                                            <t t-set="report_page_no" t-value="report_page_no + 1"/>
+                                        </t>
+                                    </t>
+                                </table>
+                                <br />
+                                <t t-set="all_order_totals" t-value="order.get_all_order_totals()"/>
+                                <table class='receipt-total'>
+                                    <!--<tr>-->
+                                        <!--<td>BRUTO </td>-->
+                                        <!--<td style="text-align:left;"><span> : </span></td>-->
+                                        <!--<td style="text-align:center;"></td>-->
+                                        <!--<td class="pos-right-align">-->
+                                            <!--<t t-esc="widget.format_currency(order.get_total_discount() + order.get_total_without_tax())"/>-->
+                                        <!--</td>-->
+                                    <!--</tr>-->
+                                    <tr>
+                                        <td>DISCOUNT </td>
+                                        <td style="text-align:left;"><span> : </span></td>
+                                        <td style="text-align:center;">  </td>
+                                        <td class="pos-right-align">
+                                            <t t-esc="widget.format_currency(all_order_totals.totalDiscAmountBeforeTax)"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SUBTOTAL </td>
+                                        <td style="text-align:left;"><span> : </span></td>
+                                        <td style="text-align:center;">  <t t-esc="kg_total_qty"/> </td>
+                                        <td class="pos-right-align">
+                                            <t t-esc="widget.format_currency(order.get_total_without_tax())"/>
+                                        </td>
+                                    </tr>
+                                    <t t-if="order.get_paymentlines().length">
+                                        <t t-if="(order.get_paymentlines()[0].cashregister.journal.is_officer_check or order.get_paymentlines()[0].cashregister.journal.is_department_expense) == false ">
+                                            <tr>
+                                                <td>SERVICE </td>
+                                                <td style="text-align:left;"><span> : </span></td>
+                                                <td style="text-align:center;"> </td>
+                                                <td class="pos-right-align">
+                                                    <t t-esc="widget.format_currency(all_order_totals.totalServiceAmount)"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>TAX </td>
+                                                <td style="text-align:left;"><span> : </span></td>
+                                                <td style="text-align:center;">  </td>
+                                                <td class="pos-right-align">
+                                                    <t t-esc="widget.format_currency(all_order_totals.totalTaxWithoutService)"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                    <div class="original-code-info">
+                                    <!-- original code -->
+                                    <!-- <tr>
+                                        <td>SERVICE &amp; TAX </td>
+                                        <td style="text-align:left;"> : </td>
+                                        <td class="pos-right-align">
+                                            <t t-esc="widget.format_currency(order.get_total_tax())" />
+                                        </td>
+                                    </tr> -->
+                                    <!-- end of original code -->
+
+                                    <!-- custom code by andi -->
+                                    <!--<t t-if="order.get_paymentlines().length">-->
+                                        <!--<t t-if="(order.get_paymentlines()[0].cashregister.journal.is_officer_check or order.get_paymentlines()[0].cashregister.journal.is_department_expense) == false ">-->
+                                            <!--<t t-if="order.get_list_of_taxes()">-->
+                                                <!--<t t-if="order.get_list_of_taxes().length">-->
+                                                    <!--<tr t-foreach="order.get_list_of_taxes()" t-as="tax">-->
+                                                        <!--<td>-->
+                                                            <!--<span t-esc="tax.tax_name"/>-->
+                                                        <!--</td>-->
+                                                        <!--<td style="text-align:left;">-->
+                                                            <!--<span> : </span>-->
+                                                        <!--</td>-->
+                                                        <!--<td style="text-align:left;"> </td>-->
+                                                        <!--<td class="pos-right-align">-->
+                                                            <!--<span t-esc="widget.format_currency(tax.tax_amount)"/>-->
+                                                        <!--</td>-->
+                                                    <!--</tr>-->
+                                                <!--</t>-->
+                                            <!--</t>-->
+                                        <!--</t>-->
+                                    <!--</t>-->
+                                    </div>
+                                    <!-- end of custom code by andi -->
+
+                                    <tr>
+                                        <td>TOTAL </td>
+                                        <td style="text-align:left;"> : </td>
+                                        <td style="text-align:left;"> </td>
+                                        <td class="pos-right-align">
+                                            <t t-esc="widget.format_currency(order.get_new_total())"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br />
+                                <table class='receipt-paymentlines'>
+                                    <t t-foreach="paymentlines" t-as="line">
+                                      <tr>
+                                          <td>
+                                              *** <t t-esc="line.name"/> ***
+                                          </td>
+                                          <td class="pos-right-align">
+                                              <t t-esc="widget.format_currency(line.get_new_amount())"/>
+                                          </td>
+                                      </tr>
+                                    </t>
+                                </table>
+                                <table class='receipt-paymenchange'>
+                                    <t t-if="order.get_change()">
+                                        <tr>
+                                            <td>
+                                                *** Change ***
+                                            </td>
+                                            <td class="pos-right-align">
+                                                <t t-esc="widget.format_currency(order.get_change())"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </table>
+
+                            </div>
+                            <div class="footer pos-sale-ticket-footer">
+                                <div style="border:1px solid black;height:35mm;">
+                                    <div style="width:58%; height:33mm;float:left;padding:1mm;border-right:1px solid black;">
+                                        <p style="font-size:55%;">
+                                            Dengan ini saya menyatakan bahwa saya akan membayar biaya yang timbul bilamana perusahaan atau perorangan yang disebuatkan diatas tidak bersedia membayar sebagaian atau seluruh biaya ini. <br/> <br/>
+
+                                            I agree that liability for this bill is not walved and agree to be held personality liable
+                                            in the event the indicate person, company or association falls to pay for any part
+                                            or the full amount of these charges.
+                                        </p>
+                                    </div>
+                                    <div style="width:35%; height:33mm;float:right;padding:1%;">
+                                        <p style="font-size:55%;">
+                                            Tanda Tangan Tamu<br/>
+                                            Guest Signature
+                                        </p>
+                                    </div>
+                                </div>
+                                <div style="clear:both;margin-top:0mm;" class="text-center">
+                                    <t t-if="receipt.footer">
+                                        <p style="font-size:60%;font-weight:bold;text-align:center;">
+                                            <t t-esc="receipt.footer" />
+                                        </p>
+                                    </t>
+
+                                    <!-- <p style="font-size:10px;">
+                                        Ph : <span t-esc="widget.pos.company.phone"/>,
+                                        Fax : <span t-esc="widget.pos.company.phone"/>
+                                        <br/>
+                                        Email : <span t-esc="widget.pos.company.email"/>, <strong><span t-esc="widget.pos.company.website"/></strong>
+                                    </p> -->
+                                </div>
+                                <t t-if="report_page_no &gt; 1">
+                                    <div class="show-in-print-only">
+                                        <span>Page: <t t-esc="report_page_no"/><br/></span>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </div>
+        </t>
+    </t>
+
+    <t t-name="PaymentScreen-Paymentlines">
+        <t t-if="!paymentlines.length">
+            <div class='paymentlines-empty'>
+                <div class='total'>
+                    <t t-esc="widget.format_currency(order.get_total_with_tax())"/>
+                </div>
+                <div class='message'>
+                    Please select a payment method.
+                </div>
+            </div>
+        </t>
+
+        <t t-if="paymentlines.length">
+            <table class='paymentlines'>
+                <colgroup>
+                    <col class='due' />
+                    <col class='tendered' />
+                    <col class='change' />
+                    <col class='method' />
+                    <col class='controls' />
+                </colgroup>
+                <thead>
+                    <tr class='label'>
+                        <th>Due</th>
+                        <th>Tendered</th>
+                        <th>Change</th>
+                        <th>Method</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach='paymentlines' t-as='line'>
+                        <t t-if='line.selected'>
+                            <tr class='paymentline selected'>
+                                <td t-att-value="order.get_due(line)" class='col-due'> <t t-esc='widget.format_currency_no_symbol(order.get_due(line))' /> </td>
+                                <td t-att-value="widget.inputbuffer" class='col-tendered edit'>
+                                    <t t-esc='widget.inputbuffer' />
+                                    <!-- <t t-esc='line.get_amount()' /> -->
+                                </td>
+                                <t t-if='order.get_change(line)'>
+                                    <td t-att-value="order.get_change(line)" class='col-change highlight' >
+                                        <t t-esc='widget.format_currency_no_symbol(order.get_change(line))' />
+                                    </td>
+                                </t>
+                                <t t-if='!order.get_change(line)'>
+                                    <td class='col-change' ></td>
+                                </t>
+
+                                <td t-att-value="line.name" class='col-name' > <t t-esc='line.name' /> </td>
+                                <td class='delete-button' t-att-data-cid='line.cid'> <i class='fa fa-times-circle' /> </td>
+                            </tr>
+                        </t>
+                        <t t-if='!line.selected'>
+                            <tr class='paymentline' t-att-data-cid='line.cid'>
+                                <td t-att-value="order.get_due(line)" class='col-due'> <t t-esc='widget.format_currency_no_symbol(order.get_due(line))' /> </td>
+                                <td t-att-value="widget.inputbuffer" class='col-tendered'> <t t-esc='widget.format_currency_no_symbol(line.get_amount())' /> </td>
+                                <td t-att-value="order.get_change(line)" class='col-change'>
+                                    <t t-if='order.get_change(line)'>
+                                        <t t-esc='widget.format_currency_no_symbol(order.get_change(line))' />
+                                     </t>
+                                </td>
+                                <td t-att-value="line.name"  class='col-name'> <t t-esc='line.name' /> </td>
+                                <td class='delete-button' t-att-data-cid='line.cid'> <i class='fa fa-times-circle' /> </td>
+                            </tr>
+                        </t>
+                        <t t-if='line.cashregister.journal.is_department_expense'>
+                            <tr class='label'>
+                                <td>
+                                    <span>Department : </span>
+                                </td>
+                            </tr>
+                            <tr class='label'>
+                                <t t-if="order.department_id">
+                                    <td>
+                                        <t t-esc='order.department_id.name'/>
+                                    </td>
+                                </t>
+                            </tr>
+                        </t>
+                        <t t-elif='line.cashregister.journal.is_officer_check'>
+                            <tr class='label'>
+                                <td>
+                                    <span>Employee : </span>
+                                </td>
+                            </tr>
+                            <tr class='label'>
+                                <t t-if="order.employee_id">
+                                    <td>
+                                        <t t-esc='order.employee_id.name'/>
+                                    </td>
+                                </t>
+                            </tr>
+                        </t>
+                        <t t-elif='line.cashregister.journal.is_city_ledger'>
+                            <tr class='label'>
+                                <td>
+                                    <span>Customer : </span>
+                                </td>
+                            </tr>
+                            <tr class='label'>
+                                <t>
+                                    <td>
+                                        <t t-esc='order.customer_id.name'/>
+                                    </td>
+                                </t>
+                            </tr>
+                        </t>
+                        <t t-elif='line.cashregister.journal.is_charge_room'>
+                            <tr class='label'>
+                                <td>
+                                    <span>No. Room  : </span>
+                                </td>
+                                <td>
+                                    <span>Folio : </span>
+                                </td>
+                            </tr>
+                            <tr class='label'>
+                                <t t-if="order.room_number">
+                                    <td>
+                                        <t t-esc='order.room_number'/>
+                                    </td>
+                                </t>
+                                <t t-if="order.folio_id">
+                                    <td>
+                                        <span><t t-esc='order.folio_id'/> - <t t-esc="order.get_folio().folio_owner || ''"/></span>
+                                    </td>
+                                </t>
+                            </tr>
+                        </t>
+                        <t t-elif='line.cashregister.journal.is_advance_payment'>
+                            <tr class='label'>
+                                <td>
+                                    <span>Customer : </span>
+                                </td>
+                                <td>
+                                    <span>Invoice : </span>
+                                </td>
+                            </tr>
+                            <tr class='label'>
+                                <t t-if="order.adv_payment_partner_model">
+                                    <td>
+                                        <t t-esc='order.adv_payment_partner_model.name'/>
+                                    </td>
+                                </t>
+                                <t t-if="order.adv_payment_model">
+                                    <td>
+                                        <t t-esc='order.adv_payment_model.name'/>
+                                    </td>
+                                </t>
+                            </tr>
+                        </t>
+                        <t t-elif="line.cashregister.journal.is_point">
+                            <tr class='label'>
+                                <td><span>Member No: </span></td>
+                                <td>
+                                    <span>MyValue ID : </span>
+                                </td>
+                                <td>
+                                    <span>Member Name : </span>
+                                </td>
+                            </tr>
+                            <tr class='label'>
+                                <td>
+                                    <t t-if="order.my_value_data.MemberNo">
+                                        <t t-esc='order.my_value_data.MemberNo'/>
+                                    </t>
+                                </td>
+                                <td>
+                                    <t t-if="order.my_value_data.ValueID">
+                                        <t t-esc='order.my_value_data.ValueID'/>
+                                    </t>
+                                </td>
+                                <td>
+                                    <t t-if="order.my_value_data">
+                                        <t t-esc='order.my_value_data.FullName'/>
+                                    </t>
+                                </td>
+                            </tr>
+                        </t>
+                        <t t-elif="line.cashregister.journal.is_voucher">
+                            <tr class='label'>
+                                <td>
+                                    <span>Voucher Id : </span>
+                                </td>
+                                <td>
+                                    <span>Voucher Name : </span>
+                                </td>
+                                <td>
+                                    <span>Voucher Number : </span>
+                                </td>
+                                <td colspan="2">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            <tr class='label'>
+                                <td>
+                                    <t t-if="line.voucher_model">
+                                        <t t-esc='line.voucher_model.id'/>
+                                    </t>
+                                </td>
+                                <td>
+                                    <t t-if="line.voucher_model">
+                                        <t t-esc='line.voucher_model.name'/>
+                                    </t>
+                                </td>
+                                <td>
+                                    <t t-if="line.voucher_model">
+                                        <t t-esc='line.voucher_no'/>
+                                    </t>
+                                </td>
+                                <td colspan="2">
+
+                                </td>
+                            </tr>
+                        </t>
+                        <t t-elif="line.cashregister.journal.type=='bank'">
+                            <tr class='label'>
+                                <td>
+                                    <span>Issuer Type : </span>
+                                </td>
+                                <td>
+                                    <span>Card Holder Name : </span>
+                                </td>
+                                <td colspan="3">
+                                    <span>Card Number: </span>
+                                </td>
+                            </tr>
+                            <tr class='label'>
+                                <td>
+                                    <t t-if="line.issuer_type_name">
+                                        <t t-esc='line.issuer_type_name'/>
+                                    </t>
+                                </td>
+                                <td>
+                                    <t t-if="line.card_holder_name">
+                                        <t t-esc='line.card_holder_name'/>
+                                    </t>
+                                </td>
+                                <td colspan="3">
+                                    <t t-if="line.front_card_number or line.back_card_number">
+                                        <t t-esc='line.front_card_number'/>
+                                        <span>-xxxx-xxxx-</span>
+                                        <t t-esc='line.back_card_number'/>
+                                    </t>
+                                </td>
+                            </tr>
+                        </t>
+                    </t>
+                    <t t-if='extradue'>
+                        <tr class='paymentline extra' t-att-data-cid='0'>
+                            <td class='col-due'> <t t-esc='widget.format_currency_no_symbol(extradue)' /> </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </t>
+
+    </t>
+
+    <t t-extend="PaymentScreenWidget">
+        <t t-jquery=".next" t-operation="replace">
+            <span class='button next'>
+                Save
+                <i class='fa fa-angle-double-right'></i>
+            </span>
+        </t>
+    </t>
+
+    <t t-name="OrderWidget">
+        <div class="order-container">
+            <div class="order-scroller touch-scrollable">
+                <div class="order">
+                    <t t-if="orderlines.length === 0" >
+                        <div class='order-empty'>
+                            <i class='fa fa-shopping-cart' />
+<!--                            <h1>Your shopping cart is empty</h1>-->
+                            <h1>Your item product is empty</h1>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <ul class="orderlines"></ul>
+                        <div class="summary clearfix">
+                            <div class="line">
+
+                                <div>
+                                    <!--ini utk display awal jika ada order di memory (krn extension "screens.OrderWidget.include" tidak jalan-->
+                                    <t t-set="all_order_totals" t-value="widget.pos.get_order().get_all_order_totals()"/>
+
+                                    <div class="list-taxes">
+                                        <span>Discount (-)</span>
+                                        <span> : </span>
+                                        <span id='discount-info'>
+                                            <span t-esc="widget.format_currency(all_order_totals.totalDiscAmountBeforeTax)" />
+                                        </span>
+                                    </div>
+                                    <div class="list-taxes">
+                                        <span>Sub Total</span>
+                                        <span> : </span>
+                                        <span id='sub-total-info'>
+                                            <span t-esc="widget.format_currency(all_order_totals.totalBeforeTax)" />
+                                        </span>
+                                    </div>
+                                    <div class="list-taxes">
+                                        <span>Service</span>
+                                        <span> : </span>
+                                        <span id='service-charge-info'>
+                                            <span t-esc="widget.format_currency(all_order_totals.totalServiceAmount)" />
+                                        </span>
+                                    </div>
+                                    <div id='tax-info' class="list-taxes">
+                                        <span>Tax</span>
+                                        <span> : </span>
+                                        <span id='tax-without-service-info' >
+                                            <span t-esc="widget.format_currency(all_order_totals.totalTaxWithoutService)" />
+                                        </span>
+                                    </div>
+
+                                    <!-- custom code with value (id="taxes") from js file -> set each tax values updated real time in UI -->
+                                    <!--<div id="taxes" style="text-align:right;"/>-->
+                                    <!-- end of custom code -->
+
+                                    <!-- custom code (code for set each taxes but doesnt work real time in UI)-->
+                                    <!--<t t-if='widget.pos.get_order().get_list_of_taxes()'>-->
+                                        <!--<t t-if='widget.pos.get_order().get_list_of_taxes().length > 0'>-->
+                                            <!--<div id="list_of_taxes">-->
+                                                <!--<t t-foreach='widget.pos.get_order().get_list_of_taxes()' t-as='tax'>-->
+                                                    <!--<div class='list-taxes'>-->
+                                                        <!--<span t-esc='tax.tax_name'/>-->
+                                                        <!--<span> : </span>-->
+                                                        <!--<span class='check' t-esc='widget.format_currency(tax.tax_amount)'/>-->
+                                                    <!--</div>-->
+                                                <!--</t>-->
+                                            <!--</div>-->
+                                        <!--</t>-->
+                                    <!--</t>-->
+                                    <!-- end of custom code -->
+
+                                </div>
+                                <div class='entry total'>
+
+                                    <span class="label">Total: </span> <span class="value">0.00 €</span>
+
+                                    <!-- original code -->
+                                    <div hidden="hidden" class='subentry'>Taxes: <span class="value">0.00€</span></div>
+                                    <!-- end of original code -->
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-extend="Orderline">
+        <ul t-jquery=".info-list" t-operation="inner">
+             <t t-if="line.get_quantity_str() !== '1' || line.selected ">
+                <li class="info">
+                    <em>
+                        <t t-esc="line.get_quantity_str()" />
+                    </em>
+                    <t t-esc="line.get_unit().name" />
+                    at
+                    <t t-esc="widget.format_currency(line.get_unit_display_price(),'Product Price')" />
+                    /
+                    <t t-esc="line.get_unit().name" />
+                </li>
+            </t>
+            <t t-if="line.get_discount_str() !== '0'">
+                <li class="info">
+                    With a
+                    <em>
+                        <t t-if="line.order.get_discount_type() == 'amount'">
+                            <t t-esc="widget.format_currency(line.get_discount_amount(),'Product Price')" />
+                        </t>
+                        <t t-else="line.get_discount_str() !== '0'">
+                            <t t-esc="line.get_discount_str()" />%
+                        </t>
+                    </em>
+                    discount
+                </li>
+            </t>
+             <t t-if="line.get_note()">
+                <li class="info orderline-note">
+                    <i class='fa fa-tag'/><t t-esc="line.get_note()" />
+                </li>
+            </t>
+        </ul>
+    </t>
+
+</templates>

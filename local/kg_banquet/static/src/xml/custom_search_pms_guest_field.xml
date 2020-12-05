@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="kg_banquet.dialogSearchGuestFromPMS">
+        <div id="kg_field_custom_search_guest_pms" title="Search" width="100%">
+          <!--<p class="validateTips">All form fields are required.</p>-->
+          <form>
+            <fieldset>
+                <div class="o_field_widget o_field_many2one">
+                    <record>
+                    <label>Name</label>
+                    <input type="text"
+                           id="kg_field_search_param_name"
+                           class="kg_field_search_param o_input"
+                        />
+                    <label>Email</label>
+                    <input type="text"
+                           id="kg_field_search_param_email"
+                           class="kg_field_search_param o_input"
+                        />
+                    <label>Phone</label>
+                    <input type="text"
+                           id="kg_field_search_param_phone"
+                           class="kg_field_search_param o_input"
+                        />
+                    <!--t-att-id="widget.idForLabel"-->
+                    <button type="button"
+                            string="search"
+                            style="float: right;"
+                            id="btn_do_search_custom_pms"
+                            class="fa fa-search btn btn-default o_external_button btn_do_search_custom_pms" tabindex="-1" draggable="false"/>
+                   </record>
+                </div>
+                <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px" />
+            </fieldset>
+            <div id="jsGridKgCustomSelection" class="jsGridKgCustomSelection"></div>
+          </form>
+        </div>
+    </t>
+
+</templates>

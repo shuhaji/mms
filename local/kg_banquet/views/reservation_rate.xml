@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="banquet_reservation_rate_form">
+        <field name="name">reservation.rate.form</field>
+        <field name="model">banquet.reservation.rate</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false" delete="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="reservation_id"/>
+                            <field name="date"/>
+                            <field name="package_id" options='{"no_open": True}'/>
+                            <field name="tax_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="name"/>
+                            <field name="attendance"/>
+                            <field name="price"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <!--<field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>-->
+                    <!--<field name="activity_ids" widget="mail_activity"/>-->
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="banquet_reservation_rate_tree">
+        <field name="name">reservation.rate.tree</field>
+        <field name="model">banquet.reservation.rate</field>
+        <field name="arch" type="xml">
+            <tree create="false" delete="false">
+                <field name="reservation_id"/>
+                <field name="package_id"/>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="attendance"/>
+                <field name="price"/>
+                <field name="amount"/>
+                <field name="amount_before_tax"/>
+                <field name="tax_amount"/>
+                <field name="tax_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="banquet_reservation_rate_action">
+        <field name="name">Reservation Rate</field>
+        <field name="res_model">banquet.reservation.rate</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+   <menuitem
+        action="banquet_reservation_rate_action"
+        id="menu_banquet_reservation_rate"
+        name="Reservation Rate"
+        parent="menu_banquet_transaction"
+        sequence="20"
+    />
+
+</odoo>

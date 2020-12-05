@@ -1,0 +1,7 @@
+<odoo>
+    <template id="assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/kg_employee/static/src/js/officer_check.js"></script>
+        </xpath>
+    </template>
+</odoo>

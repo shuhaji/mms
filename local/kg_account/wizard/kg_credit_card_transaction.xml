@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="kg_cc_transaction_form_view" model="ir.ui.view">
+            <field name="name">kg.cc.transaction.form.view</field>
+            <field name="model">kg.credit.card.transaction</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="company_id" options="{'no_create': True, 'no_open': True}" groups="base.group_multi_company"/>
+                            <field name="start_date"/>
+                        </group>
+                        <group>
+                            <field name="end_date"/>
+                            <field name="journal_id" domain="[('is_bank_edc_credit_card', '=', True)]"/>
+                        </group>
+                    </group>
+
+                <footer>
+                    <button string="Process" name="calculate_cc_transaction" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="kg_cc_transaction_action" model="ir.actions.act_window">
+            <field name="name">Calculate Acquirer Transactions</field>
+            <field name="res_model">kg.credit.card.transaction</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="kg_cc_transaction_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_kg_cc_transaction"
+                name="Calculate Acquirer Transactions"
+                action="kg_cc_transaction_action"
+                parent="account.menu_finance_receivables_documents"
+                sequence="22"/>
+    </data>
+
+</odoo>

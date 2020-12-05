@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record model="ir.ui.view" id="function_room_tree">
+            <field name="name">banquet.function.room.tree</field>
+            <field name="model">banquet.function.room</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="space_type_id"/>
+                    <field name="min_capacity"/>
+                    <field name="max_capacity"/>
+                    <field name="joined"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form View -->
+        <record model="ir.ui.view" id="function_room_form">
+            <field name="name">banquet.function.room.form</field>
+            <field name="model">banquet.function.room</field>
+            <field name="arch" type="xml">
+                <form string="Function Room">
+                    <sheet>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="space_type_id"/>
+                        </group>
+                            <notebook>
+                                <page string="General">
+                                <group>
+                                    <group string="Area">
+                                        <field name="min_capacity"/>
+                                        <field name="max_capacity"/>
+                                        <field name="width"/>
+                                        <field name="length"/>
+                                        <field name="area" readonly="1"/>
+                                    </group>
+                                    <group string="Price">
+                                        <field name="price_per_meter"/>
+                                        <field name="price_total" readonly="1"/>
+                                        <field name="taxes_ids" widget="many2many_tags"/>
+                                    </group>
+                                    <group string="Others">
+                                        <field name="joined" attrs="{'invisible':[('not_combineable', '=', True)]}"/>
+                                        <field name="join_ids" widget="many2many_tags" attrs="{'invisible':[('joined', '=', False)]}"/>
+                                        <field name="internal_phone_number"/>
+                                        <field name="remark"/>
+                                    </group>
+                                    <group string="Configuration">
+                                        <field name="shareable_room"/>
+                                        <field name="floor_loading"/>
+                                        <field name="light_dimmable"/>
+                                        <field name="have_speaker"/>
+                                        <field name="not_combineable"/>
+                                     </group>
+                                </group>
+                            </page>
+                            <page string="Setup">
+                                <field name="room_setup_ids">
+                                    <tree editable="bottom">
+                                        <field name="room_type_id"/>
+                                        <field name="min_capacity"/>
+                                        <field name="max_capacity"/>
+                                        <field name="setup_time"/>
+                                        <field name="setdown_time"/>
+                                        <field name="remark"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    <div class="oe_chatter">
+<!--                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>-->
+<!--                        <field name="activity_ids" widget="mail_activity"/>-->
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="function_room_action">
+            <field name="name">Function Room</field>
+            <field name="res_model">banquet.function.room</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem
+            id="menu_function_room"
+            name="Function Room"
+            parent="menu_banquet_functional_room"
+            action="function_room_action"
+        />
+
+    </data>
+</odoo>

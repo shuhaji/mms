@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="kg_hr_payslip_form" model="ir.ui.view">
+            <field name="name">kg.payroll.hr.payslip.form</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='credit_note']" position="after">
+                        <field name="brutto"/>
+                        <field name="netto"/>
+                        <field name="pph21_amount"/>
+                        <field name="pph21_paid"/>
+                </xpath>
+                <xpath expr="//field[@name='input_line_ids']" position="inside">
+                    <tree string="Input Data" editable="bottom">
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="transfer_type"/>
+                        <field name="amount"/>
+                        <field name="contract_id"/>
+                        <field name="sequence" invisible="True"/>
+                    </tree>
+                   <form string="Payslip Line">
+                       <group col="4">
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="transfer_type"/>
+                            <field name="sequence"/>
+                            <field name="amount"/>
+                            <field name="contract_id"/>
+                       </group>
+                    </form>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="kg_hr_payslip_pivot_view">
+        <field name="name">kg.payroll.hr.payslip.pivot</field>
+        <field name="model">hr.payslip.line</field>
+        <field name="arch" type="xml">
+            <pivot string="Monthly Payroll Detail Report">
+                <field name="name" type="col"/>
+                <field name="nik_name" type="row"/>
+            </pivot>
+        </field>
+        </record>
+
+        <record id="view_cancel_payslip_form" model="ir.ui.view">
+            <field name="name">view.cancel.payslip.form</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_payslip_cancel']"
+                       position="attributes">
+                    <attribute name="states">draft,hr_check,confirm,verify,done</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_view_hr_payslip_pivot_form" model="ir.actions.act_window">
+            <field name="name">Employee Payslips</field>
+            <field name="res_model">hr.payslip.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">pivot</field>
+        </record>
+
+        <menuitem id="menu_kg_payslip_line"
+              name="Monthly Payroll Detail Report"
+              sequence="11"
+              parent="menu_wizard_kg_report_group"
+              action="action_view_hr_payslip_pivot_form"/>
+
+
+        <record model="ir.ui.view" id="kg_hr_payslip_header_pivot_view">
+        <field name="name">kg.payroll.hr.payslip.header.pivot</field>
+        <field name="model">hr.payslip</field>
+        <field name="arch" type="xml">
+            <pivot string="Monthly Payroll Report">
+                <field name="date_from" type="col"/>
+                <field name="brutto" type="measure"/>
+                <field name="netto" type="measure"/>
+                <field name="pph21_amount" type="measure"/>
+                <field name="pph21_paid" type="measure"/>
+                <field name="nik_npwp_name" type="row"/>
+            </pivot>
+        </field>
+        </record>
+
+         <record id="action_view_hr_payslip_header_pivot_form" model="ir.actions.act_window">
+            <field name="name">Payslips Header</field>
+            <field name="res_model">hr.payslip</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">pivot</field>
+        </record>
+
+        <menuitem id="menu_kg_payslip_header"
+              name="Monthly Payroll Report"
+              sequence="11"
+              parent="menu_wizard_kg_report_group"
+              action="action_view_hr_payslip_header_pivot_form"/>
+    </data>
+</openerp>
+

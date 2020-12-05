@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <CalculationMode>Interpretation</CalculationMode>
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <report_data Ref="2" type="Stimulsoft.Report.Dictionary.StiJsonDatabase" isKey="true">
+        <Alias>report_data</Alias>
+        <Key />
+        <Name>report_data</Name>
+        <PathData>resource://report_data</PathData>
+      </report_data>
+    </Databases>
+    <DataSources isList="true" count="2">
+      <config Ref="3" type="DataTableSource" isKey="true">
+        <Alias>config</Alias>
+        <Columns isList="true" count="3">
+          <value>company,System.String</value>
+          <value>user,System.String</value>
+          <value>working_date,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>9b987d85cc0f4e998750a29fc75b66c0</Key>
+        <Name>config</Name>
+        <NameInSource>report_data.config</NameInSource>
+      </config>
+      <data Ref="4" type="DataTableSource" isKey="true">
+        <Alias>data</Alias>
+        <Columns isList="true" count="5">
+          <value>meal_type,System.String</value>
+          <value>pos_category,System.String</value>
+          <value>price_subtotal,System.Decimal</value>
+          <value>product_category,System.String</value>
+          <value>seq,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>4409c807091544a896188269bf7d9412</Key>
+        <Name>data</Name>
+        <NameInSource>report_data.data</NameInSource>
+      </data>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Resources isList="true" count="1">
+      <value>Name=report_data, Alias=report_data, Type=Json, Content=CU5wZp4YFfUeEQxU1NK9_x002F_iLMd1ZwnkD1b7u8E9DU_x002F_b7rTXdS1IsRnK6VvNUBcjU_x002F_DoTz9FaYXPX_x002B_kVwBAXb9Fun08tDyWhedXLkc1gHsNz_x002B_jfaDI8toD3X753ROQ7FSWC07y0NoLFPle_x002B_WxYAdCV_x002F_suO89zYi1IdahFIHJTEUrzjXnz0StgA9R75fQMH7rf0o06w9NiLUB1eO0mSkHJfvuNOc_x002F_L0C1D1atNoBxXwN_x002F_5MTrbWyFcVXV4R3ZRQdlL_x002B_S0434PSfADTf_x002B_WgHgdQXFuMkd_x002F_pWVBfenvlIB1LA_x002F_ZfJFXNS9AtQHQ_x002B_RjAdewJTULyQ7wOCLEZaK_x002B_X3XB_x002B_w0_x002F_iL8I9D6X0rdSvnNWFruNHKoVXDcVg1QXIqRfBMBtFJ_x002F_SswlVsAfXLVe89yagdoVP2E_x002B_I1bM3lD1SlYdk9TAvTQpXvVO2NsD9b75SIdd1L03Stwj9lYfSlxe_x002B_XlWgtK9_x002F_ktOJYpWnlA8PrncAYL4NL7LjrfQ0Fhc9h44iFRS1pX9j2Qm8vLIFbVeeH0Hgtb_x002F_FuNe81ZWCwK_x002F_HlDp0sRAN1fj3LbY_x002B_FsV3x_x002B_56VeU8D8W4Tx8zNSLFJ1q1U2EnPC9NCvWsmaWi1L1vTS8B1H4lP4pdHLaSgsVHYoRjAcB1Dz_x002B_qc62VvINBP9e87zQlXYXNyl88PqsCy8dT9McXAHUvVGjNLZW8lQF147TbFQBdta0i203wGYfUnduE5wHUlI1VqqUoMxSnwC_x002F_njOsE1Jqlf5MTKPkVp5Atb4RaFiUdhZXySxwVsCLFT9qEUhcFfCV_x002F_uNMp8xmC0AYfvO8hwF2ljCjpXzaVpgv_x002F__x002F_8RjAHQcpWUo0RySlbbApwPcG4HEdaVlemOI_x002F_T6XxNc67toUwFyNBbpPSPKVogSv98RSNaCyNf_x002B_Czzy_x002B_NALBL9q02jXUdiU1KlOd0pSngS1avl915Xw_x002F_VbjJKPQrA0cXB6zXAfQdvdRoU4g9nCdGN0P0nxY18BU1CmUI1JWUx8dS5F8WNvI9TfLTvXg1IsVH6q5XNZVcnxXSsyjVvIaF55qNGjX13KRFslO8nJWC1BdavloF9duvT_x002B_pdPPEkNtBHR976RQBcre8Kcy6_x002B_vaYEV1ss2iHh_x002F_j9vClOsFboC1C1SjNc0pTWtv0LXnDQVpgTXU_x002B_RXIQB2tUWyVT1VlaYC7VqOIhUHfA8tSJU5WbY3hn_x002F_T7t8WIGMtxbI7HBW0JYZnU8zXFFS_x002B_NX_x002B_42039NwfBJ2qEdyElMBU1g78I1JWGABa3_x002F_kdnlF21ZYL3qDySgsR9X75blfRwP3ca023rHLaFfbruUjVgdYXUeAkoEr6CED1G7lN11lGN9SpPvJScItSHYq5v1gZ_x002B_BX_x002B_4MxxTnKfAzSKOJ6E0Nb9V8ksfNB0H0Ddb_x002F_kN15WM91FKPHyo6B8Enr7TXNWCbpeWyz73TswLG9vrVm2HksJUV_x002B_PUo1bYnxGdSjhtFNByUpxq9CbY2NlSXKr6iBZQ2JH_x002B_4dTzUtTeUD0PFA0HAey3Fks_x002B_cvLMi1IdahfpB5XW1T_x002B_jTrBO1NgA_x002F_R65aNFeltf_x002B_4xx8_x002B_sxbAp1eUelXmNq9fE5eN1LcixX_x002F_vtFcAYHW1VwJXiNS3NojWs0RXAEBRjd0TJTydmYIUJzr1YxXXvgzV_x002B_nco9D6ny_x002F_1HjN9BwGq11HjPqPMVt5B9R6RiBeC1ha8C_x002F_wj9tiQAD9q0UgUgujXviLG98BSixUdSjhoWNDsND8pJDdS4FRK9UqzvwfQ2BTWKcQj2KwfEVz_x002B_Ow3TgnaVvsmcI3LWllwejtFI0oHW_x002F_VYJdHzMwFRcvFszaIcYwDcW48TzSvRdFtu_x002B_u_x002B_mTAXbXvuPWuszQiBW3rhC8AZTsUBbjfaCszF8f9b35XMEQ1JSVoVRyUlbTHP9e_x002B_6jVUtTV9Ale8lLy2gS1apBchJX4UtYJTiPYUlRetzsRjBSFclTU46UlZkqPQFpq02jW19K9d4vW8vbU3VL1PlbpkldQFxSpPLLQSlsfFx8TKcFQ2Ne_x002B_akTySlYYXD1KOHwUFer9tMgU9tjUWFD_x002F_fxGMkwHQ15YJTraWzJ8TPB65XdZeRlI34042VtgLUFxP0R6HRfA3_x002F_i5etdTyixjdavWs0IHwNLQiRHD6VogSNFwRyVgV_x002B_BUU6V70yvJUA_x002F_1eERzQFXI0_x002F_uBOtvZKi1L_x002F_jjDpBxT4t5aIzCVm9ggFtVvSDAdVav5Xi071zFbaBZ7_x002F_N_x002B_mHUnK9M0pOI5D4X1D1ipG8hBTa_x002F_nLpXvXy0AsX9X8RfFaCdjf_x002B_C458zvafL7Vq_x002B_U2H0NhU_x002F_ulEI9jwjxj1SjBtExV2v_x002F_4rPCP0VlsF9b65aFeS_x002B_BVRgFRycNhbEbeuuV7TlEb_x002B_9Av8o1JKHyP_x002F_avN9WFV2vVdh3nz69ogE9R4RaAcBRvd2iE4w_x002B_HLZUp1qUd3VB0b9l4tUI1JWCxef61ZcE4FyNbSoLLJKVphQXH_x002F_zaAfQ1tcQ6_x002F_x89laeUvVLktzSXuw1NC50oFbkXxy1H9VJkhLq9_x002F_TL7KNS_x002B_ltSn0owaNRR9P02o_x002F_x81FaYJFwPs2iDAXIV9ONU9mbAi1IZSzCIARVGlRYqPjdm9J5Q32r5vN9T0vf_x002B_SswwVuKPUB1qEVxTFUb3Fipeo_x002F_jKmBndf_x002F_O_x002F_1QfYVNTjJHdW9l8GPx76HdNV9P2S49wj9tQNSvV_x002F_ub_x002B_S2XJ0NAsc8cxSCwb9D5MNhAHUUrWjXnb06Is9P9_x002B_5vJbQ6v3041Sy0FILFVxqVm2DgfA0FuNEt074WlLf_x002F_vNN1RBGljMiVCPUZp4E9usRHFZQ9PdXC04jVt6fFdveVhySUnL9P_x002B_NUI_x002B_j03lJcajdtG9Ha9_x002F_LLVKPIUtlKdIxRbQFVdjy3SrQlVuhUFRRqkQwBB3Jxteled6xWC1Lf3xJok1JyVDQppaP62NoTHWqzKRLU2tWWozxzUnDaAPV8UGhUAey3_x002F_Uruo5pWV0b1b3isB4JGvRXjlHdW9AsC3YrQaBSU2jwWqSQlzFYLPP8f_x002B_YjRgvjXdyvEp_x002F_pKX1JaStNP1tLsvxbJ1LDUVtoGH1_x002F_5aNbR7Nc_x002F_yZSg4FKaQfVes_x002B_nSAYxUUeMk89j0nwQ8atVo0oF2_x002F_fKhjqBS_x002B_A0DWn9WDdbQjL_x002B_VCsynVlbaUB1qGxySUox81glU8NjoVAk_x002F_avloh4GM_x002F_r5OTrbOUtsVXEo4TVaF8LbW4zy4ZvTeBHw_x002B__x002B_W3WkPz9lqped8zOC1DdS1BIklH4NRZKxnBIltpK_x002F_0pzXViQ1LdXSk3nVvaLSbUeuX1XgXIx_x002F_uNOvmZgCy8efxG_x002F_hNqakZdK3Dfy2IsftWrRbYeSdhX9yHT20FILA50euRyUgnLxPAtE8FbMXxVcSrlNB1CoPNbpjnH6ZotenG_x002B_RXAfb2LdRYlXzVvSLUv_x002B__x002B_kbxXgnbRNOlUo1bMC1LcXjB9h1BG_x002F_T_x002B_hRKNy2NoV9b753YeC_x002F_PV3ofS3VvALSrWuM13RAfCUVqPMcJhS21L5SpBNAdDEVDTj3qfM_x002B_N0Vnh76jJSU1L806S621HYLSj_x002F_r_x002B_WiTAcj9votVMH76CwP_x002F_KxNtB5X4_x002F_dULnCPW8os2tUoRbQcBapa0amR8VsjdAjRqEW2UkHK99Cle8lb6DUa1rlYNWAFG_x002F_f7J_x002F_PP09tsAnGqzHFEB0nw0Yczy9NCeAv9_x002F_02gH0HYQP4hUJdRSmBX1artIk5j4_x002F_jTpJPP2_x002B_p8VtR5QjBNRdtVX4yR39thaEd1q_x002B_lkXAdaWvuNOI2asmFAfHjjdB9Dq1_x002F_6jVKPYrFgcfH6VaNYB1r1RKXQlVthbHvaKkH3f09Y1vine8VZSCxnfb5HZltbgt9TjjnDMdogGP2xR3QcBcp53yyRwUvJaCVyquYyHUnY0_x002F_mpetlb22wLdTfNNAVluNf4tFCP2VtsVP0qyfdYB9NfVi16nUtDaEbce_x002B_VyHXrrVV6ks80pKCwPbilAcBwHS1zeL_x002F_PLY_x002B_gsENEoxSAdQdhU0C8y3_x002B_tBaE_x002F_Uf0UiHUfiW_x002F_qkUc0r4j1AcHzN911La1VehxCPI3Asf9X84fNEEUr_x002F__x002B_49Yj_x002B_uBfElweE0iWVdo31Ig_x002B_sNDeWhW3alZvh9BqVFEOdLdW9lseNA_x002B_QvJMH2hU0qV5yVpQIQB0eEWwHAWr91ky09vL22gP_x002F_ajhJWAF2VP3JPKBS2I9S9b3T6VgB6P3_x002B_4153kNSLCf_x002B__x002B_uWhRV_x002F_i3tONOcd5WmBMdXpGcklXWcDfjdDLMUl099Wr66YMV7pWUyRQ62KwLFTRK0Z2UAdK3_x002F_qOltfrMWkq1vbl91tDwtNbgTiX2Sl8fP89wiFhe3pYWb1S4Zv6eFZ1LEd2TAfyWP4j0tvpW20r1fxENhxXg174pVCP68lRSfV713FHQ_x002B_P3_x002B_4ySnUmaaFbVK_x002B_WjC1nZUEwlOcNDgVFyc_x002F_5GMh1VSNP7j7n_x002F_OUosC_x002F_6r5DNbW2pT_x002B_4y63rNgLSh2cVGhU1NqUvOlUNvjQ2g3dXtOIg5PaVPQrdLbK2N8C9WoRaAcB7DxX6XQ7SvJfNBhe092SgnL9Foj8d_x002F_pmnlIcPvO8AVHaH5fjlHdW9p5Sd354DVSBRpWWo0534GYLAh1PM0gHEqi9lgtk53CsC1A_x002F_T5B9B5LWN7QvdLfy9JpQn_x002B_u5v1OBdhWWyUQjVthYJfVe84hU0OwVlKptI87cVBcfHrtcX4Hsvf4L3PHM_x002B_lhS9T4RrNIU6pVcKd4y2MhUUre90LyEEsB8FirccKzY3S_x002B_3qvltB9Ds_x002F_RSjxKPYiM8vHt8RnYQBdvf0y453ltDeH_x002F_V_x002B_sogEUPj_x002B_vilO8nZKCxXZb_x002F_ndVlJu_x002F_f4qlHNSrAsCtZwwXAcBcr03i06jVtzTUp1q81mWUXb_x002B_EyL8JfbU3lIdb7McVFX0VDItTvLy9FtK3Gq5iNZRRv72ij4l9NyPBF3_x002B_UIiS0HI31uPe8sxSCwUcalFNh9fikb4iXiOs1NlctUu5iFRXjP004_x002F_VwUtDbUj9bM1xUlEb9l_x002B_BOc5BS2gC3b5OsA9rg9_x002F_QJjiBW9FsAHVtQaINVcvX_x002B_KzSnmvCeBPbfuRlT0Mh8_x002F_elOIFZW01z1DzENUYHg8T_x002F_JbHJW2FsFtX9z3YeCbr006Y4zclaWXvVv_x002B_agH0PQV9MuO8_x002F_rYiwP2SjPpkphqlFaLXnz2ZtgFHYo4HZMS2lX0TI6g_x002B_lZbSv9vEenVhXI1_x002F_aOON5asz0f1DzRoWJX4NfajJCOa_x002B_toE_x002F_x7TbBMBRpVXC16gVtaIBJ2fVh2HgtS9N0p0MPrQnwO1SlENhJDw9ZbjJKP0_x002B_h8CvOv5DVRRwlUWSk7wUvqeH_x002F_Xeu2hU0fRSvqP881ZWnh9cajhN1pLwvZXLfXea_x002B_gsVnn75aIcHdpVRydwjzlYXUP8LdWgXFXa9vmpO8Mr0j0kdivl5B1reFZXj3rLY_x002B_tkEHaqVbVUV8HQWo1431GafHx1KEn3WAdT9vuPMcNhWCwD_x002F_XpVokpN2n9Yp3rCUyAsTnc6QDZJSQJX_x002B_C0QzzNgNL_x002F_Xe_x002B_hyHlfSVNMt0p1ZW2RXZShH8mtDY1f5MzDNSUttc30oRHJHR_x002B_De_x002B_TEQ3dmYLApxq_x002B_RyHgYz99KMctvT2i0H1f_x002F_kcVNPA_x002F_RajNCNm2N5Q9Yr5SFSB7L_x002F_0C3SjUtaLXPUPOIhT0Oj91uAkp6ysC1z1SrMNA4GsvdaP9HVmUlQV9rz5fNJX1v39iqVzZlYLPZ0e_x002B_UmDlfg3_x002F_gg8c5ZWnxM0avms1tDAVFcJ3vH0zFkV_x002F_w_x002F_5DQfVwP00SmQjylYLGZ4eFEhThNQV_x002F_iLusvRm3y8_x002F_rjgcFNF2vRYpTnHg9pId_x002F_x4zTZQS9JZRKfwj_x002B_PqLUFxcMb8HhfT_x002B__x002F_uOU8lJKVBPf65B81oFGNJajdPNW9p5QP77RaFgHcpX0KpSjUlbdGRtKkW3Wkuo0XIgUuKz2CxK13rJIAVJqvfyLPnD21AsdHWqQSINa1vcWC0778lbaFT_x002B__x002B_t32UAfD9V6lON9BmH1Devvtoh9DsNxQidL76Zp4X_x002F_16ySNKS1P0Wo3SnVtgfUB1vM4jDFWo3vIo0cMzgC1K1H7J9VF70Fz8pRKDyctpSP5_x002B_5iAfQdpVR4yQjVvIfUjTO816UgdpU0os0M9D6HhjfLjM5AVfYt9bjzCP42BJS9r7T6VSB1r2_x002B_oT53zNhYH7U7k34H0Xa9lumlttBSWly1fzjpB5T8t9Qp9ObMzN5Q_x002F_2o4vITZ0DwWiI4j9uANGbVq1UhXAfCfFovU9vbWiwKevLltVwH0txbJlCXI9FsetY4RnQQBcvc3414j9PZfFHxPVmjW0Hb90Yk_x002B_81ZW2lAfXjC_x002F_B4GM_x002F_v6LNKNWUtMF9V7VbAcBgtc2C6WjzKwPUjwP_x002B_R3RXkZSf_x002B_BOtvZW3gn1HtPNk1DsH1Ei1KNKdgtKnU2SfNaaRv4T4zwj1PqeAB8fsv1W1HbX9ODMoMxmWx4dijOM31Lakf2j5nBW2NoJXJ75aIdSdjc2KVSxlEqeA91P8x1DAcQXlot8d1a6X1K1fpAcUxByND8pjiXWUlgf9UoS3YdSctc_x002F_4D4j0HLZUv9e8xzWgYxSFukkN_x002F_bYVB7ZavkP14FGNf7BXiNmZtxQ_x002F_15WaAdS7DwW47SgVqxbUh8fuWgClHJS_x002F_eN0oPZWnwj1H7ndUZX41z9MtLf0zIgV9T6T3dfQcv0W69729PqYCf9qEmgHAcIVvEzEc9hW3RH2_x002F_hEc1QHW_x002F_bRKdHNKmohQ3R7TSRSE2P2cCaX29laLAr8P823XgXbXvotOM1LYH1C1z9HpkxXoUjQL_x002F_KPaVtsEPF6SjBcB7FSW48wl8shYBDRq_x002B_WjWVXa9NIi08vJWHxW1frlIBwfwUjRKXvPcllszHWr5HJSBctc0C1Rz9sraHt69_x002B_l2TgXb9vimO9tBWmi_x002F_1b_x002F_msVFVqVHYi9PXyVtoAtR4wDYfZcjfyCqW_x002F_VvILBVwek2iS0NKW1Cn88tRWFzKZHhF9hAHUF5aPlPJI8p4TNGoRaIPQdlX_x002B_Kk4l1FLbBL8uEemT1P5SFqH8N9rYiFC7atN9h5Lat77JNCVS9gtS9Qz5XFaC9hVWrPQ33KwNUt_x002B_KNUhXV17_x002B_viJeI9iWCwU_x002F_anBo1wH8_x002F_ZbgdLas9NkEnE_x002F_5jFgBRv00yU53jsxbLx1_x002F_UIwBmHJ0FuNecFZWz0r_x002F_Hrm_x002F_AV7A_x002F_bXj3HfMVgtSvx7RSJtRclW8qaVz_x002B_vgLFp1q_x002B_g2UAfD_x002B_FCIUfMxyi1I5avVsBFB295bLTnNm8ogvHWo46QLQWve8i8S2VmLcAP9KETzSkNq3FutOo9TyWgs_x002F_DxJehF7q_x002F_bwOTqVWVgtSv1_x002B_5T4eV1pX9qXT0zOSeExdqs4yT1HI0_x002F_gtkoNTKnh_x002B_3n_x002F_kcVFX4_x002F_f7gXrX09NoA_x002F_V7SSFOU7PHW4FS28uiWABhPOEhXAWr_x002B_Vst0I1Jy3lC1XjH9AV6MthWLRCP4VlhAP2_x002F_TiFiBchWcaaU30HILUFxqs0gH0Xa9tOPMfJBWWxE031C8B17WUtShTiNWVlgNHWr6SVdVUlW_x002B_Ij71UuDbUt2OML_x002B_ShW7_x002B_1qNUo1b6H161fzhoB9Hg1dbpBDD4Vt9SHYrxTRPX1pZRyJb79ODbUPVqVunX0HYVFmn88tTg21DfavN8WBHSlBdOVHX65AtS9X8RzBOFav02z4T38PYNXJ1NMWhT2XL9lqPco9Rmnlz76_x002F_npEwHW9xeoRLZm9osW9X7xvJaC9DzWIo4jUswNBJ2_x002B_00iSAXY8tKFO8vb2VADZHlBoFIX_x002B_F7SLZPZWUtsTHWpWXNOUdje0qT4j1PQLFfV_x002B_0QwHXuxS8uM1o2aQDVA_x002F_arkclEVyFfSj_x002F_HusUtoF3opWjNEVjP2_x002B_iWwlVlafBPW_x002B_MBzTgWr91uOUoOBKnhFaSvnp0tX4PPQp_x002F_COs2J4RNH6QaNZe7vf_x002B_gXQ30PQNXPV_x002F_krwHAbQ3vQteJVLUWhGX6_x002F_o8B9d2lf2pXiNW_x002B_FhSvm75fJIB2v3_x002B_C5zz_x002B_vYLBPVKVqzVgnL_x002B__x002F_uPMo_x002F_L0iEGZfzQck1VyUlcJJPJKUp5AHW9QjJLR_x002B_Pd3CzT2ZlYSBDweUIhUlLb_x002B_lQok9fLojlC1vvlJElV2FL7IjqeWwIsCtW_x002F_5aAdXtPVXCz531OBZHz9u_x002B_g1WgdJSV_x002B_lOo0rMCBW3SjAdE9D091ah_x002F_PKseNscNH_x002B_3TQGScv42TN4j2OBaFT8_x002B_uUjWkowVlSlEI8BW21C_x002F_ftMc1gF2vRZLxDfg_x002B_gsVH0oTSAcB7LeV7cQj_x002B_MiNH_x002F_9euRyS13aVVipO9tT2CwQda_x002F_N8ExLgFfAJPiNWzNsBt0u5TYeBtB8043Ql_x002B_NwLRb5_x002B_891UlUZSFsn_x002B_M85yUy_x002B_1PjDpkwHu1ZUJfCPizFsEXL3VHVSQ9P7Uj6WjSlZYH_x002F_VvEWgHUbD9vqncd5rYWy_x002B__x002F_T_x002F_loVgHavZLjFPPQrIsfO0tQfARX2Dz_x002B_gU53_x002B_NhYElxqEdyT0Yw1_x002F_i1eJbr2nlA4f7loBwfo_x002F_f7JTvJWVhs0_x002F_x75SFcBdp9X406jVvSeQfXekmgH0FJ0UaGlI8rAix_x002B_eb9Jt1oJ2VP3LxHfMVt4Tt35QXNdS_x002B_FT_x002B_Svyn_x002B_qzbXLVq_x002B_byUlEa9nKNeIMBW2hwfStFo1YJGt1YpLCPy2B9SP2r53R9V1P3_x002B_iUS12PobQDxqs0iTgfg8NKh8skpSXVB5vRGIh5XSNJzjVHJWVh5S3WqbaFNR7BX_x002B_y05w9MDaUL8LuVxWAeo8_x002F_qNOo1bcnwQ_x002F_3zi_x002F_1gHslf4JVCPW2AsX_x002F_2oxPJIE_x002B_p724KW3jPgLH59q0WgHB9SVP_x002B_Net872mBH53zhZhwHEfBaIXrD49A0fnoqTSBdedjX2TM4jUkqPBhxLcxxYAtqW1IvcI3p0X1J8HttIWBX4dPQOTaB_x002B_fAsE9UpRaIfR2rf0o0439szaAvVKuWjSUnYVNErMI_x002F_RyXR_x002F_2SvMN11nIlRXj3LjY_x002B_t0Vtd7THIKU4JbVKW0j8vobFVxP_x002B_YiD1sD9vkvcfKzg3glcajCoh1FQltQhFPNWUpgxfJ7zfQeBxPf_x002B_SlSj0MofFB1KUGjc0_x002F_jV_x002F_Qt08vLYCx4ejjCsAVG6F9Yq_x002F_CNm2FMVPA_x002F_6SJPR1PdXiF6jSvCLApcPu7wHheq9Ucvc82ZmC0q1alB9E5DUFf7pTrbAzA0VV17TfNyU1JSW4aU32kqIFfWuubzXgtSXE2ncd1aUi0C_x002F_Svlo0oHs15bpzLBWVtgFt_x002B_v6fZIBUr8045wl9tSfMzS9UBySVeA09EpOuOCs3xWdnzBcXJR2_x002F_dZiTvPCkM5KNB_x002B_QHJYV6jT_x002B_CD7yzHbaEr8_x002B_EVwHUka9_x002F_Av0t1byixU0SpNcEwd2VJVh_x002F_Kf44AtQ32rTaAcBRlI0iPR3wFKYBLVs_x002B_aiTgXY3F_x002B_P88sBmj0q1jpFclNH4lBSpJKPYUp4R3S_x002F_66VcHdvU36xW22PDbH_x002F_YP_x002B_R0HUeI3tOCOJcz4WACdDxJoBwFy1f4qtCPy2B8EnuvTXBSBalL2KVSwrMxfEfbfEUgHgmo3dGtNplbMi1wfapCI0gdAVFGj_x002F_HfOVlhS9Q_x002B_bSZGBdvc0It439uALBLUeN2hYxXJSvglOsVbQC0q3ilAc14Ks1TcLjvDYzAsvNIq5DAEB4BcWyyQlUvoNXJx_x002F_ULwHlPg3_x002F_gmOsFbUWDY_x002F_jvlcB5T4vbRK_x002F_PPO_x002B_osd30o46VQSctS0qHzy0PaZE9_x002B_9kGgEAfBUNONUN_x002F_RWklCeavm8WAd2_x002F_ZfIXvPQ4J4J9W_x002F_zfFfSwNX_x002B_417yyt4LAvV_x002F_M0nVB7SV1qk8cE5miBW1ahFtVF7gMf2jpSNS_x002B_o8Ftb76aNFR7Bf9o15zysraSr_x002B__x002B_uQ3Xk6D9vKrM86zY3VC1XtFo1tDWvZUiZLr22Asdt34zaFRSdpV_x002F_qT5zllaLAt2Kud2ElehSVim0oMz0ixV8ihGMV4Lan77LxPtSclQV9g_x002F_5XIMVWP0VivRwUvoPBT8P07xT0Ua9NONFMFJWiwC_x002B_DzENB1X4vdxMRKdS0NhGnmr5TYSBcve_x002B_y8T19PhfUj_x002B_Ku33WleqV_x002F_uOEp6zYnhI0HlZog4Lw_x002F_dQiXvPMngtSNErTXVEB4P0Wy8RyUtgLGd1P891YGJL9N_x002B_MUO9xSWwM_x002F_StNoEsTW_x002F_VfpXnxSUltQ9X9RiFSBUpVXqS4ldvJPQPV8UIjWVVz9_x002F_qF0t9zciFw_x002F_vpMNh1Wg_x002F_bQLTadK0AsJnQ9UbFfQ0jQw4F6wZraeHx2us4hTglr9Vyo_x002B_p9zMCwOfftFo1IJ2FZQJdKDc9h4E344zXFNQ_x002B_P0UYcw3_x002B_PbQUvWOEXyUUXK9_x002F_qP8o9j02VIdbziskwH0MFEqTrZS9ttSP77TDQfQdr03C17zzKwIADReMWiWVaqUlohOuFbKljOdHvlIlBX0FDKLPPP08ogAt38xbV_x002F_W6rc_x002F_KS4z4HqISlzOUEiEktT98kqlI3TkmA3_x002F_HpEcF5R2_x002F_ZUixHNS_x002B_Nsc9Uq7SB_x002F_Z_x002B_JYWCS6wzFILUN0s_x002B_k1T0OxU1uCO8lbM3RU8f1B81lL0_x002F_VHpXiNSrNlSnV75vIOC9PcWy04lVvgLUvZqk21WAdi91ov8I9hKCwuefhNuVNByvb7PTqPYSltcHX_x002B_5aNRSlvUUqUS22FZfPf9LsnxW0NSWvin99_x002F_rQX1I9atFoV5LWPNSjdHDUzN5BfB76DdcV4NfwoU6lfFYNCXxK_x002B_rzWgvg1losV82bYC0H1DzMNHwTS_x002F_jSLjnP2ZgtQfGqR6QeS0jf0o9S2wNzaA1x_x002B_M_x002B_lYkHa2vAskI9BSVC9amnNIBxX0vfTjPPRmVtoCWLyRSJQVoP0_x002F_yZT20NRYUl1sOEjW0XZSFItON2ZW2hP_x002F_vrDd3Ady19TLRaBW1FpeXA_x002F_6HAfX7L1RiBS3VqyaHvYP_x002B_RwHUvhVvqMk9dz02hV8b_x002F_OMltB2UjTLTvZWVp4ffEqT_x002F_YfTjLfW47Rz_x002B_k5bA7UP04iUFXL3Ualkt_x002B_La0AS1fhFo0QGSMfKjRTfYdgsClmq5PNME2FXUC4TyyFIeHfVLNVyDB3JS_x002F_gtEIPZyC1I_x002F_alAcAYLYNDfNTjJSwAhAtR_x002F_xb5IVRtX_x002B_yWSjVkqLCzzrkRyW0FDV_x002F_uNOo9hWC1w5HjhIAQfUvbfjTqPU9NxSnQ84XJKF4v7_x002B_Kt3yVsqLBVxq0m0HUVL9vul0d_x002F_RWXx1cflBoVlXa1ZWh9vL6Vh8AHP_x002F_z3QeF6hW1CMRzUpqIFbdK8_x002B_mHlPRVf4lesFZ2nxc3fhOskwF291aLTjfcUo8RXM1QfVTQ1L3_x002B_C3yjSk7aFL9K_x002B_W2DUdr9NOMk8sC6DQX2T_x002F_m8B5TqvRaKTqNKrAseXFwRjFSVctTWo56w2MDZF_x002F_WKuxwHVd7VV0rcI0ri2xX1HhNIU0TqvTQLFKNW8gsTHd_x002F_T3VQB_x002B_P3yjl7y8PaIL99P_x002B_X0H1HK3_x002F_ov8JcDwXQRdT9E5BwH81r7IBDKIVo5F3Y4RfFMRUjw_x002F_4ER38KyIUN7OuYjWUXa3_x002F_ulOM_x002F_j2Whk5avoNE4LuVP4O_x002F_PhW2JdStR4zXFNe2LeV407yTvTaXDRKEWgHAYwVFiml8dT0mlJc37NoVFL0_x002F_f1iTqPw4J5C9n8T6dbZdpVXyUSgVlJfE79e_x002B_YgUgkbX1SJko_x002F_rw2lD_x002F_S7lIWNBq_x002F_ZaLTnJKZlQCHV75aJLQcjHyTNYlUuIfXFy_x002B_s2gTgtC3_x002F_qFUI1b2CxHZf5FJkgJylPTJdCPQllcDP3wRvwfS_x002B_FX_x002B_DqVz8swLEVqO02gBXtYW_x002F_qNeI1ZSC1Af_x002F_5FIktH4vf5KTiPM1AsE9W_x002F_T6ZySUpWXC5QjztgLXt0eEUgBkPBV1Ms8p9hSixH1avqMUQXivbfJ1nf4rIsC30pQDVYBtP2_x002B_Ik625PRYE53e_x002B_WjWEuw89EqOJvByWhX1D9O_x002B_kpLAt1fLnPf02FsD9WqRSNeH8J_x002F_VKV4j9tTbSv_x002F_rkd0HB2p3FOMuI8raVFAdSvlNk4Vqt9Yi1CXWZl8e317xHIfQdhe_x002B_yU4jzFaIL91K822DEvS9FsnUo1Kenhw0flF8B4LsFbTj3Las4Nofv76RvNaSRlQWSo7zSthfBfZqERyU0XYWdqP8I1ZSCAn1SrloVlHS_x002F_f7PRaP6UgtSXYqwv1YB8J6ViFRy8thbUD8P_x002B_YhTXvj9seP0I1LgDRf265Ed14J2vRWjpXf0rAtS9WpQvFeX2r00yUQ3lPoTSp5L0UiDAeq91Ih0t1b0G0o0ahFtB4L41xZKXiP0VlpQWt75v9cVajw_x002F_SvQjUlbeUpweMDyS0PCW_x002F_s_x002F_8uFZWDVK1alDpH1L_x002B_PDTjTvtW5N0FXQ76HNGFtpY3SiQjclYLAh2_x002B_s90ChXaVFguOo2a2mAT9apIPWIV2_x002F_bRKTvJS8htSnQ8zSBOCdpYfy8x8zHKYULVqVkiSUtpQF4pOI2b6HwCcH7kN1pR2n9ajXnL61NkeHW_x002B_TaAGVdjzUozy39GbaSrUeERzQgtSVlSnMfPpWngQdqrNNmgH4_x002F_RTj3vNWcJ8R9Wr5jAdeclIUTk4l6NzeE51qkWjUgcA3N6NEIP5SCwC1HhMMAVXa_x002F_TRKdPas_x002B_tEfP14RiNbZdtf_x002B_48TywNCLBB1qs4xXUdaVPwtOcNrM2AT1rlBoB4HsH7Qi1vPKVlgLtR4RaNYU7LdX6cyjzs4aAzR_x002B_cL8H0_x002F_BUMyleI9TU3V7_x002F_arl9FwGMt5fp3CbU9IsAHL7RjFyQ2DW14_x002F_QlZsCLHLV_x002F_UFyDUdr9vik_x002B_I_x002F_TKi1zfXDBckoH4VDKpNHD2VlgfPUowaBQH2nW_x002B_SsS_x002F_VpaLHbdPEWgBAVL39ON8fLpWCwC1avlNh9DAPBxqPqD04B8ftR6zbYcZ_x002B_JUW4yTw_x002B_uBfSjTfM0lX0Eb9MqpecMz22Rn2ilY8UdP4VJYL_x002F_HLMzNsx3T4RaIQBclS_x002B_oy3y2FLaHz9vM2gUXkD99o6O8lb2jwL_x002F_DxHp1oLolpYLFaNW2Bhc9UowvBNV7rdciyQzyp4fUN1q_x002B_YxYgdrXf_x002B_NOI_x002F_R2W1LfT_x002F_lcB1FuUnapRKPO2F0J9b7SXNYRxL2W42RwntTZFVyK80hTFVC9_x002F_kxetnL2CDT1Svl5kpWWUhbJpfP0ZtwAPx_x002F_5SAeUcr3Ui8wjSvqfSvVqUGjBAfDX9qEUN9hKn1Idfjh81wHWtxUiJCP4Sh859Q6Qv1iBdjf_x002B_b_x002F_314NgLAJ7_x002F_cGgH0Oz_x002B_Uc_x002F_M8lJWnxM9D_x002F_No14LWFbTpTvP28otS_x002B_Q_x002B_wXgfXate06U6mslILA_x002F_VvE91WAda3Fylec_x002F_pm2hQ_x002F_avpIml5y1tRK3HP0_x002B_gtcPx65HNeBdv3_x002B_IiTyVtTZF39fOIjWB_x002B_wVNMl0MPJWWxy1vrlchwfS_x002F_dTjzOfa2FRI30tQ6dWBdpb0416n4GYLDfUf8xyE0PgX9KNe8k7g2wL_x002F_fjNd0ZRG9xajXvJWSt0Vt0qRSITQRjV8CTxz_x002B_tjYXN_x002B_OcJzRFXIQvs98M5SsH1L1arO_x002F_VIHw_x002F_ZXhzCPY_x002B_osEHeu5fYRVajA_x002F_43S3zOALFfbrs9zWUWpSEMl0vlL2ix8_x002F_S7msAV7w8RaLdPL6cAsZtUo4DViUjDzXS7S32PSPPJ9P8xxXhXb91kpMI_x002F_biCwn1HtF819JqvZdMXvP0ZlgfWr3SbAFQ4P4_x002F_4HRwyOCYHbWOE9yEAfh89Eo8o1LUjVzff5F9VFH4vbSAfaf2zN0fHaq5aJSC_x002B_P7ViHQj0LpbDZ3eOGiSUnaV1GF0I4jUWAOdarvpBwHsvdTp_x002F_PJmUt0DGKr5PFfF9BQWCGSj2PZQUPV_x002F_0GjWgnK_x002F_d_x002B_NUc1b2CxX2D_x002F_l9UQHE_x002F_RZMXvaW8gtI376zyVhS9DP_x002B_i5R80PbaHB1L000BAdKX9As8I8DUXwWdSrmc1JR2_x002F_dbrRCPA9tpSHQ_x002F_RHAeU_x002F_Peco46j4PrbUjiKE4gHkOBSP_x002B_l08lbUC1L_x002F_HtFthwGMPP0p1HFW2FgD_x002F_2qRbQeV9LfU43R31EqYBDTeM1xTAeiV1CnGcNRWHxdaS5VZB9DYVL6qTnJWVtoEvmq7XFRe_x002F_DwW6V6jVqyWHx07uRwDlXK_x002F_VqOU9PRWWlL2avO_x002F_VwGg9xbjxLDCUlhKdH75vweFcr2_x002B_KSSg_x002B_GafCd291byS0HbVvghUt2JyWFL16xEN0VVQ_x002F_ZWKTvbYVgsctb71aJMHRlJX4MTwcszZADQ_x002B_kb9CAdo8lutO9lLI3lK1Hvm8k9D4_x002F_ZWpRbD6Uh8Gnm_x002F_RaITQdnSVSl4j2M4NP_x002F_8ec22E0dhSMyuOsvRO2lw0bhFolBXqFf2p3CPY2FscWmq7vBOBdpX9rV4l0MyYF3lqUIhU19ARtClkclbIU0H_x002F_vfkNVJX4vVFqTrZWzI5Sl0_x002F_1aNEBUv2WqXV1UqwLHPVK_x002B_mjW0WpVV8ulp_x002F_ieWhO1jhE80QG6lP3j9KPyzFoe_x002F_0r5XFMBjP8WyU7yUlJTNrVqEWiRkkY3_x002F_SmUI9BSngK1SrkN1IV2UlfLzCPc9Fk53b75HAcByFTUIsTniNRTEb9_x002F_MxxUkLD3_x002F_shU9_x002F_bYixP_x002F_avm8BwHw_x002F_fTjhHBWUh89HR4R6QGERjf0jyTwylILBLV_x002F_Vg8EUXI8d_x002B_Pc9srAHxf1f7k81lHUVJajVCP0Ulhc_x002F_w_x002B_5aBOUyDw0auZw8maPCf9_x002F_sxyUhfrWNIsUI8DUi0pab9G81NDgPNbpdOdWUloR9Uv5SQHTdve_x002B_rXTzZtDZSt8fER2EB9LzP2okc6xWmFK1irscVJVyUjyJxLa6Vp829Wow_x002F_dZS8BZXy9x39FKaULVqs01XUHZ_x002F_tAs8_x002B_9bECzMdT3t9B1L0v_x002F_4LRKBW6N0Rn76TnZIB_x002F_P2X4DzyVvALQv_x002B_KME0BUXb_x002B_NuBUOvZWDST2ijOI0dnoFfTplLXUUh9S_x002F_95WaBNV6hVyyu5z_x002B_tjaQPZK_x002B_XzWAdT_x002B_vqEUN_x002F_j6mAO3fpK8koLSPBapTnNS4ttS9W_x002B_z3AfQwFQ_x002F_TFTyUlaIUh1_x002F_EYgHAd4z1sveJ9BWnRV865O8mtBGlb6pFKP49ItQnUoSaNFXalQXy06g9lLdQZ2uFE3QlPA3nMk0oMTgjQ1dvpCMARXU1dRKdHVWrA02tUp4fdZecjcWy222_x002B_PqPCPaO821U0dr9NCKU8vpmnhWdXjPpExX4_x002F_f5i_x002F_POsUp8TFw77fRPQ_x002B_DyWC05z0PgLXvUeE32S0vg8tCkko9D2i1AcD5INh9HsVb5L3nBwzIgAt_x002B_sRaAeVUhc0ydzz2NALA1weUF0TlHJU_x002F_qz8sOD6CzP1DzBIktFyN9ajpfOsVhgc9X84aBPQ1L_x002B_0Ik629ugLF9_x002B_Kc31TlNIwlaNNp9hSix_x002F_1StFNWFDsv_x002F_7pjqPM2N0Z32qSXJLQdvf_x002B_Ccyw3HraAjRPOB3RlNK91KkU9fbcC1KeT_x002F_OIB9bA_x002F_v6hZCNS_x002B_M8vPywRiAEB9P1XiKVzrOjaFbWq_x002B_X2HVcC0Ms90I9DKHx9cS7NoB5fgkfKJTntm_x002B_J5Q9U_x002F_5iAdVmr03KU4jUuBfAjxrm83TkKwV9OP0c9jUCxxcPlBog9FGPHcOlHPQrAtQP2ozPNBS0P3UC8wjftALSjyKM12H0HZS_x002F_QskclbKHy9cShOIVlXulrWLxPP66N5S9UqTnRSBcv004071UvqfHzhqcEiDkOD9tOBe98qsixO7vbMcVJLw17SIVKPK8p4vtUpwPNLRdpT_x002B_Sk5y1nALULWOu0iEAdKW_x002F_qHMI1baCxG2HtF8WFLu95Xj_x002F_HD0ShhKH09WHIMH6pX0KZwjUvofUN1K87xX0lj9FqlOc1LMnlA_x002F_SrkcB5XaPP0hHCPM9tpePev6TQdSdv0Wi7Qj2FbaJJ4PkQ8HlPRSFilO9vRKW1DfrrPegwHW_x002F_VYIXjv6cgsFnuv6HFNSyFTUiD62ZlaQUvUPVp2RAeoV1OB09sTyWFw7avm8VpT4lv6LLLdyVp5StX_x002B_5aJKB_x002B_DT9LZQj2NRQFVw_x002B_M32TVcS3NCn8c9ZWCwL_x002F_b5JoWAd2_x002F_f7BxLDQwFhK34pQPMPR2lIUYkQ38vifUt1K820T0HKVV0tO9lbYiy_x002F_fDzNcVF7AlTRKzCNw0AsT9Uq5aJKQalS8qnS_x002B_SvhUMfW9851X0IyVvuClI_x002B_D0WAv2XvmshNP4vb6IJCNI_x002B_lsVP14wWVQBdtc0InRz_x002B_s4NEZ2_x002B_VmyT1vo8NClecIysCwQXXHhok4HYUv6pRPvQVl1Qvx_x002F_RvJNVRpWcwY7zUlIPUjx_x002B_s0gThUbX9CJetvpWWADemjN9VNHSUpcpxHBm9I8f9Qt0aAfUQv006fxz_x002B_lJfH9_x002B_e_x002B_U3WFfYVFONOeOCADUr1X_x002F_loF5J299TjXnDg9p4AtYq7SVQHdv7_x002B_S3S3UlaLAh2Ks0iSAfw8c8vcc1JykAD2avndh8X0_x002F_XeLVLDQsttS3b4RvocBjPdWC_x002F_w62NgLAr_x002B_e_x002B_t0H0dRSvqlEfNj0Wx_x002B_1apFohw_x003D__x003D_</value>
+    </Resources>
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <Key>88b8829cd9a3406fba09271b7b5459fa</Key>
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="5" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <ReportTitleBand1 Ref="6" type="ReportTitleBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,19.01,3.6</ClientRectangle>
+          <Components isList="true" count="14">
+            <Text1 Ref="7" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.2,0,8.6,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>30706e8e01014503be6a842018c896b7</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>SUMMARY OF OUTLET CASHIER DAILY
+DEPARTMENT : FOOD &amp; BEVERAGE</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text1>
+            <Text2 Ref="8" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>13.8,1.6,1.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>c1d1d4ee9c0946afa81536a1092b0f4b</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>Print Date</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>Expression</Type>
+            </Text2>
+            <Text3 Ref="9" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>16,1.6,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>f6b453f2f3d5414f987e2d566cce025a</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>{Time}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <TextFormat Ref="10" type="CustomFormat" isKey="true">
+                <StringFormat>yyyy - MM - dd HH:mm:ss tt</StringFormat>
+              </TextFormat>
+            </Text3>
+            <Text4 Ref="11" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>15.6,1.6,0.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>2424a2f178554fa88d105680fc4c1098</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>:</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>Expression</Type>
+            </Text4>
+            <Text5 Ref="12" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>13.8,2.2,1.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>06607b8a7e6947ab9116b1a5e3e1fe29</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>Printed By</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>Expression</Type>
+            </Text5>
+            <Text6 Ref="13" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>15.6,2.2,0.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>a5c2d08d1453454a8df6d918420bcf8a</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>:</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>Expression</Type>
+            </Text6>
+            <Text7 Ref="14" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.6,2.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>e51a6d885be04c5a8bda4225d5b57d78</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>Company</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>Expression</Type>
+            </Text7>
+            <Text8 Ref="15" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.4,1.6,0.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>67bf63c33c444125b30e7e35ce35e3dc</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>:</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>Expression</Type>
+            </Text8>
+            <Text9 Ref="16" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,2.2,2.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>26016f32dc274b3e8d4112d9f7f3c35f</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>Transaction Date</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>Expression</Type>
+            </Text9>
+            <Text10 Ref="17" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.4,2.2,0.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>967489595dd84f78b2addee560b41495</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>:</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+              <Type>Expression</Type>
+            </Text10>
+            <Text11 Ref="18" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.8,1.6,6.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>7060fb7e6b9142218fbe596a23085799</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>{config.company}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+            </Text11>
+            <Text12 Ref="19" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.8,2.2,6.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>7a14bb4abb6c4b86a16383f34722660d</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>{config.working_date}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+            </Text12>
+            <Text13 Ref="20" type="Text" isKey="true">
+              <Border>None;[0:0:0];1;Solid;False;4;[0:0:0]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>16,2.2,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>5d61724968664e73bdde45434e3a976a</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>{config.user}</Text>
+              <TextBrush>[0:0:0]</TextBrush>
+            </Text13>
+            <CrossTab1 Ref="21" type="Stimulsoft.Report.CrossTab.StiCrossTab" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanBreak>True</CanBreak>
+              <ClientRectangle>0,3.6,19,2.8</ClientRectangle>
+              <Components isList="true" count="14">
+                <CrossTab1_RowTotal1 Ref="22" type="CrossRowTotal" isKey="true">
+                  <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+                  <Brush>[255:255:255]</Brush>
+                  <ClientRectangle>0,1.3,4.2,0</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Enabled>False</Enabled>
+                  <Font>Arial,8</Font>
+                  <Guid>e1a6bbebab234232af7c99edd28aaf6d</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>CrossTab1_RowTotal1</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="21" />
+                  <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+                  <Text>Total</Text>
+                  <TextBrush>Black</TextBrush>
+                </CrossTab1_RowTotal1>
+                <CrossTab1_Row1_Title Ref="23" type="CrossTitle" isKey="true">
+                  <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+                  <Brush>White</Brush>
+                  <ClientRectangle>0,0.25,2.4,0.6</ClientRectangle>
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>06ac10cd4a534c24825b3f5894851cfc</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>CrossTab1_Row1_Title</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="21" />
+                  <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+                  <Text>Outlet</Text>
+                  <TextBrush>[105:105:105]</TextBrush>
+                  <TypeOfComponent>Row:CrossTab1_Row1</TypeOfComponent>
+                </CrossTab1_Row1_Title>
+                <CrossTab1_RowTotal3 Ref="24" type="CrossRowTotal" isKey="true">
+                  <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+                  <Brush>[255:255:255]</Brush>
+                  <ClientRectangle>3.2,1.7,0,0</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Enabled>False</Enabled>
+                  <Font>Arial,8</Font>
+                  <Guid>75e5fae82039478b9917cda0eef5e0c9</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>CrossTab1_RowTotal3</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="21" />
+                  <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+                  <Text>Total</Text>
+                  <TextBrush>Black</TextBrush>
+                </CrossTab1_RowTotal3>
+                <CrossTab1_Row2_Title Ref="25" type="CrossTitle" isKey="true">
+                  <Border>Top, Left, Bottom;[155:155:155];1;Solid;False;4;[0:0:0]</Border>
+                  <Brush>White</Brush>
+                  <ClientRectangle>2.4,0.25,0.8,0.6</ClientRectangle>
+                  <Font>Arial,10</Font>
+                  <Guid>15276c3b344949c281381b0013ff2f4c</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>CrossTab1_Row2_Title</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="21" />
+                  <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+                  <TextBrush>[105:105:105]</TextBrush>
+                  <TypeOfComponent>Row:CrossTab1_Row2</TypeOfComponent>
+                </CrossTab1_Row2_Title>
+                <CrossTab1_ColTotal1 Ref="26" type="CrossColumnTotal" isKey="true">
+                  <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+                  <Brush>[255:255:255]</Brush>
+                  <ClientRectangle>8.25,0.25,1,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>7ab5350b9c924d37826fbe4f4f4b8e0b</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>CrossTab1_ColTotal1</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="21" />
+                  <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+                  <Text>Total</Text>
+                  <TextBrush>Black</TextBrush>
+                </CrossTab1_ColTotal1>
+                <CrossTab1_LeftTitle Ref="27" type="CrossTitle" isKey="true">
+                  <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+                  <Brush>White</Brush>
+                  <ClientRectangle>0,0,6.2,0.2</ClientRectangle>
+                  <Enabled>False</Enabled>
+                  <Font>Arial,8</Font>
+                  <Guid>ed69bf6c190a47dfae6a87e776940693</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <MergeHeaders>False</MergeHeaders>
+                  <Name>CrossTab1_LeftTitle</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="21" />
+                  <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+                  <TextBrush>[105:105:105]</TextBrush>
+                  <TypeOfComponent>LeftTitle</TypeOfComponent>
+                </CrossTab1_LeftTitle>
+                <CrossTab1_RowTotal2 Ref="28" type="CrossRowTotal" isKey="true">
+                  <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+                  <Brush>[255:255:255]</Brush>
+                  <ClientRectangle>2.4,1.7,3.8,0</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Enabled>False</Enabled>
+                  <Font>Arial,8</Font>
+                  <Guid>4b2f4aa947d147aba4180a1820e323ed</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <MergeHeaders>False</MergeHeaders>
+                  <Name>CrossTab1_RowTotal2</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="21" />
+                  <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+                  <Text>Total</Text>
+                  <TextBrush>Black</TextBrush>
+                </CrossTab1_RowTotal2>
+                <CrossTab1_Row3_Title Ref="29" type="CrossTitle" isKey="true">
+                  <Border>Top, Right, Bottom;[155:155:155];1;Solid;False;4;[0:0:0]</Border>
+                  <Brush>White</Brush>
+                  <ClientRectangle>3.2,0.25,3,0.6</ClientRectangle>
+                  <Font>Arial,8</Font>
+                  <Guid>daa8b76ed298417aba17a22294fec956</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>CrossTab1_Row3_Title</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="21" />
+                  <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+                  <TextBrush>[105:105:105]</TextBrush>
+                  <TypeOfComponent>Row:CrossTab1_Row3</TypeOfComponent>
+                </CrossTab1_Row3_Title>
+                <CrossTab1_RightTitle Ref="30" type="CrossTitle" isKey="true">
+                  <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+                  <Brush>White</Brush>
+                  <ClientRectangle>6.25,0,3,0.2</ClientRectangle>
+                  <Enabled>False</Enabled>
+                  <Font>Arial,8</Font>
+                  <Guid>d94fb596ecaa463ca1796beef7b511d9</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <MergeHeaders>False</MergeHeaders>
+                  <Name>CrossTab1_RightTitle</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="21" />
+                  <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+                  <TextBrush>[105:105:105]</TextBrush>
+                  <TypeOfComponent>RightTitle</TypeOfComponent>
+                </CrossTab1_RightTitle>
+                <CrossTab1_Row1 Ref="31" type="CrossRow" isKey="true">
+                  <Alias>pos_category</Alias>
+                  <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+                  <Brush>White</Brush>
+                  <ClientRectangle>0,0.9,2.4,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <DisplayValue>{data.pos_category}</DisplayValue>
+                  <Font>Arial,10</Font>
+                  <Guid>832f5cc6cee147cf9724eb03354890b6</Guid>
+                  <HorAlignment>Left</HorAlignment>
+                  <Margins>5,0,0,0</Margins>
+                  <Name>CrossTab1_Row1</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="21" />
+                  <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+                  <Text>pos_category</Text>
+                  <TextBrush>[105:105:105]</TextBrush>
+                  <TotalGuid>e1a6bbebab234232af7c99edd28aaf6d</TotalGuid>
+                  <Value>{data.pos_category}</Value>
+                </CrossTab1_Row1>
+                <CrossTab1_Row2 Ref="32" type="CrossRow" isKey="true">
+                  <Alias>seq</Alias>
+                  <Border>Top, Left, Bottom;[155:155:155];1;Solid;False;4;[0:0:0]</Border>
+                  <Brush>White</Brush>
+                  <ClientRectangle>2.4,0.9,0.8,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <DisplayValue>{data.seq}</DisplayValue>
+                  <Font>Arial,10</Font>
+                  <Guid>7cb57ec91e024c568f6ca9e238643a91</Guid>
+                  <HorAlignment>Left</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <MergeHeaders>False</MergeHeaders>
+                  <Name>CrossTab1_Row2</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="21" />
+                  <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+                  <Text>seq</Text>
+                  <TextBrush>[255:255:255]</TextBrush>
+                  <TotalGuid>4b2f4aa947d147aba4180a1820e323ed</TotalGuid>
+                  <Value>{data.seq}</Value>
+                </CrossTab1_Row2>
+                <CrossTab1_Row3 Ref="33" type="CrossRow" isKey="true">
+                  <Alias>product_category</Alias>
+                  <Border>Top, Right, Bottom;[155:155:155];1;Solid;False;4;[0:0:0]</Border>
+                  <Brush>White</Brush>
+                  <ClientRectangle>3.2,0.9,3,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <DisplayValue>{data.product_category}</DisplayValue>
+                  <Font>Arial,10</Font>
+                  <Guid>be26a3113b5d435598ba2a4bb758009e</Guid>
+                  <HorAlignment>Left</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>CrossTab1_Row3</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="21" />
+                  <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+                  <Text>product_category</Text>
+                  <TextBrush>[105:105:105]</TextBrush>
+                  <TotalGuid>75e5fae82039478b9917cda0eef5e0c9</TotalGuid>
+                  <Value>{data.product_category}</Value>
+                </CrossTab1_Row3>
+                <CrossTab1_Column1 Ref="34" type="CrossColumn" isKey="true">
+                  <Alias>meal_type</Alias>
+                  <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+                  <Brush>White</Brush>
+                  <ClientRectangle>6.25,0.25,2,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <DisplayValue>{data.meal_type}</DisplayValue>
+                  <Font>Arial,10,Bold</Font>
+                  <Guid>084eb6a82c904a979d9786cd0409561c</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>CrossTab1_Column1</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="21" />
+                  <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+                  <Text>meal_type</Text>
+                  <TextBrush>[105:105:105]</TextBrush>
+                  <TotalGuid>7ab5350b9c924d37826fbe4f4f4b8e0b</TotalGuid>
+                  <Value>{data.meal_type}</Value>
+                </CrossTab1_Column1>
+                <CrossTab1_Sum1 Ref="35" type="CrossSummary" isKey="true">
+                  <Alias>price_subtotal</Alias>
+                  <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+                  <Brush>[255:255:255]</Brush>
+                  <ClientRectangle>6.25,0.9,2,0.6</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial,10</Font>
+                  <Guid>4d8e198f804d4eda83a9ca8ff8a36427</Guid>
+                  <HideZeros>False</HideZeros>
+                  <Margins>5,5,0,0</Margins>
+                  <Name>CrossTab1_Sum1</Name>
+                  <Page isRef="5" />
+                  <Parent isRef="21" />
+                  <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+                  <Text>0</Text>
+                  <TextBrush>Black</TextBrush>
+                  <TextFormat Ref="36" type="NumberFormat" isKey="true">
+                    <DecimalDigits>0</DecimalDigits>
+                    <GroupSeparator>,</GroupSeparator>
+                    <NegativePattern>1</NegativePattern>
+                    <State>DecimalDigits</State>
+                  </TextFormat>
+                  <Value>{data.price_subtotal}</Value>
+                </CrossTab1_Sum1>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <DataRelationName />
+              <DataSourceName>data</DataSourceName>
+              <EmptyValue />
+              <Filters isList="true" count="0" />
+              <Name>CrossTab1</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Sort isList="true" count="0" />
+            </CrossTab1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ReportTitleBand1</Name>
+          <Page isRef="5" />
+          <Parent isRef="5" />
+        </ReportTitleBand1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>3a2b44135bbb4698b0c171cbd6d875e3</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.69</PageHeight>
+      <PageWidth>21.01</PageWidth>
+      <Report isRef="0" />
+    </Page1>
+  </Pages>
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>OutletSummary2</ReportAlias>
+  <ReportAuthor>Taufik Hidayat</ReportAuthor>
+  <ReportChanged>10/10/2019 3:23:24 AM</ReportChanged>
+  <ReportCreated>10/10/2019 3:23:24 AM</ReportCreated>
+  <ReportGuid>81660ba9e1de46d7a9a5017ef1c5a482</ReportGuid>
+  <ReportName>OutletSummary2</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2019.3.6.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

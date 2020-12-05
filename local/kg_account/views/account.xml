@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<openerp>
+<data>
+	<record id="kg_account_chart_of_account_view" model="ir.ui.view">
+        <field name="name">kg_account_chart_of_account_view</field>
+        <field name="model">account.account</field>
+        <field name="inherit_id" ref="account.view_account_form" />
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <field name="group_id" position="after">
+            	<field name="cash_flow_group_id"/>
+            </field>
+            <field name="company_id" position="after">
+                <field name="departement_id"/>
+            </field>
+        </field>
+    </record>
+    <!--<record id="kg_account_account_group_view" model="ir.ui.view">-->
+        <!--<field name="name">kg_account_account_group_view</field>-->
+        <!--<field name="model">account.group</field>-->
+        <!--<field name="inherit_id" ref="account.view_account_group_form" />-->
+        <!--<field name="type">form</field>-->
+        <!--<field name="arch" type="xml">-->
+            <!--<field name="parent_id" position="after">-->
+            	<!--<field name="is_cash_flow_group"/>-->
+            <!--</field>-->
+        <!--</field>-->
+    <!--</record>-->
+</data>
+</openerp>

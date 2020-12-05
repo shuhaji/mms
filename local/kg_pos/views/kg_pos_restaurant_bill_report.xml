@@ -1,0 +1,300 @@
+<odoo>
+    <data>
+
+        <template id="kg_pos_restaurant_bill_report_document">
+
+            <t t-call="kg_pos.pos_order_layout">
+            <!-- <t t-call="web.basic_layout"> -->
+                <!-- <t t-call="kg_pos.kg_pos_layout_header"/> -->
+                <div class="page" style="font-family: 'Inconsolata', monospace; color: #555555;">
+
+                    <!--<div class="text-left">-->
+                        <!--<h3 t-field="order.config_id.name" style="font-size:18px;margin:0px"/>-->
+                        <!--<span style="font-size:12px">DUPLICATE : <span t-esc="'{0:,.0f}'.format(order.print_counter)"/></span>-->
+                     <!--</div>-->
+
+                    <div class="text-right">
+                        <h4 t-field="order.company_id.name" style="font-size:18px;"/>
+                     </div>
+                    <div style="display: grid;grid-template-columns: 1fr 1fr;grid-template-rows: auto;">
+                        <div class="text-left">
+                            <span t-field="order.user_id.name"/><br/>
+                            <span t-field="order.session_id.config_id.name"/><br/>
+                            <span t-field="order.pos_reference"/><br/>
+                        </div>
+                        <div class="text-right">
+                            <span t-field="order.waiter_id.name"/>
+                            <span style="font-size:12px">DUPLICATE : <span t-esc="'{0:,.0f}'.format(order.print_counter)"/></span>
+                        </div>
+                    </div>
+                    <br />
+                    <t t-set="total_qty" t-value="0"/>
+                    <table class="table table-condensed" style="font-family: 'Inconsolata', monospace; color: #555555;margin-bottom:0px">
+                        <colgroup>
+                            <col width='4%' />
+                            <col width='24%' />
+                            <col width='3%' />
+                            <col width='3%' />
+                            <col width='21%' />
+                            <col width='12%' />
+                            <col width='34%' />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <td colspan="2" style="border-bottom:1px solid black; border-top:1px solid black;padding:0px;">
+                                    <t t-if="order.is_reservation and order.reservation_order_id">
+                                        TBL <span t-field="order.reservation_order_id.table_label"/>
+                                    </t>
+                                    <t t-if="not order.is_reservation">
+                                        TBL <span t-field="order.table_id.name"/>
+                                    </t>
+                                </td>
+                                <td style="border-bottom:1px solid black; border-top:1px solid black;padding:0px;">
+                                    <t t-if="order.is_hotel_guest">
+                                        <span> 1 </span>
+                                    </t>
+                                    <t t-if="not order.is_hotel_guest">
+                                        <span> 0 </span>
+                                    </t>
+                                </td>
+                                <td style="border-bottom:1px solid black; border-top:1px solid black;padding:0px;"><span t-field="order.customer_count"/></td>
+                                <td style="border-bottom:1px solid black; border-top:1px solid black;padding:0px;"> </td>
+                                <td colspan="2" style="text-align:right;border-bottom:1px solid black; border-top:1px solid black;padding:0px;"><span t-field="order.date_order"  t-options="{'format': 'dd MMM YYYY HH:mm:ss'}"/></td>
+                            </tr>
+                        </thead>
+                        <tbody style="font-weight:bold;">
+                            <tr t-foreach="order.lines" t-as="line">
+                                <td> </td>
+                                <td colspan="5">
+                                    <t t-if="line.custom_item_name">
+                                        <span t-esc="int(line.qty)"/> <span t-field="line.custom_item_name"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-esc="int(line.qty)"/> <span t-field="line.product_id.name"/>
+                                    </t>
+                                </td>
+                                <td style="text-align:right;">
+                                    Rp. <span t-field="line.line_brutto_before_tax"/>
+                                </td>
+                                <t t-set="total_qty" t-value="total_qty+line.qty"/>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-condensed" style="font-family: 'Inconsolata', monospace; color: #555555;">
+                        <tbody>
+                            <tr>
+                                <td style="border-top:0px;padding:0px"> </td>
+                                <td style="border-top:0px;padding:0px">DISCOUNT </td>
+                                <td style="text-align:center;border-top:0px;padding:0px;"> : </td>
+                                <td style="border-top:0px;padding:0px"> </td>
+                                <td style="text-align:right;border-top:0px;padding:0px">
+                                    Rp. <span t-esc="'{0:,.2f}'.format(order.total_disc_amount_before_tax)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-top:0px;padding:0px"> </td>
+                                <td style="border-top:0px;padding:0px">SUBTOTAL </td>
+                                <td style="text-align:center;border-top:0px;padding:0px;"> : </td>
+                                <td style="border-top:0px;padding:0px"> <t t-esc="int(total_qty)"/> </td>
+                                <td style="text-align:right;border-top:0px;padding:0px">
+                                    Rp. <span t-esc="'{0:,.2f}'.format(order.amount_untaxed)"/>
+                                </td>
+                            </tr>
+                            <t t-if="not (order.employee_id or order.department_id)">
+                                <tr>
+                                    <td style="border-top:0px;padding:0px"> </td>
+                                    <td style="border-top:0px;padding:0px">SERVICE </td>
+                                    <td style="text-align:center;border-top:0px;padding:0px;"> : </td>
+                                    <td style="border-top:0px;padding:0px"> </td>
+                                    <td style="text-align:right;border-top:0px;padding:0px">
+                                        Rp. <span t-esc="'{0:,.2f}'.format(order.amount_service)"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-top:0px;padding:0px"> </td>
+                                    <td style="border-top:0px;padding:0px">TAX </td>
+                                    <td style="text-align:center;border-top:0px;padding:0px;"> : </td>
+                                    <td style="border-top:0px;padding:0px">  </td>
+                                    <td style="text-align:right;border-top:0px;padding:0px">
+                                        Rp. <span t-esc="'{0:,.2f}'.format(order.amount_tax_only)"/>
+                                    </td>
+                                </tr>
+                                <!--<t t-if="order.pos_tax_ids">-->
+                                    <!--<tr t-foreach="order.pos_tax_ids" t-as="tax">-->
+                                        <!--<td style="border-top:0px;padding:0px"> </td>-->
+                                        <!--<td style="border-top:0px;padding:0px">-->
+                                            <!--<span t-field="tax.name"/>-->
+                                        <!--</td>-->
+                                        <!--<td style="border-top:0px;padding:0px"> </td>-->
+                                        <!--<td style="text-align:left;border-top:0px;padding:0px">-->
+                                            <!--<span> : </span>-->
+                                        <!--</td>-->
+                                        <!--<td style="text-align:right;border-top:0px;padding:0px">-->
+                                            <!--Rp. <span t-esc="'{0:,.2f}'.format(tax.pos_order_tax_amount)"/>-->
+                                        <!--</td>-->
+                                    <!--</tr>-->
+                                <!--</t>-->
+                            </t>
+                            <tr>
+                                <td style="border-top:0px;padding:0px"> </td>
+                                <td style="border-top:0px;padding:0px">TOTAL </td>
+                                <td style="text-align:center;border-top:0px;padding:0px;"> : </td>
+                                <td style="border-top:0px;padding:0px">  </td>
+                                <td style="text-align:right;border-top:0px;padding:0px">
+                                    Rp. <span t-esc="'{0:,.2f}'.format(order.amount_total)"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="5" style="border-top:0px;padding:0px"> <br/> </td>
+                            </tr>
+                            
+                            <!-- PAYMENT METHOD -->
+                            <!-- custom code by andi to filter statement_ids which amount is more than equal to 0 -->
+                            <t t-set="filtered_statement" t-value="filter(lambda statement: statement.amount >= 0, order.statement_ids)"/>
+                            <tr t-foreach="filtered_statement" t-as="p">
+                                <td style="border-top:0px;padding:0px"> </td>
+                                <td style="border-top:0px;padding:0px">** <span t-field="p.journal_id.name"/> **</td>
+                                <td style="border-top:0px;padding:0px"> </td>
+                                <td style="text-align:left;border-top:0px;padding:0px"> : </td>
+                                <td style="text-align:right;border-top:0px;padding:0px"> Rp. <span t-esc="'{0:,.2f}'.format(p.amount)"/> </td>
+                            </tr>
+                            <!-- end of code -->
+
+                            <!-- original code by mas mario
+                            <tr t-foreach="order.statement_ids" t-as="p">
+                                <td> </td>
+                                <td>** <span t-field="p.journal_id.name"/> **</td>
+                                <td> </td>
+                                <td style="text-align:right;"> : </td>
+                                <td style="text-align:right;"> <span t-field="p.amount"/> </td>
+                            </tr>
+                            end of original code -->
+            
+                            <!-- custom code by andi to show order change -->
+                            <t t-if="order.change">
+                                <tr>
+                                    <td style="border-top:0px;padding:0px"> </td>
+                                    <td style="border-top:0px;padding:0px">** Change **</td>
+                                    <td style="border-top:0px;padding:0px"> </td>
+                                    <td style="border-top:0px;padding:0px">:</td>
+                                    <td style="text-align:right;border-top:0px;padding:0px"><span t-esc="order.pricelist_id.currency_id.symbol"/> <span t-esc="'{0:,.2f}'.format(order.change)"/> </td>
+                                </tr>
+                            </t>
+                            <!-- end of custom code -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- <t t-call="kg_pos.kg_pos_layout_footer"/> -->
+            </t>
+        </template>
+
+        <template id="kg_pos_layout_footer">
+            <div class="footer" style="font-family: 'Inconsolata', monospace; color: #555555;">
+                <div style="border:1px solid black;height:150px;">
+                    <div style="width:70%; height:150px;float:left;padding:5px;">
+                        <p style="font-size:10px;">
+                            Dengan ini saya menyatakan bahwa saya akan membayar biaya yang timbul bilamana
+                            perusahaan atau perorangan yang disebuatkan diatas tidak bersedia membayar
+                            sebagaian atau seluruh biaya ini.<br/>
+
+                            I agree that liability for this bill is not walved and agree to be held personality liable
+                            in the event the indicate person, company or association falls to pay for any part
+                            or the full amount of these charges.
+                        </p>
+                    </div>
+                    <div style="width:28%; height:150px;float:right;padding:5px;border-left:1px solid black;">
+                        <p style="font-size:10px;">
+                            Tanda Tangan Tamu<br/>
+                            Guest Signature
+                        </p>
+                    </div>
+                </div>
+
+                <!-- <div style="clear:both;" class="text-center">
+                    <p>
+                        <p style="font-size:12px;">
+                            <span t-field="order.company_id.street"/>
+                            <span t-field="order.company_id.street2"/>
+                            <span t-field="order.company_id.city"/>
+                            <span t-field="order.company_id.state_id.name"/>
+                            <span t-field="order.company_id.zip"/>
+                            <span t-field="order.company_id.country_id.name"/>,
+
+                            Ph : <span t-field="order.company_id.phone"/>,
+                            Fax : <span t-field="order.company_id.phone"/>
+                            <br/>
+                            Email : <span t-field="order.company_id.email"/>, <strong><span t-field="order.company_id.website"/></strong>
+                        </p>
+                    </p>
+                </div> -->
+            </div>     
+        </template>
+
+        <template id="kg_pos_layout_header">
+            <div class="header">
+                <div>
+                    <div style="width:60%;float:left;">
+                    <!--     <h3> <strong><span style="font-size:17px;">No : </span><span t-field="order.pos_reference"/></strong></h3>
+                        <br/>
+                        <h3 t-field="order.session_id.config_id.name"></h3> -->
+                    </div>
+
+                    <div style="width:40%;float:right;">
+                        <div style="float:right;">
+                            <h4 style="text-align:right;"> DUPLICATE <span t-field="order.print_counter"/></h4>
+                            <img style="width:80%;float:right;" src="/kg_pos/static/src/img/logo.png"/>
+                        </div>
+                        
+                        <div class="clear:both;"/>
+                        <div style="float:right;">
+                            <!-- <img t-att-src="'data:image/png;base64,%s' %order.company_id.logo" style="text-align:center; max-height:80px;width:100px;"/> -->
+                            <h4 style="text-align:right;" t-field="order.company_id.name"></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>     
+
+            <div style="clear:both;"/>
+        </template>
+
+        <template id="kg_pos_restaurant_bill_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="order">
+                    <t t-call="kg_pos.kg_pos_restaurant_bill_report_document"/>
+                </t>
+            </t>
+        </template>
+
+        <record id="paperformat_pos_receipt" model="report.paperformat">
+            <field name="name">POS Receipt Size</field>
+            <field name="default" eval="True" />
+            <field name="format">custom</field>
+            <field name="page_height">210</field>
+            <field name="page_width">148</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">25</field>
+            <field name="margin_bottom">63</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">20</field>
+            <field name="dpi">90</field>
+        </record>
+
+<!--        <report-->
+<!--            id="kg_pos_restaurant_bill_report_action"-->
+<!--            string="Print Bill"-->
+<!--            model="pos.order"-->
+<!--            report_type="mrt"-->
+<!--            name="report.kg_report_action_pos_order_bill"-->
+<!--            file="report.kg_report_action_pos_order_bill"-->
+<!--        />-->
+
+<!--        <record id="kg_pos_restaurant_bill_report_action" model="ir.actions.report">-->
+<!--            <field name="print_report_name">('Restaurant Bill.pdf')</field>-->
+<!--            <field name="paperformat_id" ref="paperformat_pos_receipt"/>-->
+<!--        </record>-->
+
+    </data>
+</odoo>

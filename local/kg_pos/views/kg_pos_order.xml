@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record forcecreate="True" id="counter_decimal" model="decimal.precision">
+            <field name="name">counter</field>
+            <field name="digits">0</field>
+        </record>
+
+        <record id="kg_view_pos_form" model="ir.ui.view">
+            <field name="name">kg.view_pos_form</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='refund']" position="replace">
+                    <button name="refund" string="Return Products" type="object"
+                        attrs="{'invisible':[('state','=','draft')]}" groups="point_of_sale.group_pos_manager"/>
+<!--                    <button name="print_restaurant_bill_report" string="Print Bill" type="object"/>-->
+                </xpath>
+
+                <!-- code for print old report pos order -->
+                <!-- <xpath expr="//button[@name='refund']" position="after">
+                    <button name="print_report" string="Print Order" type="object"/>
+                </xpath> -->
+                <!-- end of code -->
+                <group>
+                    <field name="outlet_id"/>
+                </group>
+<!--                <xpath expr="//field[@name='name']" position="before">-->
+<!--                    <field name="outlet_id"/>-->
+<!--                </xpath>-->
+
+                <xpath expr="//field[@name='pos_reference']" position="before">
+                    <field name="is_adv_payment" invisible="1"/>
+                    <!--<field name="DepositId" invisible="1"/>-->
+                </xpath>
+
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="attrs">{'readonly': ['|', ('state','=','invoiced'), ('is_adv_payment', '=', True)]}</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='pos_reference']" position="after">
+                    <field name="invoice_id" />
+                    <field name="print_counter" />
+                </xpath>
+
+                <xpath expr="//notebook[1]" position="inside">
+                    <page string="Guest/MyValue Info">
+                        <group string="Guest Info">
+                            <group>
+                                <field name="meal_time_line_id"/>
+                                <field name="no_reference"/>
+                                <field name="is_hotel_guest"/>
+                                <field name="folio_id"/>
+                                <field name="room_number"/>
+
+                            </group>
+                            <group></group>
+                        </group>
+                        <group string="MyValue Info">
+                            <group string="Earning">
+                                <field name="my_value_id" />
+                                <field name="my_value_name" />
+                                <field name="my_value_earn_amount" />
+                                <field name="my_value_earn_status" />
+                                <field name="my_value_earn_send_date" />
+                                <field name="my_value_earn_error_desc" />
+                            </group>
+                            <group></group>
+                        </group>
+                    </page>
+                    <page string="Advance Payments">
+                        <field name="pos_advance_payment_ids">
+                            <tree create="false" edit="false">
+                                <field name="payment_date"/>
+                                <field name="name"/>
+                                <field name="journal_id"/>
+                                <field name="deposit_type_id"/>
+                                <field name="partner_id"/>
+                                <field name="amount" string="Original Deposit"/>
+                                <field name="adv_payment_amount_used" string="POS Payment"/>
+                                <field name="new_residual"/>
+                                <field name="state"/>
+                                <field name="company_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Services-Taxes">
+                        <field name="pos_tax_ids">
+                            <tree create="false" edit="false">
+                                <field name="name"/>
+                                <field name="pos_order_tax_amount"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+
+                <xpath expr="//field[@name='sale_journal']" position="after">
+                    <field name="department_id" readonly="1" attrs="{'invisible':['|', ('employee_id','!=', False), ('customer_id','!=', False)]}"/>
+                    <field name="employee_id" readonly="1" attrs="{'invisible': ['|', ('department_id', '!=', False), ('customer_id','!=', False)]}"/>
+                    <field name="customer_id" readonly="1" attrs="{'invisible': ['|', ('department_id', '!=', False), ('employee_id','!=', False)]}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='pos_reference']" position="after">
+                    <field name="total_disc_amount_before_tax" string="Discount Amount" readonly="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='statement_id']" position="after">
+                    <field name="issuer_type_id" />
+                    <field name="card_number" />
+                    <field name="card_holder_name" />
+                    <field name="voucher_id"/>
+                    <field name="voucher_no"/>
+                </xpath>
+
+                <xpath expr="//group[@name='order_fields']" position="inside">
+                    <field name="waiter_id" readonly="1"/>
+                </xpath>
+
+                <field name="discount" position="before">
+                    <field name="line_brutto_before_tax"/>
+                </field>
+                <field name="discount" position="after">
+                    <field name="discount_amount" readonly="1"/>
+                </field>
+
+                <field name="price_subtotal_incl" position="after">
+                    <field name="service_amount" string="Service"/>
+                    <field name="tax_amount" string="Tax"/>
+                </field>
+
+                <xpath expr="//group[@name='order_total']" position="replace">
+                    <group class="oe_subtotal_footer oe_right" colspan="2" name="order_total">
+                        <field name="brutto_before_tax" widget="monetary"/>
+                        <field name="total_disc_amount_before_tax" widget="monetary"/>
+                        <field name="amount_untaxed" widget="monetary" string="Total Untaxed (Before Tax and Service)"/>
+                        <!--<field -->
+                            <!--name="tax_widget" -->
+                            <!--colspan="2" -->
+                            <!--nolabel="1" -->
+                            <!--widget="tax" -->
+                            <!--attrs="{'invisible':['|', ('employee_id', '!=', False), ('department_id', '!=', False)]}"-->
+                        <!--/>-->
+                        <!-- <field name="amount_tax" widget="monetary" string="Total Taxes"/> -->
+                        <field name="amount_service" widget="monetary" string="Total Service"/>
+                        <field name="amount_tax_only" widget="monetary" string="Total Tax"/>
+                        <div class="oe_subtotal_footer_separator oe_inline">
+                            <label for="amount_total" />
+                            <button name="button_dummy"
+                                states="draft" string="(update)" class="oe_edit_only oe_link"/>
+                        </div>
+                        <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="kg_view_pos_order_tree" model="ir.ui.view">
+            <field name="name">kg.view.pos.order.tree</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="waiter_id"/>
+                </xpath>
+                 <xpath expr="//field[@name='date_order']" position="before">
+                    <field name="working_date"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

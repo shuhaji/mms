@@ -1,0 +1,35 @@
+<openerp>
+   <data noupdate="1">
+
+       <record id="data_partner_milka" model="res.partner">
+           <field name="name">Milka</field>
+           <field name="email">milka@rubyh.co</field>
+           <field name="allow_use_city_ledger">True</field>
+       </record>
+
+       <record id="data_partner_reza" model="res.partner">
+           <field name="name">Reza</field>
+           <field name="email">reza@rubyh.co</field>
+           <field name="allow_use_city_ledger">True</field>
+       </record>
+
+       <record id="data_partner_tiara" model="res.partner">
+           <field name="name">Tiara</field>
+           <field name="email">tiara@rubyh.co</field>
+           <field name="allow_use_city_ledger">True</field>
+       </record>
+
+       <record id="data_partner_samuel" model="res.partner">
+           <field name="name">Samuel</field>
+           <field name="email">samuel@rubyh.co</field>
+           <field name="allow_use_city_ledger">True</field>
+       </record>
+
+       <record id="data_partner_caca" model="res.partner">
+           <field name="name">Caca</field>
+           <field name="email">caca@rubyh.co</field>
+           <field name="allow_use_city_ledger">True</field>
+       </record>
+
+   </data>
+</openerp>

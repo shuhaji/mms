@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+        
+        
+    <record id="kg_account_add_region" model="ir.ui.view">
+        <field name="name">Company</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/> 
+        <field name="arch" type="xml">
+          <field name="report_header" position="after">
+              <field name="region_name"/>
+              <field name="guest_ledger_account_id"/>
+              <field name="admin_fee_account_id"/>
+              <field name="close_advance_deposit_account_id"/>
+              <field name="transfer_account_id"/>
+              <field name="base_url_iot_api"/>
+          </field>
+        </field>
+    </record>
+
+	</data>
+</odoo>

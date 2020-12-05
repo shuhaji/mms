@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="account_payment_advance_mac5.action_account_payment_advance_customer" model="ir.actions.act_window">
+            <field name="name">Advance Deposit</field>
+        </record>
+
+        <record id="action_account_payment_advance_customer" model="ir.actions.act_window">
+            <field name="name">Advance Deposit</field>
+            <field name="res_model">account.payment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="context">{'default_payment_type': 'inbound', 'default_partner_type': 'customer', 'default_is_advance_payment': True}</field>
+            <field name="domain">[('partner_type', '=', 'customer'), ('is_advance_payment', '=', True)]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                  Click to register a customer advance payment
+                </p>
+            </field>
+        </record>
+
+         <!--Customer Advance Payments KG-->
+        <record id="advance_payments_form" model="ir.ui.view">
+            <field name="name">advance.payments.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account_payment_advance_mac5.view_account_payment_advance_customer_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                   <!--<field name="status_deposit" widget="statusbar"-->
+                           <!--statusbar_visible="NEW,CONFIRMED,POSTED,CLOSED,REFUND"/>-->
+
+                </xpath>
+                <xpath expr="//field[@name='advance_payment_account_id']" position="attributes">
+                    <!--<field name="advance_payment_account_id"-->
+                       <!--string="Advance Deposit Account"-->
+                       <!--domain="[('company_id', '=', company_id), ('internal_type', '=', 'other'), ('reconcile', '=', True)]"-->
+                       <!--attrs="{'invisible': ['|', ('is_advance_payment', '=', False), ('payment_type', '=', 'transfer')],-->
+                               <!--'required': [('is_advance_payment', '=', True)], 'readonly': [('state', '!=', 'draft')]}"/>-->
+                    <attribute name="string">Advance Deposit Account</attribute>
+                </xpath>
+                <button name="cancel" position="after">
+            		<button name="apply_to_room" type="object"
+                            attrs="{'invisible':['|', ('status_deposit', 'in', ('POSTED', 'CLOSED', 'REFUND'))]}"
+                            string="Apply To Room"/>
+                    <button name="close_deposit" type="object"
+                            attrs="{'invisible':['|', ('is_allow_to_close', '=', False), ('status_deposit', 'in', ('NEW', 'CLOSED', 'REFUND')), ('state', 'not in', ('posted', 'reconciled'))]}"
+                            string="Close Deposit"/>
+            	</button>
+                <group>
+                    <group>
+                        <field name="state" readonly="1"/>
+                        <field name="status_deposit" widget="selection"
+                               readonly="1"/>
+                               <!--attrs="{'readonly': [('state', '!=', 'draft')]}"/>-->
+                        <field name="posting_date"
+                               widget="date"
+                               options="{'format': 'MM/dd/yyyy'}"
+                               attrs="{'readonly': [('status_deposit', '!=', 'NEW')]}"/>
+                        <field name="close_date"
+                               widget="date"
+                               options="{'format': 'MM/dd/yyyy'}"
+                               attrs="{'invisible': ['|', ('is_advance_payment', '=', False), ('status_deposit', '!=', 'CLOSED')],
+                                     'readonly': [('status_deposit', '=', 'status_deposit')]}"/>
+                        <field name="guest_name"/>
+                        <field name="reff_no" attrs="{'readonly': [('status_deposit', '!=', 'NEW')]}"/>
+                        <field name="room_no" attrs="{'readonly': [('status_deposit', '!=', 'NEW')]}"/>
+                        <field name="reservation_no" attrs="{'readonly': [('status_deposit', '!=', 'NEW')]}"/>
+                        <field name="remark"/>
+                        <field name="card_number"/>
+                        <field name="card_holder_name"/>
+                        <field name="issuer_type_id"/>
+                        <field name="is_allow_to_close" invisible="1"/>
+                    </group>
+                </group>
+
+            </field>
+        </record>
+
+        <record id="kg_view_account_payment_tree" model="ir.ui.view">
+            <field name="name">kg.advance.payments.tree</field>
+            <field name="model">account.payment</field>
+            <field name="type">tree</field>
+            <!--jangan inherit dari payment, bikin list view sendiri, krn kolom2nya beda-->
+            <!--<field name="inherit_id" ref="account.view_account_payment_tree"/>-->
+            <field name="arch" type="xml">
+                <tree string="Advance Deposit">
+                    <field name="payment_date"/>
+                    <field name="communication"/>
+                    <field name="name"/>
+                    <field name="journal_id"/>
+                    <field name="partner_id"/>
+                    <field name="guest_name"/>
+                    <field name="amount"/>
+                    <field name="residual_temp"/>
+                    <field name="status_deposit"/>
+                    <field name="state"/>
+                    <field name="room_no"/>
+                    <field name="company_id"/>
+                </tree>
+                <!--<field name="state" position="after">-->
+                    <!--<field name="status_deposit"/>-->
+                <!--</field>-->
+            </field>
+        </record>
+
+        <record id="account_payment_advance_mac5.action_account_payment_advance_customer_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="kg_view_account_payment_tree"/>
+            <field name="act_window_id" ref="account_payment_advance_mac5.action_account_payment_advance_customer"/>
+        </record>
+    </data>
+</odoo>

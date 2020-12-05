@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="wizard_cancel_reason_banquet_reservation" model="ir.ui.view">
+            <field name="name">Cancel Reservation Reason</field>
+            <field name="model">wizard.cancel.reason.banquet.reservation</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="cancel_reason" nolabel="1" placeholder="Fill out the release reason..." required="1"/>
+                    <footer>
+                        <button name="button_confirm" type="object" string="Confirm" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

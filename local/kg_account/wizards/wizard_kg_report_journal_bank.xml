@@ -1,0 +1,53 @@
+<odoo>
+    <record id="wizard_kg_report_journal_bank_view" model="ir.ui.view">
+        <field name="name">Journal Audit</field>
+        <field name="model">wizard.kg.report.journal.bank</field>
+        <field name="inherit_id" ref="kg_report_base.wizard_kg_report_base_view"/>
+        <field name="arch" type="xml">
+        <data>
+            <field name="working_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="working_date" position="after">
+                <field name="company_id" invisible="1"/>
+                <field name="date_from" style="width:120px" required="True"/>
+                <field name="target_move" widget="radio"/>
+                <field name="report_type"/>
+                <field name="amount_currency" groups="base.group_multi_currency"/>
+            </field>
+            <field name="file_name" position="after">
+                <field name="date_to" style="width:120px" required="True"/>
+                <field name="sort_selection" widget="radio"/>
+                <field name="payment_type"/>
+            </field>
+
+            <xpath expr="//group[@name='report_filters_1']" position="after">
+                <group>
+                    <field name="journal_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                </group>
+            </xpath>
+        </data>
+        </field>
+    </record>
+
+    <!-- Action to open Wizard as a popup -->
+    <record id="action_wizard_kg_report_journal_bank" model="ir.actions.act_window">
+        <field name="name">Journal Audit Bank</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.kg.report.journal.bank</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_kg_report_journal_bank_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu item to open Wizard  -->
+    <menuitem id="menu_wizard_kg_report_journal_bank"
+              name="Journal Audit Bank"
+              sequence="30"
+              parent="menu_wizard_kg_report_group"
+              action="action_wizard_kg_report_journal_bank"
+    />
+
+
+</odoo>

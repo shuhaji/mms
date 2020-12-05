@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="Many2ManyButton">
+     	<div class="cf_button_array">
+	        <div>
+				<t t-if="!widget.get('effective_readonly')">
+					<div class="oe_many2many_button_only_div" style="padding: 3px">
+						<button icon="gtk-yes"
+								class="cf_button_add oe_button oe_highlight cf_button_add_many2many_button_only"
+								href="javascript:void(0)">
+							Add Items
+						</button>
+					</div>
+				</t>
+				<t t-if="widget.get('effective_readonly')">
+            		<span class="oe_form_char_content"></span>
+        		</t>
+				<!--<span>apa kabar<t t-esc="widget.get('effective_readonly')" /> &#45;&#45; <t t-esc="widget.get('mode')" /></span>-->
+	        </div>
+        </div>
+    </t>
+    
+</templates>

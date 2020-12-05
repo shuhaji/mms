@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>   
+
+        <record id="payment_list_ap_wizard_form_view" model="ir.ui.view">
+            <field name="name">payment.list.ap.wizard.form.view</field>
+            <field name="model">payment.list.ap</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="company_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="journal_id" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                        </group>
+                    </group>
+
+                <footer>
+                    <button string="Print to PDF" name="print_report" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+                
+                </form>
+            </field>
+        </record>
+
+        <record id="action_payment_list_ap_wizard_report" model="ir.actions.act_window">
+            <field name="name">Payment List AP</field>
+            <field name="res_model">payment.list.ap</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="payment_list_ap_wizard_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+
+        <menuitem id="menu_kg_payment_list_ap_report" 
+                name="Payment List AP" 
+                action="action_payment_list_ap_wizard_report" 
+                parent="account.menu_finance_legal_statement" 
+                sequence="9"/> 
+
+    </data>
+</odoo>

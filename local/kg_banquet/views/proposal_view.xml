@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+
+<odoo>
+
+    <record model="ir.ui.view" id="view_banquet_proposal_form">
+        <field name="name">banquet.proposal.form</field>
+        <field name="model">banquet.proposal</field>
+        <field name="arch" type="xml">
+            <form string="Banquet Proposal">
+            <header>
+                <!--<button string="Confirm" name="button_proposed" states="draft" type="object" class="oe_highlight" groups="base.group_user"/>-->
+                <button string="Create Contract" name="button_contract" states="proposed" type="object" class="oe_highlight" groups="kg_banquet.group_banquet_officer"/>
+                <button string="Sign" name="button_signed" states="contract" type="object" class="oe_highlight" groups="kg_banquet.group_banquet_officer"/>
+                <button string="Set To Proposed" name="button_proposed" states="contract" type="object" groups="kg_banquet.group_banquet_officer"/>
+                <field name="state" widget="statusbar" statusbar_visible="proposed,contract,signed,release"/>
+            </header>
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="contract_no"/>
+                    <field name="remark" attrs="{'readonly': [('allow_edit', '!=', None),('allow_edit', '=', False)]}"/>
+                    <field name="allow_edit" invisible="1"/>
+                    <field name="partner_id" invisible="1"/>
+                </group>
+                 <notebook>
+                    <page string="Reservation">
+                        <field name="reservation_ids"
+                               attrs="{'readonly': [('allow_edit', '!=', None),('allow_edit', '=', False)]}"
+                               widget="many2many"
+                               domain="[('proposal_id', '=', False),('state', '=', 'draft'),'|',('partner_id', '=', partner_id),('proposal_id', '=', partner_id)]"
+                               >
+                            <!-- problem x2many, domain mesti di set di xml sini
+                                krn ada bug: jika di set dari python code, maka domain terisi nilai dari FORM SEBELUMNYA
+                                    ga terupdate sesuai isi current form!
+
+                             bagian ini: '|',('partner_id', '=', partner_id),('proposal_id', '=', partner_id)]
+                                artinya:
+                                  Jika partner_id = X
+                                        keluarkan data: ('partner_id', '=', X) ATAU ('proposal_id', '=', X)
+                                  maksudnya, jika partner_id sudah ada isinya, maka: keluarkan data yg partner_id = X
+                                  jika partner_id kosong (= False, belum ada isinya), maka keluarkan data yg proposal_id = false
+
+                                  jadi proposal_id disini sbg dummy field/field penolong utk mengeluarkan data semua partner
+                            -->
+                            <tree editable="bottom" delete="1">
+                                <field name="name" readonly="1"/>
+                                <field name="reservation_by" readonly="1"/>
+                                <field name="description" readonly="1"/>
+                                <field name="state" readonly="1" force_save="1"/>
+                                <field name="banquet_status"/>
+                                <field name="partner_id" string="Customer" readonly="1"/>
+                                <field name="reservation_date" readonly="1"/>
+                                <field name="cut_off_date" readonly="1"/>
+                                <!--<field name="remark"/>-->
+                                <field name="event_type_id" invisible="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                 </notebook>
+                <div class="oe_chatter">
+<!--                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>-->
+<!--                        <field name="activity_ids" widget="mail_activity"/>-->
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_banquet_proposal_tree">
+        <field name="name">banquet.proposal.tree</field>
+        <field name="model">banquet.proposal</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reservation_ids" widget="many2many_tags"/>
+                <field name="partner_id"/>
+                <field name="name"/>
+                <field name="contract_no"/>
+                <field name="remark"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_banquet_proposal" model="ir.actions.act_window">
+       <field name="name">Banquet Proposal</field>
+       <field name="res_model">banquet.proposal</field>
+       <field name="view_type">form</field>
+       <field name="view_mode">tree,form</field>
+       <field name="view_id" ref="view_banquet_proposal_tree"/>
+    </record>
+
+    <menuitem
+        action="action_banquet_proposal"
+        id="menu_banquet_proposal"
+        name="Proposal N Contract"
+        parent="menu_banquet_transaction"
+        sequence="50"
+    />
+
+</odoo>

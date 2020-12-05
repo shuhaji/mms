@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="assets_backend" name="kg_web" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/kg_web/static/src/js/widgets.js"/>
+                <script type="text/javascript"
+                    src="/kg_web/static/src/js/web_widget_timepicker.js"/>
+                <script type="text/javascript"
+                    src="/kg_web/static/src/js/custom_search_pms_field.js" />
+            </xpath>
+        </template>
+        <template id="kg_web_assets_common" inherit_id="web.assets_common">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/css"
+                      href="/kg_web/static/src/css/jsgrid.min.css"/>
+                <link rel="stylesheet" type="text/css"
+                      href="/kg_web/static/src/css/jsgrid-custom.css"/>
+                <link rel="stylesheet" type="text/css"
+                      href="/kg_web/static/src/css/jsgrid-theme.min.css"/>
+                <script type="text/javascript"
+                        src="/kg_web/static/src/libs/jsgrid.min.js" />
+            </xpath>
+        </template>
+    </data>
+</openerp>

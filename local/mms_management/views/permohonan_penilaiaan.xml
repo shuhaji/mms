@@ -1,0 +1,60 @@
+<odoo>
+    <data>
+        <record id="view_permohonan_tree" model="ir.ui.view">
+            <field name="name">permohonan.penilaian.tree</field>
+            <field name="model">permohonan.penilaian</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Permohonan Penilaian">
+                    <field name="name"/>
+                    <field name="auditee"/>
+                    <field name="status_nilai"/>
+                    <field name="kelengkapan_admini"/>
+                    <field name="kesesuaian_rl"/>
+                    <field name="legalitas"/>
+                    <field name="kesesuaian_up"/>
+                    <field name="masa_izin"/>
+                    <field name="rekomendasi_hasil"/>
+                    <field name="tanggal"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="seq_permohonan_penilaiaan" model="ir.sequence">
+            <field name="name">Permohonan Penilaian Number</field>
+            <field name="code">permohonan.penilaian.number</field>
+            <field name="prefix">BQRS/%(y)s/%(month)s/%(day)s/</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False" />
+        </record>
+        <record id="view_permohonan_penilaian_form" model="ir.ui.view">
+            <field name="name">permohonan.penilaian.form</field>
+            <field name="model">permohonan.penilaian</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Course Form">
+                        <div class="oe_title">
+                            <label for="auditee" class="oe_edit_only"/>
+                            <h1>
+                                <field name="auditee"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="name"/>
+                            <field name="status_nilai"/>
+                            <field name="kelengkapan_admini"/>
+                            <field name="kesesuaian_rl"/>
+                            <field name="legalitas"/>
+                            <field name="kesesuaian_up"/>
+                            <field name="masa_izin"/>
+                            <field name="rekomendasi_hasil"/>
+                            <field name="tanggal"/>
+                        </group>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

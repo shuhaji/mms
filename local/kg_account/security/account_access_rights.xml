@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="res.groups" id="group_payments_approve_access_rights">
+            <field name="name">Allow Approve Payment</field>
+        </record>
+
+        <record model="res.groups" id="group_payments_validate_access_rights">
+            <field name="name">Allow Validate Payment</field>
+        </record>
+
+        <record model="res.groups" id="group_invoice_duplicate_report_access_rights">
+            <field name="name">Allow Duplicate Invoice Report</field>
+        </record>
+
+        <record model="res.groups" id="group_invoice_collecting_duplicate_report_access_rights">
+            <field name="name">Allow Duplicate Invoice Collecting Report</field>
+        </record>
+
+        <record model="res.groups" id="group_invoicing_register_payment_from_invoice_access_rights">
+            <field name="name">Allow Register Payment On Invoice Form</field>
+        </record>
+
+        <record model="res.groups" id="group_allow_create_back_date_journal_entry">
+            <field name="name">Allow Create Back Date Journal Entry</field>
+        </record>
+
+        <record model="res.groups" id="group_allow_add_credit_note">
+            <field name="name">Allow Add Invoice Credit Note</field>
+        </record>
+
+        <record model="res.groups" id="group_allow_cancel_invoice">
+            <field name="name">Allow Cancel Invoice</field>
+        </record>
+
+        <record model="res.groups" id="group_allow_to_print_invoice">
+            <field name="name">Allow to Print Invoice</field>
+        </record>
+
+        <record model="res.groups" id="group_allow_to_edit_invoice">
+            <field name="name">Allow to Edit Invoice from PMS/POS</field>
+        </record>
+
+        <record model="res.groups" id="group_hide_btn_create_payment">
+            <field name="name">Hide Button Create Payment Sales</field>
+        </record>
+
+        <record id="cc_comp_rule" model="ir.rule">
+            <field name="name">Credit Card Transaction multi-company</field>
+            <field name="model_id" ref="kg_account.model_kg_acquirer_transaction"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('company_id', '=', user.company_id.id)]</field>
+        </record>
+    </data>
+</openerp>

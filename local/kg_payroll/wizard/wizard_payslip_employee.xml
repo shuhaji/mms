@@ -1,0 +1,40 @@
+<odoo>
+    <record id="wizard_kg_report_payroll_payslip_employee_view" model="ir.ui.view">
+        <field name="name">KG Report - Payslip Employee</field>
+        <field name="model">wizard.kg.report.payslip_employee</field>
+        <field name="inherit_id" ref="kg_report_base.wizard_kg_report_base_view"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="working_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="working_date" position="after">
+                <field name="date_from" style="width:120px" widget="date-month-year-period-widget"/>
+                <field name="company_id"/>
+                <field name="location_ids" widget="many2many_tags"/>
+                <field name="structure_ids" widget="many2many_tags"/>
+                <field name="department_ids" widget="many2many_tags" domain="[('company_id', '=', company_id)]"/>
+                <field name="employee_ids" widget="many2many_tags" domain="[('company_id', '=', company_id),('department_id', 'in', department_ids)]"/>
+                <field name="template"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="action_wizard_kg_report_payroll_payslip_employee" model="ir.actions.act_window">
+        <field name="name">KG Report - Payslip Employee</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.kg.report.payslip_employee</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_kg_report_payroll_payslip_employee_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu item to open Wizard  -->
+    <menuitem id="menu_wizard_kg_payroll_payslip"
+              name="Payslip Employee"
+              sequence="12"
+              parent="menu_wizard_kg_report_group"
+              action="action_wizard_kg_report_payroll_payslip_employee"
+    />
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+            id="menu_kg_report_action_pos_order_bill"
+            string="Print POS Order Bill"
+            model="pos.order"
+            report_type="mrt"
+            name="report.kg_report_action_pos_order_bill"
+            file="report.kg_report_action_pos_order_bill"
+        />
+    </data>
+</odoo>

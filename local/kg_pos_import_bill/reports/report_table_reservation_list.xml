@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="report_table_reservation_list">
+            <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <h2 style="text-align:center;">TABLE RESERVATION LIST</h2>
+
+                    <table class="table table-condensed" style="width:100%;margin-top:20px;">
+                        <!--<tr>-->
+                            <!--<td class="col-md-3">Company</td>-->
+                            <!--<td class="col-md-3"> : <span t-esc="company_id"/></td>-->
+                            <!--<td class="col-md-3"> </td>-->
+                            <!--<td class="col-md-3"> </td>-->
+                        <!--</tr>-->
+                        <tr>
+                            <td>Period Start</td>
+                            <td> : <span t-esc="start_date" t-options="{'widget': 'date'}"/></td>
+                            <td>Printed by</td>
+                            <td> : <span t-esc="printed_by"/></td>
+                        </tr>
+                        <tr>
+                            <td>Period End</td>
+                            <td> : <span t-esc="end_date" t-options="{'widget': 'date'}"/></td>
+                            <td>Printed on</td>
+                            <td> : <span t-esc="datetime.datetime.now()" t-options="{'widget': 'datetime'}"/></td>
+                        </tr>
+                    </table>
+
+                    <br/>
+                    <table class="table table-condensed" style="margin-top:20px;font-size:14px;">
+                        <thead>
+                            <tr style="font-weight:bold;">
+                                <th>Booking No</th>
+                                <th>Time Start</th>
+                                <th>Time End</th>
+                                <th>Event Name</th>
+                                <th>Company</th>
+                                <th>Table</th>
+                                <th style="text-align:right;">Attd</th>
+                                <th>Status</th>
+                                <th>Contact Person</th>
+                                <th>Sales</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach='docs' t-as='p'>
+                                <td><span t-esc="p['name']"/></td>
+                                <td><span t-esc="p['reservation_time_start']" t-options="{'widget': 'datetime'}"/></td>
+                                <td><span t-esc="p['reservation_time_end']" t-options="{'widget': 'datetime'}"/></td>
+                                <td><span t-esc="p['event_name']"/></td>
+                                <td><span t-esc="p['company_name']"/></td>
+                                <td><span t-esc="p['table_label']"/></td>
+                                <td style="text-align:right;"><span t-esc="p['customer_count']"/></td>
+                                <td><span t-esc="p['state_reservation']"/></td>
+                                <td><span t-esc="p['partner_id']"/></td>
+                                <td><span t-esc="p['salesperson_id']"/></td>
+                            </tr>
+                            <!--<tr style="font-weight:bold;">-->
+                                <!--<td style="text-align:right;" colspan="3"> GRAND TOTAL </td>-->
+                                <!--<td style="text-align:right;">Rp. <span t-esc="'{0:,.2f}'.format(int(data_total[0]))"/></td>-->
+                                <!--<td style="text-align:right;">Rp. <span t-esc="'{0:,.2f}'.format(int(data_total[1]))"/></td>-->
+                                <!--<td style="text-align:right;">Rp. <span t-esc="'{0:,.2f}'.format(int(data_total[2]))"/></td>-->
+                                <!--<td style="text-align:right;">Rp. <span t-esc="'{0:,.2f}'.format(int(data_total[3]))"/></td>-->
+                                <!--<td style="text-align:right;">Rp. <span t-esc="'{0:,.2f}'.format(int(data_total[4]))"/></td>-->
+                            <!--</tr>-->
+                        </tbody>
+
+                    </table>
+                </div>
+            </t>
+            </t>
+        </template>
+
+        <record model="report.paperformat" id="paperformat_table_reservation_list_report">
+            <field name="name">paperformat.table.reservation.list.report</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">20</field>
+            <field name="margin_right">10</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">10</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+            id="menu_report_table_reservation_list"
+            string="Table Reservation List"
+            model="table.reservation.list"
+            report_type="qweb-pdf"
+            name="kg_pos_import_bill.report_table_reservation_list"
+            file="kg_pos_import_bill.report_table_reservation_list"
+            menu="False"
+            paperformat="paperformat_table_reservation_list_report"
+        />
+
+    </data>
+</odoo>
