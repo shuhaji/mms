@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<openerp>
+<data>
+	<record id="bi_inherit_chartfacc_view" model="ir.ui.view">
+        <field name="name">bi_inherit_chart_of_acc_view</field>
+        <field name="model">account.account</field>
+        <field name="inherit_id" ref="account.view_account_form" />
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <field name="deprecated" position="after">
+            	<field name="cash_flow_type"/>
+            	<field name="finance_report"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="bi_acc_cashflow_wiard" model="ir.ui.view">
+        <field name="model">account.cashflow</field>
+        <field name="arch" type="xml">
+            <form string="Account CashFlow">
+                <sheet>
+                    <group>
+                    <group>
+                        <field name='account_report'/>
+                        <field name='start_amount'/>
+                        <field name='target_moves' widget='radio'/>
+                        <field name='display_dt_cr'/>
+                    </group>
+                    <group>
+                        <field name='start_date'/>
+                        <field name='end_date'/>
+                        <field name='company_id' invisible='1'/>
+                        <field name='cashflow_cal_id' invisible='1'/>
+                    </group>
+                    </group>
+                    <footer>
+                        <!--button name="button_calculate" type="object" string="Generate" class="oe_highlight"/-->
+                        <button name="check_report_cashflow" type="object" string="Print PDF" class="oe_highlight"/>
+                        <button name="print_excel" type="object" string="Print Excel" class="oe_highlight"/>
+                            or
+                        <button string="Cancel"  special="cancel" class="oe_highlight"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="bi_cashflow_wizard" model="ir.actions.act_window">
+        <field name="name">Account CashFlow Statement</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="res_model">account.cashflow</field>
+        <field name="target">new</field>
+    </record>
+
+
+    <menuitem id="menu_account_cash_flow" action='bi_cashflow_wizard' name="Cash Flow Statement" parent="account.menu_finance_legal_statement"/>
+</data>
+</openerp>

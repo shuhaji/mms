@@ -1,0 +1,6 @@
+xlsxwriter
+xlrd
+fdfgen
+xlwt
+
+newrelic

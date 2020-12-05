@@ -1,0 +1,144 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">Advance Payments</h2>
+        <h3 class="oe_slogan">Way to create advance payments for specific account and apply them later on invoices</h3>
+        <div class="oe_span12" style="font-size:15pt;">
+            <h4><p>Features:</p></h4>
+            <ul>
+                <li>Support for Multi Currencies</li>
+                <li>Application of multiple advance payments to multiple invoices</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">Configurations</h2>
+        <h3 class="oe_slogan">Create new Accounts for Advance Payments</h3>
+        <div class="oe_span6">
+            <img class="oe_picture oe_screenshot" src="adv_payment_create_account.png">
+        </div>
+        <div class="oe_span6 text-justify">
+            <p class="oe_mt32">
+                Create new accounts to be used for customer and vendor advance payments in Accounting > Adviser > Chart of Accounts. Make sure that the created account is reconcilable. On my example, I created Unearned Revenue which is a liability to be used for customer advance payments.
+            </p>
+        </div>
+        <h3 class="oe_slogan oe_span12">Create new Journal for Advance Payments</h3>
+        <div class="oe_span6 text-justify">
+            <p class="oe_mt32">
+                Create new journals to be used for customer and vendor advance payments in Accounting > Configuration > Accounting > Journals. This new journal will be used when advance payment is applied on invoices.
+            </p>
+        </div>
+        <div class="oe_span6">
+            <img class="oe_picture oe_screenshot" src="adv_payment_create_journal.png">
+        </div>
+        <div class="oe_span6">
+            <img class="oe_picture oe_screenshot" src="adv_payment_create_journal2.png">
+        </div>
+        <div class="oe_span6 text-justify">
+            <p class="oe_mt32">
+                If you want to cancel advance payment applied on an invoice, you need to install account_cancel module and enable Allow Cancelling Entries on the new journal
+            </p>
+        </div>
+        <h3 class="oe_slogan oe_span12">Set Default Configuration for Advance Payments</h3>
+        <div class="oe_span6 text-justify">
+            <p class="oe_mt32">
+                Set default configuration for the advance payments in Accounting > Configuration > Settings and set the advance payment account and journal that will likely be used often.
+            </p>
+        </div>
+        <div class="oe_span6">
+            <img class="oe_picture oe_screenshot" src="adv_payment_default_config.png">
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">Procedures</h2>
+        <h3 class="oe_slogan">Create new Advance Payments</h3>
+        <div class="oe_span6">
+            <img class="oe_picture oe_screenshot" src="create_customer_adv_payment.png">
+            <img class="oe_picture oe_screenshot" src="create_customer_adv_payment2.png">
+            <img class="oe_picture oe_screenshot" src="create_customer_adv_payment3.png">
+            <img class="oe_picture oe_screenshot" src="create_customer_adv_payment4.png">
+        </div>
+        <div class="oe_span6 text-justify">
+            <p class="oe_mt32">
+                Create new customer advance payments in Invoicing > Sales > Documents > Advance Payments (or new vendor advance payments in Invoicing > Purchases > Documents > Advance Payments).
+            </p>
+            <p class="oe_mt32">
+                Select the Customer (or Vendor), Payment Journal and Payment Amount. Set also the Payment Date when the customer (or vendor) has paid. If you set the default configuration for advance payment account, the default will be shown unless you need to change it. Save the advance payment as draft or confirm it so that it will be posted.
+            </p>
+            <p class="oe_mt32">
+                Posted advance payment can now be used to apply advance payments on invoices.
+            </p>
+            <p class="oe_mt32">
+                Posted advance payment will also create journal entry such that the accounts are based on the selected Payment Journal and Advance Payment Account.
+            </p>
+        </div>
+        <h3 class="oe_slogan oe_span12">Application of Advance Payments on Invoices</h3>
+        <div class="oe_span6 text-justify">
+            <p class="oe_mt32">
+                To apply advance payments on customer invoices (or vendor bills), select an Open status invoice on Invoicing > Sales > Documents > Customer Invoices (or Invoicing > Purchases > Documents > Vendor Bills).
+            </p>
+            <p class="oe_mt32">
+                If the customer (or vendor) has advance payment, there will be a button named Apply Advance Payment on the invoice header. If there is no button shown, it means that customer (or vendor) has no advance payments or advance payments have already been applied.
+            </p>
+            <p class="oe_mt32">
+                On the Apply Advance Payments window, specify the Application Journal, the default will be the configured Advance Payment Journal in settings. Select the application date and advance payments to apply. TIP: You can select multiple advance payments and you can also select multiple invoices on the invoice list.
+            </p>
+            <p class="oe_mt32">
+                When applied on the invoice, payment will be shown below the invoice Total and in Advance Payments tab. TIP: You can unreconcile the payment by using the icon below the invoice Total but just make sure that the Advance Payment Journal is allowed on cancelling entries.
+            </p>
+            <p class="oe_mt32">
+                Application of advance payment on invoices will create a journal entry such that the accounts are based on the invoices account and advance payment account on payments. The amount (debit or credit) is the total of all advance payments applied.
+            </p>
+        </div>
+        <div class="oe_span6">
+            <img class="oe_picture oe_screenshot" src="apply_adv_payment_invoice.png">
+            <img class="oe_picture oe_screenshot" src="apply_adv_payment_invoice2.png">
+            <img class="oe_picture oe_screenshot" src="apply_adv_payment_invoice3.png">
+            <img class="oe_picture oe_screenshot" src="apply_adv_payment_invoice4.png">
+            <img class="oe_picture oe_screenshot" src="apply_adv_payment_invoice5.png">
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">Versions</h2>
+        <div>
+            <h4><p>Version 2.0.1:</p></h4>
+            <ul>
+                <li>[FIXED] Partial use of advance payments with multi-currency</li>
+            </ul>
+            <h4><p>Version 2.0:</p></h4>
+            <ul>
+                <li>[FEATURE] Multi-currency support</li>
+                <li>[FEATURE] Default for incoming and outgoing advance payment accounts</li>
+            </ul>
+            <h4><p>Version 1.1:</p></h4>
+            <ul>
+                <li>[FEATURE] Partial use of Advance Payments</li>
+            </ul>
+            <h4><p>Version 1.0.1:</p></h4>
+            <ul>
+                <li>[FIXED] Apply Advance Payment button in Vendor Bills</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">Support</h2>
+        <h3 class="oe_slogan">Email: <a href="mailto:macvillamar@live.com">macvillamar@live.com</a></h3>
+        <div class="oe_span12 text-center" style="font-size: 2px;">
+            Keywords: Customer Invoice Advance Payments, Vendor Invoice Advance Payments, Vendor Bill Advance Payments, Supplier Invoice Advance Payments, Odoo Advance Payments, Odoo Advance Deposits
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_separator">
+</section>

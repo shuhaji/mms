@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+    <function id="wk_coupon_product_id" model="ir.default" name="set"
+        eval="('res.config.settings', 'wk_coupon_product_id', ref('wk_coupons.product_product_coupon'))"/>
+    <function id="wk_coupon_min_amount" model="ir.default" name="set"
+        eval="('res.config.settings', 'wk_coupon_min_amount', 0.0)"/>
+    <function id="wk_coupon_max_amount" model="ir.default" name="set"
+        eval="('res.config.settings', 'wk_coupon_max_amount', 1000)"/>
+    <function id="wk_coupon_validity" model="ir.default" name="set"
+        eval="('res.config.settings', 'wk_coupon_validity', 10)"/>
+    <function id="wk_coupon_voucher_usage" model="ir.default" name="set"
+        eval="('res.config.settings', 'wk_coupon_voucher_usage', 'both')"/>
+    <function id="wk_coupon_availability" model="ir.default" name="set"
+        eval="('res.config.settings', 'wk_coupon_availability', 10)"/>
+    <function id="wk_coupon_customer_type" model="ir.default" name="set"
+        eval="('res.config.settings', 'wk_coupon_customer_type', 'general')"/>
+    
+    <record id="voucher_one" model="voucher.voucher">
+        <field name="name">Summer Sale</field>
+        <field name="voucher_value">100</field>
+        <field name="total_available">10</field>
+        <field name="voucher_usage">both</field>
+        <field name="validity">2</field>
+        <field name="issue_date" eval="(DateTime.today().date() - relativedelta(days=0)).strftime('%Y-%m-%d')"></field>
+        <field name="expiry_date" eval="(DateTime.today().date() - relativedelta(days=1)).strftime('%Y-%m-%d')"></field>
+    </record>
+
+    <record id="voucher_two" model="voucher.voucher">
+        <field name="name">Winter Sale</field>
+        <field name="voucher_value">50</field>
+        <field name="total_available">50</field>
+        <field name="voucher_usage">both</field>
+        <field name="validity">2</field>
+         <field name="issue_date" eval="(DateTime.today().date() - relativedelta(days=0)).strftime('%Y-%m-%d')"></field>
+        <field name="expiry_date" eval="(DateTime.today().date() - relativedelta(days=1)).strftime('%Y-%m-%d')"></field>
+    </record>
+
+    </data>
+</openerp>

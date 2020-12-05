@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.users" id="base.user_root">
+        <field name="allow_coupon_create">True</field>
+    </record>
+
+
+    <record id="res_users_form_view3" model="ir.ui.view">
+        <field name="name">res.users.form.view</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="point_of_sale.res_users_form_view" />
+        <field name="arch" type="xml">
+            <field name="pos_security_pin" position="before">
+                <field name="allow_coupon_create"/>
+            </field>
+        </field>
+    </record>
+    <menuitem id="id_parent_pos_coupons" name="Vouchers &amp; Coupons" parent="point_of_sale.menu_point_root" sequence="50" groups="point_of_sale.group_pos_manager,point_of_sale.group_pos_user" />
+    <menuitem id="pos_coupons_tree_menu_id_1" name="All Coupons" parent="id_parent_pos_coupons" action="wk_coupons.voucher_voucher_action_tree" sequence="1" />
+    <menuitem  id="pos_coupons_tree_menu_id_2" name="Voucher History" parent="id_parent_pos_coupons" action="wk_coupons.voucher_history_action_form" sequence="2"/>
+</odoo>

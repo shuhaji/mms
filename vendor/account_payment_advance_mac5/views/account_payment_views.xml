@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_payment_advance_form" model="ir.ui.view">
+        <field name="name">view.account.payment.advance.form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <field name="payment_date" position="after">
+                <field name="is_advance_payment"
+                       attrs="{'invisible': [('payment_type', '=', 'transfer')], 'readonly': [('state', '!=', 'draft')]}"/>
+                <field name="advance_payment_account_id"
+                       domain="[('company_id', '=', company_id), ('internal_type', '=', 'other'), ('reconcile', '=', True)]"
+                       attrs="{'invisible': ['|', ('is_advance_payment', '=', False), ('payment_type', '=', 'transfer')],
+                               'required': [('is_advance_payment', '=', True)], 'readonly': [('state', '!=', 'draft')]}"/>
+                <field name="company_id" invisible="1"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_payment_advance_search" model="ir.ui.view">
+        <field name="name">view.account.payment.advance.search</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_search"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="after">
+                <filter string="Advance Payments" domain="[('is_advance_payment', '=', True)]"/>
+                <separator/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Customer Advance Payments -->
+    <record id="view_account_payment_advance_customer_form" model="ir.ui.view">
+        <field name="name">view.account.payment.advance.customer.form</field>
+        <field name="model">account.payment</field>
+        <field name="priority">100</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="view_account_payment_advance_form"/>
+        <field name="arch" type="xml">
+            <field name="payment_type" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+            <field name="partner_type" position="attributes">
+                <attribute name="nolabel">False</attribute>
+                <attribute name="invisible">True</attribute>
+            </field>
+            <field name="partner_id" position="attributes">
+                <attribute name="nolabel">False</attribute>
+                <attribute name="string">Customer</attribute>
+            </field>
+            <field name="is_advance_payment" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="action_account_payment_advance_customer" model="ir.actions.act_window">
+
+        <!--<field name="name">Advance Payments</field>-->
+        <field name="name">Advance Deposit</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,graph</field>
+        <field name="context">{'default_payment_type': 'inbound', 'default_partner_type': 'customer', 'default_is_advance_payment': True}</field>
+        <field name="domain">[('partner_type', '=', 'customer'), ('is_advance_payment', '=', True)]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              Click to register a customer advance payment
+            </p>
+        </field>
+    </record>
+
+    <record id="action_account_payment_advance_customer_tree" model="ir.actions.act_window.view">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="account.view_account_payment_tree"/>
+        <field name="act_window_id" ref="action_account_payment_advance_customer"/>
+    </record>
+
+    <record id="action_account_payment_advance_customer_form" model="ir.actions.act_window.view">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_account_payment_advance_customer_form"/>
+        <field name="act_window_id" ref="action_account_payment_advance_customer"/>
+    </record>
+
+    <menuitem action="action_account_payment_advance_customer" id="menu_account_payment_advance_customer"
+              parent="account.menu_finance_receivables_documents" sequence="21" groups="account.group_account_user"/>
+
+    <!-- Vendor Advance Payments -->
+    <record id="view_account_payment_advance_vendor_form" model="ir.ui.view">
+        <field name="name">view.account.payment.advance.vendor.form</field>
+        <field name="model">account.payment</field>
+        <field name="priority">100</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="view_account_payment_advance_form"/>
+        <field name="arch" type="xml">
+            <field name="payment_type" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+            <field name="partner_type" position="attributes">
+                <attribute name="nolabel">False</attribute>
+                <attribute name="invisible">True</attribute>
+            </field>
+            <field name="partner_id" position="attributes">
+                <attribute name="nolabel">False</attribute>
+                <attribute name="string">Vendor</attribute>
+            </field>
+            <field name="is_advance_payment" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="action_account_payment_advance_vendor" model="ir.actions.act_window">
+        <field name="name">Advance Payments</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,graph</field>
+        <field name="context">{'default_payment_type': 'outbound', 'default_partner_type': 'supplier', 'default_is_advance_payment': True}</field>
+        <field name="domain">[('partner_type', '=', 'supplier'), ('is_advance_payment', '=', True)]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              Click to register a vendor advance payment
+            </p>
+        </field>
+    </record>
+
+    <record id="action_account_payment_advance_vendor_tree" model="ir.actions.act_window.view">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="account.view_account_supplier_payment_tree"/>
+        <field name="act_window_id" ref="action_account_payment_advance_vendor"/>
+    </record>
+
+    <record id="action_account_payment_advance_vendor_form" model="ir.actions.act_window.view">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_account_payment_advance_vendor_form"/>
+        <field name="act_window_id" ref="action_account_payment_advance_vendor"/>
+    </record>
+
+    <menuitem action="action_account_payment_advance_vendor" id="menu_account_payment_advance_vendor"
+              parent="account.menu_finance_payables_documents" sequence="21" groups="account.group_account_user"/>
+
+</odoo>

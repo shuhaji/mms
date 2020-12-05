@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_coupon">
+     <t t-call="web.external_layout">
+        <t t-foreach="docs" t-as="o">
+                <div class="page">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <center><span t-field="o.user_id.company_id.logo" t-options="{'widget': 'image', 'class': 'img-rounded'}"/></center>
+                        <center>
+                            <h2 class="name">Coupon Name: <b><span t-field="o.name"/></b></h2>
+                            <h2><div><b>Validity:</b></div></h2>
+                            <h2><div>From:<span t-field="o.issue_date"/></div></h2>
+                            <h2><div>To:<span t-field="o.expiry_date"/></div></h2>
+                            <div><h2><b>Coupon Value:</b><span t-field="o.voucher_value"/></h2></div>
+                            <h1><img t-if="o.voucher_code" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.voucher_code, 600, 100)" style="width:300px;height:45px;"/></h1>
+                            <h1><strong >Secret Voucher Code:<span t-field="o.voucher_code"/></strong></h1>
+                        </center>
+                        <h2 class="note"> <center><div>Note: Keep Your Secret Voucher Code Safe.</div></center></h2>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </t>
+</template>
+
+</data>
+</openerp>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		 <record id="voucher_history_search" model="ir.ui.view">
+            <field name="name">voucher.history.search</field>
+            <field name="model">voucher.history</field>
+            <field name="arch" type="xml">
+            <search string="Voucher History">
+                 <group expand="0" string="Group By...">
+                    <filter string="Voucher Name" name="group_by_name" context="{'group_by':'name'}"/>
+                 </group>
+            </search>
+            </field>
+        </record>
+
+		<record id="voucher_history_tree" model="ir.ui.view">
+			<field name="name">voucher.history.tree</field>
+			<field name="model">voucher.history</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Voucher History" create="false" edit="false" colors="#66BB6A:state == 'done'; red:state == 'fail';">													
+					<field name="name" />
+					<field name="channel_used"/>	
+					<field name="user_id" />	
+					<field name="create_date"/>	
+					<field name="voucher_value"/>
+					<field name="transaction_type"/>	
+					<field name="order_id"/>
+					<field name="state"/>	
+				</tree>
+			</field>
+		</record>
+
+		<record id="voucher_history_form" model="ir.ui.view">
+			<field name="name">voucher.history.form</field>
+			<field name="model">voucher.history</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Voucher History" create="false" edit="false">
+					<sheet>
+						<group col="4">
+							<field name="name" readonly="1"/>
+							<field name="channel_used"/>	
+							<field name="user_id" readonly="1"/>	
+							<field name="create_date" readonly="1"/>
+						</group>
+						<group col="4">	
+							<field name="voucher_value" readonly="1"/>
+							<field name="transaction_type"/>	
+							<field name="order_id" readonly="1"  attrs="{'invisible':[('channel_used','!=','ecommerce')]}"/>	
+							<field name="sale_order_line_id" readonly="1" attrs="{'invisible':[('channel_used','!=','ecommerce')]}"/>
+							<field name="voucher_id"/>
+						</group>
+						<group>
+							<field name="description"/>
+						</group>
+						
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="voucher_history_action_form" model="ir.actions.act_window">
+			<field name="name">Voucher History</field>
+			<field name="res_model">voucher.history</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{"search_default_group_by_name":1}</field>
+			<field name="view_id" ref="voucher_history_tree"/>
+		</record>
+
+
+	</data>
+</openerp>

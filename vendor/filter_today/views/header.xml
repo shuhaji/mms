@@ -1,0 +1,11 @@
+<odoo>
+    <template id="asset_backend" inherit_id="web.assets_backend">
+        <xpath expr="//script[@src='/web/static/src/js/chrome/search_filters.js']" position="replace">
+            <script src="/filter_today/static/js/search_filters.js"></script>
+            <script src="/filter_today/static/js/custom_search_filters.js"></script>
+        </xpath>
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/filter_today/static/js/widget/input_integer.js"/>
+        </xpath>
+    </template>
+</odoo>

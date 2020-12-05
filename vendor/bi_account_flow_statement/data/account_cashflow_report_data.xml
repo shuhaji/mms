@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+    	<record id="account_cashflow_report_data" model="account.financial.report">
+            <field name="name">Cash Flow Statement</field>
+            <field name="type">sum</field>
+        </record>
+
+        <record id="account_cashflow_report_data_operation" model="account.financial.report">
+            <field name="name">Operation</field>
+            <field name="type">sum</field>
+            <field name="parent_id" ref="account_cashflow_report_data"/>
+        </record>
+
+        <record id="account_cashflow_report_data_invest" model="account.financial.report">
+            <field name="name">Investing Activities</field>
+            <field name="type">sum</field>
+            <field name="parent_id" ref="account_cashflow_report_data"/>
+        </record>
+
+        <record id="account_cashflow_report_data_finance" model="account.financial.report">
+            <field name="name">Financing Activities</field>
+            <field name="type">sum</field>
+            <field name="parent_id" ref="account_cashflow_report_data"/>
+        </record>
+
+        <record id="account_cashflow_report_data_recpt_operation" model="account.financial.report">
+            <field name="name">Cash Receipt From - Operation</field>
+            <field name="type">accounts</field>
+            <field name="parent_id" ref="account_cashflow_report_data_operation"/>
+        </record>
+
+        <record id="account_cashflow_report_data_recpt_invest" model="account.financial.report">
+            <field name="name">Cash Receipt From - Investing</field>
+            <field name="type">accounts</field>
+            <field name="parent_id" ref="account_cashflow_report_data_invest"/>
+        </record>
+
+        <record id="account_cashflow_report_data_recpt_finance" model="account.financial.report">
+            <field name="name">Cash Receipt From - Financing</field>
+            <field name="type">accounts</field>
+            <field name="parent_id" ref="account_cashflow_report_data_finance"/>
+        </record>
+
+        <record id="account_cashflow_report_data_paidto_invest" model="account.financial.report">
+            <field name="name">Cash Paid to - Investing</field>
+            <field name="type">accounts</field>
+            <field name="parent_id" ref="account_cashflow_report_data_invest"/>
+        </record>
+
+        <record id="account_cashflow_report_data_paidto_finance" model="account.financial.report">
+            <field name="name">Cash Paid to - Financing</field>
+            <field name="type">accounts</field>
+            <field name="parent_id" ref="account_cashflow_report_data_finance"/>
+        </record>
+
+        <record id="account_cashflow_report_data_paidto_operation" model="account.financial.report">
+            <field name="name">Cash Paid to - Operation</field>
+            <field name="type">accounts</field>
+            <field name="parent_id" ref="account_cashflow_report_data_operation"/>
+        </record>
+
+        <record id="account_cashflow_report_data_net_operation" model="account.financial.report">
+            <field name="name">Net Cash Flow from Operation</field>
+            <field name="type">account_report</field>
+            <field name="parent_id" ref="account_cashflow_report_data_operation"/>
+            <field name="account_report_id" ref="account_cashflow_report_data_operation"/>
+        </record>
+
+        <record id="account_cashflow_report_data_net_invest" model="account.financial.report">
+            <field name="name">Net Cash Flow from Investment</field>
+            <field name="type">account_report</field>
+            <field name="parent_id" ref="account_cashflow_report_data_invest"/>
+            <field name="account_report_id" ref="account_cashflow_report_data_invest"/>
+        </record>
+
+        <record id="account_cashflow_report_data_net_finance" model="account.financial.report">
+            <field name="name">Net Cash Flow from Financing</field>
+            <field name="type">account_report</field>
+            <field name="parent_id" ref="account_cashflow_report_data_finance"/>
+            <field name="account_report_id" ref="account_cashflow_report_data_finance"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_voucher_voucher_sale,voucher.voucher,model_voucher_voucher,sales_team.group_sale_manager,1,1,1,1
+access_voucher_voucher_user,voucher.voucher,model_voucher_voucher,,1,0,0,0
+access_voucher_voucher_portal_user,voucher.voucher,model_voucher_voucher,base.group_portal,1,0,0,0
+access_website_voucher_public_user,voucher.voucher,model_voucher_voucher,base.group_public,1,0,0,0
+,,,,,,,
+,,,,,,,
+access_voucher_history_sale,voucher.history,model_voucher_history,sales_team.group_sale_manager,1,1,1,1
+access_voucher_history_user,voucher.history,model_voucher_history,,1,0,0,0
+access_voucher_history_portal_user,voucher.history,model_voucher_history,base.group_portal,1,0,0,0
+access_voucher_history_public_user,voucher.history,model_voucher_history,base.group_public,1,0,0,0

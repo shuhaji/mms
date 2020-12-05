@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="form_view_consignment_transfer_return_ept" model="ir.ui.view">
+        <field name="name">form.view.consignment.transfer.return.ept</field>
+        <field name="model">consignment.process.ept</field>
+       	<field name="arch" type="xml">
+      	<form string="Consignemt Return">
+       	 <header>
+       	 	<button name="do_consignment_process" string="Process" type="object" class="btn-primary" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+       	 	<button name="cancel_consignment_process" type="object" string="Cancel" class="btn-default" attrs="{'invisible': [('state', '=', 'cancel')]}"/>
+       	 	<button name="set_to_draft" type="object" string="Set to Draft" attrs="{'invisible': [('state', '!=', 'cancel')]}"/>
+       	 	<field name="state" widget="statusbar" statusbar_visible="draft,processed,delivered,cancel"/>
+       	 </header>
+       	 
+       	  <sheet>
+       	  	<div class="oe_button_box" name="button_box">
+       	  		<field name="stock_picking_ids" invisible="1"/>
+       	  		<button type="object" name="action_view_delivery" class="oe_stat_button" icon="fa-truck" attrs="{'invisible': [('pickings_count', '=', 0)]}">
+       	  			<field name="pickings_count" widget="statinfo" string="Return"/>
+				</button>
+			</div>
+			
+       	  	<h1><field name="name" readonly="True"/></h1>
+       	  	<group>
+       	 		<group>
+       	 			<field name="consignee_source_id" required="True" domain="[('is_consignee_customer','=',True)]" attrs="{'readonly' : [('state', 'in', ('processed'))]}"/>
+      	   			<field name="warehouse_id" required="True" domain="[('is_consignment_warehouse','=',False)]" attrs="{'readonly' : [('state', 'in', ('processed'))]}"/>
+      	   			<field name="consignment_type" invisible="True"></field>
+      	   		</group>
+            	<group>
+            		<field name="date" attrs="{'readonly' : [('state', 'in', ('processed'))]}"/>
+            	</group>
+            </group>
+            
+            <notebook>
+            	<page string="Product Lines">
+            		<field name="consignment_process_line_ids" mode="tree,kanban" attrs="{'readonly' : [('state', 'in', ('processed'))]}">
+            			<tree string="Product Lines" editable="bottom">
+            				<field name="product_id" required="True" domain="[('is_consignment_product','=',True), ('type', '=', 'product')]"></field>
+            				<field name="quantity" required="True"></field>
+            			</tree>
+            		</field>
+            	</page>
+            </notebook>
+            
+          </sheet>
+        </form>
+        </field>
+    </record>
+    
+    <record id="tree_view_consignment_transfer_return_ept" model="ir.ui.view">
+        <field name="name">tree.view.consignment.transfer.return.ept</field>
+        <field name="model">consignment.process.ept</field>
+       	<field name="arch" type="xml">
+        <tree string="Consignment Return">
+      	   	    <field name="name"/>
+             	<field name="date"/>
+            	<field name="consignee_source_id"/>
+            	<field name="warehouse_id"/>
+      	   		<field name="state"/>
+      	   		<field name="consignment_type" invisible="True"></field>
+        </tree>
+        </field>
+     </record>
+     
+      <record id="search_view_consignment_return_ept" model="ir.ui.view">
+            <field name="name">search.view.consignment.return.ept</field>
+            <field name="model">consignment.process.ept</field>
+            <field name="arch" type="xml">
+            <search string="Search Consignment Return">
+            	<filter string="Draft" name="draft" domain="[('state','=','draft')]"/>
+            	<filter string="Processed" name="processed" domain="[('state','=','processed')]"/>
+            	<filter string="Cancelled" name="cancel" domain="[('state','=','cancel')]"/>
+            	<field name="warehouse_id"/>
+                <field name="consignee_source_id"/>
+                <field name="state"/>
+                <field name="date"/>
+                <group expand="0" string="Group By">
+                    <filter name="warehouse" string="Warehouse" domain="[]" context="{'group_by':'warehouse_id'}"/>
+                    <filter name="consignee"  string="Consignee" domain="[]" context="{'group_by':'consignee_source_id'}"/>
+                    <filter name="date" string="Date" domain="[]" context="{'group_by':'date'}"/>
+                    <filter name="state" string="State" domain="[]" context="{'group_by':'state'}"/>
+                </group>
+            </search>
+    		</field>
+      </record>
+     
+     <record id='action_menu_consignment_return' model='ir.actions.act_window'>
+            <field name="name">Consignment Return</field>
+            <field name="res_model">consignment.process.ept</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+            <field name="context">{'default_consignment_type' : 'return'}</field>
+            <field name="domain">[('consignment_type','=','return')]</field>
+            <field name="search_view_id" ref="search_view_consignment_return_ept"/>
+     </record>
+     
+     <record id='form_view_consignment_return' model='ir.actions.act_window.view'>
+     		<field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="form_view_consignment_transfer_return_ept"/>
+            <field name="act_window_id" ref="action_menu_consignment_return"/>
+     </record>
+     
+      <record id='tree_view_consignment_return' model='ir.actions.act_window.view'>
+      		<field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="tree_view_consignment_transfer_return_ept"/>
+            <field name="act_window_id" ref="action_menu_consignment_return"/>
+     </record>
+     
+     <menuitem
+			action="action_menu_consignment_return"
+			id="menu_consignment_return"
+			name="Consignment Return"
+			parent="menu_consignment_root_menu"
+			sequence="6"
+	/>
+	
+</odoo>

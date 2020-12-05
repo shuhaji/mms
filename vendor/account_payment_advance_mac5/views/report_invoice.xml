@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<template id="report_invoice_document_advance_payment" inherit_id="account.report_invoice_document">
+    <xpath expr='//div[@id="total"]/div/table' position="inside">
+        <t t-if="o._get_advance_payment_amount()">
+            <tr>
+                <td>Advance Payments</td>
+                <td class="text-right">
+                     <span t-esc="o._get_advance_payment_amount()" t-esc-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                </td>
+            </tr>
+        </t>
+    </xpath>
+</template>
+
+</data>
+</odoo>

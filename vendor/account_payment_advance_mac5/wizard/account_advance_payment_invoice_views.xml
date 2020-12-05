@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_advance_payment_invoice_form" model="ir.ui.view">
+        <field name="name">view.account.advance.payment.invoice.form</field>
+        <field name="model">account.advance.payment.invoice</field>
+        <field name="arch" type="xml">
+            <form string="Apply Advance Payments">
+                <field name="partner_id" invisible="1"/>
+                <field name="partner_type" invisible="1"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="company_id" invisible="1"/>
+                <group>
+                    <field name="journal_id" domain="[('company_id', '=', company_id)]"/>
+                    <field name="date"/>
+                    <field name="invoice_residual"/>
+                    <field name="advance_payment_total"/>
+                </group>
+                <separator string="Advance payments to apply"/>
+                <field name="advance_payment_ids"
+                       domain="[('company_id', '=', company_id), ('is_advance_payment', '=', True),
+                                ('partner_id', '=', partner_id), ('partner_type', '=', partner_type),
+                                ('residual', '!=', 0.0), ('state', '=', 'posted')]">
+                    <tree string="Advance Payments">
+                        <field name="payment_date"/>
+                        <field name="name"/>
+                        <field name="journal_id"/>
+                        <field name="payment_method_id"/>
+                        <field name="amount" sum="Amount"/>
+                        <field name="residual" sum="Balance"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+                <footer>
+                    <button string='Apply' name="apply_advance_payment" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+           </form>
+        </field>
+    </record>
+
+    <act_window
+        id="action_account_advance_payment_invoice"
+        name="Apply Advance Payments"
+        res_model="account.advance.payment.invoice"
+        src_model="account.invoice"
+        view_mode="form"
+        multi="True"
+        target="new"
+        key2="client_action_multi"
+    />
+
+</odoo>

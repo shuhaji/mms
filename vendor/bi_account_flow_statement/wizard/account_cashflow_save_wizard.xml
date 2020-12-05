@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+     <data>
+
+     <record id="account_cashflow_save_form" model="ir.ui.view">
+        <field name="name">Account Cashflow Statement Save Form</field>
+        <field name="model">account.cashflow.save.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Account Cashflow Statement">
+            <field name="name" invisible="1"/>
+            <div>
+                     <h2>Report Generated</h2>
+                     <p>Here is the Excel Report: <field name="data" readonly="1" filename="name"/></p>
+                 </div>
+                 <footer><button string="Close" class="btn-default" special="cancel"/></footer>
+            
+                        </form>
+                        </field>
+                        </record>
+
+    </data>
+</openerp>

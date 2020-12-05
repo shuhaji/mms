@@ -1,0 +1,9 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_consignment_process_user","consignment.process.user","consignment_management_ept.model_consignment_process_ept","consignment_management_ept.group_consignment_management_user",1,1,1,0
+"access_consignment_process_line","consignment.process.lines","consignment_management_ept.model_consignment_process_line_ept","consignment_management_ept.group_consignment_management_user",1,1,1,0
+"access_consignment_log_user","consignment.log.user","consignment_management_ept.model_consignment_log_ept","consignment_management_ept.group_consignment_management_user",1,1,1,0
+"access_consignment_log_line","consignment.log.lines","consignment_management_ept.model_consignment_log_line_ept","consignment_management_ept.group_consignment_management_user",1,1,1,0
+"access_consignment_process_manager","consignment.process.manager","consignment_management_ept.model_consignment_process_ept","consignment_management_ept.group_consignment_management_manager",1,1,1,1
+"access_consignment_process_line_manager","consignment.process.lines","consignment_management_ept.model_consignment_process_line_ept","consignment_management_ept.group_consignment_management_manager",1,1,1,1
+"access_consignment_log_manager","consignment.log.manager","consignment_management_ept.model_consignment_log_ept","consignment_management_ept.group_consignment_management_manager",1,1,1,1
+"access_consignmen_log_line_manager","consignment.log.lines","consignment_management_ept.model_consignment_log_line_ept","consignment_management_ept.group_consignment_management_manager",1,1,1,1

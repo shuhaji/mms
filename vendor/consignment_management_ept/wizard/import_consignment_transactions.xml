@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<odoo>
+<record id="form_view_import_consignment_transactions" model="ir.ui.view">
+        <field name="name">form.view.import.consignment.transactions</field>
+        <field name="model">import.consignment.transactions</field>
+        <field name="arch" type="xml">
+			<form string="Import Consignment Transactions">
+                <group>
+                	<group>
+	                    <field name="file_name" invisible="1"/>
+	                    <field name="transaction_type" default="transfer" required="True"/>
+	                    <field widget="binary" name="choose_file" filename="file_name" />
+	                </group>
+	                <group>
+                    	<button name="download_template" string="Download Template" type="object" class="oe_link" />
+                    </group>
+                 </group>
+                <footer>
+                    <button name="do_import" string="Import" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+            </field>
+	</record>
+	
+	<record id="action_menu_import_consignment_transactions" model="ir.actions.act_window" >
+            <field name="name">Import Consignment Transactions</field>
+            <field name="res_model">import.consignment.transactions</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="form_view_import_consignment_transactions"/>
+            <field name="target">new</field>
+    </record>
+    
+     <menuitem
+		action="action_menu_import_consignment_transactions"
+		id="menu_import_consignment_transactions"
+		name="Import Consignment Transactions"
+		parent="menu_consignment_root_menu"
+		sequence="10"
+	/>
+		
+</odoo>
+	
+	
+	
+	

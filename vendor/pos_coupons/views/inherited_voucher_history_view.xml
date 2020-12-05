@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		<record id="inherited_voucher_history" model="ir.ui.view">
+        <field name="name">voucher.history.form</field>
+        <field name="model">voucher.history</field>
+        <field name="inherit_id" ref="wk_coupons.voucher_history_form" />
+        <field name="arch" type="xml">
+            <field name="transaction_type" position="after">
+                <field name="pos_order_id" readonly="1" attrs="{'invisible':[('channel_used','!=','pos')]}"/>  
+                <field name="pos_order_line_id" readonly="1" attrs="{'invisible':[('channel_used','!=','pos')]}"/>  
+            </field>
+        </field>
+    </record>
+</data>
+</openerp>

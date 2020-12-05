@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="form_view_add_field_res_partner_ept" model="ir.ui.view">
+        <field name="name">form.view.add.field.res.partner.ept</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+       	<field name="arch" type="xml">
+       	<xpath expr="//group[@name='container_row_2']" position="after">
+       		<group string="Consignment" groups = "consignment_management_ept.group_consignment_management_manager" name="consignment" attrs="{'invisible' : [('customer', '=', False)]}">
+       			<group>
+	             	<field name="is_consignee_customer"/>
+	             	<field name="consignment_location_name" attrs="{'required' : [('id', '!=', False),('is_consignee_customer','=',True)], 'invisible' : [('is_consignee_customer', '=', False)]}"/>
+	            	<field name="consignment_location_id" readonly="1" attrs="{'invisible' : [('is_consignee_customer', '=', False)]}"/>
+	            	<field name="consignment_route_id" readonly="1" groups="base.group_no_one" attrs="{'invisible' : [('is_consignee_customer', '=', False)]}"/>
+            	</group>
+            </group>
+        </xpath>	
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		<report 
+            string="Account Cash Flow Statement" 
+            id="action_cash_flow_st" 
+            model="account.cashflow" 
+            report_type="qweb-pdf"
+            name="bi_account_flow_statement.report_account_cashflow" 
+            file="bi_account_flow_statement.report_account_cashflow" 
+			menu="False"
+        />
+    </data>
+</openerp>

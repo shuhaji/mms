@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="form_view_product_product_ept" model="ir.ui.view">
+        <field name="name">form.view.product.product.ept</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+       	<field name="arch" type="xml">
+             <div name="options" groups="base.group_user">
+             	<div attrs="{'invisible' : [('type', '!=', 'product')]}">
+                	<field name="is_consignment_product" />
+                    <label for="is_consignment_product"/>
+                </div>
+             </div>                            
+        </field>
+    </record>
+</odoo>

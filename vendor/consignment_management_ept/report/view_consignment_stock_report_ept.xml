@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="paperformat_consignment_report_ept" model="report.paperformat">
+            <field name="name">Consignment Report</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">297</field>
+            <field name="page_width">210</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">30</field>
+            <field name="margin_bottom">23</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">90</field>
+        </record>
+
+	<record id="view_onscreen_consignment_report_consignee_wise_pivot" model="ir.ui.view">
+         <field name="name">Consignment Report Onscreen - consignee Wise</field>
+         <field name="model">consignment.onscreen.report</field>
+         <field name="arch" type="xml">
+             <pivot string="Consignment Stock Report" disable_linking="True">
+                 <field name="consignee" type="row"/>
+                 <field name="product_id" type="row"/>
+                 <field name="opening_qty" type="measure"/>
+                 <field name="transfer_qty" type="measure"/>
+                 <field name="received_from_another" type="measure"/>
+                 <field name="return_qty" type="measure"/>
+                 <field name="transfer_to_another" type="measure"/>
+                 <field name="order_qty" type="measure"/>
+                 <field name="closing_qty" type="measure"/>
+             </pivot>
+         </field>
+    </record>
+    
+    
+    
+    <record id="view_onscreen_consignment_report_tree_view" model="ir.ui.view">
+         <field name="name">Consignment Report Onscreen - List View</field>
+         <field name="model">consignment.onscreen.report</field>
+         <field name="arch" type="xml">
+             <tree string="Consignment Stock Report">
+                 <field name="consignee" />
+                 <field name="product_id" />
+                 <field name="opening_qty" />
+                 <field name="transfer_qty" />
+                 <field name="received_from_another" />
+                 <field name="return_qty" />
+                 <field name="transfer_to_another" />
+                 <field name="order_qty" />
+                 <field name="closing_qty" />
+             </tree>
+         </field>
+    </record>
+
+
+
+	<record id="view_onscreen_consignment_report_product_wise_pivot" model="ir.ui.view">
+         <field name="name">Consignment Report Onscreen - product Wise</field>
+         <field name="model">consignment.onscreen.report</field>
+         <field name="arch" type="xml">
+             <pivot string="Consignment Stock Report" disable_linking="True">
+                 <field name="product_id" type="row"/>
+                 <field name="consignee" type="row"/>
+				 <field name="opening_qty" type="measure"/>
+                 <field name="transfer_qty" type="measure"/>
+                 <field name="received_from_another" type="measure"/>
+                 <field name="return_qty" type="measure"/>
+                 <field name="transfer_to_another" type="measure"/>
+                 <field name="order_qty" type="measure"/>
+                 <field name="closing_qty" type="measure"/>
+             </pivot>
+         </field>
+    </record>
+
+
+
+	<record id="form_view_consignment_stock_report_ept" model="ir.ui.view">
+        <field name="name">form.view.consignment.stock.report.ept</field>
+        <field name="model">consignment.stock.report.ept</field>
+        <field name="arch" type="xml">
+			<form string="Consignment Stock Report">
+            
+                <group>
+                	<group>
+                    	<field name="from_date" required="True"/>
+                    	<field name="report_type" required="True"/>
+                    </group>
+                    <group>
+                    	<field name="to_date" required="True"/>
+                    	<field name="report_as" required="True"/>
+                    </group>
+                </group>
+                
+                <label for="ignore_non_moving_records" />
+                <field name="ignore_non_moving_records" />
+                
+                <span attrs="{'invisible' : [('report_type', '=', 'product_wise')]}">
+					<h3>Note : If specific Consignees arn't selected, System will consider all the Consignees.</h3>
+				</span>
+				<span attrs="{'invisible' : [('report_type', '=', 'consignee_wise')]}">
+					<h3>Note : If specific Products arn't selected, System will consider all the Consignment Products.</h3>
+				</span>
+				<field name="consignee_ids" domain="[('is_consignee_customer','=',True)]" 
+               		attrs="{'invisible' : [('report_type', '=', 'product_wise')]}"/>
+               	<field name="product_ids" domain="[('is_consignment_product', '=', True)]" 
+               		attrs="{'invisible' : [('report_type', '=', 'consignee_wise')]}"/>                
+            
+                <footer>
+                	<button name="get_report" string="Get Consignment Stock Report" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+            </field>
+	</record>
+	
+ 	<record id="action_menu_consignment_stock_report" model="ir.actions.act_window" >
+            <field name="name">Consignment Stock Report</field>
+            <field name="res_model">consignment.stock.report.ept</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+    </record>
+    
+    <record id="action_onscreen_report" model="ir.actions.act_window" >
+            <field name="name">Consignment Stock Report</field>
+            <field name="res_model">consignment.onscreen.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">pivot, tree</field>
+    </record>
+    
+     <menuitem
+			action="action_menu_consignment_stock_report"
+			id="menu_consignment_stock_report"
+			name="Consignment Stock Report"
+			parent="menu_consignment_root_menu"
+			sequence="11"
+			groups="group_consignment_management_manager"/>
+</odoo>

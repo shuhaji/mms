@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+	<record id="wizard_message_form" model="ir.ui.view">
+            <field name="name">Summary wizard</field>
+            <field name="model">wizard.message</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Summary" version="7.0">
+					<separator string="Summary" colspan="6"/>
+                    <font color="blue" size="4">
+					   <field name="text" colspan="4" nolabel="1" readonly="1" widget="html"/>			
+				    </font>
+					<footer>
+						<button special="cancel" class="oe_highlight" string="Close" />
+					</footer>
+									
+                </form>
+            </field>
+        </record>
+		<record id="wizard_message_action" model="ir.actions.act_window">
+            <field name="name">wizard.message</field>
+            <field name="res_model">wizard.message</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+	</data>
+	</openerp>

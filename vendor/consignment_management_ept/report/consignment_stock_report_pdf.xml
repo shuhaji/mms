@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<report id="action_consignment_stock_report" 
+	        model="consignment.stock.report.ept"
+		    string="Consignment Stock Report" 
+		    report_type="qweb-pdf"
+		    name="consignment_management_ept.consignment_pdf_report" 
+		    file="consignment_management_ept.consignment_pdf_report"
+		    print_report_name="'Consignment Report - %s' % (time.strftime('%Y-%m-%d %H:%M:%S'))"
+		    paperformat = "consignment_management_ept.paperformat_consignment_report_ept" 
+	/>
+
+	<template id="consignment_pdf_report">
+		<t t-call="web.html_container">
+        	<t t-foreach="docs" t-as="o">
+            	<t t-call="web.external_layout">
+                	<div class="page">
+                	
+                		<table height="30pt" width="100%"> 
+                   			<tr>
+                   				<th class="text-center">
+                   					<h2>Consignment Stock Report</h2>
+                   				</th>		
+                   			</tr>
+                   		</table>
+                   		<table height="20pt" width="100%">
+                   			<tr>
+                   				<td class="text-left">
+                   					<h3><t t-esc="o.from_date"/></h3>
+                   				</td>
+                   				<td class="text-right">
+                   					<h3><t t-esc="o.to_date"/></h3>
+                   				</td>
+                   			</tr>
+                    	</table>
+                		
+                		<t t-foreach="o.retrive_data()" t-as="key">
+                			<table width="100%" height="30pt">
+                   				<tr>
+                   					<t t-if="o.report_type == 'product_wise'">
+                    					<th style="background-color:rgb(255, 204, 204)" class="text-center"><t t-esc="o.env['product.product'].browse(key).display_name"/></th>
+                    				</t>
+                    				<t t-if="o.report_type == 'consignee_wise'">
+                    					<t t-set="consignee" t-value="o.env['res.partner'].browse(key)"/>
+										<th style="background-color:rgb(255, 204, 204)" class="text-center"><t t-esc="consignee.name + '(' + consignee.consignment_location_name + ')'"/></th>
+									</t>
+                    			</tr>
+	                    	</table>
+							<table class="table table-bordered" width="100%" height="30pt">
+								<thead>
+									<tr style="background-color:rgb(176, 216, 230)">
+										<t t-if="o.report_type == 'product_wise'">
+											<th  class="text-left">Consignee(Location)</th>
+										</t>
+										<t t-if="o.report_type == 'consignee_wise'">
+											<th class="text-left">Product</th>
+										</t>
+										<th class="text-right">Opening qty</th>
+										<th class="text-right">Transfer qty</th>
+										<th class="text-right">Received From Another Consignee</th>
+										<th class="text-right">Return qty</th>
+										<th class="text-right">Transfer To Another Consignee</th>
+										<th class="text-right">Order qty</th>
+										<th class="text-right">Closing qty</th>
+									</tr>
+									<t t-foreach="key_value" t-as="dict">
+										<tr style="background-color:#DDDCDC">
+											<td class="text-left">
+												<t t-if="o.report_type == 'product_wise'">
+													<t t-set="consignee" t-value="o.env['res.partner'].browse(dict_value.get('consignee'))"/>
+													<span t-esc="consignee.name + '(' + consignee.consignment_location_name + ')'"></span>
+												</t>
+												<t t-if="o.report_type == 'consignee_wise'">
+													<span t-esc="o.env['product.product'].browse(dict_value.get('product')).display_name"></span>
+												</t>
+											</td>
+											<td class="text-right">
+												<span t-esc="dict_value.get('opening_qty')"></span>
+											</td>
+											<td class="text-right">
+												<span t-esc="dict_value.get('transfer_qty')"></span>
+											</td>
+											<td class="text-right">
+												<span t-esc="dict_value.get('received_from_another')"></span>
+											</td>
+											<td class="text-right">
+												<span t-esc="dict_value.get('return_qty')"></span>
+											</td>
+											<td class="text-right">
+												<span t-esc="dict_value.get('transfer_to_another')"></span>
+											</td>
+											<td class="text-right">
+												<span t-esc="dict_value.get('ordered_qty')"></span>
+											</td>
+											<td class="text-right">
+												<span t-esc="dict_value.get('closing_qty')"></span>
+											</td>
+										</tr>
+									</t>
+								</thead>
+							</table>
+                		</t>
+					</div>
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo> 

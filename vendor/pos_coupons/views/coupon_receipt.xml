@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="coupon_receipt">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <h2 t-esc="o.user_id.company_id.name"/>
+                                <!-- <div t-field="o.user_id.company_id.partner_id"
+                            t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>-->
+                        Given By:
+                                <span t-field="o.user_id"/>
+                                <br/>Created on:
+                                <span t-field="o.create_date"/>
+                                <br/>
+                            </div>
+                        </div>
+                        <table class="table table-condensed" style="border-bottom: 1px solid black">
+                            <thead>
+                                <tr>
+                                    <th>Coupon Name:</th>
+                                    <th class="text-right">
+                                        <span t-field="o.name"/>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>
+                                    <strong>Issued on(From):</strong>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="o.issue_date"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Expired on(To):</strong>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="o.expiry_date"/>
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                                            <td><strong>Total Availability:</strong></td><br/>
+                                                            <td class="text-right">
+                                                                <t t-if="o.total_available != -1">
+                                                                    <span t-field="o.total_available"/>
+                                                                </t>
+                                                                <t t-if="o.total_available == -1">
+                                                                    No Limit
+                                                                </t>
+                                                            </td>
+                                                        </tr> -->
+                            <tr>
+                                <td>
+                                    <strong>Validity(in days):</strong>
+                                </td>
+                                <br/>
+                                <td class="text-right">
+                                    <t t-if="o.validity != -1">
+                                        <span t-field="o.validity"/>
+                                    </t>
+                                    <t t-if="o.validity == -1">No-Limit</t>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Coupon Value:</strong>
+                                </td>
+                                <br/>
+                                <td class="text-right">
+                                    <span t-field="o.coupon_value"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Coupon Code:</strong>
+                                </td>
+                                <br/>
+                                <td class="text-right">
+                                    <span t-field="o.coupon_code"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>

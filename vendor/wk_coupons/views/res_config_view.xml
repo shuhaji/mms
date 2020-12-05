@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.website.vouchers</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="20"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block coupon_app_settings" data-string="Coupons" data-key="wk_coupons" groups="">
+                    <h2>Default Configuration for Coupons and Vouchers</h2>
+                    <div class="row mt16 o_settings_container" id="coupon_config">
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label string="Coupon Product"/>
+                                <div class="text-muted">
+                                    Product that will be used for coupon redemption.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="wk_coupon_product_id" required="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label string="Coupon Name"/>
+                                <div class="text-muted">
+                                    Default name for the coupons.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="wk_coupon_name" required="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label string="Customer type"/>
+                                <div class="text-muted">
+                                    Default customer type.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="wk_coupon_customer_type" required="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label string="Default Coupon Value"/>
+                                <div class="text-muted">
+                                    Default value used while coupon creation.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="wk_coupon_value" required="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label string="Minimum coupon value"/>
+                                <div class="text-muted">
+                                    Minimum value for a coupon.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="wk_coupon_min_amount" required="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label string="Maximum Coupon Value"/>
+                                <div class="text-muted">
+                                    Maximum value for a coupon.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="wk_coupon_max_amount" required="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label string="Expiry date"/>
+                                <div class="text-muted">
+                                    Default expiry date for coupon creation.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="wk_coupon_max_expiry_date" required="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label string="Validity in days"/>
+                                <div class="text-muted">
+                                    Default validity in days.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="wk_coupon_validity" required="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label string="Coupon Used In"/>
+                                <div class="text-muted">
+                                    Where the coupon will be used.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="wk_coupon_voucher_usage" required="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Advanced Configuration</h2>
+                    <div class="row mt16 o_settings_container" id="advanced_coupon_config">
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="wk_coupon_partially_use"/>
+                            </div>
+                            <label for="wk_coupon_partially_use" string="Use partial redeem"/>
+                             <div class="text-muted">
+                                    Enable for partial redeem.
+                                </div>
+                               <div class="o_setting_right_pane"> 
+                               
+                            <div class="content-group" attrs="{'invisible': [('wk_coupon_partially_use', '=', False)]}">
+                                <div class="row mt16">
+                                    <label class="col-md-3 o_light_label" for="wk_coupon_partial_limit"/>
+                                    <field name="wk_coupon_partial_limit" attrs="{'required': [('wk_coupon_partially_use', '=', True)]}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="wk_coupon_minumum_cart_value_usage"/>
+                            </div>
+                            <label for="wk_coupon_partially_use" string="Minimum cart value validation"/>
+                             <div class="text-muted">
+                                    Enable to use minimum cart validation.
+                                </div>
+                               <div class="o_setting_right_pane"> 
+                               
+                            <div class="content-group" attrs="{'invisible': [('wk_coupon_minumum_cart_value_usage', '=', False)]}">
+                                <div class="row mt16">
+                                        <label class="col-md-3 o_light_label" for="wk_coupon_minimum_cart_amount"/>
+                                        <field name="wk_coupon_minimum_cart_amount" attrs="{'required': [('wk_coupon_minumum_cart_value_usage', '=', True)]}"/>
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+     <t t-name="InputInt">
+        <div>
+            <input class="o_input_widget_number"
+        type="number"
+        title="number"
+        value="" step="1" style="border: 1px solid #ccc;border-radius: 4px;padding: 2px 4px;"/>
+        </div>
+    </t>
+</templates>
+

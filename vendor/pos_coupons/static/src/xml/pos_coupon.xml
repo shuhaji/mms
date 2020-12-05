@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+     <t t-name="CouponButtonWidget">
+         <div class='control-button'>
+            <i class='fa fa-star' />Manage Coupon
+        </div>
+    </t>
+    <t t-name="VoucherCouponPopupWidget">
+        <t t-name="DiscountPopupWidget">
+        <div class="modal-dialog">
+            <div class="popup wk_coupon_popup">
+                <p class="title">Choose Your Option</p>
+                <div >
+                    <div class="wk_coupon_block">
+                    <div id="gift-coupons-create" class="wk_coupon_button wk_button_float1">
+                        <img src="/pos_coupons/static/src/img/icon-create-coupon.png" width="150" height="100"/>
+                        <div class="wk_coupon_top_text">
+                        Click here to
+                        </div>
+                        <div class="wk_coupon_bottom_text">
+                            Create New Coupon  
+                        </div>
+                </div>
+                <div id="gift-coupons-redeem" class="wk_coupon_button wk_button_float2">
+                    <img src="/pos_coupons/static/src/img/icon-redeem-coupon.png" width="150" height="100"/>
+
+                    <div class="wk_coupon_top_text">
+                        Click here to Redeem
+                    </div>
+                    <div class="wk_coupon_bottom_text">
+                        existing Gift Coupon  
+                    </div>
+                </div>
+            </div>
+                </div>
+                <div class="footer">
+                    <div class="button coupon_button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+    </t>
+    <t t-name="CreateCouponPopupWidget">
+        <div class="modal-dialog">
+            <div class="popup wk_create_coupon_popup">
+                <p class="title">Create New Coupon</p>
+                 <div class='wk-new-coupon-details'>
+            
+            <table class="wk_coupon_form_table">
+                <tr>
+                    <td>
+                        <div class="wk_coupon_form_block">
+                        <label class="wk_coupon_label">Coupon Name<label style="color:red">*</label></label>
+                        <input class='abcd wk_coupon_value right' name='wk_coupon_name'></input>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="wk_coupon_form_block">
+                        <label class="wk_coupon_label">Validity(in days)<label style="color:red">*</label></label>
+                        <input class='wk_coupon_value' name='wk_coupon_validity' ></input>
+                       </div> 
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <div class="wk_coupon_form_block">
+                        <label class="wk_coupon_label">Coupon used In</label>
+                        <select class='wk_coupon_value' name='wk_coupon_usage'>
+                            <option value='pos'>Point of Sale</option>
+                            <option value='both'>POS And Ecommerce </option>
+                        </select>
+                        </div>   
+                    </td>
+                    <td>
+                        <div class="wk_coupon_form_block">
+                        <label class="wk_coupon_label">Customer Type</label>
+                        <select class='wk_coupon_value' name='wk_customer_type'>
+                            <option value='special_customer'>Special Customer</option>
+                            <option value='general'>All Customers</option>
+                        </select>
+                        <div class="valid_error_customer"></div>
+                        </div>   
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td>
+                        <div class="wk_coupon_form_block">
+                        <label  class="wk_coupon_label">Coupon Value<label style="color:red">*</label></label>
+                        <input class='wk_coupon_value' name='wk_coupon_value' style="width:165px !important;float:left"></input>
+                        <!-- <label  class="wk_coupon_label">Type<label style="color:red">*</label></label> -->
+                        <select style="width:85px !important;float:right" class='wk_coupon_value' name='wk_amount_type'>
+                            <option value='amount'>Fixed</option>
+                            <option value='percent'>percent</option>
+                        </select>
+                        <div class="wk_valid_error" ></div>
+                        </div> 
+                    </td>
+                    <td>
+                        <div class="wk_coupon_form_block">
+                        <label class="wk_coupon_label">Total Available<label style="color:red">*</label></label>
+                         <div class="wk_valid_error" ></div>
+                        <input class='wk_coupon_value' name='wk_coupon_availability' ></input>
+                        </div>   
+                    </td>
+                </tr>
+               
+                <tr style="display:none">
+                    <td>
+                        <div class="wk_coupon_form_block">
+                        <input type="checkbox" id="wk_partial_redeemed" class="slected_customer" value="value"/><label name="wk_partial_redeemed">Partial Redemption</label>
+                        </div> 
+                    </td>
+                    <td>
+                        <div class="wk_coupon_form_block">
+                        <label class="wk_coupon_label">Redemption Limit</label>
+                        <input class='wk_coupon_value' name='wk_redeemption_limit'></input>
+                        <div class="valid_error_redeeemption"></div>
+                        </div>   
+                    </td>
+                </tr>
+            </table>
+            <table class="wk_form_table">
+                <tr>
+                    <td>
+                         <textarea style="height:20px;" class="coupon_extrainfo" rows="4" name="note" placeholder="For your eyes only. This will never be displayed to the customer."></textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br/>
+                <div class="footer">
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                    <div class="wk_create_coupon_button cancel">
+                        Create
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-name="CreateConfurmPopupWidget">
+           <div class="modal-dialog">
+            <div class="popup wk_confurm_coupon_popup">
+                <p class="title"> Confirmation</p>
+                       
+                   
+                <div class="wk_coupon_key_label" >
+                    A new Gift Coupon has been created successfully.
+                    
+                </div>
+                <div class="footer">
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                    <div class="wk_confurm_coupon_button cancel" id="print-coupons">
+                       Print
+                    <i class="fa fa-print"/>
+                    </div>
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+    </t>
+    <t t-name="RedeemPopupWidget">
+           <div class="modal-dialog">
+            <div class="popup wk_redeem_coupon_popup">
+                <p class="title">Redeem Gift Coupon</p>
+                       
+                   
+                <div class="wk_coupon_key_label" >
+                    Enter Voucher Code
+                </div>
+                <input type="text" name="redeem_value" id="coupon_8d_code" required="true" autofocus="autofocus"/>
+                <div class="footer">
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                    <div class="wk_confurm_coupon_button cancel" id="wk-redeem-coupons">
+                      Validate
+                    </div>
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+    </t>
+    <t t-name="RedeemPopupRetryWidget">
+           <div class="modal-dialog">
+            <div class="popup wk_redeem_coupon_popup">
+                <p class="title">Redeem Gift Coupon</p>
+                       
+                   
+                <div class="wk_coupon_key_label" >
+                    <t t-esc=" widget.options.title || 'Error' " />
+                    
+                    
+                </div>
+                
+                <div class="footer">
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                    <div class="wk_confurm_coupon_button cancel" id="wk-retry-coupons">
+                       Retry
+                    </div>
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+    </t>
+    <t t-name="RedeemPopupValidateWidget">
+           <div class="modal-dialog">
+            <div class="popup wk_redeem_coupon_popup">
+                <p class="title">Redeem Gift Coupon</p>
+                       
+                   
+                <div class="wk_coupon_key_label" >
+                    <t t-esc=" widget.options.title || '0' " /><br/>
+                    NOTE: For your current order you can make discount of <t t-esc=" widget.options.msg || '0' " /> amount.
+                    
+                </div>
+                
+                <div class="footer">
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                    <div class="wk_confurm_coupon_button cancel" id="wk-retry-coupons">
+                       Redeem
+                    </div>
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+    </t>
+
+
+    <t t-name="CouponXmlReceipt">
+        <receipt align='center' width='40' value-thousands-separator='' >
+            <t t-if='receipt.company.logo'>
+                <img t-att-src='receipt.company.logo' />
+            </t>
+            <t t-if='receipt.company.logo'>
+                <h2><t t-esc='receipt.company.name' /></h2>
+                <br/>
+            </t>
+            <br />
+            <div>
+                <div>COUPON:</div>
+            </div>
+            <div>-----------------------</div>
+            <div font='b'>
+                <div><t t-esc='receipt.coupon.name' /></div>
+            </div>
+            <br/>
+            <div>
+                <div>Validaty:</div>
+            </div>
+            <div>-----------------------</div>
+            <line>
+                <left>From: <t t-esc='receipt.coupon.issue_date' /></left>
+                <right>To: <t t-esc='receipt.coupon.expiry_date' /></right>
+            </line>
+            <br/>
+            <div>
+                <div>Coupon Value: <t t-esc='receipt.coupon.coupon_value' /></div>
+               <div> Secret Code :<t t-esc='receipt.coupon.coupon_code'/></div>
+            </div>
+            <br/>
+            <br/>
+            <!-- Footer -->
+            <t t-if='receipt.footer'>
+                <br/>
+                <pre><t t-esc='receipt.footer' /></pre>
+                <br/>
+                <br/>
+            </t>
+            <br/>
+            <div font='b'>
+                <div><t t-esc='receipt.date.localestring' /></div>
+            </div>
+
+        </receipt>
+    </t>
+
+        <!-- #####################Code for displaying the voucher name in the reciept ###################-->
+   <!--  <t t-extend="PosTicket" >
+        <t t-jquery=".pos-sale-ticket .receipt-orderlines tr td:nth-child(1) t:nth-child(1)" t-operation="replace">
+            <t t-if="widget.pos.get_order().wk_product_id == orderline.get_product().id">
+                <t t-esc="orderline.coupon_name" />
+            </t>
+            <t t-if="widget.pos.get_order().wk_product_id != orderline.get_product().id">
+               <t t-esc="orderline.get_product().display_name"/>
+            </t>
+        </t>        
+    </t>
+ -->
+</templates>

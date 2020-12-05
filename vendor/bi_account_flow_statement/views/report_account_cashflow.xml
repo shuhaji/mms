@@ -1,0 +1,482 @@
+<?xml version="1.0"?>
+<odoo>
+
+
+<template id="report_account_cashflow">
+	<t t-call="web.html_container">
+    <t t-foreach="docs" t-as="o">
+    <t t-call="web.internal_layout">       
+    <div class="page">
+		<table style="width: 100%;">
+			<tr>
+				<td style="text-align: center;">
+					<h2><strong>Account Cash Flow Statement</strong></h2>
+				</td>
+			</tr>
+		</table><br/>
+		<table style="width: 100%;">
+			<tr>
+				<td style="width: 50%;">
+					<strong>Target Moves:</strong>
+				</td>
+				<td style="width: 50%;">
+					<strong>Date from:</strong><![CDATA[&nbsp;]]><span t-field='o.start_date'/>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 50%;">
+					<span t-field='o.target_moves'/>
+				</td>
+				<td style="width: 50%;">
+					<strong>Date to:</strong><![CDATA[&nbsp;]]><span t-field='o.end_date'/>
+				</td>
+			</tr>
+		</table><br/>
+		<table style="width: 100%;">
+			<tr>
+				<td style="width: 80%; text-align:right">
+					<strong>Cash at the Beginning of Period/Year:</strong>
+				</td>
+				<td style="width: 20%; text-align:center">
+					<span t-field='o.start_amount'/>
+				</td>
+			</tr>
+		</table><br/>
+		<table style="width: 100%;" class="table table-condensed">
+			<thead>
+				<tr>
+					<th style="width: 40%; font-size:20px">
+						Name
+					</th>
+					
+					<th style="width: 20%; font-size:20px">
+						<t t-if="o.display_dt_cr == True">Debit</t>
+					</th>
+					<th style="width: 20%; font-size:20px">
+						<t t-if="o.display_dt_cr == True">Credit</t>
+					</th>
+					
+					<th style="width: 20%; text-align:right; font-size:20px">
+						Balance
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr style="line-height:20px">
+
+					<td style="width: 40%;">
+						<strong>Operations</strong>
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%; text-align:right">
+						<t t-set="cash_recpt_dt" t-value="0.0"/>
+						<t t-set="cash_recpt_cr" t-value="0.0"/>
+						<t t-foreach="button_calculate_rep" t-as="a">
+							<t t-if="a.get('account_activity') == 'operating' and a.get('account_report') == 'Cash Receipt From - Operation'">
+								<t t-set="cash_recpt_dt" t-value="cash_recpt_dt + (a.get('amount_cr') - a.get('amount_dt'))"/>
+							</t>
+							<t t-if="a.get('account_activity') == 'operating' and a.get('account_report') == 'Cash Paid to - Operation'">
+								<t t-set="cash_recpt_cr" t-value="cash_recpt_cr + (a.get('amount_cr') - a.get('amount_dt'))"/>
+							</t>
+						</t>
+						<t t-set="cash_recpt_net" t-value="cash_recpt_dt + cash_recpt_cr"/>
+						<strong><t t-esc="cash_recpt_net" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></strong>
+					</td>
+
+				</tr>
+				<tr style="line-height:20px">
+					<td style="width: 40%">
+						<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><strong>Cash Receipt from- Operations</strong>
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%; text-align:right">
+						<t t-set="cash_recpt" t-value="0.0"/>
+						<t t-foreach="button_calculate_rep" t-as="a">
+							<t t-if="a.get('account_activity') == 'operating' and a.get('account_report') == 'Cash Receipt From - Operation'">
+								<t t-set="cash_recpt" t-value="cash_recpt +(a.get('amount_cr') - a.get('amount_dt')) "/>
+							</t>
+						</t>
+						<strong><span t-esc="cash_recpt" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></strong>
+					</td>
+				</tr>
+				<tr style="line-height:20px" t-foreach="button_calculate_rep" t-as="a">
+					<t t-if="a.get('account_activity') == 'operating'">
+						<t t-if="a.get('account_report') == 'Cash Receipt From - Operation'">
+                    <td style="width: 40%;"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><span t-esc="a.get('account_id')"/></td>
+                    <td style="width: 20%;">
+                    	<t t-if="o.display_dt_cr == True">
+						<span  t-esc="a.get('amount_dt')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+						</t>
+					</td>
+					<td style="width: 20%;">
+						<t t-if="o.display_dt_cr == True">
+						<span t-esc="a.get('amount_cr')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+						</t>
+					</td>
+                    <td style="width: 20%; text-align:right"><span t-esc="a.get('amount_cr') - a.get('amount_dt')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+						</t>
+					</t>
+                </tr>
+				<tr style="line-height:20px">
+					<td style="width: 40%">
+						<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><strong>Cash Paid to- Operations</strong>
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%; text-align:right">
+						<t t-set="cash_recpt" t-value="0.0"/>
+						<t t-foreach="button_calculate_rep" t-as="a">
+							<t t-if="a.get('account_activity') == 'operating' and a.get('account_report') == 'Cash Paid to - Operation'">
+								<t t-set="cash_recpt" t-value="cash_recpt + (a.get('amount_cr') - a.get('amount_dt'))"/>
+							</t>
+						</t>
+						<strong><span t-esc="cash_recpt" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></strong>
+					</td>
+				</tr>
+				<tr t-foreach="button_calculate_rep" t-as="a">
+					<t t-if="a.get('account_activity') == 'operating'">
+						<t t-if="a.get('account_report') == 'Cash Paid to - Operation'">
+                    <td style="width: 40%"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><span t-esc="a.get('account_id')"/></td>
+                    <td style="width: 20%;">
+						<t t-if="o.display_dt_cr == True">
+						<span  t-esc="a.get('amount_dt')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+						</t>
+					</td>
+					<td style="width: 20%;">
+						<t t-if="o.display_dt_cr == True">
+						<span  t-esc="a.get('amount_cr')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+						</t>
+					</td>
+                    <td style="width: 20%; text-align:right"><span t-esc="a.get('amount_cr') - a.get('amount_dt')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+						</t>
+					</t>
+                </tr>
+				<tr style="line-height:20px">
+					<td style="width: 40%">
+						<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><strong>Net Cash Flow From Operations</strong>
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%; text-align:right">
+						<t t-set="cash_recpt_dt" t-value="0.0"/>
+						<t t-set="cash_recpt_cr" t-value="0.0"/>
+						<t t-foreach="button_calculate_rep" t-as="a">
+							<t t-if="a.get('account_activity') == 'operating' and a.get('account_report') == 'Cash Receipt From - Operation'">
+								<t t-set="cash_recpt_dt" t-value="cash_recpt_dt + (a.get('amount_cr') - a.get('amount_dt'))"/>
+							</t>
+							<t t-if="a.get('account_activity') == 'operating' and a.get('account_report') == 'Cash Paid to - Operation'">
+								<t t-set="cash_recpt_cr" t-value="cash_recpt_cr + (a.get('amount_cr') - a.get('amount_dt'))"/>
+							</t>
+						</t>
+						<t t-set="cash_recpt_net" t-value="cash_recpt_dt + cash_recpt_cr"/>
+						<strong><t t-esc="cash_recpt_net" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></strong>
+					</td>
+
+				</tr>
+
+				<tr style="line-height:20px">
+					<td style="width: 40%;">
+						<strong>Investing Activities</strong>
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%; text-align:right">
+						<t t-set="cash_recpt_dt" t-value="0.0"/>
+						<t t-set="cash_recpt_cr" t-value="0.0"/>
+						<t t-foreach="button_calculate_rep" t-as="a">
+							<t t-if="a.get('account_activity') == 'invest' and a.get('account_report') == 'Cash Receipt From - Investing'">
+								<t t-set="cash_recpt_dt" t-value="cash_recpt_dt + (a.get('amount_cr') -a.get('amount_dt'))"/>
+							</t>
+							<t t-if="a.get('account_activity') == 'invest' and a.get('account_report') == 'Cash Paid to - Investing'">
+								<t t-set="cash_recpt_cr" t-value="cash_recpt_cr + (a.get('amount_cr') -a.get('amount_dt'))"/>
+							</t>
+						</t>
+						<t t-set="cash_recpt_net" t-value="cash_recpt_dt + cash_recpt_cr"/>
+						<strong><t t-esc="cash_recpt_net" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></strong>
+					</td>
+				</tr>
+				<tr style="line-height:20px">
+					<td style="width: 40%">
+						<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><strong>Cash Receipt from- Investing</strong>
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%; text-align:right">
+						<t t-set="cash_recpt" t-value="0.0"/>
+						<t t-foreach="button_calculate_rep" t-as="a">
+							<t t-if="a.get('account_activity') == 'invest' and a.get('account_report') == 'Cash Receipt From - Investing'">
+								<t t-set="cash_recpt" t-value="cash_recpt + (a.get('amount_cr') -a.get('amount_dt'))"/>
+							</t>
+						</t>
+						<strong><span t-esc="cash_recpt" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></strong>
+					</td>
+				</tr>
+				<tr t-foreach="button_calculate_rep" t-as="a">
+					<t t-if="a.get('account_activity') == 'invest'">
+						<t t-if="a.get('account_report') == 'Cash Receipt From - Investing'">
+                    <td style="width: 40%;"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><span t-esc="a.get('account_id')"/></td>
+                    <td style="width: 20%;">
+						<t t-if="o.display_dt_cr == True">
+						<span  t-esc="a.get('amount_dt')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+						</t>
+					</td>
+					<td style="width: 20%;">
+						<t t-if="o.display_dt_cr == True">
+						<span  t-esc="a.get('amount_cr')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+						</t>
+					</td>
+                    <td style="width: 20%; text-align:right"><span t-esc="a.get('amount_cr') -a.get('amount_dt')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+						</t>
+					</t>
+                </tr>
+				<tr style="line-height:20px">
+					<td style="width: 40%">
+						<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><strong>Cash Paid to- Investing</strong>
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%; text-align:right">
+						<t t-set="cash_recpt" t-value="0.0"/>
+						<t t-foreach="button_calculate_rep" t-as="a">
+							<t t-if="a.get('account_activity') == 'invest' and a.get('account_report') == 'Cash Paid to - Investing'">
+								<t t-set="cash_recpt" t-value="cash_recpt + (a.get('amount_cr') -a.get('amount_dt'))"/>
+							</t>
+						</t>
+						<strong><span t-esc="cash_recpt" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></strong>
+					</td>
+				</tr>
+				<tr t-foreach="button_calculate_rep" t-as="a">
+					<t t-if="a.get('account_activity') == 'invest'">
+						<t t-if="a.get('account_report') == 'Cash Paid to - Investing'">
+                    <td style="width: 40%"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><span t-esc="a.get('account_id')"/></td>
+                    <td style="width: 20%;">
+						<t t-if="o.display_dt_cr == True">
+						<span  t-esc="a.get('amount_dt')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+						</t>
+					</td>
+					<td style="width: 20%;">
+						<t t-if="o.display_dt_cr == True">
+						<span  t-esc="a.get('amount_cr')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+						</t>
+
+					</td>
+                    <td style="width: 20%; text-align:right"><span t-esc="a.get('amount_cr') -a.get('amount_dt')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+						</t>
+					</t>
+                </tr>
+				<tr style="line-height:20px">
+					<td style="width: 40%">
+						<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><strong>Net Cash Flow From Investing</strong>
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%; text-align:right">
+						<t t-set="cash_recpt_dt" t-value="0.0"/>
+						<t t-set="cash_recpt_cr" t-value="0.0"/>
+						<t t-foreach="button_calculate_rep" t-as="a">
+							<t t-if="a.get('account_activity') == 'invest' and a.get('account_report') == 'Cash Receipt From - Investing'">
+								<t t-set="cash_recpt_dt" t-value="cash_recpt_dt + (a.get('amount_cr') -a.get('amount_dt'))"/>
+							</t>
+							<t t-if="a.get('account_activity') == 'invest' and a.get('account_report') == 'Cash Paid to - Investing'">
+								<t t-set="cash_recpt_cr" t-value="cash_recpt_cr + (a.get('amount_cr') -a.get('amount_dt'))"/>
+							</t>
+						</t>
+						<t t-set="cash_recpt_net" t-value="cash_recpt_dt + cash_recpt_cr"/>
+						<strong><t t-esc="cash_recpt_net" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></strong>
+					</td>
+				</tr>
+				<tr style="line-height:20px">
+					<td style="width: 40%;">
+						<strong>Financing Activities</strong>
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%; text-align:right">
+						<t t-set="cash_recpt_dt" t-value="0.0"/>
+						<t t-set="cash_recpt_cr" t-value="0.0"/>
+						<t t-foreach="button_calculate_rep" t-as="a">
+							<t t-if="a.get('account_activity') == 'finance' and a.get('account_report') == 'Cash Receipt From - Financing'">
+								<t t-set="cash_recpt_dt" t-value="cash_recpt_dt + (a.get('amount_cr') - a.get('amount_dt'))"/>
+							</t>
+							<t t-if="a.get('account_activity') == 'finance' and a.get('account_report') == 'Cash Paid to - Financing'">
+								<t t-set="cash_recpt_cr" t-value="cash_recpt_cr + (a.get('amount_cr') - a.get('amount_dt'))"/>
+							</t>
+						</t>
+						<t t-set="cash_recpt_net" t-value="cash_recpt_dt + cash_recpt_cr"/>
+						<strong><t t-esc="cash_recpt_net" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></strong>
+					</td>
+				</tr>
+				<tr style="line-height:20px">
+					<td style="width: 40%">
+						<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><strong>Cash Receipt from- Financing</strong>
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%; text-align:right">
+						<t t-set="cash_recpt" t-value="0.0"/>
+						<t t-foreach="button_calculate_rep" t-as="a">
+							<t t-if="a.get('account_activity') == 'finance' and a.get('account_report') == 'Cash Receipt From - Financing'">
+								<t t-set="cash_recpt" t-value="cash_recpt + (a.get('amount_cr') - a.get('amount_dt'))"/>
+							</t>
+						</t>
+						<strong><span t-esc="cash_recpt" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></strong>
+					</td>
+				</tr>
+				<tr t-foreach="button_calculate_rep" t-as="a">
+					<t t-if="a.get('account_activity') == 'finance'">
+						<t t-if="a.get('account_report') == 'Cash Receipt From - Financing'">
+                    <td style="width: 40%;"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><span t-esc="a.get('account_id')"/></td>
+                    <td style="width: 20%;">
+						<t t-if="o.display_dt_cr == True">
+						<span  t-esc="a.get('amount_dt')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+						</t>
+					</td>
+					<td style="width: 20%;">
+						<t t-if="o.display_dt_cr == True">
+						<span  t-esc="a.get('amount_cr')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+						</t>
+					</td>
+                    <td style="width: 20%; text-align:right"><span t-esc="a.get('amount_cr') - a.get('amount_dt')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+						</t>
+					</t>
+                </tr>
+				<tr style="line-height:20px">
+					<td style="width: 40%">
+						<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><strong>Cash Paid to- Financing</strong>
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%; text-align:right">
+						<t t-set="cash_recpt" t-value="0.0"/>
+						<t t-foreach="button_calculate_rep" t-as="a">
+							<t t-if="a.get('account_activity') == 'finance' and a.get('account_report') == 'Cash Paid to - Financing'">
+								<t t-set="cash_recpt" t-value="cash_recpt + (a.get('amount_cr') - a.get('amount_dt'))"/>
+							</t>
+						</t>
+						<strong><span t-esc="cash_recpt" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></strong>
+					</td>
+				</tr>
+				<tr t-foreach="button_calculate_rep" t-as="a">
+					<t t-if="a.get('account_activity') == 'finance'">
+						<t t-if="a.get('account_report') == 'Cash Paid to - Financing'">
+                    <td style="width: 40%"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><span t-esc="a.get('account_id')"/></td>
+                    <td style="width: 20%;">
+						<t t-if="o.display_dt_cr == True">
+						<span  t-esc="a.get('amount_dt')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+						</t>
+					</td>
+					<td style="width: 20%;">
+						<t t-if="o.display_dt_cr == True">
+						<span  t-esc="a.get('amount_cr')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+						</t>
+					</td>
+                    <td style="width: 20%; text-align:right"><span t-esc="a.get('amount_cr') - a.get('amount_dt')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+						</t>
+					</t>
+                </tr>
+				<tr style="line-height:20px">
+					<td style="width: 40%">
+						<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><strong>Net Cash Flow From Financing</strong>
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%;">
+						
+					</td>
+					<td style="width: 20%; text-align:right">
+						<t t-set="cash_recpt_dt" t-value="0.0"/>
+						<t t-set="cash_recpt_cr" t-value="0.0"/>
+						<t t-foreach="button_calculate_rep" t-as="a">
+							<t t-if="a.get('account_activity') == 'finance' and a.get('account_report') == 'Cash Receipt From - Financing'">
+								<t t-set="cash_recpt_dt" t-value="cash_recpt_dt + (a.get('amount_cr') - a.get('amount_dt'))"/>
+							</t>
+							<t t-if="a.get('account_activity') == 'finance' and a.get('account_report') == 'Cash Paid to - Financing'">
+								<t t-set="cash_recpt_cr" t-value="cash_recpt_cr + (a.get('amount_cr') - a.get('amount_dt'))"/>
+							</t>
+						</t>
+						<t t-set="cash_recpt_net" t-value="cash_recpt_dt + cash_recpt_cr"/>
+						<strong><t t-esc="cash_recpt_net" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></strong>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</t>
+	</t>
+</t>
+</template>
+<!--template id="report_account_cashflow_template">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="bi_account_flow_statement.report_account_cashflow"/>
+        </t>
+    </t>
+</template-->
+
+<!--record id="paper_format" model="report.paperformat">
+            <field name="name">Indian</field>
+            <field name="default" eval="True" />
+            <field name="format">custom</field>
+            <field name="page_height">155</field>
+            <field name="page_width">350</field>
+            <field name="margin_top">5</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+			<field name="orientation">Portrait</field>
+            <field name="header_spacing">20</field>
+            <field name="dpi">80</field>
+</record>
+<record id="bi_account_flow_statement.action_cash_flow_st" model="ir.actions.report">
+    <field name="paperformat_id" ref="bi_account_flow_statement.paper_format"/>
+</record-->
+
+</odoo>
